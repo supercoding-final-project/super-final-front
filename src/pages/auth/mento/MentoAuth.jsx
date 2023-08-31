@@ -11,14 +11,19 @@ const MentoAuth = () => {
   const [showSkillChip, setShowSkillChip] = useState(false);
 
   const handleSkillChange = (e) => {
-    setSkill(e.target.value);
+    const skill = e.target.value.toUpperCase();
+    setSkill(skill);
     setShowSkillChip(true);
   };
 
   const handleSkillKeyDown = (e) => {
     if (e.key === 'Enter' && skill.trim() !== '') {
       e.preventDefault();
-      setSkillChips((prevChips) => [...prevChips, skill.trim()]);
+
+      if (!skillChips.includes(skill.trim())) {
+        setSkillChips((prevChips) => [...prevChips, skill.trim()]);
+      }
+
       setSkill('');
     }
   };
@@ -27,6 +32,10 @@ const MentoAuth = () => {
     if (skill.trim() !== '') {
       setShowSkillChip(true);
     }
+  };
+
+  const handleChipClick = (index) => {
+    setSkillChips((prevChips) => prevChips.filter((chip, chipIndex) => chipIndex !== index));
   };
 
   return (
@@ -48,13 +57,11 @@ const MentoAuth = () => {
 
         <S.ChipWrap>
           {showSkillChip &&
-            skillChips.map((chip, index) =>
-              index > skillChips.length - 2 ? (
-                <div key={`chip-${index}`}>{<Chip text={skill ? skill : chip} />}</div>
-              ) : (
-                <div key={`chip-${index}`}>{<Chip text={chip} />}</div>
-              ),
-            )}
+            skillChips.map((chip, index) => (
+              <div key={`chip-${index}`}>
+                {<Chip text={skill ? skill : chip} onClick={() => handleChipClick(index)} />}
+              </div>
+            ))}
         </S.ChipWrap>
 
         <RegisterButton text="멘토로 가입" />

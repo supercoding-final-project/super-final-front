@@ -58,3 +58,9 @@ export const ChipWrap = styled.div`
   width: 24rem;
   flex-wrap: wrap;
 `;
+
+export const CloseBtn = styled.button`
+  border: none;
+  background: inherit;
+  cursor: pointer;
+`;

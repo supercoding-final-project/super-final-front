@@ -5,6 +5,7 @@ export const ChipContainer = styled.div`
   justify-content: flex-start;
   width: 100%;
   padding-top: 1rem;
+  cursor: pointer;
 `;
 
 export const Chip = styled.div`
@@ -12,4 +13,5 @@ export const Chip = styled.div`
   color: #185ee0;
   border-radius: 16px;
   padding: 4px 8px;
+  margin-inline: 0.2rem;
 `;
