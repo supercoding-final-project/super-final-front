@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
+import chat from '@/assets/chat.svg';
+import search from '@/assets/search.svg';
 import * as S from './chat.style';
-import chat from '../../assets/chat.svg';
-import search from '../../assets/search.svg';
 
 const ChatListLayout = () => {
   // tab 상태관리
