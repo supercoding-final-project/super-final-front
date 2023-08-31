@@ -1,24 +1,30 @@
 
+// import axios from 'axios';
 import { useState } from 'react'
 import * as S from "src/pages/my/mentiMyLayout.style";
-import { styled } from "styled-components";
 
-import { LoadingSpinner } from '@/components/common/LoadingSpinner';
+import FIxInformationContainer from "@/components/mypage/menti/FIxInformation"
 import LabelInputbox from "./LabelInputbox";
 import LabelValuebox from "./LabelValuebox";
 
 
 const FIxInformation = () => {
     const [enterNickanme, setEnterNickname] = useState(false)
-    const [,] = useState()
+    // const [NicknameToChange, setNicknameToChange] = useState('')
+    // const [,] = useState()
     // const [fixNickname, setFixNickname] = useState('')
 
 
     //서버에 중복확인 요청보내기
-    // const 중복확인요청보내기 =
-    //     axios("url", {
+    // const duplicateCheck = () => {
 
-    //     })
+    //     axios("url", {
+    //         NicknameToChange,
+    //     }).then(response => (console.log(response)
+    //     )).catch(
+    //         alert("안됨")
+    //     )
+    // }
 
     const usernickname = "하츠네미쿠"
 
@@ -31,8 +37,8 @@ const FIxInformation = () => {
 
                 {enterNickanme ?
                     <S.DivFlex>
-                        <LabelInputbox label={"닉네임"} description={usernickname} setEnterNickname={setEnterNickname} ></LabelInputbox>
-                        <S.FixButton>중복확인</S.FixButton>
+                        <LabelInputbox label={"닉네임"} setEnterNickname={setEnterNickname} ></LabelInputbox>
+                        <S.FixButton >중복확인</S.FixButton>
                     </S.DivFlex>
                     :
                     <S.DivFlex>
@@ -45,6 +51,9 @@ const FIxInformation = () => {
                 <LabelValuebox label={"비밀번호"} description={"하츠네미쿠"}></LabelValuebox>
                 <LabelValuebox label={"닉네임"} description={"하츠네미쿠"}></LabelValuebox>
 
+
+                <button>회원정보수정하기</button>
+
             </FIxInformationContainer>
 
         </>
@@ -53,10 +62,4 @@ const FIxInformation = () => {
 
 export default FIxInformation;
 
-const FIxInformationContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 0.5rem;
-`
 

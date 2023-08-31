@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Calendar from 'src/components/mypage/menti/Calender';
 import * as S from 'src/pages/my/mentiMyLayout.style'
 

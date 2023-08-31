@@ -12,12 +12,14 @@ const MentiMyLayout = () => {
     point: "포인트충전"
   }
 
-  const navItemHandler = (data) => {
-    setType(data)
+  const navItemHandler = (navtype) => {
+    setType(navtype)
   }
 
   return (
     <>
+
+
       <LeftNavbar navItemHandler={navItemHandler} navtype={navtype} />
       <Information informationtype={type} navtype={navtype}></Information>
     </>

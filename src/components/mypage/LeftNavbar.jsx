@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 // import React from 'react';
 
 // import { useState } from 'react';
 import { NavBarContainer } from 'src/pages/my/mentiMyLayout.style';
 
 import LeftNavbar_Items from './LeftNavbar_Items';
+
 
 const LeftNavbar = ({ navItemHandler, navtype }) => {
 
@@ -24,3 +26,4 @@ const LeftNavbar = ({ navItemHandler, navtype }) => {
 };
 
 export default LeftNavbar;
+
