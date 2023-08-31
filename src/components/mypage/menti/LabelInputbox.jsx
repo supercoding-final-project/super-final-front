@@ -2,7 +2,7 @@
 import * as S from "src/pages/my/mentiMyLayout.style"
 
 
-const LabelInputbox = ({ label, setEnterNickname, description }) => {
+const LabelInputbox = ({ label, setEnterNickname }) => {
     const blurInput = () => {
         setEnterNickname(prev => !prev)
     }
@@ -11,7 +11,7 @@ const LabelInputbox = ({ label, setEnterNickname, description }) => {
         <>
             <S.DivFlex>
                 <S.Label htmlFor="">{label}</S.Label>
-                <S.Input onBlur={blurInput} value={description}></S.Input>
+                <S.Input onBlur={blurInput} autoFocus></S.Input>
             </S.DivFlex>
 
         </>

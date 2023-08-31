@@ -3,13 +3,14 @@ import { useState } from 'react'
 import * as S from "src/pages/my/mentiMyLayout.style";
 import { styled } from "styled-components";
 
+import { LoadingSpinner } from '@/components/common/LoadingSpinner';
 import LabelInputbox from "./LabelInputbox";
 import LabelValuebox from "./LabelValuebox";
 
 
 const FIxInformation = () => {
     const [enterNickanme, setEnterNickname] = useState(false)
-
+    const [,] = useState()
     // const [fixNickname, setFixNickname] = useState('')
 
 
@@ -24,6 +25,9 @@ const FIxInformation = () => {
     return (
         <>
             <FIxInformationContainer>
+                <div>
+
+                </div>
 
                 {enterNickanme ?
                     <S.DivFlex>
