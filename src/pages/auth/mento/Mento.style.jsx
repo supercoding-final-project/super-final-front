@@ -29,11 +29,25 @@ export const InputWrapper = styled.div`
 
 export const Career = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 100%;
+`;
+
+export const Exp = styled.div`
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const YearField = styled.div`
+  width: 50%;
+
+  select {
+    border: none;
+  }
 `;
 
 export const ChipWrap = styled.div`
