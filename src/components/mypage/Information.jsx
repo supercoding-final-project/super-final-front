@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
-import Calendar from 'src/components/mypage/menti/Calender';
+
 import * as S from 'src/pages/my/mentiMyLayout.style'
 
+import Calendar from './Calendar';
 import FIxInformation from './menti/FIxInformation';
 
 const Information = ({ informationtype, navtype }) => {

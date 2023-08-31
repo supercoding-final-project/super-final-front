@@ -87,7 +87,7 @@ export const FixButton = styled.button`
 cursor: pointer;
     margin-left: 1rem;
     text-align: center;
-    width: 100px;
+
     color: #000000;
     font-weight: 900;
     background-color: #d5ffff;

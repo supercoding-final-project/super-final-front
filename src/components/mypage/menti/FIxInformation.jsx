@@ -38,7 +38,7 @@ const FIxInformation = () => {
 
                 {enterNickanme ?
                     <S.DivFlex>
-                        <LabelInputbox label={"닉네임"} setNicknameValue={setNicknameValue} ></LabelInputbox>
+                        <LabelInputbox label={"닉네임"} setEnterNickname={setEnterNickname} setNicknameValue={setNicknameValue} ></LabelInputbox>
                         <S.FixButton onClick={() => duplicateCheck(nicknameValue)}>중복확인</S.FixButton>
                     </S.DivFlex>
                     :
@@ -53,7 +53,7 @@ const FIxInformation = () => {
                 <LabelValuebox label={"닉네임"} description={"하츠네미쿠"}></LabelValuebox>
 
 
-                <button>회원정보수정하기</button>
+                <S.FixButton>회원정보수정하기</S.FixButton>
 
             </S.FIxInformationContainer>
 
