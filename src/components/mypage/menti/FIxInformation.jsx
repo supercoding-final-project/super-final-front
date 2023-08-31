@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import * as S from "src/pages/my/mentiMyLayout.style";
 
-import FIxInformationContainer from "@/components/mypage/menti/FIxInformation"
 import LabelInputbox from "./LabelInputbox";
 import LabelValuebox from "./LabelValuebox";
 
@@ -30,7 +29,7 @@ const FIxInformation = () => {
 
     return (
         <>
-            <FIxInformationContainer>
+            <S.FIxInformationContainer>
                 <div>
 
                 </div>
@@ -54,12 +53,11 @@ const FIxInformation = () => {
 
                 <button>회원정보수정하기</button>
 
-            </FIxInformationContainer>
+            </S.FIxInformationContainer>
 
         </>
     );
 };
 
 export default FIxInformation;
-
 

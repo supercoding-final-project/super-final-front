@@ -45,6 +45,12 @@ export const InformationContainer = styled.div`
     width: calc(100% - 300px);
     height: 100vh;
 `
+export const FIxInformationContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: start;
+gap: 0.5rem;
+`
 
 export const Label = styled.label`
 text-align: center;
