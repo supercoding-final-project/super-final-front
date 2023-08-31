@@ -1,15 +1,21 @@
-
+/* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
+import { useRef } from 'react';
 import * as S from "src/pages/my/mentiMyLayout.style"
 
-const LabelInputbox = ({ label, }) => {
+const LabelInputbox = ({ label, setNicknameValue }) => {
 
+    const changedNickname = useRef('');
 
+    const handleInputChange = (event) => {
+        changedNickname.current = event.target.value;
+        setNicknameValue(event.target.value); // 입력값 부모로 전달
+    };
     return (
         <>
             <S.DivFlex>
                 <S.Label htmlFor="">{label}</S.Label>
-                <S.Input autoFocus ></S.Input>
+                <S.Input ref={changedNickname} autoFocus onChange={handleInputChange}></S.Input>
             </S.DivFlex>
 
         </>

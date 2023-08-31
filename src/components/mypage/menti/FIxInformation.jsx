@@ -1,5 +1,5 @@
 
-// import axios from 'axios';
+import axios from 'axios';
 import { useState } from 'react'
 import * as S from "src/pages/my/mentiMyLayout.style";
 
@@ -9,21 +9,23 @@ import LabelValuebox from "./LabelValuebox";
 
 const FIxInformation = () => {
     const [enterNickanme, setEnterNickname] = useState(false)
-    // const [NicknameToChange, setNicknameToChange] = useState('')
+    const [nicknameValue, setNicknameValue] = useState("");
     // const [,] = useState()
     // const [fixNickname, setFixNickname] = useState('')
 
 
     //서버에 중복확인 요청보내기
-    // const duplicateCheck = () => {
+    const duplicateCheck = (changedNickname) => {
+        //유효성 검사 넣어야됨
+        console.log(changedNickname)
 
-    //     axios("url", {
-    //         NicknameToChange,
-    //     }).then(response => (console.log(response)
-    //     )).catch(
-    //         alert("안됨")
-    //     )
-    // }
+        axios("url", {
+            changedNickname,
+        }).then(response => (console.log(response)
+        )).catch(
+            alert("안됨")
+        )
+    }
 
     const usernickname = "하츠네미쿠"
 
@@ -36,8 +38,8 @@ const FIxInformation = () => {
 
                 {enterNickanme ?
                     <S.DivFlex>
-                        <LabelInputbox label={"닉네임"} setEnterNickname={setEnterNickname} ></LabelInputbox>
-                        <S.FixButton >중복확인</S.FixButton>
+                        <LabelInputbox label={"닉네임"} setNicknameValue={setNicknameValue} ></LabelInputbox>
+                        <S.FixButton onClick={() => duplicateCheck(nicknameValue)}>중복확인</S.FixButton>
                     </S.DivFlex>
                     :
                     <S.DivFlex>
