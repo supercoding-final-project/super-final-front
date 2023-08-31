@@ -1,7 +1,7 @@
 import * as S from './Input.style';
 
 // eslint-disable-next-line react/prop-types
-const Input = ({ placeholder, type, onChange, onKeyDown, onBlur }) => {
+const Input = ({ placeholder, type, value, onChange, onKeyPress, onBlur }) => {
   return (
     <S.Container>
       <input
@@ -9,9 +9,10 @@ const Input = ({ placeholder, type, onChange, onKeyDown, onBlur }) => {
         required=""
         placeholder={placeholder}
         type={type}
+        value={value}
         onChange={onChange}
-        onKeyDown={onKeyDown}
         onBlur={onBlur}
+        onKeyPress={onKeyPress}
       />
       <span className="input-border"></span>
     </S.Container>

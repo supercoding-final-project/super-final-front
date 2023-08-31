@@ -8,19 +8,21 @@ import * as S from './Mento.style';
 const MentoAuth = () => {
   const [nickname, setNickname] = useState('');
   const [showNicknameChip, setShowNicknameChip] = useState(false);
+  const [nicknameChipValue, setNicknameChipValue] = useState('');
   const [skill, setSkill] = useState('');
   const [skillChips, setSkillChips] = useState([]);
   const [showSkillChip, setShowSkillChip] = useState(false);
 
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
-    setShowNicknameChip(false);
+    setShowNicknameChip(true);
   };
 
   const handleNicknameKeyDown = (e) => {
     if (e.key === 'Enter' && nickname.trim() !== '') {
-      setShowNicknameChip(true);
       e.preventDefault();
+      setNicknameChipValue(nickname.trim());
+      setNickname('');
     }
   };
 
@@ -32,13 +34,13 @@ const MentoAuth = () => {
 
   const handleSkillChange = (e) => {
     setSkill(e.target.value);
+    setShowSkillChip(true);
   };
 
   const handleSkillKeyDown = (e) => {
     if (e.key === 'Enter' && skill.trim() !== '') {
-      setSkillChips((prevChips) => [...prevChips, skill.trim()]);
-      setShowSkillChip(true);
       e.preventDefault();
+      setSkillChips((prevChips) => [...prevChips, skill.trim()]);
       setSkill('');
     }
   };
@@ -61,11 +63,11 @@ const MentoAuth = () => {
             type="text"
             value={nickname}
             onChange={handleNicknameChange}
-            onKeyDown={handleNicknameKeyDown}
+            onKeyPress={handleNicknameKeyDown}
             onBlur={handleNicknameInputBlur}
           />
         </S.InputWrapper>
-        {showNicknameChip && <Chip text={nickname} />}
+        {showNicknameChip && <Chip text={nickname ? nickname : nicknameChipValue} />}
 
         <S.Career>
           <Input placeholder="회사명을 입력해주세요." type="text" />
@@ -75,8 +77,9 @@ const MentoAuth = () => {
           <Input
             placeholder="기술스택을 적어주세요."
             type="text"
+            value={skill}
             onChange={handleSkillChange}
-            onKeyDown={handleSkillKeyDown}
+            onKeyPress={handleSkillKeyDown}
             onBlur={handleSkillInputBlur}
           />
         </S.InputWrapper>
@@ -85,9 +88,9 @@ const MentoAuth = () => {
           {showSkillChip &&
             skillChips.map((chip, index) =>
               index > skillChips.length - 2 ? (
-                <div key={`chip-${index}`}>{<Chip text={chip} />}</div>
+                <div key={`chip-${index}`}>{<Chip text={skill ? skill : chip} />}</div>
               ) : (
-                <div key={`chip-${index}`}>{<Chip text={`${chip}`} />}</div>
+                <div key={`chip-${index}`}>{<Chip text={chip} />}</div>
               ),
             )}
         </S.ChipWrap>

@@ -19,3 +19,9 @@ export const Wrapper = styled.div`
     text-align: center;
   }
 `;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+`;
