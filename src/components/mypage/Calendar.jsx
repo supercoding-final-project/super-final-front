@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import { useState } from 'react';
 
+import { DivFlex as S_DivFlex } from '@/pages/my/mentiMyLayout.style';
 import * as S from "./Calendar.style"
 import './Calendar.css';
 
@@ -27,20 +28,49 @@ function Calendar() {
         calendarDays.push(i);
     }
 
+
     return (
         <S.CalendarContainer>
             <S.Header>
-                <h1>{currentDate.toLocaleString('default', { month: 'long', year: 'numeric' })}</h1>
-                <button onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1))}>&lt;</button>
-                <button onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1))}>&gt;</button>
+                <S_DivFlex>
+                    <S.year>{currentDate.toLocaleString('default', { year: '2-digit' })}</S.year>
+                    <S.month>{currentDate.toLocaleString('default', { month: 'long' })}</S.month>
+                </S_DivFlex>
+                <div>
+                    <button onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1))}>&lt;</button>
+                    <button onClick={() => setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1))}>&gt;</button>
+                </div>
             </S.Header>
             <S.DaysContainer>
-                {daysInWeek.map(day => (
-                    <S.DayCell key={day}>{day}</S.DayCell>
+                {daysInWeek.map((day, index) => (
+                    <S.WeekCell key={day} isSunday={index === 0} isSaturday={index === 6} >{day}</S.WeekCell>
                 ))}
                 {calendarDays.map((day, index) => (
-                    <S.DayCell key={index} empty={day === null}>{day}</S.DayCell>
+                    <S.DayCell key={index} empty={day === null}>{day}
+                        {day !== null ? (
+                            <>
+                                <S.CellText>
+                                    *하진수 멘토님 예약
+                                </S.CellText>
+                                <S.CellText>
+                                    *하진수 멘토님 예약
+                                </S.CellText>
+                                <S.CellText>
+                                    *하진수 멘토님 예약
+                                </S.CellText>
+                            </>
+                        ) : null}
+                    </S.DayCell>
                 ))}
+                {/* {calendarDays.map((day, index) => (
+                    <S.DayCell key={index} empty={day === null}>{day}
+                        {day !== null && day === 선택날 ? (
+                            <S.CellText>
+                                *하진수 멘토님 예약
+                            </S.CellText>
+                        ) : null}
+                    </S.DayCell>
+                ))} */}
             </S.DaysContainer>
         </S.CalendarContainer>
     );

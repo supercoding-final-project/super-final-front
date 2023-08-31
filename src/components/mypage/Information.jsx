@@ -24,9 +24,10 @@ const Information = ({ informationtype, navtype }) => {
     if (informationtype === navtype.time) {
         return (
             <>
-                <S.InformationContainer>
+                <S.CalendarContainer>
                     <Calendar></Calendar>
-                </S.InformationContainer>
+
+                </S.CalendarContainer >
             </>
         );
     }
