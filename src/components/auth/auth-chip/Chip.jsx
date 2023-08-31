@@ -1,5 +1,6 @@
 import * as S from './Chip.style';
 
+// eslint-disable-next-line react/prop-types
 const Chip = ({ text }) => {
   return (
     <S.ChipContainer>

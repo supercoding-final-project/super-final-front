@@ -1,6 +1,6 @@
+import Input from '@/components/auth/auth-input/Input';
+import RegisterButton from '@/components/auth/auth-register/RegisterButton';
 import * as S from './Menti.style';
-import Input from '../../../components/auth/auth-input/Input';
-import RegisterButton from '../../../components/auth/auth-register/RegisterButton';
 
 const MentiAuth = () => {
   return (

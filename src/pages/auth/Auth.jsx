@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
+import googlePath from '@/assets/google-logo.svg';
+import kakaoPath from '@/assets/kakao-logo.svg';
+import logoPath from '@/assets/login-logo.svg';
+import Button from '@/components/auth/auth-button/Button';
 import * as S from './Auth.style';
-import googlePath from '../../assets/google-logo.svg';
-import kakaoPath from '../../assets/kakao-logo.svg';
-import logoPath from '../../assets/login-logo.svg';
-import Button from '../../components/auth/auth-button/Button';
 
 const Auth = () => {
   const [selectedRole, setSelectedRole] = useState('menti');
