@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import GlobalStyle from './components/globalLayout/globalStyle';
 import AuthLayout from './pages/auth/AuthLayout';
-import MentiAuthLayout from './pages/auth/menti/MentiAuthLayout';
+// import MentiAuthLayout from './pages/auth/menti/MentiAuthLayout';
 import MentoAuthLayout from './pages/auth/mento/MentoAuthLayout';
 import ChatListLayout from './pages/chat/ChatListLayout';
 import NotFoundLayout from './pages/error/NotFoundLayout';
@@ -20,7 +20,7 @@ function App() {
         <Route path="/" element={<MainLayout />} />
         <Route path="/mento" element={<MentoMainLayout />} />
         <Route path="/auth" element={<AuthLayout />} />
-        <Route path="/auth/menti" element={<MentiAuthLayout />} />
+        {/* <Route path="/auth/menti" element={<MentiAuthLayout />} /> */}
         <Route path="/auth/mento" element={<MentoAuthLayout />} />
         {/* {/ path 경로는 pages의 폴더 이름으로 /} */}
         <Route path="/my/menti" element={<MentiMyLayout />} />
