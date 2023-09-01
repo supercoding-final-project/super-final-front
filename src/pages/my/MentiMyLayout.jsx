@@ -6,11 +6,13 @@ const MentiMyLayout = () => {
   const [type, setType] = useState("정보수정")
 
   const navtype = {
-    info: "정보수정",
+    info: "내 정보",
     time: "시간수정",
     reservation: "예약확인",
     point: "포인트충전"
   }
+
+
 
   const navItemHandler = (navtype) => {
     setType(navtype)
@@ -18,8 +20,6 @@ const MentiMyLayout = () => {
 
   return (
     <>
-
-
       <LeftNavbar navItemHandler={navItemHandler} navtype={navtype} />
       <Information informationtype={type} navtype={navtype}></Information>
     </>

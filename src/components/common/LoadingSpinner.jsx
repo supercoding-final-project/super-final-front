@@ -4,18 +4,14 @@ import PropTypes from 'prop-types'; // prop-types를 임포트합니다
 import * as S from './LoadingSpinner.styles';
 
 export function LoadingSpinner({
-    color = '#FEAF04',
+    color = "var(--main-color)",
     size = 25,
-    weight = 2,
+    weight = 5,
     type = 'dark',
     isFullWidth = false,
 }) {
     const spinnerType =
-        type === 'dark'
-            ? 'gray'
-            : type === 'light'
-                ? '#cbcbcb'
-                : 'transparent';
+        type === 'dark' ? 'gray' : '#cbcbcb'
 
     return (
         <S.LoadingSpinnerWrapper isFullWidth={isFullWidth}>
