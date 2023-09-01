@@ -18,7 +18,7 @@ export const Button = styled.button`
       case 'test2':
         return css`
           background-color: #fff;
-          border: 1px solid #ddd;
+          border: 2px solid;
         `;
       default:
         return;
