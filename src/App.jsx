@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import GlobalStyle from './components/globalLayout/globalStyle';
 import ChatListLayout from './pages/chat/ChatListLayout';
+import ChatRoomLayout from './pages/chat/ChatRoomLayout';
 import NotFoundLayout from './pages/error/NotFoundLayout';
 import MainLayout from './pages/main/MainLayout';
 import MentoMainLayout from './pages/main/MentoMainLayout';
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<MainLayout />} />
         <Route path="/mento" element={<MentoMainLayout />} />
         {/* {/ path 경로는 pages의 폴더 이름으로 /} */}
+        <Route path="/chatroom" element={<ChatRoomLayout />} />
         <Route path="/my/menti" element={<MentiMyLayout />} />
         <Route path="/my/mento" element={<MentoMyLayout />} />
         <Route path="/chat/chatList" element={<ChatListLayout />} />
