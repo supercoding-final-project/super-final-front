@@ -18,6 +18,8 @@ const GlobalStyle = createGlobalStyle`
   --sub-color : rgba(185, 241, 241,1);
 
   --main-gray: #f2f2f2;
+
+  --loading-spinner-weight: 2px;
 }
 
 ${reset}
