@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="81" height="80" viewBox="0 0 81 80">
+    <defs>
+        <linearGradient id="3hjgk35fma" x1="0%" x2="100%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="#00C7AE"/>
+            <stop offset="100%" stop-color="#4CC8E5"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g transform="translate(-545 -410) translate(375 139) translate(101 271) translate(69)">
+                        <circle cx="40.5" cy="40" r="40" fill="url(#3hjgk35fma)" fill-opacity=".5"/>
+                        <path d="M16.5 64L64.5 64 64.5 16 16.5 16z"/>
+                        <g stroke="#FFF" stroke-linejoin="round" stroke-width="3">
+                            <path d="M41.5 21.394c0 1.105-.895 2-2 2-.669 0-1.293-.334-1.664-.89L36.167 20H17.5c-1.657 0-3-1.343-3-3V3c0-1.657 1.343-3 3-3h21c1.657 0 3 1.343 3 3v18.394z" transform="translate(19.5 24)"/>
+                            <path fill="#8FE4E4" d="M28.5 30.476c0 1.104-.895 2-2 2-.594 0-1.156-.264-1.536-.72l-2.936-3.523H3.5c-1.657 0-3-1.343-3-3v-14c0-1.657 1.343-3 3-3h22c1.657 0 3 1.343 3 3v19.243z" transform="translate(19.5 24) matrix(-1 0 0 1 29 0)"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
