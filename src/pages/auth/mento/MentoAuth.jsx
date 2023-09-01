@@ -59,7 +59,9 @@ const MentoAuth = () => {
           {showSkillChip &&
             skillChips.map((chip, index) => (
               <div key={`chip-${index}`}>
-                {<Chip text={skill ? skill : chip} onClick={() => handleChipClick(index)} />}
+                {chip.trim() !== '' ? (
+                  <Chip text={chip} onClick={() => handleChipClick(index)} />
+                ) : null}
               </div>
             ))}
         </S.ChipWrap>
