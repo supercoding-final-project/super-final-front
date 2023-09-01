@@ -1,5 +1,7 @@
 // import { useNavigate } from 'react-router-dom';
 
+import { motion } from 'framer-motion';
+
 import * as S from './main.style';
 
 const MentoMainLayout = () => {
@@ -49,12 +51,43 @@ const MentoMainLayout = () => {
     console.log('회원가입 페이지로');
   };
 
+  const fromLeft = {
+    offscreen: {
+      x: 300,
+      opacity: 0,
+    },
+    onscreen: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        bounce: 0.2,
+        duration: 1,
+      },
+    },
+  };
+
+  const fromRight = {
+    offscreen: {
+      x: -400,
+      opacity: 0,
+    },
+    onscreen: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        bounce: 0.2,
+        duration: 1,
+      },
+    },
+  };
   const articleRender = () => {
     return articleData.map((el, index) => {
       if (index % 2 === 0) {
         return (
-          <article key={index}>
-            <div className="step-box">
+          <motion.article key={index} initial="offscreen" whileInView="onscreen">
+            <motion.div className="step-box" variants={fromLeft}>
               <div className="step-box_text">
                 <div className="step">{el.step}</div>
                 <div className="sub-title">{el.subTitle}</div>
@@ -63,13 +96,13 @@ const MentoMainLayout = () => {
               <div className="step-box_img">
                 <div className="img-card"></div>
               </div>
-            </div>
-          </article>
+            </motion.div>
+          </motion.article>
         );
       } else {
         return (
-          <article key={index}>
-            <div className="step-box">
+          <motion.article key={index} initial="offscreen" whileInView="onscreen">
+            <motion.div className="step-box" variants={fromRight}>
               <div className="step-box_img">
                 <div className="img-card"></div>
               </div>
@@ -78,13 +111,14 @@ const MentoMainLayout = () => {
                 <div className="sub-title">{el.subTitle}</div>
                 <span>{el.description}</span>
               </div>
-            </div>
-          </article>
+            </motion.div>
+          </motion.article>
         );
       }
     });
   };
 
+  // const FadeUp = batch(Fade(), Move(), Sticky());
   return (
     <S.MentoMainWrap>
       <section className="banner">
@@ -100,23 +134,25 @@ const MentoMainLayout = () => {
         {articleRender()}
       </section>
 
-      <section className="statistics">
-        <p>많은 멘티들이 당신을 기다립니다.</p>
-        <ul>
-          <li>
-            <div className="total">24,280,796</div>
-            <div className="title">누적 요청서</div>
-          </li>
-          <li>
-            <div className="total">1,475,589</div>
-            <div className="title">등록된 고수</div>
-          </li>
-          <li>
-            <div className="total">4.9 / 5점</div>
-            <div className="title">평균 리뷰별점</div>
-          </li>
-        </ul>
-      </section>
+      {/* <ScrollPage>
+          <section className="statistics">
+            <p>많은 멘티들이 당신을 기다립니다.</p>
+            <ul>
+              <li>
+                <div className="total">24,280,796</div>
+                <div className="title">누적 요청서</div>
+              </li>
+              <li>
+                <div className="total">1,475,589</div>
+                <div className="title">등록된 고수</div>
+              </li>
+              <li>
+                <div className="total">4.9 / 5점</div>
+                <div className="title">평균 리뷰별점</div>
+              </li>
+            </ul>
+          </section>
+        </ScrollPage> */}
     </S.MentoMainWrap>
   );
 };

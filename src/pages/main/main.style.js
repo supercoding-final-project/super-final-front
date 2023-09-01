@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const MentoMainWrap = styled.div`
   width: 100%;
+  /* height: 3000px; */
+
   .banner {
     width: 100%;
     height: 390px;
@@ -19,6 +21,7 @@ export const MentoMainWrap = styled.div`
       }
     }
   }
+
   .guide {
     display: flex;
     flex-direction: column;
@@ -31,7 +34,7 @@ export const MentoMainWrap = styled.div`
       color: var(--font-color);
     }
     article {
-      margin-bottom: 150px;
+      margin-bottom: 250px;
       .step-box {
         display: flex;
         align-items: center;
