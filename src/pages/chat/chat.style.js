@@ -1,12 +1,10 @@
-<<<<<<< HEAD
 import { styled } from 'styled-components';
 
 export const ChatRoomWrapper = styled.div`
   margin-top: 2.5rem;
   width: 100%;
   height: 100%;
-=======
-import styled from 'styled-components';
+`;
 
 export const ChatListWrap = styled.div`
   /* background-color: pink; */
@@ -110,5 +108,4 @@ export const ChatListWrap = styled.div`
       }
     }
   }
->>>>>>> 5348938a22489e8ac87a9170b57570b18d60907b
 `;
