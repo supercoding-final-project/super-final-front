@@ -49,7 +49,6 @@ const FIxInformation = () => {
                 }
 
                 <LabelValuebox label={"이메일"} description={"MIKU@MIKU.COM"}></LabelValuebox>
-                <LabelValuebox label={"비밀번호"} description={"하츠네미쿠"}></LabelValuebox>
                 <LabelValuebox label={"닉네임"} description={"하츠네미쿠"}></LabelValuebox>
 
 

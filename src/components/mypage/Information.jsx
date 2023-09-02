@@ -30,23 +30,12 @@ const Information = ({ informationtype, navtype }) => {
     /////// 일자: "2023-05-10"
     /////// 멘토: "홍길동"
     /////// 시간: "몇시~몇시"
-    if (informationtype === navtype.time) {
-        return (
-            <>
-                <S.CalendarContainer>
-                    <Calendar></Calendar>
-
-                </S.CalendarContainer >
-            </>
-        );
-    }
-
     if (informationtype === navtype.reservation) {
         return (
             <>
                 <S.InformationContainer>
-                    예약확인
                     <LoadingSpinner size="50" ></LoadingSpinner>
+                    <Calendar></Calendar>
                 </S.InformationContainer>
             </>
         );

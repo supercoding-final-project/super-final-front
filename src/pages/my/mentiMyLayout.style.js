@@ -12,10 +12,11 @@ export const NavBarContainer = styled.div`
  position: fixed;
  left: 0;
  right: 0;
- width: 300px;
+ width: 250px;
  height: 100vh;
  padding-top: 2rem;
  background-color: #B9F1F1;
+ box-shadow: 5px 5px 3px #666
 `
 
 export const NavBarItems = styled.div`

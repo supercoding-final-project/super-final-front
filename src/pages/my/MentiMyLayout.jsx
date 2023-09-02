@@ -3,11 +3,10 @@ import Information from "src/components/mypage/Information";
 import LeftNavbar from "src/components/mypage/LeftNavbar";
 
 const MentiMyLayout = () => {
-  const [type, setType] = useState("정보수정")
+  const [type, setType] = useState("내 정보")
 
   const navtype = {
     info: "내 정보",
-    time: "시간수정",
     reservation: "예약확인",
     point: "포인트충전"
   }
