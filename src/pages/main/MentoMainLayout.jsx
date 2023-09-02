@@ -1,5 +1,5 @@
 const MentoMainLayout = () => {
-  return <div></div>;
+  return <div>MentoMainLayout</div>;
 };
 
 export default MentoMainLayout;

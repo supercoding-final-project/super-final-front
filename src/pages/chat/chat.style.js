@@ -5,7 +5,9 @@ export const ChatRoomWrapper = styled.div`
   margin-top: 2.5rem;
   width: 100%;
   height: 100%;
-`
+`;
+
+
 export const ChatListWrap = styled.div`
 /* background-color: pink; */
 display: flex;
@@ -20,7 +22,7 @@ margin: 0 auto;
     margin-bottom: 50px;
 }
   .input-box {
-    width: 100 %;
+    width: 100%;
     height: 40px;
     background-color: var(--main - gray);
     border-radius: 8px;
@@ -37,8 +39,8 @@ margin: 0 auto;
         margin-right: 5px;
     }
     input {
-        width: 100 %;
-        height: 100 %;
+        width: 100%;
+        height: 100%;
         border: none;
         color: #737373;
         background-color: transparent;
@@ -58,7 +60,7 @@ margin: 0 auto;
     margin: 15px 0;
     display: flex;
     gap: 10px;
-    border-bottom: 1px solid var(--main - gray);
+    border-bottom: 1px solid var(--main-gray);
     height: 30px;
     color: #737373;
     li {
@@ -92,7 +94,7 @@ margin: 0 auto;
         width: 180px;
         height: 25px;
         margin-top: 20px;
-        background-color: var(--main - color - 800);
+        background-color: var(--main-color-800);
         outline: none;
         border: none;
         border-radius: 8px;
@@ -100,11 +102,11 @@ margin: 0 auto;
         font-size: 16px;
         font-weight: 500;
         padding: 11px 20px;
-        box-sizing: content - box;
+        box-sizing: content-box;
         cursor: pointer;
         transition: all 0.3s;
       &:hover {
-            background-color: var(--main - color);
+            background-color: var(--main-color);
         }
     }
 }
