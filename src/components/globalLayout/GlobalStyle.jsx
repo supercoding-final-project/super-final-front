@@ -20,6 +20,8 @@ const GlobalStyle = createGlobalStyle`
   --main-gray: #f2f2f2;
   --main-red: #f9390e;
   --main-beige: rgba(255, 245, 207, 0.7);
+
+  --loading-spinner-weight: 2px;
 }
 
 ${reset}
