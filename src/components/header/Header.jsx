@@ -1,6 +1,6 @@
 import * as S from './Header.style';
 import logo from '../../logo.svg';
-import search from '../../assets/search.svg';
+import search_main from '../../assets/search_main.svg';
 
 const Header = () => {
   return (
@@ -21,7 +21,7 @@ const Header = () => {
               <label>
                 <input type="text" />
                 <button type="button">
-                  <img src={search} alt="search" />
+                  <img src={search_main} alt="search_main" />
                 </button>
               </label>
             </form>
