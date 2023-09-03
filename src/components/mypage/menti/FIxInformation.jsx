@@ -7,7 +7,7 @@ import LabelInputbox from "./LabelInputbox";
 import LabelValuebox from "./LabelValuebox";
 
 
-const FIxInformation = () => {
+const FIxInformation = ({ Menti }) => {
     const [enterNickanme, setEnterNickname] = useState(false)
     const [nicknameValue, setNicknameValue] = useState("");
     // const [,] = useState()
@@ -27,7 +27,7 @@ const FIxInformation = () => {
         )
     }
 
-    const usernickname = "하츠네미쿠"
+
 
     return (
         <>
@@ -43,13 +43,14 @@ const FIxInformation = () => {
                     </S.DivFlex>
                     :
                     <S.DivFlex>
-                        <LabelValuebox label={"닉네임"} description={usernickname} setEnterNickname={setEnterNickname}></LabelValuebox>
+                        <LabelValuebox label={"이름"} description={Menti.name} setEnterNickname={setEnterNickname}></LabelValuebox>
                         <S.FixButton>중복확인</S.FixButton>
                     </S.DivFlex>
                 }
 
-                <LabelValuebox label={"이메일"} description={"MIKU@MIKU.COM"}></LabelValuebox>
-                <LabelValuebox label={"닉네임"} description={"하츠네미쿠"}></LabelValuebox>
+                <LabelValuebox label={"이메일"} description={Menti.email}></LabelValuebox>
+                <LabelValuebox label={"닉네임"} description={Menti.nickname}></LabelValuebox>
+                <LabelValuebox label={"보유 포인트"} description={Menti.point}></LabelValuebox>
 
 
                 <S.FixButton>회원정보수정하기</S.FixButton>

@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { DivFlex as S_DivFlex } from '@/pages/my/mentiMyLayout.style';
 import * as S from "./Calendar.style"
-import './Calendar.css';
+
 
 const daysInWeek = ['일', '월', '화', '수', '목', '금', '토'];
 
