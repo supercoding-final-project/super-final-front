@@ -80,19 +80,19 @@ const MentoMainLayout = () => {
         </div>
       </S.MentoBanner>
 
-      <section className="guide">
+      <S.MentoGuide className="guide">
         <div className="title">코드밸롭 가이드 라인</div>
         {articleRender()}
-      </section>
+      </S.MentoGuide>
 
-      <section className="statistics">
+      <S.MentoStatistics className="statistics">
         <p>많은 멘티들이 당신을 기다립니다.</p>
         <ul>
           <Statistics total="24,280,796" title="누적 요청서" />
           <Statistics total="1,475,589" title="등록된 멘토" />
           <Statistics total="4.9 / 5점" title="평균 리뷰별점" />
         </ul>
-      </section>
+      </S.MentoStatistics>
     </S.MentoMainWrap>
   );
 };
