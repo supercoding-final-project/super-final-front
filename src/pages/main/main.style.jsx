@@ -105,3 +105,21 @@ export const MentoMainWrap = styled.div`
     }
   }
 `;
+
+export const MentoBanner = styled.section`
+  width: 100%;
+  height: 390px;
+  background-color: var(--main-color);
+  position: relative;
+  .text-box {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 700;
+    position: absolute;
+    left: 130px;
+    top: 100px;
+    p:nth-last-child(2) {
+      margin-top: 8px;
+    }
+  }
+`;
