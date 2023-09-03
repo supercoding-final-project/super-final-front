@@ -134,25 +134,23 @@ const MentoMainLayout = () => {
         {articleRender()}
       </section>
 
-      {/* <ScrollPage>
-          <section className="statistics">
-            <p>많은 멘티들이 당신을 기다립니다.</p>
-            <ul>
-              <li>
-                <div className="total">24,280,796</div>
-                <div className="title">누적 요청서</div>
-              </li>
-              <li>
-                <div className="total">1,475,589</div>
-                <div className="title">등록된 고수</div>
-              </li>
-              <li>
-                <div className="total">4.9 / 5점</div>
-                <div className="title">평균 리뷰별점</div>
-              </li>
-            </ul>
-          </section>
-        </ScrollPage> */}
+      <section className="statistics">
+        <p>많은 멘티들이 당신을 기다립니다.</p>
+        <ul>
+          <li>
+            <div className="total">24,280,796</div>
+            <div className="title">누적 요청서</div>
+          </li>
+          <li>
+            <div className="total">1,475,589</div>
+            <div className="title">등록된 고수</div>
+          </li>
+          <li>
+            <div className="total">4.9 / 5점</div>
+            <div className="title">평균 리뷰별점</div>
+          </li>
+        </ul>
+      </section>
     </S.MentoMainWrap>
   );
 };
