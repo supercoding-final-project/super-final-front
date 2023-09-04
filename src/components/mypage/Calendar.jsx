@@ -7,7 +7,17 @@ import * as S from "./Calendar.style"
 
 const daysInWeek = ['일', '월', '화', '수', '목', '금', '토'];
 
-function Calendar() {
+function Calendar({ Menti }) {
+
+
+
+
+
+
+
+
+
+
     //오늘날짜 상태만들기
     const [currentDate, setCurrentDate] = useState(new Date());
     //is모달오픈 상태만들기
@@ -56,6 +66,30 @@ function Calendar() {
     const closeModalHandler = () => {
         setIsOpenModal(false)
     }
+
+
+    //달력에 해당하는 유저의 정보를 넣는 프로그램 ㄱㄱ!
+
+    /* 
+     현재의달 (9월)과 현재의 일자들 (1~31) 이있다.        
+    
+    */
+
+    console.log("daysInMonth", daysInMonth)
+
+    //화면에 선택한달
+    const currentMonth = (currentDate.getMonth() + 1).toString()
+
+
+
+    const 멘티예약확인 = Menti.예약확인
+    console.log("mentiInfo", 멘티예약확인)
+
+    const 예약월리스트 = Object.keys(멘티예약확인)
+    예약월리스트.forEach(item => {
+        console.log("들어온월", item)
+
+    })
 
 
     return (

@@ -30,17 +30,12 @@ const Information = ({ informationtype, navtype, Menti }) => {
         return (
             <>
                 <S.InformationContainer>
-
                     <S.DivFlexColumn>
-
                         <S.InformationBox>
                             <InformationHead text={navtype.info} />
                         </S.InformationBox>
-
                         <FIxInformation Menti={Menti} />
                     </S.DivFlexColumn>
-
-
                 </S.InformationContainer>
             </>
         );
@@ -59,7 +54,7 @@ const Information = ({ informationtype, navtype, Menti }) => {
                         <S.InformationBox>
                             <InformationHead text={navtype.reservation} />
                         </S.InformationBox>
-                        <Calendar></Calendar>
+                        <Calendar reservationData={Menti}></Calendar>
                     </S.DivFlexColumn>
                 </S.InformationContainer>
             </>
