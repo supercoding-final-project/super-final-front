@@ -7,7 +7,7 @@ const ChattingBar = () => {
       <S.ChattingBar placeholder="Message..."></S.ChattingBar>
       <S.SendBtnWrapper>
         <S.SendBtn type="submit">
-          <Icon name="Send" size={40} />
+          <Icon name="MarkDown" size={40} />
         </S.SendBtn>
       </S.SendBtnWrapper>
     </S.ChattingBarWrapper>
