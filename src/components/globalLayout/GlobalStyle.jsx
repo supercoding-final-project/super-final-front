@@ -18,10 +18,15 @@ const GlobalStyle = createGlobalStyle`
   --sub-color : rgba(185, 241, 241,1);
 
   --main-gray: #f2f2f2;
+
+  --font-color:#323232;
+  --font-color-gray: #737373;
+
   --main-red: #f9390e;
   --main-beige: rgba(255, 245, 207, 0.7);
 
   --loading-spinner-weight: 2px;
+
 }
 
 ${reset}
