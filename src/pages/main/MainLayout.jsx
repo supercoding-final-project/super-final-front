@@ -1,7 +1,7 @@
-import Button from '@/components/common/Button';
-import Header from '@/components/header/Header';
+// import Button from '@/components/common/Button';
+// import Header from '@/components/header/Header';
+import * as S from './Main.style';
 import MainCard from './MainCard';
-import * as S from './mentoMain.style';
 import banner_main from '../../assets/banner_main.png';
 
 const MainLayout = () => {
@@ -12,10 +12,10 @@ const MainLayout = () => {
 
   return (
     <>
-      <Button text={'text 입니다.'} bgcolor={'#1A6DFF'} fontcolor={'white'} />
+      {/* <Button text={'text 입니다.'} bgcolor={'#1A6DFF'} fontcolor={'white'} />
       <Button text={'purpose가 test일 때'} purpose="test" />
       <Button text={'purpose가 test2일 때'} fontcolor={'skyblue'} purpose="test2" />
-      <Header />
+      <Header /> */}
       <S.MainWrap>
         <S.MainBanner>
           <div className="banner_container">
