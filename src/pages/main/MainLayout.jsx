@@ -1,8 +1,8 @@
 import Button from '@/components/common/Button';
 import Header from '@/components/header/Header';
 import MainCard from './MainCard';
-import * as S from './mentoMain.style';
 import banner_main from '../../assets/banner_main.png';
+import * as S from './mentoMain.style';
 
 const MainLayout = () => {
   // const date = new Date('2023', '08', '31', '20'); // 에포크 밀리(에포크 밀리초 단위로 하는 거라 명시적으로 에포크 밀리라고 함)
@@ -12,10 +12,10 @@ const MainLayout = () => {
 
   return (
     <>
-      <Button text={'text 입니다.'} bgcolor={'#1A6DFF'} fontcolor={'white'} />
+      {/* <Button text={'text 입니다.'} bgcolor={'#1A6DFF'} fontcolor={'white'} />
       <Button text={'purpose가 test일 때'} purpose="test" />
       <Button text={'purpose가 test2일 때'} fontcolor={'skyblue'} purpose="test2" />
-      <Header />
+      <Header /> */}
       <S.MainWrap>
         <S.MainBanner>
           <div className="banner_container">
