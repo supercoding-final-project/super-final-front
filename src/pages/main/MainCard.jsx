@@ -1,8 +1,8 @@
 // import React from 'react';
-import * as S from './mentoMain.style';
-import star from '../../assets/star.svg';
+import * as S from './Main.style';
 import chevron_right from '../../assets/chevron_right.svg';
 import profile from '../../assets/profile.svg';
+import star from '../../assets/star.svg';
 
 const MainCard = () => {
   return (
