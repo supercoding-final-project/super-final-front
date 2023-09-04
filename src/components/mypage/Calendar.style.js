@@ -1,5 +1,12 @@
 import { styled } from "styled-components";
 
+
+export const DivFlex = styled.div`
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+
+`
 export const CalendarContainer = styled.div`
   font-family: Arial, sans-serif;
   width: 900px;
@@ -70,6 +77,11 @@ padding: 5px;
 `;
 
 export const CellText = styled.div`
+margin-top: 2px;
+font-size: 10px;
+`
+export const CellText2 = styled.div`
+color: pink;
 margin-top: 2px;
 font-size: 10px;
 `

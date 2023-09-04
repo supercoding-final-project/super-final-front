@@ -64,7 +64,23 @@ function Calendar() {
                 <S.OutSideModal onClick={closeModalHandler}>
                     <S.ModaContent>
                         <S.InSideModalHead></S.InSideModalHead>
-                        <S.InSideModalBody></S.InSideModalBody>
+                        <S.InSideModalBody>
+                            <S.DivFlex>
+                                <S.ModalCellText>
+                                    1*하진수 멘토님 예약
+                                </S.ModalCellText>
+                                <S.ModalCellText>
+                                    2*하진수 멘토님 예약
+                                </S.ModalCellText>
+                                <S.ModalCellText>
+                                    3*하진수 멘토님 신청
+                                </S.ModalCellText>
+                                <S.CellText>
+                                    ...
+                                </S.CellText>
+                            </S.DivFlex>
+
+                        </S.InSideModalBody>
                     </S.ModaContent>
                 </S.OutSideModal>
             )}
@@ -97,10 +113,9 @@ function Calendar() {
                                 <S.CellText>
                                     2*하진수 멘토님 예약
                                 </S.CellText>
-                                <S.CellText>
-                                    3*하진수 멘토님 예약
-                                </S.CellText>
-
+                                <S.CellText2>
+                                    3*하진수 멘토님 신청
+                                </S.CellText2>
                                 <S.CellText>
                                     ...
                                 </S.CellText>

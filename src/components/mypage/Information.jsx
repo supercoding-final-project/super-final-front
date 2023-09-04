@@ -55,8 +55,12 @@ const Information = ({ informationtype, navtype, Menti }) => {
         return (
             <>
                 <S.InformationContainer>
-
-                    <Calendar></Calendar>
+                    <S.DivFlexColumn>
+                        <S.InformationBox>
+                            <InformationHead text={navtype.reservation} />
+                        </S.InformationBox>
+                        <Calendar></Calendar>
+                    </S.DivFlexColumn>
                 </S.InformationContainer>
             </>
         );
@@ -67,7 +71,12 @@ const Information = ({ informationtype, navtype, Menti }) => {
         return (
             <>
                 <S.InformationContainer>
-                    장바구니
+                    <S.DivFlexColumn>
+                        <S.InformationBox>
+                            <InformationHead text={navtype.shoppingcart} />
+                        </S.InformationBox>
+                        장바구니
+                    </S.DivFlexColumn>
                 </S.InformationContainer>
             </>
         );
@@ -76,7 +85,12 @@ const Information = ({ informationtype, navtype, Menti }) => {
         return (
             <>
                 <S.InformationContainer>
-                    로그아웃
+                    <S.DivFlexColumn>
+                        <S.InformationBox>
+                            <InformationHead text={navtype.logout} />
+                        </S.InformationBox>
+                        로그아웃
+                    </S.DivFlexColumn>
                 </S.InformationContainer>
             </>
         );
