@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
-import chat from '@/assets/chat.svg';
 import search from '@/assets/search.svg';
 import * as S from './chat.style';
+import NoChat from '../../components/chatRoom/NoChat';
 
 const ChatListLayout = () => {
   // tab 상태관리
@@ -49,12 +49,7 @@ const ChatListLayout = () => {
       </ul>
       {tabState === '전체' && <div>전체꺼</div>}
       {tabState === '안 읽음' && <div>안 읽음</div>}
-      <div className="not-have-box">
-        <img src={chat} alt="chat svg" />
-        <strong>채팅이 없습니다.</strong>
-        <span>멘토님을 찾아 채팅을 시작해보세요!</span>
-        <button>멘토님 찾기</button>
-      </div>
+      <NoChat />
     </S.ChatListWrap>
   );
 };
