@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ModalProps from './ModalProps';
+import ModalProps from './ModalCard';
 import { SearchModalWrapper } from './stSearchModal';
 
 export const Modal = () => {
