@@ -11,6 +11,7 @@ import MainLayout from './pages/main/MainLayout';
 import MentoMainLayout from './pages/main/MentoMainLayout';
 import MentiMyLayout from './pages/my/MentiMyLayout';
 import MentoMyLayout from './pages/my/MentoMyLayout';
+import ScreenLayout from './pages/screen/ScreenLayout';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/my/menti" element={<MentiMyLayout />} />
         <Route path="/my/mento" element={<MentoMyLayout />} />
         <Route path="/chat/chatList" element={<ChatListLayout />} />
+        <Route path="/screenroom" element={<ScreenLayout />} />
         <Route path="*" element={<NotFoundLayout />} />
       </Routes>
     </Router>
