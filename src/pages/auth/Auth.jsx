@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 import googlePath from '@/assets/google-logo.svg';
 import kakaoPath from '@/assets/kakao-logo.svg';
@@ -13,8 +14,14 @@ const Auth = () => {
     setSelectedRole(e.target.value);
   };
 
+  const handleButton = () => {
+    toast.success('dddd');
+    toast.error('err');
+  };
+
   return (
     <S.Container>
+      <button onClick={handleButton}>asdfsd</button>
       <S.LogoWrap>
         <img src={logoPath} alt="logo" />
       </S.LogoWrap>
