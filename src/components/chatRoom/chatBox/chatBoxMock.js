@@ -24,6 +24,27 @@ const chatLog = [
     text: `그렇게 무례하게 말하면\n
     도와드릴 수 없습니다.`,
   },
+  {
+    isSend: false,
+    profileImg: mento,
+    sendAt: '오후 05:22',
+    text: `그렇게 무례하게 말하면\n
+    도와드릴 수 없습니다.`,
+  },
+  {
+    isSend: false,
+    profileImg: mento,
+    sendAt: '오후 05:22',
+    text: `그렇게 무례하게 말하면\n
+    도와드릴 수 없습니다.`,
+  },
+  {
+    isSend: false,
+    profileImg: mento,
+    sendAt: '오후 05:22',
+    text: `그렇게 무례하게 말하면\n
+    도와드릴 수 없습니다.`,
+  },
 ];
 
 export default chatLog;

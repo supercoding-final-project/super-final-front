@@ -1,15 +1,13 @@
 import { styled } from 'styled-components';
 
 export const ChatBox = styled.div`
-  overflow: auto;
   flex-direction: column;
-  height: 100vh;
-  background-color: #f2f2f2;
-  padding-bottom: 4rem;
+  width: 100%;
 `;
+
 export const ChatContainer = styled.div`
-  flex: 1;
-  min-height: 0;
+  height: 70vh;
+  overflow: auto;
 `;
 
 export const MsgCard = styled.div`
@@ -68,23 +66,21 @@ export const SendAt = styled.div`
 
 //
 export const ChattingBarWrapper = styled.div`
-  position: fixed;
+  position: sticky;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f2f2f2;
   width: 100%;
-  bottom: 0;
-  padding-bottom: 1rem;
-  height: 4rem;
+  background-color: #f2f2f2;
 `;
 
 export const ChattingBar = styled.input`
-  width: 75%;
+  width: 80%;
   height: 3rem;
   border: 1px solid #bdbdbd;
-  border-radius: 2.75rem;
   background-color: #f2f2f2;
+  border-radius: 2.75rem;
+  text-indent: 5%;
   &::placeholder {
     text-indent: 5%;
     font-size: 0.875rem;

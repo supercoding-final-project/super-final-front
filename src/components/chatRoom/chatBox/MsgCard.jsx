@@ -7,19 +7,16 @@ const MsgCard = (props) => {
       <S.MsgContainer>
         {!log.isSend && (
           <S.ProfileImgBox>
-            <S.ProfileImg
-              src={log.profileImg}
-              onClick={() => console.log('mentoProfile')}
-            ></S.ProfileImg>
+            <S.ProfileImg src={log.profileImg} onClick={props.handler}></S.ProfileImg>
           </S.ProfileImgBox>
         )}
 
         <S.MsgBox>
-          {log.isSent && <S.SendAt>{log.sendAt}</S.SendAt>}
+          {log.isSend && <S.SendAt>{log.sendAt}</S.SendAt>}
           <S.TextBox>
             <S.Text>{log.text}</S.Text>
           </S.TextBox>
-          {!log.isSent && <S.SendAt>{log.sendAt}</S.SendAt>}
+          {!log.isSend && <S.SendAt>{log.sendAt}</S.SendAt>}
         </S.MsgBox>
       </S.MsgContainer>
     </S.MsgCard>

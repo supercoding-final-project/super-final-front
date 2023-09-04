@@ -1,17 +1,12 @@
 import { styled } from 'styled-components';
 
 export const ChatRoomHeaderWrapper = styled.div`
-  position: fixed;
   display: flex;
   justify-content: center;
-  top: 0;
-  left: 0;
   width: 100%;
-  z-index: 5;
   height: 4rem;
-  max-width: 100vw;
   background-color: white;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.05);
 `;
 
 export const ChatRoomHeaderContainer = styled.div`
@@ -33,7 +28,9 @@ export const ChatPartnerName = styled.div`
   height: 20px;
 `;
 
-export const LeftArrowWrapper = styled.div``;
+export const LeftArrowWrapper = styled.div`
+  cursor: pointer;
+`;
 
 export const VideoChatBtnWrapper = styled.div``;
 

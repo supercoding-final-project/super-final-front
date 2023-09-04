@@ -10,11 +10,6 @@ const ChattingBar = () => {
           <Icon name="Send" size={40} />
         </S.SendBtn>
       </S.SendBtnWrapper>
-      <S.SendBtnWrapper>
-        <S.SendBtn>
-          <Icon name="MarkDown" size={40} color="white" />
-        </S.SendBtn>
-      </S.SendBtnWrapper>
     </S.ChattingBarWrapper>
   );
 };

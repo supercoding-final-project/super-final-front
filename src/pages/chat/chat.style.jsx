@@ -1,11 +1,5 @@
 import { styled } from 'styled-components';
 
-export const ChatRoomWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  background-color: #f2f2f2;
-`;
-
 export const ChatListWrap = styled.div`
   /* background-color: pink; */
   display: flex;
