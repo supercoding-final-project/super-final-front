@@ -1,7 +1,7 @@
 import Button from '@/components/common/Button';
 import Header from '@/components/header/Header';
-import * as S from './Main.style';
 import MainCard from './MainCard';
+import * as S from './mentoMain.style';
 import banner_main from '../../assets/banner_main.png';
 
 const MainLayout = () => {

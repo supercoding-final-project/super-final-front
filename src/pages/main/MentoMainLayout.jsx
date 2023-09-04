@@ -3,7 +3,7 @@
 import Button from '@/components/common/Button';
 import MainCard from '@/components/mento/MainCard';
 import Statistics from '@/components/mento/Statistics';
-import * as S from './main.style';
+import * as S from './mentoMain.style';
 
 const MentoMainLayout = () => {
   // const navigate = useNavigate();
