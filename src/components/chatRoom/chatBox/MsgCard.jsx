@@ -20,11 +20,11 @@ const MsgCard = (props) => {
           </S.ProfileImgBox>
         )}
         <S.MsgBox>
-          {isSend && <S.SendAt>{props.sendAt}</S.SendAt>}
+          {isSend && <S.SendAt>{log.sendAt}</S.SendAt>}
           <S.TextBox>
             <S.Text>{log.text}</S.Text>
           </S.TextBox>
-          {!isSend && <S.SendAt>{props.sendAt}</S.SendAt>}
+          {!isSend && <S.SendAt>{log.sendAt}</S.SendAt>}
         </S.MsgBox>
       </S.MsgContainer>
     </S.MsgCard>

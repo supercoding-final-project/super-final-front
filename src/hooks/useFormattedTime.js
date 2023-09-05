@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export function useFormattedTime() {
+export const useFormattedTime = () => {
   const getCurrentFormattedTime = () => {
     const currentTime = new Date();
     const hours = currentTime.getHours();
@@ -14,5 +14,10 @@ export function useFormattedTime() {
 
   const [formattedTime, setFormattedTime] = useState(getCurrentFormattedTime());
 
-  return formattedTime;
-}
+  // 시간을 업데이트하는 함수를 노출
+  const updateFormattedTime = () => {
+    setFormattedTime(getCurrentFormattedTime());
+  };
+
+  return { formattedTime, updateFormattedTime };
+};

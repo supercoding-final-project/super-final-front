@@ -11,21 +11,21 @@ const ChatBox = (props) => {
   const [text, setText] = useState('');
   const [data, setData] = useState(chatLog.chatLog);
   const cardEndRef = useRef(null);
-  const formattedTime = useFormattedTime();
+  const { formattedTime, updateFormattedTime } = useFormattedTime();
 
   const chatHandler = (e) => {
     setText(e.target.value);
   };
 
   const sendHandler = () => {
-    setData([
-      ...data,
-      {
-        senderId: 'sdwrde12',
-        sendAt: formattedTime,
-        text: text,
-      },
-    ]);
+    updateFormattedTime();
+    const newMessage = {
+      senderId: 'sdwrde12',
+      sendAt: formattedTime,
+      text: text,
+    };
+    setData([...data, newMessage]);
+    setText('');
   };
 
   useEffect(() => {
@@ -42,7 +42,6 @@ const ChatBox = (props) => {
             key={index}
             log={log}
             profileImg={chatLog.profileImg}
-            sendAt={formattedTime}
           />
         ))}
         <div ref={cardEndRef}></div>

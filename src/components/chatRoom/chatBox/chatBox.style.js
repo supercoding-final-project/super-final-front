@@ -17,7 +17,10 @@ export const MsgCard = styled.div`
   margin: 2rem;
 `;
 
-export const MsgContainer = styled.div``;
+export const MsgContainer = styled.div`
+  line-height: 1.2rem;
+  max-width: 50%;
+`;
 
 export const ProfileImgBox = styled.div``;
 

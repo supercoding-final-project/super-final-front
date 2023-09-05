@@ -7,7 +7,7 @@ export const chatLog = {
   chatLog: [
     {
       senderId: 'test',
-      sendAt: '오후 04:16',
+      sendAt: '오후 4:16',
       text: `안녕하세요 !\n
     프론트엔드 고인물 하진수입니다.\n
     저에게 코드리뷰를 받고 싶으세요?\n
@@ -16,36 +16,36 @@ export const chatLog = {
     },
     {
       senderId: 'sdwrde12',
-      sendAt: '오후 04:21',
+      sendAt: '오후 4:21',
       text: '살려주세요 선생님',
     },
     {
       senderId: 'test',
-      sendAt: '오후 05:22',
+      sendAt: '오후 5:22',
       text: `그렇게 무례하게 말하면\n
     도와드릴 수 없습니다.`,
     },
     {
       senderId: 'test',
-      sendAt: '오후 05:22',
+      sendAt: '오후 5:22',
       text: `그렇게 무례하게 말하면\n
     도와드릴 수 없습니다.`,
     },
     {
       senderId: 'test',
-      sendAt: '오후 05:22',
+      sendAt: '오후 5:22',
       text: `그렇게 무례하게 말하면\n
     도와드릴 수 없습니다.`,
     },
     {
       senderId: 'test',
-      sendAt: '오후 05:22',
+      sendAt: '오후 5:22',
       text: `그렇게 무례하게 말하면\n
     도와드릴 수 없습니다.`,
     },
     {
       senderId: 'sdwrde12',
-      sendAt: '오후 04:21',
+      sendAt: '오후 4:21',
       text: '살려주세요 선생님',
     },
   ],
