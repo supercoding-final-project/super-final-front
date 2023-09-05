@@ -50,7 +50,7 @@ export const WeekCell = styled.div`
   justify-content: center;
   height: 81.42px;
 
-  color: ${props => props.isSunday ? 'red' : props.isSaturday ? 'blue' : 'black'};
+  color: ${props => props.$isSunday ? 'red' : props.$isSaturday ? 'blue' : 'black'};
   background-color: '#fff';
   &:hover{
     scale: 1.1;
@@ -68,7 +68,7 @@ padding: 5px;
   height: 120px;
   border-radius: 10px;
   
-  background-color: ${props => props.empty ? '#f5f5f5' : '#fff'};
+  background-color: ${props => props.$empty ? '#f5f5f5' : '#fff'};
   transition: all 0.3s ;
   &:hover{
     scale: 1.05;
@@ -78,12 +78,18 @@ padding: 5px;
 
 export const CellText = styled.div`
 margin-top: 2px;
-font-size: 10px;
+font-size: 12px;
 `
+
 export const CellText2 = styled.div`
 color: pink;
 margin-top: 2px;
-font-size: 10px;
+font-size: 12px;
+`
+export const ModalCellText = styled.div`
+color: pink;
+margin-top: 2px;
+font-size: 12px;
 `
 
 
@@ -101,7 +107,7 @@ export const OutSideModal = styled.div`
   align-items: center;
   z-index: 2;
 `
-export const ModaContent = styled.div`
+export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 500px;

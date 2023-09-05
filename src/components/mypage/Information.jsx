@@ -54,7 +54,7 @@ const Information = ({ informationtype, navtype, Menti }) => {
                         <S.InformationBox>
                             <InformationHead text={navtype.reservation} />
                         </S.InformationBox>
-                        <Calendar reservationData={Menti}></Calendar>
+                        <Calendar Menti={Menti}></Calendar>
                     </S.DivFlexColumn>
                 </S.InformationContainer>
             </>
