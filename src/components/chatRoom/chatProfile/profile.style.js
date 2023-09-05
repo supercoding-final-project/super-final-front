@@ -2,8 +2,7 @@ import { styled } from 'styled-components';
 
 export const ProfileWrapper = styled.div`
   position: sticky;
-  right: 0;
-  width: 30%;
+  width: 50%;
   display: flex;
   justify-content: center;
   background-color: #f2f2f2;

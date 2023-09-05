@@ -3,16 +3,17 @@ import { styled } from 'styled-components';
 export const ChatBox = styled.div`
   flex-direction: column;
   width: 100%;
+  height: 100%;
 `;
 
 export const ChatContainer = styled.div`
-  height: 70vh;
+  height: 79.8vh;
   overflow: auto;
 `;
 
 export const MsgCard = styled.div`
   display: flex;
-  justify-content: ${(props) => (props.isSend ? 'flex-end' : 'flex-start')};
+  justify-content: ${(props) => (props.send ? 'flex-end' : 'flex-start')};
   margin: 2rem;
 `;
 

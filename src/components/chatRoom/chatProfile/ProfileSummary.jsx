@@ -1,16 +1,16 @@
-import mento from '@/assets/chatMock/mento.png';
 import * as S from './profile.style';
 import SummaryTab from './SummaryTab';
+import { partnerProfile } from '../chatBox/chatBoxMock';
 
 const ProfileSummary = () => {
   return (
     <S.ProfileSummaryBox>
       <S.SummaryContainer>
-        <S.ProfileImg src={mento} />
-        <S.ProfileName>하진수</S.ProfileName>
-        <S.ProfileGroup>프론트엔드</S.ProfileGroup>
-        <S.ProfileSummary>개발이 제일 쉬웠습니다 연락주세요~</S.ProfileSummary>
-        <SummaryTab />
+        <S.ProfileImg src={partnerProfile.img} />
+        <S.ProfileName>{partnerProfile.name}</S.ProfileName>
+        <S.ProfileGroup>{partnerProfile.job}</S.ProfileGroup>
+        <S.ProfileSummary>{partnerProfile.summary}</S.ProfileSummary>
+        <SummaryTab tab={partnerProfile.summaryTab} />
       </S.SummaryContainer>
     </S.ProfileSummaryBox>
   );
