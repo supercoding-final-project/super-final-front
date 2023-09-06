@@ -4,7 +4,7 @@ import LeftNavbar from "src/components/mypage/LeftNavbar";
 
 import * as S from './mentiMyLayout.style'
 const MentiMyLayout = () => {
-  const [type, setType] = useState("예약확인")
+  const [type, setType] = useState("포인트 충전")
 
   const navtype = {
     point: "포인트 충전",

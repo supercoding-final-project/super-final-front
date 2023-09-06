@@ -4,6 +4,7 @@ import * as S from 'src/pages/my/mentiMyLayout.style'
 
 import Calendar from './Calendar';
 import InformationHead from './InformationHead';
+import ChargePoint from './menti/ChargePoint';
 import FIxInformation from './menti/FIxInformation';
 
 
@@ -18,6 +19,7 @@ const Information = ({ informationtype, navtype, Menti }) => {
                     <S.DivFlexColumn>
                         <S.InformationBox>
                             <InformationHead text={navtype.point} />
+                            <ChargePoint />
                         </S.InformationBox>
                     </S.DivFlexColumn>
                 </S.InformationContainer>
