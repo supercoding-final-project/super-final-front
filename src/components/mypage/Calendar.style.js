@@ -67,7 +67,7 @@ padding: 5px;
   justify-content: start;
   height: 120px;
   border-radius: 10px;
-  
+  overflow: hidden;
   background-color: ${props => props.$empty ? '#f5f5f5' : '#fff'};
   transition: all 0.3s ;
   &:hover{
@@ -77,11 +77,26 @@ padding: 5px;
 `;
 
 export const CellText = styled.div`
+line-height: 20px;
+text-align: center;
+color:white;
 margin-top: 2px;
 font-size: 12px;
+background-color: black;
+border-radius: 5px;
+width: 100%;
 `
 
-export const CellText2 = styled.div`
+export const OverCellText = styled.div`
+line-height: 20px;
+text-align: center;
+color:black;
+margin-top: 2px;
+font-size: 12px;
+width: 100%;
+`
+
+export const PinkCellText = styled.div`
 color: pink;
 margin-top: 2px;
 font-size: 12px;

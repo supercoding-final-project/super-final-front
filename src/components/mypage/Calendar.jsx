@@ -87,7 +87,7 @@ function Calendar({ Menti }) {
             let result = 선택달의예약들[relevantDay]
             return result
 
-        } catch (error) { }
+        } catch (error) { console.error(); }
     }
 
 
@@ -165,26 +165,57 @@ function Calendar({ Menti }) {
                 {calendarDays.map((day, index) => {
                     // 예약 정보가 있는지 확인
 
-                    if (checkReservation) {
-                        const mentos = checkReservation(day)
-                        if (mentos) {
 
-                            return (
-                                <S.DayCell key={index} $empty={day === null} onClick={() => openModalHandler(day)}>
-                                    {day !== null ? (
-                                        <>
-                                            {day}
-                                            {mentos.map((멘토이름, idx) => (
-                                                <S.CellText key={idx}>
-                                                    {멘토이름}멘토 예약
-                                                </S.CellText>
-                                            ))}
-                                        </>
-                                    ) : null}
-                                </S.DayCell>
-                            );
-                        }
+                    const mentos = checkReservation(day)
+                    if (mentos) {
+
+                        return (
+                            <S.DayCell key={index} $empty={day === null} onClick={() => openModalHandler(day)}>
+                                {day !== null ? (
+                                    <>
+                                        {day}
+                                        {mentos.map((name, idx) => {
+                                            const mentoReservation = `${name}멘토 예약`
+                                            let EngChekck = /[a-zA-Z]/; //영어
+                                            let KorCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/; //한글
+
+                                            let longname;
+
+                                            if (EngChekck.test(name)) {
+                                                longname = name.slice(0, 8) + "..." + "멘토 예약"
+                                            } else if (KorCheck.test(name)) {
+                                                longname = name.slice(0, 5) + "..." + "멘토 예약"
+                                            }
+                                            if (idx < 3) {
+                                                return (
+
+                                                    <>
+                                                        {
+                                                            mentoReservation.length < 13 ?
+                                                                <S.CellText key={idx}>
+                                                                    {mentoReservation}
+                                                                </S.CellText> :
+                                                                <S.CellText key={idx}>
+                                                                    {longname}
+                                                                </S.CellText>
+                                                        }
+                                                    </>
+                                                )
+                                            } else {
+                                                return (
+                                                    <S.OverCellText key={idx}>
+                                                        더보기 {mentos.length - 3}개
+                                                    </S.OverCellText>)
+                                            }
+
+                                        })}
+
+                                    </>
+                                ) : null}
+                            </S.DayCell>
+                        );
                     }
+
 
 
 
