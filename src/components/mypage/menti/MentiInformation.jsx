@@ -2,10 +2,10 @@
 
 import * as S from 'src/pages/my/mentiMyLayout.style'
 
-import Calendar from './Calendar';
-import InformationHead from './InformationHead';
-import ChargePoint from './menti/ChargePoint';
-import FIxInformation from './menti/FIxInformation';
+import Calendar from '@/components/mypage/Calendar';
+import InformationHead from '@/components/mypage/InformationHead';
+import ChargePoint from '@/components/mypage/menti/ChargePoint';
+import FIxInformation from '@/components/mypage/menti/FIxInformation';
 
 
 const Information = ({ informationtype, navtype, Menti }) => {
