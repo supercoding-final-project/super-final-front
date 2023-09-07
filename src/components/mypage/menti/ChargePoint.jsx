@@ -39,20 +39,21 @@ const ChargePoint = () => {
     return (
         <div>
             <S.ChargePointContainer>
-                <S.DisFlex>
+
+                <S.DisFlexStartCenter>
                     <S.ChargePointText>결제금액</S.ChargePointText>
                     <S.ChargePointInput ref={inputcash} type="number" onChange={BonusPointCalculrator} />
 
                     <S.ChargeButton >충전하기</S.ChargeButton>
-                </S.DisFlex>
-                <S.DisFlex>
+                </S.DisFlexStartCenter>
+                <S.DisFlexStartCenter>
                     <S.ChargePointText>충전예정</S.ChargePointText>
 
                     {vvip ? <S.Vip>{parseInt(cash)}</S.Vip> :
                         vip ? <S.VVip>{parseInt(cash)}</S.VVip> :
                             <S.ChargingScheduled>{parseInt(cash)}</S.ChargingScheduled>}
 
-                </S.DisFlex>
+                </S.DisFlexStartCenter>
 
 
             </S.ChargePointContainer>

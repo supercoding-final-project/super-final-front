@@ -19,8 +19,8 @@ const Information = ({ informationtype, navtype, Menti }) => {
                     <S.DivFlexColumn>
                         <S.InformationBox>
                             <InformationHead text={navtype.point} />
-                            <ChargePoint />
                         </S.InformationBox>
+                        <ChargePoint />
                     </S.DivFlexColumn>
                 </S.InformationContainer>
             </>

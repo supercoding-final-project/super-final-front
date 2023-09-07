@@ -4,6 +4,15 @@ export const DisFlex = styled.div`
     display: flex;
     ;
 `
+export const DisFlexStartCenter = styled.div`
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 40px;
+
+
+`
+
 export const DivFlex = styled.div`
     display: flex;
     justify-content: center;
@@ -91,7 +100,6 @@ export const InformationContainer = styled.div`
    
 `
 export const InformationBox = styled.div`
-
     width: 100%;
     margin: 1rem auto ;
 
@@ -116,10 +124,14 @@ export const CalendarContainer = styled.div`
     height: 100vh;
 `
 export const FIxInformationContainer = styled.div`
-display: flex;
+ display: flex;
+width: 955px;
+padding: 40px;
 flex-direction: column;
-align-items: start;
-gap: 0.5rem;
+align-items: flex-start;
+gap: 40px;
+border-radius: 12px;
+border: 0.5px solid #808080;
 `
 
 export const Label = styled.label`
@@ -182,10 +194,10 @@ border: 0.5px solid #808080;
 
 export const ChargePointText = styled.div`
 color: #000;
-font-family: Pretendard;
+font-family: Abel;
 font-size: 20px;
 font-style: normal;
-font-weight: 200;
+font-weight: 400;
 line-height: 140%; /* 28px */
 letter-spacing: -0.5px;
 `
@@ -255,42 +267,6 @@ border-radius: 4px;
 border: 0.5px solid #808080;
 `
 
-export const VipText = styled.span`
-
-@keyframes identifier {
-    0% {
-        transform: translateX(2px);
-    }
-    5% {
-        transform: translateX(-2px) ;
-    }
-    10% {
-        transform: translateX(4px);
-    }
-    15% {
-        transform: translateX(-4px);
-    }
-    20% {
-        transform: translateX(8px);
-    }
-    25% {
-        transform: translateX(-8px);
-    }
-    30% {
-        transform: translateX(8px);
-    }
-    75% {
-        transform: translateX(10px) translateY(-30px);
-    }
-    100% {
-        transform: translateX(0) translateY(-40px);
-    }
-}   
-
-    animation: identifier 1s ease-in-out;
-    font-size: 20px; 
-  
-  `
 
 
 export const VVip = styled.div`
@@ -306,5 +282,69 @@ padding: 12px 24px;
 align-items: center;
 border-radius: 4px;
 border: 0.5px solid #808080;
+`
 
+// 회원수정폼
+export const FixInformationBox = styled.div`
+display: flex;
+justify-content: start;
+align-items: center;
+gap: 40px;
+
+`
+export const FixInformationLabel = styled.div`
+ color: #000;
+font-family: Abel;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; /* 28px */
+letter-spacing: -0.5px;
+ `
+
+export const FixInformationMentiName = styled.div`
+display: flex;
+width: 300px;
+padding: 12px 24px;
+align-items: center;
+border-radius: 4px;
+border: 0.5px solid #808080;
+color: #000;
+font-family: Abel;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; /* 28px */
+letter-spacing: -0.5px;
+`
+
+export const NickNameFixButton = styled.button`
+cursor: pointer;
+color: white;
+display: flex;
+padding: 12px 24px;
+align-items: center;
+border-radius: 4px;
+background: #000;
+font-family: Abel;
+font-size: 20px;
+`
+
+export const FixInformationMentiNameInput = styled.input`
+&::-webkit-outer-spin-button,
+&::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;}
+color: #000;
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+line-height: 140%; /* 28px */
+letter-spacing: -0.5px;
+display: flex;
+width: 300px;
+padding: 12px 24px;
+align-items: center;
+border-radius: 4px;
+border: 0.5px solid #808080;
 `

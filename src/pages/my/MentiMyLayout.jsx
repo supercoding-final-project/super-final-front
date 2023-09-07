@@ -10,7 +10,6 @@ const MentiMyLayout = () => {
     point: "포인트 충전",
     info: "회원 정보 수정",
     reservation: "예약확인",
-    shoppingcart: "장바구니",
     logout: "로그아웃"
   }
 
