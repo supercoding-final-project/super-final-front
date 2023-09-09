@@ -1,15 +1,15 @@
 import { useState } from "react";
-import Information from "src/components/mypage/Information";
-import LeftNavbar from "src/components/mypage/LeftNavbar";
 
+import LeftNavbar from "@/components/mypage/LeftNavbar";
+import Information from "@/components/mypage/mento/MentoInformation";
 import * as S from './mentiMyLayout.style'
 const MentoMyLayout = () => {
-  const [type, setType] = useState("포인트 충전")
+  const [type, setType] = useState("등록한 포스트")
 
   const navtype = {
-    point: "포인트 충전",
-    info: "회원 정보 수정",
-    reservation: "예약확인",
+    borad: "등록한 포스트",
+    info: "멘토 정보 수정",
+    reservation: "예약 시간 설정",
     logout: "로그아웃"
   }
 
