@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
+import { useChatSocket } from 'src/api/chatSocket';
+import { useFormattedTime } from 'src/hooks/useFormattedTime';
 
-import { useChatSocket } from '@/api/chatSocket';
-import { useFormattedTime } from '@/hooks/useFormattedTime';
 import * as S from './chatBox.style';
 import ChattingBar from './ChattingBar';
 import MsgCard from './MsgCard';

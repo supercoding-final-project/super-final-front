@@ -1,6 +1,5 @@
+import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
-
-import { theme } from '@/globalLayout/GlobalStyle';
 
 export const ChatBox = styled.div`
   flex-direction: column;

@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import ChatBox from 'src/components/chatRoom/chatbox/ChatBox';
+import ChatList from 'src/components/chatRoom/chatlist/ChatList';
+import NoChatBox from 'src/components/chatRoom/NoChatBox';
+import NoChatList from 'src/components/chatRoom/NoChatList';
 
 import { useHttp } from '@/api/useHttp';
-import ChatBox from '@/components/chatRoom/chatbox/ChatBox';
-import ChatList from '@/components/chatRoom/chatlist/ChatList';
-import NoChatBox from '@/components/chatRoom/NoChatBox';
-import NoChatList from '@/components/chatRoom/NoChatList';
 import * as S from './chat.style';
 
 const ChatRoomLayout = () => {
