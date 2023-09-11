@@ -1,5 +1,5 @@
-import Button from '@/components/common/Button';
-import Header from '@/components/header/Header';
+// import Button from '@/components/common/Button';
+// import Header from '@/components/header/Header';
 import * as S from './Main.style.jsx';
 import MainCard from './MainCard';
 import banner_main from '../../assets/banner_main.png';
