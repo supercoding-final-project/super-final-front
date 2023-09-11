@@ -1,5 +1,5 @@
 //chatLog 부분 HTTTP 요청 부분
-// cahtLog는 사이즈 20 단위로 최초 페이지 0 불러오고
+// chatLog는 사이즈 20 단위로 최초 페이지 0 불러오고
 // 스크롤에 따라 페이지 수 증가
 
 // useEffect(() => {
@@ -40,7 +40,7 @@
 // const stompDisConnect = () => {
 //     try {
 //       stomp.debug = null;
-//       stomp.disco nnect(() => {
+//       stomp.disconnect(() => {
 //         stomp.unsubscribe("sub-0");
 //       }, token);
 //     } catch (err) {

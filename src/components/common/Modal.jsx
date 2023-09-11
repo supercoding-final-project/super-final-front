@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import ModalProps from './ModalCard';
-import { SearchModalWrapper } from './stSearchModal';
+
+// import ModalProps from './ModalCard';
+// import { SearchModalWrapper } from './stSearchModal';
 
 export const Modal = () => {
   const [showModal, setShowModal] = useState(false);

@@ -4,11 +4,10 @@ import * as S from './chatBox.style';
 
 const MsgCard = (props) => {
   const log = props.log;
-  const myId = 'sdwrde12';
   const [isSend, setIsSend] = useState(false);
 
   useEffect(() => {
-    if (log.senderId === myId) setIsSend(true);
+    if (log.senderId === props.myId) setIsSend(true);
   }, [log.senderId]);
 
   return (
@@ -21,8 +20,8 @@ const MsgCard = (props) => {
         )}
         <S.MsgBox>
           {isSend && <S.SendAt>{log.sendAt}</S.SendAt>}
-          <S.TextBox>
-            <S.Text>{log.text}</S.Text>
+          <S.TextBox send={isSend}>
+            <S.Text>{log.chatContent}</S.Text>
           </S.TextBox>
           {!isSend && <S.SendAt>{log.sendAt}</S.SendAt>}
         </S.MsgBox>
