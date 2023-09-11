@@ -10,7 +10,7 @@ const FixInformation = ({ User, }) => {
     const [EnterIncumbentJob, setEnterIncumbentJob] = useState(false)
     const [nicknameValue, setNicknameValue] = useState(User.nickname);
     const [incumbentValue, setIncumbentValue] = useState(User.incumbent);
-    const [careerList, setCareerList] = useState([])
+    const [careerList, setCareerList] = useState(["롤_10년1개월", "우마무스메_3년2개월"])
 
 
 
@@ -174,25 +174,6 @@ const FixInformation = ({ User, }) => {
                     </S.FixInformationBox>
                 </div>
 
-                <div>
-                    {/* <S.FixInformationBox>
-                        <S.FixInformationLabel>기술스택</S.FixInformationLabel>
-                        <S.FixInformationMentiIncumbentJobSelect ref={dutyRef}>
-                            <option value="" defaultValue>직무</option>
-                            {CareerDuty.map((duty, index) => (
-                                <S.CareersDuty key={index}>{duty}</S.CareersDuty>)
-                            )}
-                        </S.FixInformationMentiIncumbentJobSelect>
-                        <S.FixInformationMentiIncumbentJobSelect ref={dutyRef}>
-                            <option value="" defaultValue>직무</option>
-                            {CareerDuty.map((duty, index) => (
-                                <S.CareersDuty key={index}>{duty}</S.CareersDuty>)
-                            )}
-                        </S.FixInformationMentiIncumbentJobSelect>
-                        <S.NickNameFixButton onClick={addCareerHandler}>추가 </S.NickNameFixButton>
-                    </S.FixInformationBox> */}
-                </div>
-
 
                 {EnterIncumbentJob ?
                     <S.FixInformationBox>
@@ -209,17 +190,24 @@ const FixInformation = ({ User, }) => {
                 }
 
                 <div>
-                    <h1>경력</h1>
-                    {careerList.map((item, index) => {
-                        return (
-                            <S.DivFlex key={index}>
-                                <S.dutyTag >{item}</S.dutyTag>
-                                <button onClick={() => dutyDeleteHandler(index)} > x</button>
-                            </S.DivFlex>
-                        )
-                    })}
+
+                    <S.FixInformationLabel>경력</S.FixInformationLabel>
+                    <S.DivFlex>
+                        {careerList.map((item, index) => {
+                            return (
+                                <S.dutyTag key={index}>{item}
+                                    <S.dutyTagDeleteButton onClick={() => dutyDeleteHandler(index)} > x</S.dutyTagDeleteButton>
+                                </S.dutyTag>
+                            )
+                        })}
+                    </S.DivFlex>
                 </div>
             </S.FixInformationContainer >
+
+            <S.FixInformationContainer>
+                멘토의 한줄소개
+                <S.introductionMentor name="" id="" style={{ width: "100%", height: "50px" }} placeholder='한줄 소개 입력하기'></S.introductionMentor>
+            </S.FixInformationContainer>
         </>
     );
 };

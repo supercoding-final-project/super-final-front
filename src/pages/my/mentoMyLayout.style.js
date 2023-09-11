@@ -133,6 +133,7 @@ align-items: flex-start;
 gap: 40px;
 border-radius: 12px;
 border: 0.5px solid #808080;
+margin-bottom: 1rem;
 `
 
 export const Label = styled.label`
@@ -287,7 +288,7 @@ border: 0.5px solid #808080;
 
 // 회원수정폼
 export const FixInformationBox = styled.div`
-width: 500px;
+
 display: flex;
 justify-content: start;
 align-items: center;
@@ -321,9 +322,9 @@ letter-spacing: -0.5px;
 
 
 export const NickNameFixButton = styled.button`
+
 cursor: pointer;
 color: white;
-display: flex;
 padding: 12px 24px;
 align-items: center;
 border-radius: 4px;
@@ -331,6 +332,7 @@ background: #29CC61;
 font-family: Abel;
 font-size: 20px;
 border-style: none;
+margin-left: 10px;
 `
 
 export const FixInformationMentiNameInput = styled.input`
@@ -451,7 +453,24 @@ border-radius: 4px;
 border: 0.5px solid #808080;
 `
 export const dutyTag = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
 border-radius: 5px;
 background-color: aliceblue;
 padding: 5px 15px;
+margin-left: 1rem;
+margin-top: 1rem;
+`
+
+export const dutyTagDeleteButton = styled.button`
+    cursor: pointer;
+    margin-left: 5px;
+`
+
+export const introductionMentor = styled.textarea`
+    border: none;
+    outline: none;
+    resize: none;
+
 `
