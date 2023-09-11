@@ -354,7 +354,7 @@ border: 0.5px solid #808080;
 
 
 
-export const FixInformationMentiIncumbentJobSelect = styled.select`
+export const FixInformationMentiIncumbentJobInput = styled.input`
 color: #000;
 font-family: Pretendard;
 font-size: 20px;
@@ -414,6 +414,7 @@ export const MentoCareerYearInput = styled.input`
 &::-webkit-inner-spin-button {
 -webkit-appearance: none;
 margin: 0;}
+margin-left: 5px;
 text-align: center;
 color: #000;
 font-family: Pretendard;
@@ -434,6 +435,7 @@ export const MentoCareerMonthInput = styled.input`
 &::-webkit-inner-spin-button {
 -webkit-appearance: none;
 margin: 0;}
+margin-left: 5px;
 text-align: center;
 color: #000;
 font-family: Pretendard;
@@ -447,4 +449,9 @@ padding: 12px 12px;
 align-items: center;
 border-radius: 4px;
 border: 0.5px solid #808080;
+`
+export const dutyTag = styled.div`
+border-radius: 5px;
+background-color: aliceblue;
+padding: 5px 15px;
 `

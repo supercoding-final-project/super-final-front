@@ -12,14 +12,7 @@ const MentoMyLayout = () => {
     reservation: "예약 시간 설정",
     logout: "로그아웃"
   }
-  const CareerDuty =
-    [
-      "Front-end",
-      "Back-end",
-      "Deginer",
-      "PM",
-      "Data_engineer",
-    ]
+
 
   const User = {
     name: "하진수",
@@ -38,7 +31,7 @@ const MentoMyLayout = () => {
     <>
       <S.DisFlex>
         <LeftNavbar navItemHandler={navItemHandler} navtype={navtype} User={User} />
-        <MentoInformation informationtype={type} navtype={navtype} User={User} CareerDuty={CareerDuty}></MentoInformation>
+        <MentoInformation informationtype={type} navtype={navtype} User={User} ></MentoInformation>
       </S.DisFlex>
     </>
   )

@@ -7,7 +7,7 @@ import FixInformation from '@/components/mypage/mento/FixInformation';
 
 
 
-const MentoInformation = ({ informationtype, navtype, User, CareerDuty }) => {
+const MentoInformation = ({ informationtype, navtype, User }) => {
     //상태관리
 
 
@@ -33,7 +33,7 @@ const MentoInformation = ({ informationtype, navtype, User, CareerDuty }) => {
                         <S.InformationBox>
                             <InformationHead text={navtype.info} />
                         </S.InformationBox>
-                        <FixInformation User={User} CareerDuty={CareerDuty}></FixInformation>
+                        <FixInformation User={User} ></FixInformation>
                     </S.DivFlexColumn>
                 </S.InformationContainer>
             </>

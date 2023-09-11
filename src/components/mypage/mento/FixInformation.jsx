@@ -1,19 +1,25 @@
 
 import axios from 'axios';
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import * as S from "@/pages/my/mentoMyLayout.style"
 
 
-const FixInformation = ({ User, CareerDuty }) => {
+const FixInformation = ({ User, }) => {
     const [enterNickanme, setEnterNickname] = useState(false)
     const [EnterIncumbentJob, setEnterIncumbentJob] = useState(false)
     const [nicknameValue, setNicknameValue] = useState(User.nickname);
     const [incumbentValue, setIncumbentValue] = useState(User.incumbent);
-    // const [,] = useState()
+    const [careerList, setCareerList] = useState([])
+
+
+
+    const dutyRef = useRef()
+    const dutyYearRef = useRef()
+    const dutyMonthRef = useRef()
     // const [fixNickname, setFixNickname] = useState('')
 
-    console.log(CareerDuty)
+
     //서버에 중복확인 요청보내기
     // eslint-disable-next-line no-unused-vars
     const duplicateCheck = (changedNickname) => {
@@ -72,6 +78,73 @@ const FixInformation = ({ User, CareerDuty }) => {
         return
     }
 
+    const addCareerHandler = () => {
+        let duty = dutyRef.current.value
+        let years = dutyYearRef.current.value
+        let month = dutyMonthRef.current.value
+        console.log(duty)
+        const pattern = /[~!@#$%^&*()]/
+        if (pattern.test(duty)) {
+            return
+        }
+        if (duty.trim() === "" || duty.trim() === " ") {
+            dutyRef.current.value = '';
+            dutyYearRef.current.value = '';
+            dutyMonthRef.current.value = '';
+            return
+        }
+
+        if (years === "0" && month === "0") {
+            dutyRef.current.value = '';
+            dutyYearRef.current.value = '';
+            dutyMonthRef.current.value = '';
+            return
+        }
+        if (years === "" && month === "") {
+            dutyRef.current.value = '';
+            dutyYearRef.current.value = '';
+            dutyMonthRef.current.value = '';
+            return
+        }
+        if (years === "0" && month === "") {
+            dutyRef.current.value = '';
+            dutyYearRef.current.value = '';
+            dutyMonthRef.current.value = '';
+            return
+        }
+        if (years === "" && month === "0") {
+            dutyRef.current.value = '';
+            dutyYearRef.current.value = '';
+            dutyMonthRef.current.value = '';
+            return
+        }
+        if (years === '' || years === "0") {
+            let mentoCareer = duty + "_" + month + "개월"
+            setCareerList(prev => [...prev, mentoCareer])
+            dutyRef.current.value = '';
+            dutyYearRef.current.value = '';
+            dutyMonthRef.current.value = '';
+            return
+        }
+        if (month === '' || month === "0") {
+            let mentoCareer = duty + "_" + years + "년"
+            setCareerList(prev => [...prev, mentoCareer])
+            dutyRef.current.value = '';
+            dutyYearRef.current.value = '';
+            dutyMonthRef.current.value = '';
+            return
+        }
+        let mentoCareer = duty + "_" + years + "년" + month + "개월"
+        setCareerList(prev => [...prev, mentoCareer])
+        dutyRef.current.value = '';
+        dutyYearRef.current.value = '';
+        dutyMonthRef.current.value = '';
+    }
+
+    const dutyDeleteHandler = (index) => {
+        const updatedCareerList = careerList.filter((item, i) => i !== index);
+        setCareerList(updatedCareerList)
+    }
 
 
     return (
@@ -94,19 +167,33 @@ const FixInformation = ({ User, CareerDuty }) => {
                 <div>
                     <S.FixInformationBox>
                         <S.FixInformationLabel>경력</S.FixInformationLabel>
-                        <S.FixInformationMentiIncumbentJobSelect>
-                            <option value="" disabled selected>직무</option>
+                        <S.FixInformationMentiIncumbentJobInput placeholder='직무를 적어주세요' ref={dutyRef} />
+                        <S.MentoCareerYearInput type="number" ref={dutyYearRef} placeholder='년' />
+                        <S.MentoCareerMonthInput type="number" ref={dutyMonthRef} placeholder='개월' />
+                        <S.NickNameFixButton onClick={addCareerHandler}>추가 </S.NickNameFixButton>
+                    </S.FixInformationBox>
+                </div>
+
+                <div>
+                    {/* <S.FixInformationBox>
+                        <S.FixInformationLabel>기술스택</S.FixInformationLabel>
+                        <S.FixInformationMentiIncumbentJobSelect ref={dutyRef}>
+                            <option value="" defaultValue>직무</option>
                             {CareerDuty.map((duty, index) => (
                                 <S.CareersDuty key={index}>{duty}</S.CareersDuty>)
                             )}
                         </S.FixInformationMentiIncumbentJobSelect>
-                        <S.MentoCareerYearInput placeholder='년' />
-                        <S.MentoCareerMonthInput placeholder='개월' />
+                        <S.FixInformationMentiIncumbentJobSelect ref={dutyRef}>
+                            <option value="" defaultValue>직무</option>
+                            {CareerDuty.map((duty, index) => (
+                                <S.CareersDuty key={index}>{duty}</S.CareersDuty>)
+                            )}
+                        </S.FixInformationMentiIncumbentJobSelect>
                         <S.NickNameFixButton onClick={addCareerHandler}>추가 </S.NickNameFixButton>
-                    </S.FixInformationBox>
-
-
+                    </S.FixInformationBox> */}
                 </div>
+
+
                 {EnterIncumbentJob ?
                     <S.FixInformationBox>
                         <S.FixInformationLabel>현직</S.FixInformationLabel>
@@ -120,7 +207,19 @@ const FixInformation = ({ User, CareerDuty }) => {
                         <S.NickNameFixButton onClick={saveNickName}>수정</S.NickNameFixButton>
                     </S.FixInformationBox>
                 }
-            </S.FixInformationContainer>
+
+                <div>
+                    <h1>경력</h1>
+                    {careerList.map((item, index) => {
+                        return (
+                            <S.DivFlex key={index}>
+                                <S.dutyTag >{item}</S.dutyTag>
+                                <button onClick={() => dutyDeleteHandler(index)} > x</button>
+                            </S.DivFlex>
+                        )
+                    })}
+                </div>
+            </S.FixInformationContainer >
         </>
     );
 };
