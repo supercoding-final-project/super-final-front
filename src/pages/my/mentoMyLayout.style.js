@@ -19,6 +19,7 @@ export const DivFlex = styled.div`
     align-items: center
     ;
 `
+
 export const DivFlexColumn = styled.div`
 width: 100%;
     display: flex;
@@ -123,7 +124,7 @@ export const CalendarContainer = styled.div`
     width: calc(100% - 300px);
     height: 100vh;
 `
-export const FIxInformationContainer = styled.div`
+export const FixInformationContainer = styled.div`
  display: flex;
 width: 955px;
 padding: 40px;
@@ -286,13 +287,13 @@ border: 0.5px solid #808080;
 
 // 회원수정폼
 export const FixInformationBox = styled.div`
+width: 500px;
 display: flex;
 justify-content: start;
 align-items: center;
-gap: 40px;
-
 `
 export const FixInformationLabel = styled.div`
+width: 70px;
  color: #000;
 font-family: Abel;
 font-size: 20px;
@@ -304,7 +305,7 @@ letter-spacing: -0.5px;
 
 export const FixInformationMentiName = styled.div`
 display: flex;
-width: 300px;
+width: 200px;
 padding: 12px 24px;
 align-items: center;
 border-radius: 4px;
@@ -318,6 +319,7 @@ line-height: 140%; /* 28px */
 letter-spacing: -0.5px;
 `
 
+
 export const NickNameFixButton = styled.button`
 cursor: pointer;
 color: white;
@@ -325,9 +327,10 @@ display: flex;
 padding: 12px 24px;
 align-items: center;
 border-radius: 4px;
-background: #000;
+background: #29CC61;
 font-family: Abel;
 font-size: 20px;
+border-style: none;
 `
 
 export const FixInformationMentiNameInput = styled.input`
@@ -342,8 +345,105 @@ font-style: normal;
 line-height: 140%; /* 28px */
 letter-spacing: -0.5px;
 display: flex;
+width: 150px;
+padding: 12px 24px;
+align-items: center;
+border-radius: 4px;
+border: 0.5px solid #808080;
+`
+
+
+
+export const FixInformationMentiIncumbentJobSelect = styled.select`
+color: #000;
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+line-height: 140%; /* 28px */
+letter-spacing: -0.5px;
+display: flex;
+width: 200px;
+padding: 12px 24px;
+align-items: center;
+border-radius: 4px;
+border: 0.5px solid #808080;
+`
+
+export const CareersDuty = styled.option`
+color: #000;
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+line-height: 140%; /* 28px */
+letter-spacing: -0.5px;
+display: flex;
+width: 200px;
+padding: 12px 24px;
+align-items: center;
+border-radius: 4px;
+border: 0.5px solid #808080;
+`
+export const FixInformationMentiIncumbentJob = styled.div`
+display: flex;
 width: 300px;
 padding: 12px 24px;
+align-items: center;
+border-radius: 4px;
+border: 0.5px solid #808080;
+color: #000;
+font-family: Abel;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; /* 28px */
+letter-spacing: -0.5px;
+`
+export const CareerLabel = styled.div`
+
+ color: #000;
+font-family: Abel;
+font-size: 1rem;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; /* 28px */
+letter-spacing: -0.5px;
+ `
+
+export const MentoCareerYearInput = styled.input`
+&::-webkit-outer-spin-button,
+&::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;}
+text-align: center;
+color: #000;
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+line-height: 140%; /* 28px */
+letter-spacing: -0.5px;
+display: flex;
+width: 25px;
+padding: 12px 12px;
+align-items: center;
+border-radius: 4px;
+border: 0.5px solid #808080;
+
+`
+export const MentoCareerMonthInput = styled.input`
+&::-webkit-outer-spin-button,
+&::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;}
+text-align: center;
+color: #000;
+font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+line-height: 140%; /* 28px */
+letter-spacing: -0.5px;
+display: flex;
+width: 40px;
+padding: 12px 12px;
 align-items: center;
 border-radius: 4px;
 border: 0.5px solid #808080;

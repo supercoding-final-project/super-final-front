@@ -123,7 +123,7 @@ export const CalendarContainer = styled.div`
     width: calc(100% - 300px);
     height: 100vh;
 `
-export const FIxInformationContainer = styled.div`
+export const FixInformationContainer = styled.div`
  display: flex;
 width: 955px;
 padding: 40px;
@@ -293,6 +293,7 @@ gap: 40px;
 
 `
 export const FixInformationLabel = styled.div`
+width: 70px;
  color: #000;
 font-family: Abel;
 font-size: 20px;

@@ -8,7 +8,7 @@ import * as S from "./Calendar.style"
 
 const daysInWeek = ['일', '월', '화', '수', '목', '금', '토'];
 
-function Calendar({ Menti }) {
+function Calendar({ User }) {
 
 
     //오늘날짜 상태만들기
@@ -77,7 +77,7 @@ function Calendar({ Menti }) {
     //멘티가 예약신청한 월들을 표시한다
 
     const checkReservation = (relevantDay) => {
-        let checkReservation = Menti.예약확인
+        let checkReservation = User.예약확인
         // //화면에 선택한달
         let selectMonth = (currentDate.getMonth() + 1).toString().padStart(2, '0')
 

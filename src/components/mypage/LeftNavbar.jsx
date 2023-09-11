@@ -4,13 +4,10 @@
 // import { useState } from 'react';
 import * as S from 'src/pages/my/mentiMyLayout.style';
 
-import LeftNavbar_Items from './LeftNavbar_Items';
-import LeftNavbarHead from "./menti/LeftNavbarHead"
+import LeftNavbar_Items from '@/components/mypage/LeftNavbar_Items';
+import LeftNavbarHead from "@/components/mypage/LeftNavbarHead"
 
-const LeftNavbar = ({ navItemHandler, navtype, menti }) => {
-
-    // const [select, setSelect] = useState("정보수정")
-
+const LeftNavbar = ({ navItemHandler, navtype, User }) => {
     const navItemLists = Object.keys(navtype)
 
 
@@ -18,7 +15,7 @@ const LeftNavbar = ({ navItemHandler, navtype, menti }) => {
         <>
             <S.NavBarContainer >
                 <S.NavContentBox>
-                    <LeftNavbarHead menti={menti}></LeftNavbarHead>
+                    <LeftNavbarHead User={User}></LeftNavbarHead>
                     {navItemLists.map((item, idx) =>
                         <LeftNavbar_Items key={idx} navItemHandler={navItemHandler} type={navtype[item]} />
                     )}

@@ -5,9 +5,9 @@ import { useState } from 'react'
 import * as S from "@/pages/my/mentiMyLayout.style"
 
 
-const FIxInformation = ({ Menti }) => {
+const FixInformation = ({ User }) => {
     const [enterNickanme, setEnterNickname] = useState(false)
-    const [nicknameValue, setNicknameValue] = useState(Menti.nickname);
+    const [nicknameValue, setNicknameValue] = useState(User.nickname);
     // const [,] = useState()
     // const [fixNickname, setFixNickname] = useState('')
 
@@ -54,7 +54,7 @@ const FIxInformation = ({ Menti }) => {
     }
     return (
         <>
-            <S.FIxInformationContainer>
+            <S.FixInformationContainer>
                 {enterNickanme ?
                     <S.FixInformationBox>
                         <S.FixInformationLabel>닉네임</S.FixInformationLabel>
@@ -68,9 +68,9 @@ const FIxInformation = ({ Menti }) => {
                         <S.NickNameFixButton onClick={saveNickName}>저장</S.NickNameFixButton>
                     </S.FixInformationBox>
                 }
-            </S.FIxInformationContainer>
+            </S.FixInformationContainer>
 
         </>
     );
 };
-export default FIxInformation;
+export default FixInformation;

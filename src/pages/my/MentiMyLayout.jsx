@@ -1,8 +1,8 @@
 import { useState } from "react";
-import LeftNavbar from "src/components/mypage/LeftNavbar";
 
+import LeftNavbar from "@/components/mypage/LeftNavbar";
 import MentiInformation from "@/components/mypage/menti/MentiInformation";
-import * as S from './mentiMyLayout.style'
+import * as S from '@/pages/my/mentiMyLayout.style'
 const MentiMyLayout = () => {
   const [type, setType] = useState("포인트 충전")
 
@@ -13,7 +13,7 @@ const MentiMyLayout = () => {
     logout: "로그아웃"
   }
 
-  const Menti = {
+  const User = {
     name: "하진수",
     email: "jumosd@icloud.com",
     nickname: "하방방",
@@ -95,8 +95,8 @@ const MentiMyLayout = () => {
   return (
     <>
       <S.DisFlex>
-        <LeftNavbar navItemHandler={navItemHandler} navtype={navtype} menti={Menti} />
-        <MentiInformation informationtype={type} navtype={navtype} Menti={Menti}></MentiInformation>
+        <LeftNavbar navItemHandler={navItemHandler} navtype={navtype} User={User} />
+        <MentiInformation informationtype={type} navtype={navtype} User={User}></MentiInformation>
       </S.DisFlex>
     </>
   )

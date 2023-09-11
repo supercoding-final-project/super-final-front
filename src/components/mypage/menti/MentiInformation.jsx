@@ -5,10 +5,10 @@ import * as S from 'src/pages/my/mentiMyLayout.style'
 import Calendar from '@/components/mypage/Calendar';
 import InformationHead from '@/components/mypage/InformationHead';
 import ChargePoint from '@/components/mypage/menti/ChargePoint';
-import FIxInformation from '@/components/mypage/menti/FIxInformation';
+import FixInformation from '@/components/mypage/menti/FixInformation';
 
 
-const Information = ({ informationtype, navtype, Menti }) => {
+const Information = ({ informationtype, navtype, User }) => {
     //상태관리
 
 
@@ -36,7 +36,7 @@ const Information = ({ informationtype, navtype, Menti }) => {
                         <S.InformationBox>
                             <InformationHead text={navtype.info} />
                         </S.InformationBox>
-                        <FIxInformation Menti={Menti} />
+                        <FixInformation User={User} />
                     </S.DivFlexColumn>
                 </S.InformationContainer>
             </>
@@ -56,7 +56,7 @@ const Information = ({ informationtype, navtype, Menti }) => {
                         <S.InformationBox>
                             <InformationHead text={navtype.reservation} />
                         </S.InformationBox>
-                        <Calendar Menti={Menti}></Calendar>
+                        <Calendar User={User}></Calendar>
                     </S.DivFlexColumn>
                 </S.InformationContainer>
             </>
