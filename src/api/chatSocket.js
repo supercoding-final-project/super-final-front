@@ -1,64 +1,83 @@
-//chatLog 부분 HTTTP 요청 부분
-// chatLog는 사이즈 20 단위로 최초 페이지 0 불러오고
-// 스크롤에 따라 페이지 수 증가
+import { useEffect, useState } from 'react';
+import sockjs from 'sockjs-client/dist/sockjs';
+import StompJs from 'stompjs';
 
-// useEffect(() => {
-//   const fetchData = () => {
+import { useHttp } from './useHttp';
 
-//   };
-// });
+export function useChatSocket(chatroomId, myId) {
+  const [sock, setSock] = useState(null);
+  const [stomp, setStomp] = useState(null);
+  const [data, setData] = useState([]);
+  const [text, setText] = useState('');
+  const chatLog = useHttp('/chatlog', { chatRoomId: chatroomId });
 
-//   const sock = new SockJs("http://서버주소");
-// //client 객체 생성 및 서버주소 입력
+  useEffect(() => {
+    setData(chatLog);
+  }, [chatroomId]);
 
-// const stomp = StompJs.over(sock);
-// //stomp로 감싸기
+  // Initialize WebSocket and Stomp
+  useEffect(() => {
+    const newSock = new sockjs('http://54.180.86.41:8080/code-velop');
+    const newStomp = StompJs.over(newSock);
 
-// const stompConnect = () => {
-//     try {
-//       stomp.debug = null;
-//웹소켓 연결시 stomp에서 자동으로 connect이 되었다는것을
-//console에 보여주는데 그것을 감추기 위한 debug
+    setSock(newSock);
+    setStomp(newStomp);
 
-//     stomp.connect(token, () => {
-//       stomp.subscribe(
-//         `서버주소`,
-//         (data) => {
-//           const newMessage = JSON.parse(data.body);
-//           //데이터 파싱
-//         },
-//         token
-//       );
-//     });
-//   } catch (err) {
+    return () => {
+      if (stomp) {
+        stomp.disconnect();
+      }
+    };
+  }, [chatroomId]);
 
-//   }
-// };
+  // WebSocket connection logic
+  useEffect(() => {
+    if (sock && stomp) {
+      const stompConnect = () => {
+        try {
+          stomp.connect({}, () => {
+            stomp.subscribe(`/chatroom/${chatroomId}`, (message) => {
+              const receiveMsg = JSON.parse(message.body);
+              setData((prevData) => [...prevData, receiveMsg]);
+            });
+          });
+        } catch (err) {
+          console.error('WebSocket 연결 시도 중 오류 발생:', err);
+        }
+      };
+      stompConnect();
+    }
+  }, [sock, stomp, chatroomId]);
 
-//웹소켓 connect-subscribe 부분
+  // HTTP request logic
+  // const fetchChatLog = async () => {
+  //   try {
+  //     const res = await axios.get('http://54.180.86.41:8080/api/v1/chatlog', {
+  //       params: {
+  //         chatRoomId: chatroomId,
+  //       },
+  //     });
+  //     setData(res.data.data.chatLog);
+  //   } catch (error) {
+  //     console.error('HTTP 요청 중 오류 발생:', error);
+  //   }
+  // };
 
-// const stompDisConnect = () => {
-//     try {
-//       stomp.debug = null;
-//       stomp.disconnect(() => {
-//         stomp.unsubscribe("sub-0");
-//       }, token);
-//     } catch (err) {
+  // Send message through WebSocket
+  const sendMessage = async (formattedTime) => {
+    const newMessage = {
+      senderId: myId,
+      chatContent: text,
+      sendAt: formattedTime,
+    };
+    stomp.send(`/ws/${chatroomId}`, {}, JSON.stringify(newMessage));
+    setText('');
+  };
 
-//     }
-//   };
-// //웹소켓 disconnect-unsubscribe 부분
-// // 웹소켓을 disconnect을 따로 해주지 않으면 계속 연결되어 있어서 사용하지 않을때는 꼭 연결을 끊어주어야한다.
-
-// const SendMessage = () => {
-//     stomp.debug = null;
-//     const data = {
-//       type: "TALK",
-//       roomId: roomId,
-//       sender: sender_nick,
-//       message: message,
-//       createdAt: now,
-//     };
-//   //예시 - 데이터 보낼때 json형식을 맞추어 보낸다.
-//     stomp.send("/pub/chat/message", token, JSON.stringify(data));
-//   };
+  return {
+    data,
+    text,
+    setText,
+    sendMessage,
+  };
+}

@@ -1,6 +1,7 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
 import Header from './components/header/Header';
+import GlobalFonts from './fonts/index.js';
 import AuthLayout from './pages/auth/AuthLayout';
 // import MentiAuthLayout from './pages/auth/menti/MentiAuthLayout';
 import ChatRoomLayout from './pages/chat/ChatRoomLayout';
@@ -60,6 +61,7 @@ export default App;
 const Root = () => {
   return (
     <>
+      <GlobalFonts />
       <Header />
       <main>
         <Outlet />

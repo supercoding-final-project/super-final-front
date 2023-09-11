@@ -1,5 +1,7 @@
 import { styled } from 'styled-components';
 
+import { theme } from '@/globalLayout/GlobalStyle';
+
 export const ChatBox = styled.div`
   flex-direction: column;
   width: 70%;
@@ -48,11 +50,10 @@ export const MsgBox = styled.div`
 `;
 
 export const TextBox = styled.div`
-  background: #fff;
   border-radius: 0.625rem;
   padding: 0.7rem;
   margin-top: 0.5rem;
-  background-color: ${(props) => (props.send ? '#29cc61' : 'white')};
+  background-color: ${(props) => (props.send ? `${theme.color.point}` : '#EDFCF3')};
   color: ${(props) => (props.send ? 'white' : 'black')};
 `;
 
@@ -85,7 +86,7 @@ export const ChattingBarWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 70%;
-  background-color: #f2f2f2;
+  background-color: white;
   height: 9rem;
   padding-bottom: 1rem;
 `;
@@ -96,7 +97,7 @@ export const ChattingBar = styled.textarea`
   width: 80%;
   height: 100%;
   border: 1px solid #bdbdbd;
-  background-color: #f2f2f2;
+  background-color: white;
   border-radius: 0.5rem;
 
   &::placeholder {
@@ -118,7 +119,7 @@ export const SendBtn = styled.button`
   margin: 1rem;
   border-radius: 0.25rem;
   overflow: hidden;
-  background-color: #29cc61;
+  background-color: ${theme.color.point};
   color: white;
   svg {
     width: 100%;
@@ -144,7 +145,7 @@ export const VideoChatBtn = styled.button`
   margin: 1rem;
   border-radius: 0.25rem;
   overflow: hidden;
-  background-color: #29cc61;
+  background-color: ${theme.color.point};
   color: white;
   svg {
     width: 100%;
@@ -161,27 +162,57 @@ export const NoChatListWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 25%;
   height: 100vh;
-  border-right: 1px solid #bdbdbd;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.5rem;
+  margin: 2rem;
 `;
 
 export const NoChatListBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: grey;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+`;
+
+export const TextSpan = styled.span`
+  color: ${(props) => props.color};
+  font-weight: bold;
+`;
+
+export const NoChatListDetail = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+`;
+
+export const NoChatBtn = styled.button`
+  width: auto;
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 1rem;
+  background-color: ${theme.color.point};
+  color: white;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  border: none;
+  font-family: 'Pretendard', sans-serif;
 `;
 
 export const NoChatBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 75%;
   height: 100vh;
   font-size: 2rem;
-  color: grey;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.5rem;
+  margin: 2rem;
 `;
 // export const ChattingBarWrapper = styled.div`
 //   position: sticky;

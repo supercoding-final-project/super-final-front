@@ -2,5 +2,5 @@
 // 해당 파일에 추가한 컴포넌트 이름은 common/Icon.jsx에 추가하기
 
 export { ReactComponent as MarkDown } from './markDownIcon.svg';
-
+export { ReactComponent as SmileEmoji } from './smile-emoji.svg';
 export { ReactComponent as VideoChat } from './video-chat-btn.svg';
