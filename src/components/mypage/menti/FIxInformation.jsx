@@ -1,15 +1,12 @@
 
 import axios from 'axios';
 import { useState } from 'react'
-import * as S from "src/pages/my/mentiMyLayout.style";
-
-import LabelInputbox from "./LabelInputbox";
-import LabelValuebox from "./LabelValuebox";
+import * as S from "src/pages/my/mentiMyLayout.style"
 
 
-const FIxInformation = () => {
+const FixInformation = ({ User }) => {
     const [enterNickanme, setEnterNickname] = useState(false)
-    const [nicknameValue, setNicknameValue] = useState("");
+    const [nicknameValue, setNicknameValue] = useState(User.nickname);
     // const [,] = useState()
     // const [fixNickname, setFixNickname] = useState('')
 
@@ -27,39 +24,52 @@ const FIxInformation = () => {
         )
     }
 
-    const usernickname = "하츠네미쿠"
-
+    const NickNameFixHandler = () => {
+        setEnterNickname(prev => !prev)
+    }
+    const EnteredNickNameCheck = (event) => {
+        let enteredNickName = event.target.value
+        //특수문자체크
+        const pattern = /[~!@#\\#$%<>^&*\s]/;
+        const check = enteredNickName.trim()
+        if (pattern.test(check)) {
+            console.log("첫글자 특문이거나 공백임 이거안됨")
+        } else {
+            console.log("ㅇㅋ 통과")
+            setNicknameValue(enteredNickName.trim())
+        }
+    }
+    const keyEnter = (event) => {
+        if (event.key === "Enter") {
+            setEnterNickname(prev => !prev)
+        }
+    }
+    const blurBox = () => {
+        setEnterNickname(false)
+    }
+    const saveNickName = () => {
+        console.log("저장버튼")
+        return
+    }
     return (
         <>
-            <S.FIxInformationContainer>
-                <div>
-
-                </div>
-
+            <S.FixInformationContainer>
                 {enterNickanme ?
-                    <S.DivFlex>
-                        <LabelInputbox label={"닉네임"} setEnterNickname={setEnterNickname} setNicknameValue={setNicknameValue} ></LabelInputbox>
-                        <S.FixButton onClick={() => duplicateCheck(nicknameValue)}>중복확인</S.FixButton>
-                    </S.DivFlex>
+                    <S.FixInformationBox>
+                        <S.FixInformationLabel>닉네임</S.FixInformationLabel>
+                        <S.FixInformationMentiNameInput placeholder='변경할 아이디를 입력해주세요' onChange={EnteredNickNameCheck} onKeyDown={keyEnter} onBlur={blurBox} autoFocus></S.FixInformationMentiNameInput>
+                        <S.NickNameFixButton>저장</S.NickNameFixButton>
+                    </S.FixInformationBox>
                     :
-                    <S.DivFlex>
-                        <LabelValuebox label={"닉네임"} description={usernickname} setEnterNickname={setEnterNickname}></LabelValuebox>
-                        <S.FixButton>중복확인</S.FixButton>
-                    </S.DivFlex>
+                    <S.FixInformationBox>
+                        <S.FixInformationLabel>닉네임</S.FixInformationLabel>
+                        <S.FixInformationMentiName onClick={NickNameFixHandler}>{nicknameValue}</S.FixInformationMentiName>
+                        <S.NickNameFixButton onClick={saveNickName}>저장</S.NickNameFixButton>
+                    </S.FixInformationBox>
                 }
-
-                <LabelValuebox label={"이메일"} description={"MIKU@MIKU.COM"}></LabelValuebox>
-                <LabelValuebox label={"비밀번호"} description={"하츠네미쿠"}></LabelValuebox>
-                <LabelValuebox label={"닉네임"} description={"하츠네미쿠"}></LabelValuebox>
-
-
-                <S.FixButton>회원정보수정하기</S.FixButton>
-
-            </S.FIxInformationContainer>
+            </S.FixInformationContainer>
 
         </>
     );
 };
-
-export default FIxInformation;
-
+export default FixInformation;
