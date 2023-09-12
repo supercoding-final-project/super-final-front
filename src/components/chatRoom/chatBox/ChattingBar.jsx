@@ -1,20 +1,27 @@
-import { Icon } from '@/components/common/icon/Icon';
+import { Icon } from 'src/components/common/icon/Icon';
+
 import * as S from './chatBox.style';
 
-const ChattingBar = () => {
+const ChattingBar = (props) => {
+  const handleKeyUp = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      props.sendHandler();
+    }
+  };
+
   return (
     <S.ChattingBarWrapper>
-      <S.ChattingBar placeholder="Message..."></S.ChattingBar>
-      <S.SendBtnWrapper>
-        <S.SendBtn type="submit">
-          <Icon name="Send" size={40} />
-        </S.SendBtn>
-      </S.SendBtnWrapper>
-      <S.SendBtnWrapper>
-        <S.SendBtn>
-          <Icon name="MarkDown" size={40} color="white" />
-        </S.SendBtn>
-      </S.SendBtnWrapper>
+      <S.ChattingBar
+        placeholder="메시지를 입력해주세요."
+        onChange={props.chatHandler}
+        onKeyUp={handleKeyUp}
+        value={props.text}
+      />
+      <S.VideoChatBtn>
+        <Icon name="VideoChat" size={40}></Icon>
+      </S.VideoChatBtn>
+      <S.SendBtn onClick={props.sendHandler}>전송</S.SendBtn>
     </S.ChattingBarWrapper>
   );
 };

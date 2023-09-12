@@ -1,17 +1,47 @@
+import { useEffect, useRef } from 'react';
+import { useChatSocket } from 'src/api/chatSocket';
+import { useFormattedTime } from 'src/hooks/useFormattedTime';
+
 import * as S from './chatBox.style';
-import chatLog from './chatBoxMock';
 import ChattingBar from './ChattingBar';
 import MsgCard from './MsgCard';
 
-const ChatBox = () => {
+const ChatBox = (props) => {
+  const { formattedTime, updateFormattedTime } = useFormattedTime();
+  const cardEndRef = useRef(null);
+  const myId = 3;
+
+  const { data, text, setText, sendMessage } = useChatSocket(props.chatinfo.chatroomId, myId);
+
+  const chatHandler = (e) => {
+    updateFormattedTime();
+    setText(e.target.value);
+  };
+
+  const sendHandler = () => {
+    sendMessage(formattedTime);
+  };
+
+  useEffect(() => {
+    cardEndRef.current.scrollIntoView();
+  }, [data]);
+
   return (
     <S.ChatBox>
       <S.ChatContainer>
-        {chatLog.map((log, index) => (
-          <MsgCard key={index} log={log} />
+        {data.map((log, index) => (
+          <MsgCard
+            handler={props.profileHandler}
+            key={index}
+            log={log}
+            profileImg={props.chatinfo.profileImg}
+            myId={myId}
+            name={props.chatinfo.partnerName}
+          />
         ))}
+        <div ref={cardEndRef}></div>
       </S.ChatContainer>
-      <ChattingBar />
+      <ChattingBar chatHandler={chatHandler} sendHandler={sendHandler} text={text} />
     </S.ChatBox>
   );
 };
