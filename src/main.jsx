@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
 
 import App from './App.jsx';
-import ToastProvider from './components/globalLayout/ToastProvider.jsx';
+import ToastProvider from './globalLayout/ToastProvider.jsx';
 
 const queryClient = new QueryClient();
 

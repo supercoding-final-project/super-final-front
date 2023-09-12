@@ -1,6 +1,6 @@
 import * as S from './Header.style';
-import logo from '../../logo.svg';
 import search_main from '../../assets/search_main.svg';
+import logo from '../../logo.svg';
 
 const Header = () => {
   return (
