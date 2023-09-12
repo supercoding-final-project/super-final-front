@@ -1,9 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import GlobalStyle from './components/globalLayout/globalStyle';
+// import Header from './components/header/Header';
 import AuthLayout from './pages/auth/AuthLayout';
-// import MentiAuthLayout from './pages/auth/menti/MentiAuthLayout';
-import MentoAuthLayout from './pages/auth/mento/MentoAuthLayout';
 import ChatListLayout from './pages/chat/ChatListLayout';
 import ChatRoomLayout from './pages/chat/ChatRoomLayout';
 import NotFoundLayout from './pages/error/NotFoundLayout';
@@ -11,7 +10,6 @@ import MainLayout from './pages/main/MainLayout';
 import MentoMainLayout from './pages/main/MentoMainLayout';
 import MentiMyLayout from './pages/my/MentiMyLayout';
 import MentoMyLayout from './pages/my/MentoMyLayout';
-import Header from './components/header/Header';
 
 function App() {
   return (
@@ -22,8 +20,6 @@ function App() {
         <Route path="/" element={<MainLayout />} />
         <Route path="/mento" element={<MentoMainLayout />} />
         <Route path="/auth" element={<AuthLayout />} />
-        {/* <Route path="/auth/menti" element={<MentiAuthLayout />} /> */}
-        <Route path="/auth/mento" element={<MentoAuthLayout />} />
         {/* {/ path 경로는 pages의 폴더 이름으로 /} */}
         <Route path="/chatroom" element={<ChatRoomLayout />} />
         <Route path="/my/menti" element={<MentiMyLayout />} />
