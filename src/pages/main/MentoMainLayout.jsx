@@ -3,6 +3,7 @@
 import Button from 'src/components/common/Button';
 import MainCard from 'src/components/mento/MainCard';
 import Statistics from 'src/components/mento/Statistics';
+
 import * as S from './mentoMain.style';
 
 const MentoMainLayout = () => {

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import { css } from 'styled-components';
-
 import * as icon from 'src/assets';
+import { css } from 'styled-components';
 
 //사용 예시
 // <Icon name="iconName" size={size} />
@@ -33,7 +32,17 @@ export const Icon = ({ name, size, color, fill, style, ...rest }) => {
 
 Icon.propTypes = {
   // 이 부분에 사용할 아이콘 컴포넌트명 추가
-  name: PropTypes.oneOf(['LeftArrow', 'Send', 'MarkDown', 'Call', 'NavBar']).isRequired,
+  name: PropTypes.oneOf([
+    'MarkDown',
+    'VideoChat',
+    'SmileEmoji',
+    'LeftArrow',
+    'Send',
+    'MarkDown',
+    'Call',
+    'Close',
+    'NavBar',
+  ]).isRequired,
   size: PropTypes.number,
   color: PropTypes.string,
   fill: PropTypes.string,

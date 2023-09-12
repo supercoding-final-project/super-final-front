@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-
 import Chip from 'src/components/auth/auth-chip/Chip';
 import Input from 'src/components/auth/auth-input/Input';
 import RegisterButton from 'src/components/auth/auth-register/RegisterButton';
+
 import * as S from './Menti.style';
 
 const MentiAuth = () => {
