@@ -1,68 +1,24 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import LoadingSpinner from './LoadingSpinner';
+import * as S from './Modal.style';
 
-// import ModalProps from './ModalCard';
-// import { SearchModalWrapper } from './stSearchModal';
+const Modal = ({ setShowModal, children }) => {
+  const [isLoading, setIsloading] = useState(false);
 
-export const Modal = () => {
-  const [showModal, setShowModal] = useState(false);
-
-  const modalOpen = () => {
-    setShowModal(true);
+  const handleCloseModal = () => {
+    document.body.style.overflowY = 'auto';
+    setShowModal(false);
   };
 
   return (
-    <>
-      <button onClick={modalOpen}>클릭</button>
-
-      {showModal && <ModalProps setShowModal={setShowModal} />}
-    </>
+    <S.ModalWrapper onClick={handleCloseModal}>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        React.Children.map(children, (child) => React.cloneElement(child, { handleCloseModal }))
+      )}
+    </S.ModalWrapper>
   );
 };
 
-// export const ModalProps = ({ setShowModal }) => {
-// const [isLoading, setIsloading] = useState(false);
-//   const handlecloseModal = () => {
-//     setShowModal(false);
-//   };
-
-//   //   const handleInputEnter = () => {
-//   //     const valtrim = inputValue.trim();
-//   //     if (isKeyboardEvent(e) && e.key !== 'Enter') {
-//   //       return;
-//   //     }
-//   //     if (valtrim === '') {
-//   //       alert('검색어를 입력해 주세요.');
-//   //       return;
-//   //     }
-//   //     setIsloading(true);
-//   //     dispatch(chechControl());
-
-//   //     dispatch(getSearchItems({ keyword: inputValue }))
-//   //       .unwrap()
-//   //       .then(() => {
-//   //         setIsloading(false);
-//   //         dispatch(getKeyword(inputValue));
-//   //         dispatch(getSortType(''));
-//   //         setShowModal(false);
-//   //         navigate('/main');
-//   //       })
-//   //       .catch(() => {
-//   //         setIsloading(false);
-//   //         alert('해당 검색어에 맞는 상품이 없습니다.');
-//   //       });
-//   //   };
-
-//   return (
-//     <SearchModalWrapper onClick={handlecloseModal}>
-//       {isLoading ? (
-//         <Loading />
-//       ) : (
-//         <div className="searchmodal_box" onClick={(e) => e.stopPropagation()}>
-//           {/* <div className="search_inputinfo">
-//             <img onClick={handleInputEnter} src="/img/whitesearch.svg" alt="search" />
-//           </div> */}
-//         </div>
-//       )}
-//     </SearchModalWrapper>
-//   );
-// };
+export default Modal;
