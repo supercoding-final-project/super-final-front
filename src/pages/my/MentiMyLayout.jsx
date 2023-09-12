@@ -1,8 +1,7 @@
 import { useState } from "react";
-
-import LeftNavbar from "@/components/mypage/LeftNavbar";
-import MentiInformation from "@/components/mypage/menti/MentiInformation";
-import * as S from '@/pages/my/mentiMyLayout.style'
+import LeftNavbar from "src/components/mypage/LeftNavbar";
+import MentiInformation from "src/components/mypage/menti/MentiInformation";
+import * as S from 'src/pages/my/mentiMyLayout.style'
 const MentiMyLayout = () => {
   const [type, setType] = useState("포인트 충전")
 

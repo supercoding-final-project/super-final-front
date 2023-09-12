@@ -1,8 +1,7 @@
 import { useState } from "react";
-
-import LeftNavbar from "@/components/mypage/LeftNavbar";
-import MentoInformation from "@/components/mypage/mento/MentoInformation";
-import * as S from '@/pages/my/mentoMyLayout.style'
+import LeftNavbar from "src/components/mypage/LeftNavbar";
+import MentoInformation from "src/components/mypage/mento/MentoInformation";
+import * as S from 'src/pages/my/mentoMyLayout.style'
 const MentoMyLayout = () => {
   const [type, setType] = useState("예약 시간 설정")
 
