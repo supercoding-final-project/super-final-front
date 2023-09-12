@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 
+import Calendar from 'src/components/mypage/Calendar';
+import InformationHead from 'src/components/mypage/InformationHead';
+import ChargePoint from 'src/components/mypage/menti/ChargePoint';
+import FixInformation from 'src/components/mypage/menti/FixInformation';
 import * as S from 'src/pages/my/mentiMyLayout.style'
-
-import Calendar from '@/components/mypage/Calendar';
-import InformationHead from '@/components/mypage/InformationHead';
-import ChargePoint from '@/components/mypage/menti/ChargePoint';
-import FixInformation from '@/components/mypage/menti/FixInformation';
 
 
 const Information = ({ informationtype, navtype, User }) => {

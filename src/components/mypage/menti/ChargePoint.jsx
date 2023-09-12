@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react'
-
-import * as S from "@/pages/my/mentiMyLayout.style"
+import * as S from "src/pages/my/mentiMyLayout.style"
 const ChargePoint = () => {
     const [cash, setCash] = useState(0)
     const [vip, setVip] = useState(false)

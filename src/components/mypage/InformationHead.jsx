@@ -1,4 +1,4 @@
-import * as S from '@/pages/my/mentiMyLayout.style'
+import * as S from 'src/pages/my/mentiMyLayout.style'
 
 const InformationHead = ({ text }) => {
     return (

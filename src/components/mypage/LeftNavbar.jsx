@@ -2,10 +2,9 @@
 // import React from 'react';
 
 // import { useState } from 'react';
+import LeftNavbar_Items from 'src/components/mypage/LeftNavbar_Items';
+import LeftNavbarHead from "src/components/mypage/LeftNavbarHead"
 import * as S from 'src/pages/my/mentiMyLayout.style';
-
-import LeftNavbar_Items from '@/components/mypage/LeftNavbar_Items';
-import LeftNavbarHead from "@/components/mypage/LeftNavbarHead"
 
 const LeftNavbar = ({ navItemHandler, navtype, User }) => {
     const navItemLists = Object.keys(navtype)

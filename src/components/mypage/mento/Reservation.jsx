@@ -1,6 +1,5 @@
 import { useState } from 'react'
-
-import * as S from "@/components/mypage/mento/Reservation.style"
+import * as S from "src/components/mypage/mento/Reservation.style"
 
 const Reservation = () => {
     const reservationTime = [

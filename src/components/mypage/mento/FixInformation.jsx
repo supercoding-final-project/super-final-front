@@ -1,8 +1,7 @@
 
 import axios from 'axios';
 import { useRef, useState } from 'react'
-
-import * as S from "@/pages/my/mentoMyLayout.style"
+import * as S from "src/pages/my/mentoMyLayout.style"
 
 
 const FixInformation = ({ User, }) => {

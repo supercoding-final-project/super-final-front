@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { useState } from 'react';
+import { DivFlex as S_DivFlex } from 'src/pages/my/mentiMyLayout.style';
 
-import { DivFlex as S_DivFlex } from '@/pages/my/mentiMyLayout.style';
 import * as S from "./Calendar.style"
 
 

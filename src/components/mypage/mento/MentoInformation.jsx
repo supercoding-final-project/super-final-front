@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 
+import InformationHead from 'src/components/mypage/InformationHead';
+import FixInformation from 'src/components/mypage/mento/FixInformation';
+import Reservation from 'src/components/mypage/mento/Reservation';
 import * as S from 'src/pages/my/mentoMyLayout.style'
-
-import InformationHead from '@/components/mypage/InformationHead';
-import FixInformation from '@/components/mypage/mento/FixInformation';
-import Reservation from '@/components/mypage/mento/Reservation';
 
 
 
