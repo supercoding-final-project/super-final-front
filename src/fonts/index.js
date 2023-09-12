@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 import PretendardWoff2 from './PretendardVariable.woff2';
 
@@ -10,4 +11,8 @@ export default createGlobalStyle`
     body {
         font-family: 'Pretendard', sans-serif; 
     }
+
+    ${reset}
+
+    
 `;
