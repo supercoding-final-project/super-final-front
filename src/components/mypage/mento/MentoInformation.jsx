@@ -4,6 +4,7 @@ import * as S from 'src/pages/my/mentoMyLayout.style'
 
 import InformationHead from '@/components/mypage/InformationHead';
 import FixInformation from '@/components/mypage/mento/FixInformation';
+import Reservation from '@/components/mypage/mento/Reservation';
 
 
 
@@ -47,7 +48,7 @@ const MentoInformation = ({ informationtype, navtype, User }) => {
                         <S.InformationBox>
                             <InformationHead text={navtype.reservation} />
                         </S.InformationBox>
-
+                        <Reservation></Reservation>
                     </S.DivFlexColumn>
                 </S.InformationContainer>
             </>

@@ -4,7 +4,7 @@ import LeftNavbar from "@/components/mypage/LeftNavbar";
 import MentoInformation from "@/components/mypage/mento/MentoInformation";
 import * as S from '@/pages/my/mentoMyLayout.style'
 const MentoMyLayout = () => {
-  const [type, setType] = useState("멘토 정보 수정")
+  const [type, setType] = useState("예약 시간 설정")
 
   const navtype = {
     borad: "등록한 포스트",
