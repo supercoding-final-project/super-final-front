@@ -1,4 +1,4 @@
-import chat from '@/assets/chat.svg';
+import chat from 'src/assets/chat.svg';
 
 const NoChat = () => {
   return (

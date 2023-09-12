@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import Chip from '@/components/auth/auth-chip/Chip';
-import Input from '@/components/auth/auth-input/Input';
-import RegisterButton from '@/components/auth/auth-register/RegisterButton';
+import Chip from 'src/components/auth/auth-chip/Chip';
+import Input from 'src/components/auth/auth-input/Input';
+import RegisterButton from 'src/components/auth/auth-register/RegisterButton';
 import * as S from './Mento.style';
 
 const MentoAuth = () => {

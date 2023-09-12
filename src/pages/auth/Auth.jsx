@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
-import googlePath from '@/assets/google-logo.svg';
-import kakaoPath from '@/assets/kakao-logo.svg';
-import logoPath from '@/assets/login-logo.svg';
-import Button from '@/components/auth/auth-button/Button';
+import googlePath from 'src/assets/google-logo.svg';
+import kakaoPath from 'src/assets/kakao-logo.svg';
+import logoPath from 'src/assets/login-logo.svg';
+import Button from 'src/components/auth/auth-button/Button';
 import * as S from './Auth.style';
 
 const Auth = () => {

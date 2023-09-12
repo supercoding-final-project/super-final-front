@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { css } from 'styled-components';
 
-import * as icon from '@/assets';
+import * as icon from 'src/assets';
 
 //사용 예시
 // <Icon name="iconName" size={size} />

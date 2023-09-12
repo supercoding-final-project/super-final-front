@@ -1,6 +1,6 @@
 import * as S from './Header.style';
 import logo from '../../logo.svg';
-import { Icon } from '@/components/common/icon/Icon';
+import { Icon } from 'src/components/common/icon/Icon';
 
 const Header = () => {
   return (

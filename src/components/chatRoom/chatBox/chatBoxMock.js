@@ -1,4 +1,4 @@
-import mento from '@/assets/chatMock/mento.png';
+import mento from 'src/assets/chatMock/mento.png';
 
 const chatLog = [
   {

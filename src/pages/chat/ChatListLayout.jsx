@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 
-import search from '@/assets/search.svg';
+import search from 'src/assets/search.svg';
 import * as S from './chat.style';
 import NoChat from '../../components/chatRoom/NoChat';
 

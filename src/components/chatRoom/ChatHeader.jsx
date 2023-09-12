@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { Icon } from '@/components/common/icon/Icon';
+import { Icon } from 'src/components/common/icon/Icon';
 import * as S from './chatHeader.style';
 
 const ChatHeader = () => {
