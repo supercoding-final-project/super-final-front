@@ -1,8 +1,9 @@
 // import { useNavigate } from 'react-router-dom';
 
-import Button from '@/components/common/Button';
-import MainCard from '@/components/mento/MainCard';
-import Statistics from '@/components/mento/Statistics';
+import Button from 'src/components/common/Button';
+import MainCard from 'src/components/mento/MainCard';
+import Statistics from 'src/components/mento/Statistics';
+
 import * as S from './mentoMain.style';
 
 const MentoMainLayout = () => {

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { DivFlex as S_DivFlex } from 'src/pages/my/mentiMyLayout.style';
 
+
 import * as S from "./Calendar.style"
 
 
@@ -25,44 +26,43 @@ function Calendar({ User }) {
     //그 달의 날짜수 (마지막날을 체크함)
     const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
 
-    //첫주의 시작요일
-    const startingDayOfWeek = firstDayOfMonth.getDay();
-    //날짜 배열 생성
-    const calendarDays = [];
 
-    for (let i = 0; i < startingDayOfWeek; i++) {
-        calendarDays.push(null);
-    }
+  //첫주의 시작요일
+  const startingDayOfWeek = firstDayOfMonth.getDay();
+  //날짜 배열 생성
+  const calendarDays = [];
 
-    for (let i = 1; i <= daysInMonth; i++) {
-        calendarDays.push(i);
-    }
-    //이전달로 가기 버튼
-    const previousMonth = () => {
-        //3달만 볼수있게함
-        if (currentDate.getMonth() === (ThisMonth - 2)) {
-            return
-        }
-        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1)
-        )
-    }
-    //다음달로 가기 버튼
-    const nextMonth = () => {
-        if (currentDate.getMonth() === (ThisMonth + 2)) {
-            return
-        }
-        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1)
-        )
-    }
+  for (let i = 0; i < startingDayOfWeek; i++) {
+    calendarDays.push(null);
+  }
 
-    // 모달창열기
-    const openModalHandler = () => {
-        setIsOpenModal(true)
+  for (let i = 1; i <= daysInMonth; i++) {
+    calendarDays.push(i);
+  }
+  //이전달로 가기 버튼
+  const previousMonth = () => {
+    //3달만 볼수있게함
+    if (currentDate.getMonth() === ThisMonth - 2) {
+      return;
     }
-    // 모달창닫기
-    const closeModalHandler = () => {
-        setIsOpenModal(false)
+    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() - 1));
+  };
+  //다음달로 가기 버튼
+  const nextMonth = () => {
+    if (currentDate.getMonth() === ThisMonth + 2) {
+      return;
     }
+    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1));
+  };
+
+  // 모달창열기
+  const openModalHandler = () => {
+    setIsOpenModal(true);
+  };
+  // 모달창닫기
+  const closeModalHandler = () => {
+    setIsOpenModal(false);
+  };
 
 
     //달력에 해당하는 유저의 정보를 넣는 프로그램 ㄱㄱ!***************************************************************************
@@ -242,5 +242,3 @@ function Calendar({ User }) {
 }
 
 export default Calendar;
-
-
