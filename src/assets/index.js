@@ -5,3 +5,4 @@ export { ReactComponent as LeftArrow } from './leftArrow.svg';
 export { ReactComponent as Send } from './sendIcon.svg';
 export { ReactComponent as MarkDown } from './markDownIcon.svg';
 export { ReactComponent as Call } from './callIcon.svg';
+export { ReactComponent as NavBar } from './navBar.svg';

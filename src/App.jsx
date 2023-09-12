@@ -17,6 +17,7 @@ function App() {
   return (
     <Router>
       <GlobalStyle />
+      <Header />
       <Routes>
         {/* /* {mento ? <Route path="/Mento" element={<MentoMainLayout />} /> :<Route path="/" element={<MainLayout />} /> } */}
         <Route path="/" element={<MainLayout />} />
