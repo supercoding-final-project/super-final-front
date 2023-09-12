@@ -1,4 +1,5 @@
-import ClosePath from '@/assets/close.svg';
+import ClosePath from 'src/assets/close.svg';
+
 import * as S from './Auth.style';
 
 const Auth = () => {
