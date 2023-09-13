@@ -51,8 +51,8 @@ const MainCard = () => {
       </S.MainCard>
       {/* 모달이 열리는 위치에 필요한 코드 3/3 - <Modal></Modal> 사이에는 클릭시 열릴 모달의 콘텐츠를 import */}
       {showModal && (
-        <Modal setShowModal={setShowModal}>
-          <ModalMainCard width="670px" height="500px" />
+        <Modal width="670px" height="500px" setShowModal={setShowModal}>
+          <ModalMainCard />
         </Modal>
       )}
     </>
