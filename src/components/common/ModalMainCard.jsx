@@ -1,4 +1,3 @@
-import React from 'react';
 import * as S from './Modal.style';
 import ModalCloseBtn from './ModalCloseBtn';
 

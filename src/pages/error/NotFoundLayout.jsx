@@ -1,5 +1,11 @@
+import PostBox from 'src/components/post/PostBox';
+
 const NotFoundLayout = () => {
-  return <div></div>;
+  return (
+    <>
+      <PostBox />
+    </>
+  );
 };
 
 export default NotFoundLayout;
