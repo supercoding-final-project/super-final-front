@@ -41,6 +41,7 @@ Icon.propTypes = {
     'MarkDown',
     'Call',
     'Close',
+    'NavBar',
   ]).isRequired,
   size: PropTypes.number,
   color: PropTypes.string,
