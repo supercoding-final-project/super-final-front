@@ -20,6 +20,7 @@ export const HeaderWrap = styled.div`
       align-items: center;
       justify-content: flex-start;
       div {
+        cursor: pointer;
         color: ${theme.color.grey4};
         font-size: 20px;
         font-weight: 200;
@@ -49,6 +50,7 @@ export const HeaderWrap = styled.div`
         gap: 20px;
         align-items: center;
         & > .menu {
+          cursor: pointer;
           color: ${theme.color.grey1};
           text-align: center;
           font-size: 20px;
