@@ -1,10 +1,33 @@
 // import Button from '@/components/common/Button';
 // import Header from '@/components/header/Header';
+import axios from 'axios';
+import { useEffect } from 'react';
+
 import * as S from './Main.style.jsx';
 import MainCard from './MainCard';
 import banner_main from '../../assets/banner_main.png';
 
 const MainLayout = () => {
+  useEffect(() => {
+    const params = new URL(document.location.toString()).searchParams;
+    console.log(params);
+    const code = params.get('code');
+    console.log(code);
+
+    axios
+      .get(`${import.meta.env.VITE_BASE_URL}/api/v1/auth/login/kakao`, {
+        params: {
+          code: code,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <>
       {/* <Button text={'text 입니다.'} bgcolor={'#1A6DFF'} fontcolor={'white'} />
