@@ -1,3 +1,4 @@
+import { theme } from 'src/globalLayout/GlobalStyle';
 import styled from 'styled-components';
 
 export const ModalWrapper = styled.div`
@@ -34,10 +35,20 @@ export const ModalCard = styled.div`
   overflow-y: auto;
   border-radius: 20px;
   padding: 40px;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    /* background: ${theme.color.grey4}; */
+    background: transparent;
+  }
 `;
 export const CloseBtn = styled.div`
-  position: absolute;
-  top: 40px;
-  right: 40px;
+  position: sticky;
+  top: 0;
+  right: 0;
   cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
 `;

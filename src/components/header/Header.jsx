@@ -6,14 +6,16 @@ import * as S from './Header.style';
 import logo from '../../logo.svg';
 import Modal from '../common/Modal';
 import { Link } from 'react-router-dom';
-import PostBox from '../post/PostBox';
+import ModalPostBox from '../common/ModalPostBox';
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
 
-  const moodalHandler = () => {
+  const handleModalOpen = () => {
     setShowModal(true);
+    document.body.style.overflowY = 'hidden';
   };
+
   return (
     <S.HeaderWrap>
       <div className="nav-wrapper">
@@ -31,7 +33,7 @@ const Header = () => {
             </Link>
           </S.Logo>
           <div className="header-menu">
-            <div className="menu" onClick={moodalHandler}>
+            <div className="menu" onClick={handleModalOpen}>
               포스팅 작성
             </div>
             <div className="menu">
@@ -51,7 +53,7 @@ const Header = () => {
       </div>
       {showModal && (
         <Modal setShowModal={setShowModal} width="660px" height="760px">
-          <PostBox />
+          <ModalPostBox />
         </Modal>
       )}
     </S.HeaderWrap>
