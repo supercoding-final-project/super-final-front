@@ -17,7 +17,7 @@ const MainLayout = () => {
     console.log(code);
 
     axios
-      .get(`/api/v1/auth/login/kakao`, {
+      .get(`${import.meta.env.VITE_BASE_URL}/api/v1/auth/login/kakao`, {
         params: {
           code: code,
         },
