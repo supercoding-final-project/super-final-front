@@ -6,7 +6,7 @@ import * as S from './Header.style';
 import logo from '../../logo.svg';
 import Modal from '../common/Modal';
 import { Link } from 'react-router-dom';
-import ModalPostBox from '../common/ModalPostBox';
+// import PostBox from '../post/PostBox';
 
 const Header = () => {
   const [showModal, setShowModal] = useState(false);
@@ -53,7 +53,7 @@ const Header = () => {
       </div>
       {showModal && (
         <Modal setShowModal={setShowModal} width="660px" height="760px">
-          <ModalPostBox />
+          <PostBox />
         </Modal>
       )}
     </S.HeaderWrap>

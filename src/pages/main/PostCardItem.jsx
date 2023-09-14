@@ -1,20 +1,9 @@
 import Button from 'src/components/common/Button';
 import * as S from './MainCardItem.style';
-import { useState } from 'react';
-import Modal from 'src/components/common/Modal';
-import ModalCardBox from 'src/components/common/ModalCardBox';
 import { theme } from 'src/globalLayout/GlobalStyle';
 import { Link } from 'react-router-dom';
 
 const PostCardItem = () => {
-  // 모달이 열리는 위치에 필요한 코드 1/3
-  const [showModal, setShowModal] = useState(false);
-  // 모달이 열리는 위치에 필요한 코드 2/3
-  const handleModalOpen = () => {
-    setShowModal(true);
-    document.body.style.overflowY = 'hidden';
-  };
-
   return (
     <>
       <S.MainCardItem>
@@ -44,20 +33,12 @@ const PostCardItem = () => {
           <Link to="/chatroom">
             <Button text={'문의하기'} bgcolor={theme.color.point} fontcolor={theme.color.bgc1} />
           </Link>
-          <Button
-            text={'상세보기'}
-            bgcolor={theme.color.point}
-            fontcolor={theme.color.bgc1}
-            onClick={handleModalOpen}
-          />
+          {/* <Link to=`/detail/${postId}`> */}
+          <Link to="/detail">
+            <Button text={'상세보기'} bgcolor={theme.color.point} fontcolor={theme.color.bgc1} />
+          </Link>
         </S.MainCardButtonBox>
       </S.MainCardItem>
-      {/* 모달이 열리는 위치에 필요한 코드 3/3 - <Modal></Modal> 사이에는 클릭시 열릴 모달의 콘텐츠를 import */}
-      {showModal && (
-        <Modal width="670px" height="500px" setShowModal={setShowModal}>
-          <ModalCardBox />
-        </Modal>
-      )}
     </>
   );
 };
