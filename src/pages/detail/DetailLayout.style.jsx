@@ -91,6 +91,13 @@ export const ReviewTitle = styled.div`
 export const ReviewBox = styled.div`
   overflow: auto;
   height: 8rem;
+  &::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${theme.color.grey5};
+    border-radius: 2rem;
+  }
 `;
 
 export const ReviewCard = styled.div`

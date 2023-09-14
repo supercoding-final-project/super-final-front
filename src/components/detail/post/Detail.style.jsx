@@ -2,9 +2,9 @@ import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
 
 export const MentoProfileBox = styled.div`
-  margin-top: 4rem;
   box-shadow: 0px 1px 0px rgba(128, 126, 125, 0.4);
   padding-bottom: 2.5rem;
+
   span {
     color: ${theme.color.grey5};
   }
