@@ -7,7 +7,7 @@ import * as S from './Header.style';
 import logo from '../../logo.svg';
 import Modal from '../common/Modal';
 import PostBox from '../post/PostBox';
-import { Link } from 'react-router-dom';
+
 // import PostBox from '../post/PostBox';
 
 const Header = () => {
