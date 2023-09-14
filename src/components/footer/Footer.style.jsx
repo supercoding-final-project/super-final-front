@@ -6,7 +6,6 @@ export const FooterWrapper = styled.div`
   width: 100%;
   footer {
     display: flex;
-    width: 1440px;
     padding: 40px 80px;
     align-items: flex-start;
     gap: 160px;
