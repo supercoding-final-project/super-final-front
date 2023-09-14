@@ -61,15 +61,29 @@ const Information = ({ informationtype, navtype, User }) => {
     );
   }
 
-  if (informationtype === navtype.shoppingcart) {
+  if (informationtype === navtype.transactionHistory) {
     return (
       <>
         <S.InformationContainer>
           <S.DivFlexColumn>
             <S.InformationBox>
-              <InformationHead text={navtype.shoppingcart} />
+              <InformationHead text={navtype.transactionHistory} />
             </S.InformationBox>
-            장바구니
+            거래내역
+          </S.DivFlexColumn>
+        </S.InformationContainer>
+      </>
+    );
+  }
+  if (informationtype === navtype.ordersHistory) {
+    return (
+      <>
+        <S.InformationContainer>
+          <S.DivFlexColumn>
+            <S.InformationBox>
+              <InformationHead text={navtype.ordersHistory} />
+            </S.InformationBox>
+            주문내역
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>
