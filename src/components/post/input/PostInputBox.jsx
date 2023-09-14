@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { usePostRequest } from 'src/hooks/usePostRequest';
 
 import InputList from './InputList';
@@ -16,16 +16,19 @@ const PostInputBox = (props) => {
       if (i === inputs.length - 1 && inputs[i].trim() !== '') {
         const newInputs = [...inputs, ''];
         setInputs(newInputs);
-        updatePostData(props.recoilKey, inputs);
       }
     }
   };
 
-  const handleOnChange = (e, i) => {
-    const newInputs = [...inputs];
-    newInputs[i] = e.target.value;
-    setInputs(newInputs);
-  };
+  const handleOnChange = useCallback(
+    (e, i) => {
+      const newInputs = [...inputs];
+      newInputs[i] = e.target.value;
+      setInputs(newInputs);
+      updatePostData(props.recoilKey, newInputs);
+    },
+    [inputs],
+  );
 
   useEffect(() => {
     if (isFirstRender.current) {

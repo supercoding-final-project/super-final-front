@@ -1,35 +1,34 @@
 import * as S from './Header.style';
-import search_main from '../../assets/search_main.svg';
 import logo from '../../logo.svg';
+import { Icon } from 'src/components/common/icon/Icon';
+import { theme } from 'src/globalLayout/GlobalStyle';
 
 const Header = () => {
   return (
     <S.HeaderWrap>
-      <header>
-        <div className="header_start_menu">
+      <div className="nav-wrapper">
+        <nav>
+          <div>멘티</div>
+          <Icon name="NavBar" size={20} style={{ padding: '0 10px' }} />
+          <div className="bold">멘토</div>
+        </nav>
+      </div>
+      <div className="header-wrapper">
+        <header>
           <S.Logo>
             <img src={logo} alt="logo" />
           </S.Logo>
-          <S.Nav>
-            <div className="menu">멘토</div>
-            <div className="menu">코드리뷰</div>
-          </S.Nav>
-        </div>
-        <div className="header_end_menu">
-          <S.Nav>
-            <form>
-              <label>
-                <input type="text" />
-                <button type="button">
-                  <img src={search_main} alt="search_main" />
-                </button>
-              </label>
-            </form>
-            <div className="menu">로그인</div>
-            <div className="menu mento">멘토접속</div>
-          </S.Nav>
-        </div>
-      </header>
+          <div className="header-menu">
+            <div className="menu">포스팅 작성</div>
+            <div className="menu">채팅</div>
+            <div className="menu">마이페이지</div>
+            <div className="menu">로그아웃</div>
+            <div className="menu" style={{ color: theme.color.point }}>
+              로그인
+            </div>
+          </div>
+        </header>
+      </div>
     </S.HeaderWrap>
   );
 };

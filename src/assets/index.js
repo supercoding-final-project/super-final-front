@@ -5,3 +5,4 @@ export { ReactComponent as MarkDown } from './markDownIcon.svg';
 export { ReactComponent as Close } from './close.svg';
 export { ReactComponent as SmileEmoji } from './smile-emoji.svg';
 export { ReactComponent as VideoChat } from './video-chat-btn.svg';
+export { ReactComponent as NavBar } from './nav-bar.svg';

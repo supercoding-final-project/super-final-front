@@ -71,8 +71,9 @@ export const CareerList = styled.div`
 
 export const TitleBox = styled.div`
   margin-top: 2.5rem;
+
   input {
-    width: 50%;
+    width: 90%;
     background-color: #4c4b4a;
     border: none;
     outline: none;
@@ -97,23 +98,24 @@ export const LevelBox = styled.div`
     display: flex;
     align-items: center;
   }
+`;
 
-  button {
-    background-color: #4c4b4a;
-    color: ${theme.color.grey5};
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    border: none;
-    border: 1px solid ${theme.color.grey5};
-    border-radius: 2rem;
-    margin-right: 1rem;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    &:hover {
-      background-color: #edfcf3;
-      border: 1px solid #29cc61;
-      color: black;
-    }
+export const LevelBtn = styled.button`
+  background-color: ${({ active }) => (active ? '#edfcf3' : '#4c4b4a')};
+  color: ${({ active }) => (active ? 'black' : theme.color.grey5)};
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  border: none;
+  border: 1px solid ${({ active }) => (active ? '#29cc61' : theme.color.grey5)};
+  border-radius: 2rem;
+  margin-right: 1rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #edfcf3;
+    border: 1px solid #29cc61;
+    color: black;
   }
 `;
 
@@ -122,17 +124,19 @@ export const StackBox = styled.div`
   div {
     margin-bottom: 1rem;
   }
-  img {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 25rem;
-    margin-right: 1rem;
-    background-color: white;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    &:hover {
-      transform: scale(1.1);
-    }
+`;
+
+export const StackImg = styled.img`
+  width: 4rem;
+  height: 4rem;
+  border-radius: 25rem;
+  margin-right: 1rem;
+  background-color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  transform: ${(props) => (props.active ? 'scale(1.2)' : 'scale(1)')};
+  &:hover {
+    transform: scale(1.2);
   }
 `;
 

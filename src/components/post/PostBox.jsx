@@ -13,8 +13,8 @@ const PostBox = () => {
       <S.PostContainer>
         {/* <MentoProfile /> */}
         <PostTitle recoilKey="title" />
-        <PostLevel />
-        <StackBox />
+        <PostLevel recoilKey="level" />
+        <StackBox recoilKey="postStack" />
         <S.InputTitle>소개</S.InputTitle>
         <PostInputBox ol="업무 경력" recoilKey="workCareer" />
         <PostInputBox ol="강의 경력" recoilKey="educateCareer" />

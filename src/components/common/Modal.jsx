@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 
 import LoadingSpinner from './LoadingSpinner';
 import * as S from './Modal.style';
+import ModalCloseBtn from './ModalCloseBtn';
 
-const Modal = ({ setShowModal, children }) => {
+const Modal = ({ setShowModal, children, width, height }) => {
   const [isLoading, setIsloading] = useState(false);
 
   const handleCloseModal = () => {
@@ -13,11 +14,10 @@ const Modal = ({ setShowModal, children }) => {
 
   return (
     <S.ModalWrapper onClick={handleCloseModal}>
-      {isLoading ? (
-        <LoadingSpinner />
-      ) : (
-        React.Children.map(children, (child) => React.cloneElement(child, { handleCloseModal }))
-      )}
+      <S.ModalCard width={width} height={height} onClick={(e) => e.stopPropagation()}>
+        <ModalCloseBtn handleCloseModal={handleCloseModal} />
+        {isLoading ? <LoadingSpinner /> : React.cloneElement(children, { handleCloseModal })}
+      </S.ModalCard>
     </S.ModalWrapper>
   );
 };
