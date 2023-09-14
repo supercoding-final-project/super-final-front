@@ -1,7 +1,5 @@
-import { useRecoilState } from 'recoil';
+import ClosePath from 'src/assets/close.svg';
 
-import ClosePath from '@/assets/close.svg';
-import { loginModal } from '@/recoil/atom';
 import * as S from './Auth.style';
 
 const Auth = () => {
@@ -22,14 +20,12 @@ const Auth = () => {
     <S.Container>
       <S.Wrap>
         <S.Title>소셜 계정으로 로그인!</S.Title>
-
         <S.IconBox>
           <S.Kakao onClick={kakaoLogin} />
 
           <S.Google />
         </S.IconBox>
-
-        <S.Image src={ClosePath} alt="close" onClick={handleModal} />
+        <S.Image src={ClosePath} alt="close" />
       </S.Wrap>
     </S.Container>
   );
