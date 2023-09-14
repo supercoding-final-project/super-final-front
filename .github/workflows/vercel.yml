@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - devMain
-      
+  pull_request:
+    branches:
+      - devMain
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
