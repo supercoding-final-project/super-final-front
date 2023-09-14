@@ -1,7 +1,7 @@
 // import React from 'react';
 import { useState } from 'react';
 import Modal from 'src/components/common/Modal';
-import ModalMainCard from 'src/components/common/ModalMainCard';
+import ModalCardBox from 'src/components/common/ModalCardBox';
 
 import * as S from './Main.style';
 import chevron_right from '../../assets/chevron_right.svg';
@@ -53,7 +53,7 @@ const MainCard = () => {
       {/* 모달이 열리는 위치에 필요한 코드 3/3 - <Modal></Modal> 사이에는 클릭시 열릴 모달의 콘텐츠를 import */}
       {showModal && (
         <Modal width="670px" height="500px" setShowModal={setShowModal}>
-          <ModalMainCard />
+          <ModalCardBox />
         </Modal>
       )}
     </>

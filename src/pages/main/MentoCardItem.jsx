@@ -2,7 +2,7 @@ import Button from 'src/components/common/Button';
 import * as S from './MainCardItem.style';
 import { useState } from 'react';
 import Modal from 'src/components/common/Modal';
-import ModalMainCard from 'src/components/common/ModalMainCard';
+import ModalCardBox from 'src/components/common/ModalCardBox';
 import { theme } from 'src/globalLayout/GlobalStyle';
 import { Icon } from 'src/components/common/icon/Icon';
 import { Link } from 'react-router-dom';
@@ -58,7 +58,7 @@ const MentoCardItem = () => {
       {/* 모달이 열리는 위치에 필요한 코드 3/3 - <Modal></Modal> 사이에는 클릭시 열릴 모달의 콘텐츠를 import */}
       {showModal && (
         <Modal width="670px" height="500px" setShowModal={setShowModal}>
-          <ModalMainCard />
+          <ModalCardBox />
         </Modal>
       )}
     </>

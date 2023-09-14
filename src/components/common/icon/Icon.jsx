@@ -43,6 +43,7 @@ Icon.propTypes = {
     'Close',
     'NavBar',
     'Search',
+    'Star',
   ]).isRequired,
   size: PropTypes.number,
   color: PropTypes.string,
