@@ -11,12 +11,12 @@ export const theme = {
     grey4: '#807e7d',
     grey5: '#CCCBCA',
     point: '#29cc61',
-    sub1: 'a7f2c1',
-    sub2: 'b9f5cd',
-    sub3: 'caf7da',
-    sub4: 'dcfae6',
-    sub5: 'edfcf3',
-    antipode: 'cc2e29',
+    sub1: '#a7f2c1',
+    sub2: '#b9f5cd',
+    sub3: '#caf7da',
+    sub4: '#dcfae6',
+    sub5: '#edfcf3',
+    antipode: '#cc2e29',
   },
 };
 

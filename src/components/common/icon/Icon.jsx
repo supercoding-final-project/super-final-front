@@ -42,6 +42,7 @@ Icon.propTypes = {
     'Call',
     'Close',
     'NavBar',
+    'Search',
   ]).isRequired,
   size: PropTypes.number,
   color: PropTypes.string,
