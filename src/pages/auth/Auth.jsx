@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect } from 'react';
 
 import * as S from './Auth.style';
@@ -19,6 +20,22 @@ const Auth = () => {
     Kakao.Auth.authorize({
       redirectUri: `https://super-final-front.vercel.app`,
     });
+
+    const params = new URL(document.location.toString()).searchParams;
+    const code = params.get('code');
+
+    axios
+      .get(`/api/v1/auth/login/kakao`, {
+        params: {
+          code: code,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (
