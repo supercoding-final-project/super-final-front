@@ -1,156 +1,223 @@
+import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
 
-export const MainWrap = styled.div`
+export const MainWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
 `;
 
-export const MainBanner = styled.div`
-  width: 100%;
-  height: 280px;
+export const StartCodeReviewBox = styled.div`
+  background-color: ${theme.color.point};
+  width: 414px;
+  height: 109px;
   display: flex;
   justify-content: center;
-  background-color: #b6f187;
-  .banner_container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #b6f187;
-    width: 1024px;
-    div {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+  align-items: center;
+  border-radius: 999px;
+  margin: 80px auto;
+  cursor: pointer;
+  button {
+    color: ${theme.color.bgc1};
+    font-family: Pretendard;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+`;
+
+export const MainSearchContainer = styled.div`
+  width: 631px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+`;
+export const MainSearchList = styled.ul`
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+`;
+export const MainSearchItem = styled.li`
+  color: ${theme.color.grey5};
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 140%;
+  letter-spacing: -0.5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  &.active {
+    color: ${theme.color.grey1};
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    &::after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: ${theme.color.grey1};
     }
-    .title {
+  }
+`;
+export const MainSearchBox = styled.div`
+  display: flex;
+  width: 100%;
+  margin: 12px auto 20px;
+  form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    svg {
+      position: absolute;
+      left: 40px;
+      width: 30px;
+      height: 45px;
+      flex-shrink: 0;
+      background-color: ${theme.color.point};
+    }
+    label {
+      display: flex;
+      width: 100%;
+      input {
+        padding: 12px 40px 12px 80px;
+        box-sizing: border-box;
+        width: 100%;
+        height: 69px;
+        background-color: ${theme.color.point};
+        border-radius: 999px;
+        border: none;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        color: ${theme.color.bgc1};
+        &:-moz-selection {
+          background-color: ${theme.color.bgc1};
+          color: ${theme.color.point};
+        }
+        &::selection {
+          background-color: ${theme.color.bgc1};
+          color: ${theme.color.point};
+        }
+        &:focus {
+          outline-color: ${theme.color.sub3};
+        }
+      }
+    }
+    button {
+      position: absolute;
+      right: 40px;
+      border: none;
+      cursor: pointer;
+      background-color: ${theme.color.point};
+      text-align: center;
       font-size: 32px;
-      font-weight: 600;
-      &_sub {
-        padding: 10px 0;
-        font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: ${theme.color.sub3};
+      transition: all ease-in-out 0.15s;
+      &:hover {
+        color: ${theme.color.bgc1};
       }
     }
   }
 `;
 
-export const MainCards = styled.div`
-  margin-top: 60px;
-  width: 100%;
+export const BestTechStackBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  h3 {
+    color: ${theme.color.grey1};
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: -0.5px;
+    padding-bottom: 4px;
+    border-bottom: 0.5px solid ${theme.color.grey4};
+  }
+`;
+
+export const BestTechStackList = styled.ul`
+  margin: 0 auto;
+  width: 506px;
+  flex-wrap: wrap;
   display: flex;
   justify-content: center;
+  gap: 24px;
+`;
+export const BestTechStackItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  cursor: pointer;
+  div {
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    border: 0.5px solid ${theme.color.grey4};
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+  span {
+    color: ${theme.color.grey1};
+    text-align: center;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 140%;
+    letter-spacing: -0.5px;
+  }
+`;
+
+export const MainCardsContainer = styled.div`
+  margin-top: 80px;
+  width: 100%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
   article {
     & > div {
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
       h3 {
-        font-size: 24px;
+        color: ${theme.color.grey1};
+        font-size: 20px;
         font-weight: 700;
+        line-height: 140%;
+        letter-spacing: -0.5px;
+        span {
+          color: ${theme.color.point};
+          color: var(--, #29cc61);
+          font-family: Pretendard;
+          font-size: 20px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 140%;
+          letter-spacing: -0.5px;
+        }
       }
       .more {
-        font-weight: 700;
-        color: rgba(0, 0, 0, 0.6);
-        cursor: pointer;
+        color: ${theme.color.grey4};
+        font-size: 20px;
+        font-weight: 200;
+        line-height: 140%;
+        letter-spacing: -0.5px;
       }
     }
     ul {
       margin-top: 20px;
-      width: 1024px;
+      width: 1280px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      /* column-gap: 40.5px; */
+      column-gap: 43.5px;
+      row-gap: 40px;
     }
-  }
-`;
-
-export const MainCard = styled.li`
-  position: relative;
-  border: 1px solid;
-  /* min-height: 240px; */
-  padding: 24px;
-  box-sizing: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  cursor: pointer;
-  h4 {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.25;
-    margin-bottom: 18px;
-  }
-  .stack {
-    display: flex;
-    justify-content: flex-start;
-    gap: 14px;
-    margin-bottom: 10px;
-    font-size: 14px;
-    &:last-child {
-      margin-bottom: 56px;
-    }
-    & .title {
-      color: rgba(0, 0, 0, 0.3);
-    }
-    & .desc {
-      color: rgba(0, 0, 0, 0.5);
-      &.incumbent {
-        font-weight: 600;
-        color: var(--main-color);
-      }
-    }
-  }
-  section {
-    position: absolute;
-    top: 147px;
-    right: 23px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    & .profile {
-      overflow: hidden;
-    }
-  }
-  .under_contents {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    .nickname {
-      text-decoration: underline;
-      color: rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-    }
-  }
-  hr {
-    margin-top: 15px;
-    border: 0.5px solid rgba(0, 0, 0, 0.1);
-  }
-`;
-
-export const StarTag = styled.div`
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--main-beige);
-  padding: 8px 2px 5px 6px;
-  gap: 2px;
-  .icon {
-    img {
-      padding-top: 1px;
-      width: 18px;
-    }
-    .star {
-      padding-right: 3px;
-    }
-    .chevron_right {
-      padding-left: 2px;
-    }
-  }
-  div {
-    color: var(--main-red);
-    font-size: 16px;
-    font-weight: 500;
   }
 `;
