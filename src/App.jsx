@@ -10,6 +10,7 @@ import MainLayout from './pages/main/MainLayout';
 import MentoMainLayout from './pages/main/MentoMainLayout';
 import MentiMyLayout from './pages/my/MentiMyLayout';
 import MentoMyLayout from './pages/my/MentoMyLayout';
+import Footer from './components/footer/Footer';
 
 function App() {
   const router = createBrowserRouter([
@@ -66,6 +67,7 @@ const Root = () => {
       <main>
         <Outlet />
       </main>
+      <Footer />
     </>
   );
 };
