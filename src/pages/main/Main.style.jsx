@@ -16,7 +16,13 @@ export const StartCodeReviewBox = styled.div`
   border-radius: 999px;
   margin: 80px auto;
   cursor: pointer;
-  button {
+  overflow: hidden;
+  a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: ${theme.color.bgc1};
     font-family: Pretendard;
     font-size: 32px;
