@@ -8,16 +8,18 @@ const Auth = () => {
   const initKakao = () => {
     if (Kakao && !Kakao.isInitialized()) {
       Kakao.init(`${import.meta.env.VITE_KAKAO_INIT}`);
+      // Kakao.init('d4c1508770b1a0cd80b8c8fd3b1b5112');
     }
   };
 
   useEffect(() => {
+    console.log(initKakao());
     initKakao();
   }, []);
 
   const kakaoLoginHandler = () => {
     Kakao.Auth.authorize({
-      redirectUri: `http://localhost:5173`,
+      redirectUri: `https://super-final-front.vercel.app/`,
     });
   };
 
