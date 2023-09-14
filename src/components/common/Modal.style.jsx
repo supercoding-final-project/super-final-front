@@ -40,7 +40,6 @@ export const ModalCard = styled.div`
     width: 8px;
   }
   &::-webkit-scrollbar-thumb {
-    /* background: ${theme.color.grey4}; */
     background: transparent;
   }
 `;

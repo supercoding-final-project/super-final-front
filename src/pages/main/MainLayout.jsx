@@ -33,15 +33,16 @@ const MainLayout = () => {
   return (
     <>
       <S.MainWrapper>
-        <Link to="/auth">
-          <S.StartCodeReviewBox>
-            <Button
+        <S.StartCodeReviewBox>
+          <Link to="/auth">
+            코드 리뷰 시작하기!
+            {/* <Button
               text={'코드 리뷰 시작하기!'}
               bgcolor={theme.color.point}
               fontcolor={theme.color.bgc1}
-            />
-          </S.StartCodeReviewBox>
-        </Link>
+            /> */}
+          </Link>
+        </S.StartCodeReviewBox>
         <S.MainSearchContainer>
           <S.MainSearchList>
             <S.MainSearchItem className="active">멘토</S.MainSearchItem>
