@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import LoadingSpinner from './LoadingSpinner';
 import * as S from './Modal.style';
 import ModalCloseBtn from './ModalCloseBtn';

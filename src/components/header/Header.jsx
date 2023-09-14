@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Icon } from 'src/components/common/icon/Icon';
 import { theme } from 'src/globalLayout/GlobalStyle';
 
 import * as S from './Header.style';
 import logo from '../../logo.svg';
 import Modal from '../common/Modal';
-import { Link } from 'react-router-dom';
+import PostBox from '../post/PostBox';
+
 // import PostBox from '../post/PostBox';
 
 const Header = () => {
