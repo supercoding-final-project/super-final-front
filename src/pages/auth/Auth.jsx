@@ -1,10 +1,6 @@
-import ClosePath from 'src/assets/close.svg';
-
 import * as S from './Auth.style';
 
 const Auth = () => {
-  const [isOpen, setIsOpen] = useRecoilState(loginModal);
-
   const kakaoLogin = () => {
     window.Kakao.Auth.authorize({
       redirectUri: `${import.meta.env.VITE_BASE_URL}api/v1/auth/login/kakao`,
@@ -12,20 +8,22 @@ const Auth = () => {
     });
   };
 
-  const handleModal = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <S.Container>
       <S.Wrap>
-        <S.Title>소셜 계정으로 로그인!</S.Title>
+        <S.Title>
+          <abbr>👋</abbr>
+          <abbr>안녕하세요, 반갑습니다!</abbr>
+          <abbr>
+            <abbr style={{ color: '#29CC61' }}>소셜 계정</abbr>으로{' '}
+            <abbr style={{ color: '#29CC61' }}>로그인</abbr> 해볼까요?
+          </abbr>
+        </S.Title>
         <S.IconBox>
-          <S.Kakao onClick={kakaoLogin} />
+          <S.Kakao onClick={kakaoLogin} style={{ border: '0.5px solid #807E7D' }} />
 
-          <S.Google />
+          <S.Google style={{ border: '0.5px solid #807E7D' }} />
         </S.IconBox>
-        <S.Image src={ClosePath} alt="close" />
       </S.Wrap>
     </S.Container>
   );
