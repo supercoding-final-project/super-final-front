@@ -1,10 +1,23 @@
+import { useEffect } from 'react';
+
 import * as S from './Auth.style';
 
+const { Kakao } = window;
+
 const Auth = () => {
-  const kakaoLogin = () => {
-    window.Kakao.Auth.authorize({
-      redirectUri: `${import.meta.env.VITE_BASE_URL}api/v1/auth/login/kakao`,
-      scope: 'account_email, gender',
+  const initKakao = () => {
+    if (Kakao && !Kakao.isInitialized()) {
+      Kakao.init(`${import.meta.env.VITE_KAKAO_INIT}`);
+    }
+  };
+
+  useEffect(() => {
+    initKakao();
+  }, []);
+
+  const kakaoLoginHandler = () => {
+    Kakao.Auth.authorize({
+      redirectUri: `https://super-final-front.vercel.app`,
     });
   };
 
@@ -20,7 +33,7 @@ const Auth = () => {
           </abbr>
         </S.Title>
         <S.IconBox>
-          <S.Kakao onClick={kakaoLogin} style={{ border: '0.5px solid #807E7D' }} />
+          <S.Kakao onClick={kakaoLoginHandler} style={{ border: '0.5px solid #807E7D' }} />
 
           <S.Google style={{ border: '0.5px solid #807E7D' }} />
         </S.IconBox>
