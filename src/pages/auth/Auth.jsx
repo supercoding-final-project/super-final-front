@@ -3,8 +3,7 @@ import * as S from './Auth.style';
 const Auth = () => {
   const kakaoLogin = () => {
     window.Kakao.Auth.authorize({
-      redirectUri: `${import.meta.env.VITE_BASE_URL}api/v1/auth/login/kakao`,
-      scope: 'account_email, gender',
+      redirectUri: `https://super-final-front.vercel.app`,
     });
   };
 
