@@ -1,5 +1,12 @@
 import { styled } from "styled-components";
 
+
+export const DivFlex = styled.div`
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+
+`
 export const CalendarContainer = styled.div`
   font-family: Arial, sans-serif;
   width: 900px;
@@ -43,7 +50,7 @@ export const WeekCell = styled.div`
   justify-content: center;
   height: 81.42px;
 
-  color: ${props => props.isSunday ? 'red' : props.isSaturday ? 'blue' : 'black'};
+  color: ${props => props.$isSunday ? 'red' : props.$isSaturday ? 'blue' : 'black'};
   background-color: '#fff';
   &:hover{
     scale: 1.1;
@@ -60,8 +67,8 @@ padding: 5px;
   justify-content: start;
   height: 120px;
   border-radius: 10px;
-  
-  background-color: ${props => props.empty ? '#f5f5f5' : '#fff'};
+  overflow: hidden;
+  background-color: ${props => props.$empty ? '#f5f5f5' : '#fff'};
   transition: all 0.3s ;
   &:hover{
     scale: 1.05;
@@ -70,8 +77,34 @@ padding: 5px;
 `;
 
 export const CellText = styled.div`
+line-height: 20px;
+text-align: center;
+color:white;
 margin-top: 2px;
-font-size: 10px;
+font-size: 12px;
+background-color: black;
+border-radius: 5px;
+width: 100%;
+`
+
+export const OverCellText = styled.div`
+line-height: 20px;
+text-align: center;
+color:black;
+margin-top: 2px;
+font-size: 12px;
+width: 100%;
+`
+
+export const PinkCellText = styled.div`
+color: pink;
+margin-top: 2px;
+font-size: 12px;
+`
+export const ModalCellText = styled.div`
+color: pink;
+margin-top: 2px;
+font-size: 12px;
 `
 
 
@@ -89,7 +122,7 @@ export const OutSideModal = styled.div`
   align-items: center;
   z-index: 2;
 `
-export const ModaContent = styled.div`
+export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 500px;
