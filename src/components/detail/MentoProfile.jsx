@@ -1,4 +1,4 @@
-import * as S from './PostBox.style';
+import * as S from './post/Detail.style';
 
 const MentoProfile = () => {
   const mock = {

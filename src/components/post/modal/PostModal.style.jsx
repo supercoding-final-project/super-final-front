@@ -3,8 +3,8 @@ import { styled } from 'styled-components';
 
 export const PostModal = styled.div`
   position: fixed;
-  right: 10%;
-  top: 10%;
+  right: 12%;
+  top: 11%;
   border-radius: 0.75rem;
   background-color: #4c4b4a;
 `;
@@ -17,9 +17,20 @@ export const PostModalWrap = styled.div`
 
 export const PostModalContainer = styled.div`
   padding: 0.75rem;
+
   div {
     color: white;
     margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+  }
+  input {
+    width: 3rem;
+    margin-left: 0.5rem;
+    background-color: #4c4b4a;
+    border: none;
+    box-shadow: 0px 1px 0px rgba(128, 126, 125, 0.4);
+    color: ${theme.color.grey5};
   }
 `;
 

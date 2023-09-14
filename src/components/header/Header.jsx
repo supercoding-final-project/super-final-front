@@ -1,9 +1,18 @@
-import * as S from './Header.style';
-import logo from '../../logo.svg';
+import { useState } from 'react';
 import { Icon } from 'src/components/common/icon/Icon';
 import { theme } from 'src/globalLayout/GlobalStyle';
 
+import * as S from './Header.style';
+import logo from '../../logo.svg';
+import Modal from '../common/Modal';
+import PostBox from '../post/PostBox';
+
 const Header = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const moodalHandler = () => {
+    setShowModal(true);
+  };
   return (
     <S.HeaderWrap>
       <div className="nav-wrapper">
@@ -19,7 +28,9 @@ const Header = () => {
             <img src={logo} alt="logo" />
           </S.Logo>
           <div className="header-menu">
-            <div className="menu">포스팅 작성</div>
+            <div className="menu" onClick={moodalHandler}>
+              포스팅 작성
+            </div>
             <div className="menu">채팅</div>
             <div className="menu">마이페이지</div>
             <div className="menu">로그아웃</div>
@@ -29,6 +40,11 @@ const Header = () => {
           </div>
         </header>
       </div>
+      {showModal && (
+        <Modal setShowModal={setShowModal} width="660px" height="760px">
+          <PostBox />
+        </Modal>
+      )}
     </S.HeaderWrap>
   );
 };

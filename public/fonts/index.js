@@ -5,7 +5,7 @@ export default createGlobalStyle`
     ${reset}
     @font-face {
         font-family: 'Pretendard';
-        src: url('/src/fonts/PretendardVariable.woff2') format('woff2');
+        src: url('../fonts/PretendardVariable.woff2') format('woff2');
     }
     body {
         font-family: 'Pretendard', sans-serif; 

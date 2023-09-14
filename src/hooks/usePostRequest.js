@@ -9,7 +9,6 @@ export const usePostRequest = () => {
       ...prevItemList,
       [key]: value,
     }));
-    console.log(postData);
   };
 
   return updatePostData;

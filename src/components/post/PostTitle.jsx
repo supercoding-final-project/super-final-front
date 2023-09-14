@@ -7,12 +7,6 @@ const PostTitle = (props) => {
   const [title, setTitle] = useState('');
   const updatePostData = usePostRequest();
 
-  const handleKeyUp = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-    }
-  };
-
   const handleOnChange = useCallback(
     (e) => {
       const inputTitle = e.target.value;
@@ -26,12 +20,7 @@ const PostTitle = (props) => {
 
   return (
     <S.TitleBox>
-      <input
-        value={title}
-        onChange={handleOnChange}
-        onKeyUp={handleKeyUp}
-        placeholder="제목을 입력해주세요"
-      />
+      <input value={title} onChange={handleOnChange} placeholder="제목을 입력해주세요" />
     </S.TitleBox>
   );
 };

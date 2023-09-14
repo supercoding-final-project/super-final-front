@@ -16,7 +16,13 @@ const Modal = ({ setShowModal, children, width, height }) => {
     <S.ModalWrapper onClick={handleCloseModal}>
       <S.ModalCard width={width} height={height} onClick={(e) => e.stopPropagation()}>
         <ModalCloseBtn handleCloseModal={handleCloseModal} />
-        {isLoading ? <LoadingSpinner /> : React.cloneElement(children, { handleCloseModal })}
+
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          // React.Children.map(children, (child) => React.cloneElement(child, { handleCloseModal }))
+          React.cloneElement(children, { handleCloseModal })
+        )}
       </S.ModalCard>
     </S.ModalWrapper>
   );

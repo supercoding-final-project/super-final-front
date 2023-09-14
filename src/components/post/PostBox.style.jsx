@@ -8,70 +8,12 @@ export const PostWrap = styled.div`
 `;
 
 export const PostContainer = styled.div`
-  width: 50%;
-  background-color: #4c4b4a;
+  width: 100%;
   color: white;
   padding: 1rem;
 `;
 
-export const MentoProfileBox = styled.div`
-  margin-top: 2.5rem;
-  box-shadow: 0px 1px 0px rgba(128, 126, 125, 0.4);
-  padding-bottom: 2.5rem;
-  span {
-    color: ${theme.color.grey5};
-  }
-`;
-
-export const ImgAndName = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 1.5rem;
-
-  img {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 25rem;
-    margin-right: 1rem;
-    background-color: white;
-  }
-`;
-
-export const JobAndIntro = styled.div`
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-`;
-
-export const Summary = styled.div`
-  margin-top: 0.5rem;
-  display: flex;
-`;
-
-export const Career = styled.div`
-  span {
-    margin-right: 1rem;
-  }
-
-  li {
-    margin-bottom: 0.5rem;
-    color: ${theme.color.grey5};
-  }
-`;
-
-export const CareerList = styled.div`
-  margin-left: 1rem;
-  li {
-    margin-bottom: 0.25rem;
-    margin-right: 1rem;
-  }
-  ul {
-    display: flex;
-  }
-`;
-
 export const TitleBox = styled.div`
-  margin-top: 2.5rem;
-
   input {
     width: 90%;
     background-color: #4c4b4a;
@@ -79,7 +21,8 @@ export const TitleBox = styled.div`
     outline: none;
     font-size: 1.5rem;
     color: white;
-
+    box-shadow: 0px 1px 0px rgba(128, 126, 125, 0.4);
+    padding: 0.5rem;
     &::placeholder {
       color: white;
     }

@@ -1,5 +1,4 @@
 import PostInputBox from './input/PostInputBox';
-// import MentoProfile from './MentoProfile';
 import PostModal from './modal/PostModal';
 import * as S from './PostBox.style';
 import PostLevel from './PostLevel';
@@ -9,9 +8,8 @@ import StackBox from './StackBox';
 const PostBox = () => {
   return (
     <S.PostWrap>
-      <PostModal />
+      <PostModal recoilKey="price" />
       <S.PostContainer>
-        {/* <MentoProfile /> */}
         <PostTitle recoilKey="title" />
         <PostLevel recoilKey="level" />
         <StackBox recoilKey="postStack" />
