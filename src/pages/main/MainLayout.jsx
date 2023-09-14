@@ -1,12 +1,35 @@
+import axios from 'axios';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Button from 'src/components/common/Button.jsx';
 import { Icon } from 'src/components/common/icon/Icon.jsx';
 import { theme } from 'src/globalLayout/GlobalStyle.js';
+
 import * as S from './Main.style.jsx';
-import PostCardItem from './PostCardItem.jsx';
 import MentoCardItem from './MentoCardItem.jsx';
-import { Link } from 'react-router-dom';
+import PostCardItem from './PostCardItem.jsx';
 
 const MainLayout = () => {
+  useEffect(() => {
+    const params = new URL(document.location.toString()).searchParams;
+    console.log(params);
+    const code = params.get('code');
+    console.log(code);
+
+    axios
+      .get(`/api/v1/auth/login/kakao`, {
+        params: {
+          code: code,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <>
       <S.MainWrapper>
