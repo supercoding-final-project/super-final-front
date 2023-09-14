@@ -17,7 +17,7 @@ const Auth = () => {
 
   const kakaoLoginHandler = () => {
     Kakao.Auth.authorize({
-      redirectUri: `https://super-final-front.vercel.app/auth`,
+      redirectUri: `http://localhost:5173`,
     });
   };
 
