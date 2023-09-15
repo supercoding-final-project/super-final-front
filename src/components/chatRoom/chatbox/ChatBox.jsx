@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useChatSocket } from 'src/api/chatSocket';
 import { useFormattedTime } from 'src/hooks/useFormattedTime';
 import useJwtToken from 'src/hooks/useJwt';
@@ -11,7 +11,11 @@ const ChatBox = (props) => {
   const { jwtToken, decodedToken } = useJwtToken();
   const { formattedTime, updateFormattedTime } = useFormattedTime();
   const cardEndRef = useRef(null);
-  const myId = decodedToken.userId;
+  const [myId, setMyId] = useState()
+
+  useEffect(() => {
+    setMyId(decodedToken.userId);
+  }[decodedToken])
 
   const { data, text, setText, sendMessage } = useChatSocket(props.chatinfo.chatroomId, myId);
 
