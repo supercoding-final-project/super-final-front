@@ -51,6 +51,7 @@ export function useChatSocket(chatroomId, myId) {
       const res = await axios.get('https://codevelop.store/api/v1/message', {
         params: {
           chatRoomId: chatroomId,
+          page: 0,
         },
       });
       setData(res.data.data.chatLog);
