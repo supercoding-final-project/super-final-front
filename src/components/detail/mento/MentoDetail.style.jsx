@@ -12,6 +12,7 @@ export const PostContainer = styled.div`
   width: 100%;
   color: white;
   h1 {
+    margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: 1.25rem;
     color: ${theme.color.grey5};

@@ -1,11 +1,29 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import * as S from './chatbox/chatBox.style';
 import { Icon } from '../common/icon/Icon';
+import Modal from '../common/Modal';
+import ModalPortal from '../modal/ModalPortal';
+import PostBox from '../post/PostBox';
 
 const NoChat = (props) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const modalHandler = () => {
+    setShowModal(true);
+  };
   return (
     <>
       {props.isMento ? (
         <S.NoChatListWrap>
+          {showModal && (
+            <ModalPortal>
+              <Modal setShowModal={setShowModal}>
+                <PostBox />
+              </Modal>
+            </ModalPortal>
+          )}
           <div>
             <S.NoChatListBox>
               <Icon name="SmileEmoji" />
@@ -28,8 +46,10 @@ const NoChat = (props) => {
             </S.NoChatListDetail>
             <S.NoChatListDetail>완셩시켜볼까요?</S.NoChatListDetail>
             <S.NoChatListDetail>
-              <S.NoChatBtn>POST 작성</S.NoChatBtn>
-              <S.NoChatBtn>마이페이지</S.NoChatBtn>
+              <S.NoChatBtn onClick={modalHandler}>POST 작성</S.NoChatBtn>
+              <Link to="/my/mento">
+                <S.NoChatBtn>마이페이지</S.NoChatBtn>
+              </Link>
             </S.NoChatListDetail>
           </div>
         </S.NoChatListWrap>
