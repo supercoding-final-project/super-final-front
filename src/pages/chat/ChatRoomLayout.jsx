@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-// import { useHttp } from 'src/api/useHttp';
 import ChatBox from 'src/components/chatRoom/chatbox/ChatBox';
 import ChatList from 'src/components/chatRoom/chatlist/ChatList';
 import NoChatBox from 'src/components/chatRoom/NoChatBox';
@@ -12,26 +11,27 @@ import * as S from './chat.style';
 const ChatRoomLayout = () => {
   const { jwtToken, decodedToken } = useJwtToken();
   const [selectedChat, setSelectedChat] = useState({});
-  const myId = decodedToken.sub;
+  const myId = decodedToken?.sub || ''; // decodedToken이 null이면 빈 문자열로 초기화
   const isMento = true;
   const [chatList, setChatList] = useState([]);
-  // const chatList = useHttp('/chatrooms', { userId: myId });
 
   const handleChatSelect = (chat) => {
     setSelectedChat(chat);
   };
+
   useEffect(() => {
-    console.log(decodedToken);
-    const fetchChatList = async () => {
-      const res = await axios.get('https://codevelop.store/api/v1/chatrooms', {
-        params: {
-          userId: myId,
-        },
-      });
-      setChatList(res.data.data.chatRoom);
-    };
-    fetchChatList();
-  }, []);
+    if (myId) {
+      const fetchChatList = async () => {
+        const res = await axios.get('https://codevelop.store/api/v1/chatrooms', {
+          params: {
+            userId: myId,
+          },
+        });
+        setChatList(res.data.data.chatRoom);
+      };
+      fetchChatList();
+    }
+  }, [myId]);
 
   return (
     <S.ChatRoomWrapper>
@@ -40,7 +40,6 @@ const ChatRoomLayout = () => {
       ) : (
         <ChatList list={chatList} handleChatSelect={handleChatSelect} />
       )}
-      {/* <ChatBox chatinfo={selectedChat} /> */}
       {Object.keys(selectedChat).length !== 0 ? <ChatBox chatinfo={selectedChat} /> : <NoChatBox />}
     </S.ChatRoomWrapper>
   );
