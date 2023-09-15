@@ -35,11 +35,6 @@ const ChatRoomLayout = () => {
 
   return (
     <S.ChatRoomWrapper>
-      <button
-        onClick={() => {
-          console.log(decodedToken.sub);
-        }}
-      ></button>
       {chatList.length === 0 ? (
         <NoChatList isMento={isMento} />
       ) : (
