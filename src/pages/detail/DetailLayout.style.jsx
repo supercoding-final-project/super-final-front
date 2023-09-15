@@ -2,7 +2,7 @@ import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
 
 export const DetailWrap = styled.div`
-  margin-right: 15%;
+  margin-top: 4rem;
   display: flex;
   justify-content: center;
 `;

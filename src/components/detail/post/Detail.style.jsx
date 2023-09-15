@@ -63,7 +63,7 @@ export const SmallFont = styled.span`
 export const PostModal = styled.div`
   position: fixed;
   right: 12%;
-  top: 11%;
+  top: 15%;
   border-radius: 0.75rem;
 `;
 
@@ -87,6 +87,7 @@ export const ModalBtn = styled.div`
   margin: 2rem;
 
   button {
+    margin-left: 0.4rem;
     font-size: 1.5rem;
     background-color: ${theme.color.point};
     border: none;
