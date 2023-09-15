@@ -23,7 +23,7 @@ const MentoCardItem = () => {
   const createChatHandler = () => {
     axios.post('https://codevelop.store/api/v1/createroom', {
       user1Idx: decodedToken.sub,
-      user2Idx: '5',
+      user2Idx: 5,
     });
   };
 
