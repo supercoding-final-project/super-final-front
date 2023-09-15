@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import sockjs from 'sockjs-client/dist/sockjs';
 import StompJs from 'stompjs';
@@ -9,11 +10,6 @@ export function useChatSocket(chatroomId, myId) {
   const [stomp, setStomp] = useState(null);
   const [data, setData] = useState([]);
   const [text, setText] = useState('');
-  const chatLog = useHttp('/chatlog', { chatRoomId: chatroomId });
-
-  useEffect(() => {
-    setData(chatLog);
-  }, [chatroomId]);
 
   // Initialize WebSocket and Stomp
   useEffect(() => {
@@ -50,18 +46,22 @@ export function useChatSocket(chatroomId, myId) {
   }, [sock, stomp, chatroomId]);
 
   // HTTP request logic
-  // const fetchChatLog = async () => {
-  //   try {
-  //     const res = await axios.get('http://54.180.86.41:8080/api/v1/chatlog', {
-  //       params: {
-  //         chatRoomId: chatroomId,
-  //       },
-  //     });
-  //     setData(res.data.data.chatLog);
-  //   } catch (error) {
-  //     console.error('HTTP 요청 중 오류 발생:', error);
-  //   }
-  // };
+  const fetchChatLog = async () => {
+    try {
+      const res = await axios.get('http://54.180.86.41:8080/api/v1/chatlog', {
+        params: {
+          chatRoomId: chatroomId,
+        },
+      });
+      setData(res.data.data.chatLog);
+    } catch (error) {
+      console.error('HTTP 요청 중 오류 발생:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchChatLog();
+  }, [chatroomId]);
 
   // Send message through WebSocket
   const sendMessage = async (formattedTime) => {
@@ -69,6 +69,7 @@ export function useChatSocket(chatroomId, myId) {
       senderId: myId,
       chatContent: text,
       sendAt: formattedTime,
+      chatRoomId: chatroomId,
     };
     stomp.send(`/ws/${chatroomId}`, {}, JSON.stringify(newMessage));
     setText('');
