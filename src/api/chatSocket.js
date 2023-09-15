@@ -54,7 +54,7 @@ export function useChatSocket(chatroomId, myId) {
           page: 0,
         },
       });
-      setData(res.data.data.chatLog);
+      setData(res.data.data);
     } catch (error) {
       console.error('HTTP 요청 중 오류 발생:', error);
     }
