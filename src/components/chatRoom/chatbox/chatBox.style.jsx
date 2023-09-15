@@ -9,7 +9,7 @@ export const ChatBox = styled.div`
 
 export const ChatContainer = styled.div`
   position: relative;
-  height: 100vh;
+  height: 65vh;
   overflow: auto;
 `;
 
