@@ -1,14 +1,14 @@
+import { theme } from 'src/globalLayout/GlobalStyle';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 import PretendardWoff2 from './PretendardVariable.woff2';
-import { theme } from 'src/globalLayout/GlobalStyle';
 
 export default createGlobalStyle`
-${reset}
+    ${reset}
     @font-face {
         font-family: 'Pretendard';
-        src: url(${PretendardWoff2}) format('woff2');
+        src: url('../fonts/PretendardVariable.woff2') format('woff2');
     }
     body {
         font-family: 'Pretendard', sans-serif; 

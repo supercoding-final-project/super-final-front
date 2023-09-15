@@ -8,3 +8,6 @@ export { ReactComponent as VideoChat } from './video-chat-btn.svg';
 export { ReactComponent as NavBar } from './nav-bar.svg';
 export { ReactComponent as Search } from './search.svg';
 export { ReactComponent as Star } from './star.svg';
+export { ReactComponent as Clover } from './clover.svg';
+export { ReactComponent as Rose } from './rose.svg';
+export { ReactComponent as Review } from './review.svg';
