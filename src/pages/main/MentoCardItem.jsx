@@ -21,7 +21,7 @@ const MentoCardItem = () => {
   };
 
   const createChatHandler = () => {
-    const myId = parseInt(decodedToken.sub);
+    const myId = parseInt(decodedToken.userId);
 
     axios.post('https://codevelop.store/api/v1/createroom', {
       user1Idx: myId,

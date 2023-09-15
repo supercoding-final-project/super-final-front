@@ -11,7 +11,7 @@ import * as S from './chat.style';
 const ChatRoomLayout = () => {
   const { jwtToken, decodedToken } = useJwtToken();
   const [selectedChat, setSelectedChat] = useState({});
-  const myId = decodedToken?.sub || ''; // decodedToken이 null이면 빈 문자열로 초기화
+  const myId = decodedToken?.userId || ''; // decodedToken이 null이면 빈 문자열로 초기화
   const isMento = true;
   const [chatList, setChatList] = useState([]);
 
