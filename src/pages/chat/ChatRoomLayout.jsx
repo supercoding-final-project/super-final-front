@@ -20,7 +20,8 @@ const ChatRoomLayout = () => {
   const handleChatSelect = (chat) => {
     setSelectedChat(chat);
   };
-  -useEffect(() => {
+  useEffect(() => {
+    console.log(decodedToken);
     const fetchChatList = async () => {
       const res = await axios.get('https://codevelop.store/api/v1/chatrooms', {
         params: {
