@@ -48,7 +48,7 @@ export function useChatSocket(chatroomId, myId) {
   // HTTP request logic
   const fetchChatLog = async () => {
     try {
-      const res = await axios.get('http://54.180.86.41:8080/api/v1/chatlog', {
+      const res = await axios.get('https://codevelop.store/api/v1/chatlog', {
         params: {
           chatRoomId: chatroomId,
         },
