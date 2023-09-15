@@ -15,7 +15,7 @@ export const TitleBox = styled.div`
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 140%; /* 1.75rem */
+    line-height: 140%;
     letter-spacing: -0.03125rem;
   }
   span {

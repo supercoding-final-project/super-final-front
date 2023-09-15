@@ -23,7 +23,7 @@ const DetailLayout = () => {
   return (
     <S.DetailWrap>
       <DetailModal />
-      <div style={{ width: '50%' }}>
+      <div style={{ width: '40%', marginRight: '15%' }}>
         <MentoProfile />
         <S.TitleBox>
           <span>초급</span>

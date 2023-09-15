@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 export function useHttp(endPoint, params, method = 'GET') {
   const [data, setData] = useState([]);
-  const BASE_URL = 'http://54.180.86.41:8080/api/v1';
+  const BASE_URL = 'https://codevelop.store/api/v1';
   const accessToken = localStorage.getItem('토큰 키 값');
   const headers = {};
 
