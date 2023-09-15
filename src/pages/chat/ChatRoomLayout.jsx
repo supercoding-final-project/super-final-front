@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useHttp } from 'src/api/useHttp';
+// import { useHttp } from 'src/api/useHttp';
 import ChatBox from 'src/components/chatRoom/chatbox/ChatBox';
 import ChatList from 'src/components/chatRoom/chatlist/ChatList';
 import NoChatBox from 'src/components/chatRoom/NoChatBox';
