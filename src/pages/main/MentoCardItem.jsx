@@ -5,6 +5,7 @@ import { Icon } from 'src/components/common/icon/Icon';
 import Modal from 'src/components/common/Modal';
 import ModalCardBox from 'src/components/common/ModalCardBox';
 import MentoDetail from 'src/components/detail/mento/MentoDetail';
+import ModalPortal from 'src/components/modal/ModalPortal';
 import { theme } from 'src/globalLayout/GlobalStyle';
 
 import * as S from './MainCardItem.style';
