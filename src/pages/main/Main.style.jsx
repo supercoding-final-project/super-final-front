@@ -14,7 +14,7 @@ export const StartCodeReviewBox = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 999px;
-  margin: 80px auto;
+  margin: 80px auto 0;
   cursor: pointer;
   overflow: hidden;
   a {
@@ -33,7 +33,7 @@ export const StartCodeReviewBox = styled.div`
 
 export const MainSearchContainer = styled.div`
   width: 631px;
-  margin: 0 auto;
+  margin: 80px auto 0;
   display: flex;
   flex-direction: column;
 `;
