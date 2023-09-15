@@ -22,7 +22,7 @@ const MainLayout = () => {
 
   const refreshAccessToken = () => {
     axios
-      .post(`${import.meta.env.VITE_BASE_URL}api/v1/auth/token/refresh`, {
+      .post(`${import.meta.env.VITE_BASE_URL}/api/v1/auth/token/refresh`, {
         refreshToken: refreshToken,
       })
       .then((response) => {
