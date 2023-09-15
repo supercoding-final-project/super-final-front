@@ -1,12 +1,10 @@
 import jwtDecode from 'jwt-decode';
 import { useEffect, useState } from 'react';
 
-// 커스텀 훅 정의
 function useJwtToken() {
   const [jwtToken, setJwtToken] = useState(null);
 
   useEffect(() => {
-    // 웹 쿠키에서 JWT 토큰 가져오는 함수
     function getJwtTokenFromCookie() {
       const cookieString = document.cookie;
       const cookies = cookieString.split(';');
@@ -14,7 +12,7 @@ function useJwtToken() {
 
       cookies.forEach((cookie) => {
         const [name, value] = cookie.trim().split('=');
-        if (name === 'jwtToken') {
+        if (name === 'access_token') {
           token = value;
         }
       });
@@ -22,12 +20,10 @@ function useJwtToken() {
       return token;
     }
 
-    // 컴포넌트가 마운트될 때 JWT 토큰을 가져와 상태에 설정
     const token = getJwtTokenFromCookie();
     setJwtToken(token);
   }, []);
 
-  // JWT 토큰 파싱 함수
   const parseJwtToken = () => {
     try {
       const decodedToken = jwtDecode(jwtToken);
