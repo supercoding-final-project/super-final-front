@@ -11,7 +11,7 @@ import useJwtToken from 'src/hooks/useJwt';
 import * as S from './MainCardItem.style';
 
 const MentoCardItem = () => {
-  // const [jwtToken, decodedToken] = useJwtToken();
+  const [jwtToken, decodedToken] = useJwtToken();
   // 모달이 열리는 위치에 필요한 코드 1/3
   const [showModal, setShowModal] = useState(false);
   // 모달이 열리는 위치에 필요한 코드 2/3
@@ -20,12 +20,12 @@ const MentoCardItem = () => {
     document.body.style.overflowY = 'hidden';
   };
 
-  // const createChatHandler = () => {
-  //   axios.post('https://codevelop.store/api/v1/createroom', {
-  //     user1Idx: decodedToken.sub,
-  //     user2Idx: 5,
-  //   });
-  // };
+  const createChatHandler = () => {
+    axios.post('https://codevelop.store/api/v1/createroom', {
+      user1Idx: decodedToken.sub,
+      user2Idx: 5,
+    });
+  };
 
   return (
     <>
@@ -60,7 +60,7 @@ const MentoCardItem = () => {
               text={'문의하기'}
               bgcolor={theme.color.point}
               fontcolor={theme.color.bgc1}
-              // onClick={createChatHandler}
+              onClick={createChatHandler}
             />
           </Link>
           <Button
