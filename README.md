@@ -5,7 +5,8 @@
 
 .env
 - VITE_KAKAO_INIT=d4c1508770b1a0cd80b8c8fd3b1b5112
-- VITE_BASE_URL=http://54.180.86.41:8080/
+- VITE_BASE_URL_1=https://codevelop.store
+- VITE_BASE_URL_2=http://54.180.86.41:8080
 
 ---
 
