@@ -22,34 +22,6 @@ const Auth = () => {
     Kakao.Auth.authorize({
       redirectUri: `https://super-final-front.vercel.app/`,
     });
-
-    const params = new URL(document.location.toString()).searchParams;
-    console.log(params);
-    const code = params.get('code');
-    console.log(code);
-
-    axios
-      .get(`${import.meta.env.VITE_BASE_URL}/api/v1/auth/login/kakao`, {
-        params: {
-          code: code,
-        },
-        // withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res.data.data);
-        const { accessToken, refreshToken } = res.data.data;
-
-        // 엑세스 토큰을 쿠키에 한시간 동안 저장;
-        // setCookie('access_token', accessToken, 1);
-        // // 리프레쉬 토큰을 쿠키에 30일간 저장;
-        // setCookie('refresh_token', refreshToken, 30);
-
-        console.log('Access Token:', accessToken);
-        console.log('Refresh Token:', refreshToken);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
   };
 
   return (
