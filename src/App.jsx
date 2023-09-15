@@ -11,6 +11,8 @@ import MentoMainLayout from './pages/main/MentoMainLayout';
 import MentiMyLayout from './pages/my/MentiMyLayout';
 import MentoMyLayout from './pages/my/MentoMyLayout';
 import Footer from './components/footer/Footer';
+import MentoListLayout from './pages/list/MentoListLayout';
+import PostListLayout from './pages/list/PostListLayout';
 
 function App() {
   const router = createBrowserRouter([
@@ -44,6 +46,19 @@ function App() {
             {
               path: 'mento',
               element: <MentoMyLayout />,
+            },
+          ],
+        },
+        {
+          path: 'list',
+          children: [
+            {
+              path: 'mento',
+              element: <MentoListLayout />,
+            },
+            {
+              path: 'post',
+              element: <PostListLayout />,
             },
           ],
         },

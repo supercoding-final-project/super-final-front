@@ -109,7 +109,9 @@ const MainLayout = () => {
               <h3>
                 <span>HOT</span> 멘토!
               </h3>
-              <p className="more">모든 멘토 보러가기 &gt;</p>
+              <p className="more">
+                <Link to="/list/mento">모든 멘토 보러가기 &gt;</Link>
+              </p>
             </div>
             <ul>
               <MentoCardItem />
@@ -123,7 +125,9 @@ const MainLayout = () => {
               <h3>
                 <span>HOT</span> POST!
               </h3>
-              <p className="more">모든 POST 보러가기 &gt;</p>
+              <p className="more">
+                <Link to="/list/post">모든 POST 보러가기 &gt;</Link>
+              </p>
             </div>
             <ul>
               <PostCardItem />
