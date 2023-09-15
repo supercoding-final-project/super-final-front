@@ -50,7 +50,7 @@ export function useChatSocket(chatroomId, myId) {
     try {
       const res = await axios.get('https://codevelop.store/api/v1/message', {
         params: {
-          chatRoomId: chatroomId,
+          ChatRoomId: chatroomId,
           page: 0,
         },
       });
