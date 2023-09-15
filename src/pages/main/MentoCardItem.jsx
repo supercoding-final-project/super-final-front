@@ -12,6 +12,7 @@ import * as S from './MainCardItem.style';
 
 const MentoCardItem = () => {
   const { jwtToken, decodedToken } = useJwtToken();
+  const myId = parseInt(decodedToken.sub);
   // 모달이 열리는 위치에 필요한 코드 1/3
   const [showModal, setShowModal] = useState(false);
   // 모달이 열리는 위치에 필요한 코드 2/3
@@ -22,7 +23,7 @@ const MentoCardItem = () => {
 
   const createChatHandler = () => {
     axios.post('https://codevelop.store/api/v1/createroom', {
-      user1Idx: decodedToken.sub,
+      user1Idx: myId,
       user2Idx: 5,
     });
   };
