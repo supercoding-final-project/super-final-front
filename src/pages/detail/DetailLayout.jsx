@@ -2,10 +2,13 @@ import MentoProfile from 'src/components/detail/MentoProfile';
 import DetailIntro from 'src/components/detail/post/DetailIntro';
 import DetailModal from 'src/components/detail/post/DetailModal';
 import PostReview from 'src/components/detail/post/review/PostReview';
+import useJwtToken from 'src/hooks/useJwt';
 
 import * as S from './DetailLayout.style';
 
 const DetailLayout = () => {
+  const { jwtToken, decodedToken } = useJwtToken();
+
   const mockDetail = {
     title: '[프론트엔드] 잘라먹는 Typescript',
     level: '초급',
@@ -24,6 +27,11 @@ const DetailLayout = () => {
     <S.DetailWrap>
       <DetailModal />
       <div style={{ width: '40%', marginRight: '15%' }}>
+        <button
+          onClick={() => {
+            console.log(decodedToken);
+          }}
+        ></button>
         <MentoProfile />
         <S.TitleBox>
           <span>초급</span>
