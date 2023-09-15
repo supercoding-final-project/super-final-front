@@ -40,8 +40,8 @@ const ChatBox = (props) => {
           />
         ))}
         <div ref={cardEndRef}></div>
+        <ChattingBar chatHandler={chatHandler} sendHandler={sendHandler} text={text} />
       </S.ChatContainer>
-      <ChattingBar chatHandler={chatHandler} sendHandler={sendHandler} text={text} />
     </S.ChatBox>
   );
 };
