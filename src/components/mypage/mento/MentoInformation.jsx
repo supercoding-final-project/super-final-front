@@ -4,6 +4,8 @@ import InformationHead from 'src/components/mypage/InformationHead';
 import * as S from 'src/pages/my/mentoMyLayout.style';
 
 import FixInformation from './FixInformation';
+import MentoordersHistory from './MentoOrdersHistory';
+import MentoTransactionHistory from './MentoTransactionHistory';
 import Reservation from './Reservation';
 
 const MentoInformation = ({ informationtype, navtype, User }) => {
@@ -45,6 +47,34 @@ const MentoInformation = ({ informationtype, navtype, User }) => {
               <InformationHead text={navtype.reservation} />
             </S.InformationBox>
             <Reservation></Reservation>
+          </S.DivFlexColumn>
+        </S.InformationContainer>
+      </>
+    );
+  }
+  if (informationtype === navtype.transactionHistory) {
+    return (
+      <>
+        <S.InformationContainer>
+          <S.DivFlexColumn>
+            <S.InformationBox>
+              <InformationHead text={navtype.transactionHistory} />
+            </S.InformationBox>
+            <MentoTransactionHistory></MentoTransactionHistory>
+          </S.DivFlexColumn>
+        </S.InformationContainer>
+      </>
+    );
+  }
+  if (informationtype === navtype.ordersHistory) {
+    return (
+      <>
+        <S.InformationContainer>
+          <S.DivFlexColumn>
+            <S.InformationBox>
+              <InformationHead text={navtype.ordersHistory} />
+            </S.InformationBox>
+            <MentoordersHistory></MentoordersHistory>
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>
