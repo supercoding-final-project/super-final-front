@@ -4,12 +4,11 @@ import { styled } from 'styled-components';
 export const ChatBox = styled.div`
   flex-direction: column;
   width: 70%;
-  height: 100%;
 `;
 
 export const ChatContainer = styled.div`
   position: relative;
-  height: 65vh;
+  height: 45vh;
   overflow: auto;
 `;
 
