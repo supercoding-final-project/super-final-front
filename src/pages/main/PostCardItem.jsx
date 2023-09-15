@@ -10,12 +10,12 @@ const PostCardItem = () => {
         <h4>POST 입니다. 가로 넓이 280기준.</h4>
         <S.StackBox>
           <div className="stack">
-            <p className="title">분야</p>
-            <p className="desc">#개발 #프로그래밍</p>
+            <p className="title">직무</p>
+            <p className="desc">BACKEND</p>
           </div>
           <div className="stack">
             <p className="title">스택</p>
-            <p className="desc">#Node.js #React</p>
+            <p className="desc limit">#JAVA #SPRING #SPRING #SPRING #SPRING #SPRING</p>
           </div>
           <div className="stack bold">
             <p className="title">가격</p>
