@@ -11,11 +11,7 @@ const ChatBox = (props) => {
   const { jwtToken, decodedToken } = useJwtToken();
   const { formattedTime, updateFormattedTime } = useFormattedTime();
   const cardEndRef = useRef(null);
-  const [myId, setMyId] = useState();
-
-  useEffect(() => {
-    setMyId(decodedToken.userId);
-  }, [decodedToken]);
+  const myId = decodedToken?.userId || ''; // decodedToken이 null이면 빈 문자열로 초기화
 
   const { data, text, setText, sendMessage } = useChatSocket(props.chatinfo.chatroomId, myId);
 
