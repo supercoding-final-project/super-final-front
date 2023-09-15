@@ -10,7 +10,7 @@ const MentoProfile = () => {
   const stackLi = mock.stack.map((item, index) => <li key={index}>{item}</li>);
   return (
     <S.MentoProfileBox>
-      <S.SmallFont>POST 소개</S.SmallFont>
+      <S.SmallFont>멘토 소개</S.SmallFont>
       <S.ImgAndName>
         <img></img>
         나는야 멘토

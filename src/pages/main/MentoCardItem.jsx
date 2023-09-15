@@ -60,7 +60,7 @@ const MentoCardItem = () => {
       </S.MainCardItem>
       {/* 모달이 열리는 위치에 필요한 코드 3/3 - <Modal></Modal> 사이에는 클릭시 열릴 모달의 콘텐츠를 import */}
       {showModal && (
-        <Modal width="1200px" height="600px" setShowModal={setShowModal}>
+        <Modal setShowModal={setShowModal}>
           <MentoDetail />
         </Modal>
       )}
