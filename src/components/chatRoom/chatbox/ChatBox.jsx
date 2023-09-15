@@ -24,6 +24,10 @@ const ChatBox = (props) => {
     sendMessage(formattedTime);
   };
 
+  useEffect(() => {
+    cardEndRef.current.scrollIntoView();
+  }, [data]);
+
   return (
     <S.ChatBox>
       <S.ChatContainer>
