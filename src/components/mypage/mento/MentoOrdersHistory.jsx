@@ -6,11 +6,9 @@ import * as S from './MentoOrdersHistory.style';
 const MentoordersHistory = () => {
   const userId = 6;
 
-  const prams = { userId: userId };
-  useEffect(() => {
-    // const data = useHttp("/mentee/mypage/orders", prams)
-    // console.log(data)
-  }, []);
+  // const prams = { userId: userId }
+  // const data = useHttp("/mentee/mypage/orders", prams)
+  // console.log(data)
 
   let orderlist = [
     {

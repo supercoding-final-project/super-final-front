@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect } from 'react';
 
 import * as S from './Auth.style';

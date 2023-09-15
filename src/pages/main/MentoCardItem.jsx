@@ -1,22 +1,31 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'src/components/common/Button';
 import { Icon } from 'src/components/common/icon/Icon';
 import Modal from 'src/components/common/Modal';
-import ModalCardBox from 'src/components/common/ModalCardBox';
 import MentoDetail from 'src/components/detail/mento/MentoDetail';
-import ModalPortal from 'src/components/modal/ModalPortal';
 import { theme } from 'src/globalLayout/GlobalStyle';
+import useJwtToken from 'src/hooks/useJwt';
 
 import * as S from './MainCardItem.style';
 
 const MentoCardItem = () => {
+  const { jwtToken, decodedToken } = useJwtToken();
   // 모달이 열리는 위치에 필요한 코드 1/3
   const [showModal, setShowModal] = useState(false);
   // 모달이 열리는 위치에 필요한 코드 2/3
   const handleModalOpen = () => {
     setShowModal(true);
     document.body.style.overflowY = 'hidden';
+  };
+
+  const createChatHandler = () => {
+    const myId = decodedToken.userId;
+    axios.post('https://codevelop.store/api/v1/createchat', {
+      user1Idx: myId,
+      user2Idx: 5,
+    });
   };
 
   return (
@@ -26,7 +35,7 @@ const MentoCardItem = () => {
         <S.StackBox>
           <div className="stack">
             <p className="title">직무</p>
-            <p className="desc">프론트엔드</p>
+            <p className="desc">BACKEND</p>
           </div>
           <div className="stack">
             <p className="title">경력</p>
@@ -48,7 +57,12 @@ const MentoCardItem = () => {
         <hr />
         <S.MainCardButtonBox>
           <Link to="/chatroom">
-            <Button text={'문의하기'} bgcolor={theme.color.point} fontcolor={theme.color.bgc1} />
+            <Button
+              text={'문의하기'}
+              bgcolor={theme.color.point}
+              fontcolor={theme.color.bgc1}
+              onClick={createChatHandler}
+            />
           </Link>
           <Button
             text={'상세보기'}
