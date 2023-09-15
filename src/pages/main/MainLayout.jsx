@@ -22,7 +22,7 @@ const MainLayout = () => {
 
   const refreshAccessToken = () => {
     axios
-      .post(`${import.meta.env.VITE_BASE_URL_1}/api/v1/auth/token/refresh`, {
+      .post(`${import.meta.env.VITE_BASE_URL}/api/v1/auth/token/refresh`, {
         refreshToken: refreshToken,
       })
       .then((response) => {
@@ -44,7 +44,7 @@ const MainLayout = () => {
     console.log(code);
 
     axios
-      .get(`${import.meta.env.VITE_BASE_URL_1}/api/v1/auth/login/kakao`, {
+      .get(`${import.meta.env.VITE_BASE_URL}/api/v1/auth/login/kakao`, {
         params: {
           code: code,
         },
