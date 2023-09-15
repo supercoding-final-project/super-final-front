@@ -29,7 +29,7 @@ function useJwtToken() {
       const decodedToken = jwtDecode(jwtToken);
       return decodedToken;
     } catch (error) {
-      console.error('JWT 토큰을 파싱하는 중 오류가 발생했습니다:', error);
+      console.error('JWT 토큰 파싱 오류', error);
       return null;
     }
   };
