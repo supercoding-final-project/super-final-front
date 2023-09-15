@@ -31,7 +31,9 @@ const DetailLayout = () => {
           onClick={() => {
             console.log(decodedToken);
           }}
-        ></button>
+        >
+          확인용 버튼
+        </button>
         <MentoProfile />
         <S.TitleBox>
           <span>초급</span>
