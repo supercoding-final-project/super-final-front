@@ -47,6 +47,8 @@ Icon.propTypes = {
     'Clover',
     'Rose',
     'Review',
+    'Fold',
+    'Circle',
   ]).isRequired,
   size: PropTypes.number,
   color: PropTypes.string,

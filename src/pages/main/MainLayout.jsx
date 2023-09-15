@@ -34,14 +34,7 @@ const MainLayout = () => {
     <>
       <S.MainWrapper>
         <S.StartCodeReviewBox>
-          <Link to="/auth">
-            코드 리뷰 시작하기!
-            {/* <Button
-              text={'코드 리뷰 시작하기!'}
-              bgcolor={theme.color.point}
-              fontcolor={theme.color.bgc1}
-            /> */}
-          </Link>
+          <Link to="/auth">코드 리뷰 시작하기!</Link>
         </S.StartCodeReviewBox>
         <S.MainSearchContainer>
           <S.MainSearchList>
