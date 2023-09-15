@@ -12,7 +12,7 @@ import * as S from './chat.style';
 const ChatRoomLayout = () => {
   const { jwtToken, decodedToken } = useJwtToken();
   const [selectedChat, setSelectedChat] = useState({});
-  const myId = 4;
+  const myId = decodedToken.sub;
   const isMento = true;
   const [chatList, setChatList] = useState([]);
   // const chatList = useHttp('/chatrooms', { userId: myId });

@@ -13,7 +13,7 @@ function useJwtToken() {
 
       cookies.forEach((cookie) => {
         const [name, value] = cookie.trim().split('=');
-        if (name === 'jwtToken') {
+        if (name === 'access_token') {
           token = value;
         }
       });
