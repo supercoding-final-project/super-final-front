@@ -8,7 +8,7 @@ export const ChatBox = styled.div`
 
 export const ChatContainer = styled.div`
   position: relative;
-  height: 45vh;
+  height: 65vh;
   overflow: auto;
 `;
 
@@ -78,7 +78,7 @@ export const SendAt = styled.div`
 `;
 
 export const ChattingBarWrapper = styled.div`
-  position: fixed;
+  position: sticky;
   bottom: 0;
   display: flex;
   align-items: center;
