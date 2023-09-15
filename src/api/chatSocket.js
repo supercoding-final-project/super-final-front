@@ -17,7 +17,7 @@ export function useChatSocket(chatroomId, myId) {
 
   // Initialize WebSocket and Stomp
   useEffect(() => {
-    const newSock = new sockjs('http://54.180.86.41:8080/code-velop');
+    const newSock = new sockjs('https://codevelop.store/code-velop');
     const newStomp = StompJs.over(newSock);
 
     setSock(newSock);
