@@ -7,12 +7,13 @@ import AuthLayout from './pages/auth/AuthLayout';
 import ChatRoomLayout from './pages/chat/ChatRoomLayout';
 import DetailLayout from './pages/detail/DetailLayout';
 import NotFoundLayout from './pages/error/NotFoundLayout';
+import MentoListLayout from './pages/list/MentoListLayout';
+import PostListLayout from './pages/list/PostListLayout';
 import MainLayout from './pages/main/MainLayout';
 import MentoMainLayout from './pages/main/MentoMainLayout';
 import MentiMyLayout from './pages/my/MentiMyLayout';
 import MentoMyLayout from './pages/my/MentoMyLayout';
-import MentoListLayout from './pages/list/MentoListLayout';
-import PostListLayout from './pages/list/PostListLayout';
+import ScreenLayout from './pages/screen/ScreenLayout';
 import GlobalFonts from '../public/fonts/index.js';
 
 function App() {
@@ -38,13 +39,14 @@ function App() {
           element: <ChatRoomLayout />,
         },
         {
-          path: 'chatroom',
-          element: <ChatRoomLayout />,
+          path: 'screenroom',
+          element: <ScreenLayout />,
         },
         {
           path: 'detail',
           element: <DetailLayout />,
         },
+
         {
           path: 'my',
           children: [
