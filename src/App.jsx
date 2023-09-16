@@ -35,6 +35,10 @@ function App() {
           element: <ChatRoomLayout />,
         },
         {
+          path: 'screenroom',
+          element: <ScreenLayout />,
+        },
+        {
           path: 'my',
           children: [
             {

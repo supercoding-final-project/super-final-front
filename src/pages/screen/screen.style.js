@@ -1,3 +1,4 @@
+import { theme } from 'src/globalLayout/GlobalStyle';
 import styled from 'styled-components';
 
 export const ScreenWrap = styled.div`
@@ -10,43 +11,61 @@ export const ScreenWrap = styled.div`
   .screenBox {
     max-width: 955px;
     width: 100%;
-    /* height: 596px; */
     display: flex;
     flex-direction: column;
     margin-left: 80px;
     margin-top: 20px;
-    /* gap: 20px; */
     .screen {
       width: 100%;
-      height: 100%;
-      background-color: #000;
       color: #fff;
-      height: 596px;
+      &-other {
+        display: flex;
+        width: 100%;
+        height: 156px;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        .user {
+          width: 250px;
+          height: 100%;
+          background-color: #f2f1eb;
+        }
+        .share-screen {
+          max-width: 415px;
+          width: 100%;
+          height: 100%;
+          background-color: #f2f1eb;
+        }
+      }
+      .main-screen {
+        width: 100%;
+        height: 535px;
+        video {
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+        }
+      }
     }
     .option {
-      /* background-color: pink; */
       display: flex;
       gap: 8px;
       justify-content: center;
       align-items: center;
       margin-top: 20px;
-      .option-item {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        border: 1px solid #000;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+
       &-close {
         width: 50px !important;
         height: 22px !important;
         padding: 4px 12px;
-        background-color: #000;
+        background-color: ${theme.color.point};
         color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 4px !important;
+      }
+      svg {
+        cursor: pointer;
       }
     }
   }
