@@ -1,9 +1,20 @@
+import PostCardItem from 'src/pages/main/PostCardItem';
+
+import Pagination from './Pagination';
 import * as S from './PostBorder.style';
 
 const PostBorder = () => {
   return (
     <>
-      <S.Container>등록한 포스트</S.Container>
+      <S.Container>
+        <PostCardItem></PostCardItem>
+        <PostCardItem></PostCardItem>
+        <PostCardItem></PostCardItem>
+        <PostCardItem></PostCardItem>
+        <PostCardItem></PostCardItem>
+      </S.Container>
+
+      <Pagination></Pagination>
     </>
   );
 };

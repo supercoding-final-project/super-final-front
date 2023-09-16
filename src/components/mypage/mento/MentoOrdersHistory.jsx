@@ -4,7 +4,8 @@ import { useHttp } from 'src/api/useHttp';
 
 import * as S from './MentoOrdersHistory.style';
 const MentoordersHistory = () => {
-  const userId = 6;
+  // const [orderlist, setOrderList] = useState([]);
+  // const userId = 6;
 
   // const prams = { userId: userId }
   // const data = useHttp("/mentee/mypage/orders", prams)
@@ -37,19 +38,21 @@ const MentoordersHistory = () => {
   // const url = 'http://localhost:8080/api/v1/mypage/orders';
   // const userId = 6;
 
-  // axios.get(url, {
+  // axios
+  //   .get(url, {
   //     params: {
-  //         userId: userId
-  //     }
-  // })
-  //     .then(response => {
-  //         // 요청이 성공한 경우 처리할 코드
-  //         console.log('응답 데이터:', response.data);
-  //     })
-  //     .catch(error => {
-  //         // 요청이 실패한 경우 처리할 코드
-  //         console.error('에러:', error);
-  //     });
+  //       userId: userId,
+  //     },
+  //   })
+  //   .then((response) => {
+  //     // 요청이 성공한 경우 처리할 코드
+  //     console.log('응답 데이터:', response.data);
+  //     setOrderlist(response.data);
+  //   })
+  //   .catch((error) => {
+  //     // 요청이 실패한 경우 처리할 코드
+  //     console.error('에러:', error);
+  //   });
 
   return (
     <>
