@@ -1,16 +1,19 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
+import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
-import GlobalFonts from './fonts/index.js';
 import AuthLayout from './pages/auth/AuthLayout';
 // import MentiAuthLayout from './pages/auth/menti/MentiAuthLayout';
 import ChatRoomLayout from './pages/chat/ChatRoomLayout';
+import DetailLayout from './pages/detail/DetailLayout';
 import NotFoundLayout from './pages/error/NotFoundLayout';
 import MainLayout from './pages/main/MainLayout';
 import MentoMainLayout from './pages/main/MentoMainLayout';
 import MentiMyLayout from './pages/my/MentiMyLayout';
 import MentoMyLayout from './pages/my/MentoMyLayout';
-import ScreenLayout from './pages/screen/ScreenLayout';
+import MentoListLayout from './pages/list/MentoListLayout';
+import PostListLayout from './pages/list/PostListLayout';
+import GlobalFonts from '../public/fonts/index.js';
 
 function App() {
   const router = createBrowserRouter([
@@ -35,8 +38,12 @@ function App() {
           element: <ChatRoomLayout />,
         },
         {
-          path: 'screenroom',
-          element: <ScreenLayout />,
+          path: 'chatroom',
+          element: <ChatRoomLayout />,
+        },
+        {
+          path: 'detail',
+          element: <DetailLayout />,
         },
         {
           path: 'my',
@@ -48,6 +55,19 @@ function App() {
             {
               path: 'mento',
               element: <MentoMyLayout />,
+            },
+          ],
+        },
+        {
+          path: 'list',
+          children: [
+            {
+              path: 'mento',
+              element: <MentoListLayout />,
+            },
+            {
+              path: 'post',
+              element: <PostListLayout />,
             },
           ],
         },
@@ -71,6 +91,7 @@ const Root = () => {
       <main>
         <Outlet />
       </main>
+      <Footer />
     </>
   );
 };

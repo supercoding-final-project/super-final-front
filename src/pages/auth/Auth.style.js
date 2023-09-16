@@ -8,7 +8,7 @@ const BaseIcons = css`
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 8.0625rem);
   background: #ffffff;
   backdrop-filter: blur(15px);
 
@@ -17,25 +17,26 @@ export const Container = styled.div`
 `;
 
 export const Wrap = styled.section`
-  width: 25.875rem;
-  height: 14.4375rem;
-  border-radius: 20px;
-  background: #4d4b4a;
+  width: 24.4375rem;
+  height: 19.3125rem;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  position: relative;
 `;
 
 export const Title = styled.p`
-  color: #fcfcfb;
+  color: #0f0f0e;
   font-size: 2rem;
   font-weight: 700;
   line-height: 2.8rem;
   letter-spacing: -0.03125rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const IconBox = styled.div`
@@ -51,6 +52,7 @@ export const Kakao = styled.div`
   background-color: #FAE100;
   background-image: url('/assets/kakao.svg');
   margin-right: 0.625rem;
+  cursor: pointer;
 `;
 
 export const Google = styled.div`

@@ -14,5 +14,5 @@ export default AuthLayout;
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 8.0625rem);
 `;
