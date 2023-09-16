@@ -1,14 +1,19 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useHttp } from 'src/api/useHttp';
 
 import * as S from './MentoOrdersHistory.style';
 const MentoordersHistory = () => {
-  const userId = 6;
+  // const [test, setTest] = useState();
 
-  // const prams = { userId: userId }
-  // const data = useHttp("/mentee/mypage/orders", prams)
-  // console.log(data)
+  // const userId = 6;
+
+  // useEffect(() => {
+  //   const prams = { userId: userId };
+  //   const data = useHttp('/mentee/mypage/orders', prams);
+  //   setTest(data);
+  //   console.log(data);
+  // }, [test]);
 
   let orderlist = [
     {
