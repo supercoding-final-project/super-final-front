@@ -101,12 +101,11 @@ export const MainCardButtonBox = styled.div`
   justify-content: space-between;
   button {
     display: flex;
-    padding: 8px 20px;
+    padding: 0.5rem 1.25rem;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 600;
-    line-height: 140%;
     letter-spacing: -0.5px;
   }
 `;
