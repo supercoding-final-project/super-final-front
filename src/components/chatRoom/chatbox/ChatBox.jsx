@@ -10,7 +10,7 @@ import MsgCard from './MsgCard';
 const ChatBox = (props) => {
   const { formattedTime, updateFormattedTime } = useFormattedTime();
   const cardEndRef = useRef(null);
-  const [previousDate, setPreviousDate] = useState('');
+  const previousDateRef = useRef('');
   const { jwtToken, decodedToken } = useJwtToken();
   const myId = decodedToken?.userId || '';
 
@@ -29,18 +29,14 @@ const ChatBox = (props) => {
     cardEndRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [data]);
 
-  useEffect(() => {
-    if (data.dbSendAt !== previousDate) {
-      setPreviousDate(data.dbSendAt);
-    }
-  }, [data.dbSendAt]);
-
   return (
     <S.ChatBox>
       <S.ChatContainer>
         {data.map((log, index) => (
           <React.Fragment key={index}>
-            {log.dbSendAt !== previousDate && <div className="date-line">{log.dbSendAt}</div>}
+            {log.dbSendAt !== previousDateRef.current && (
+              <div className="date-line">{log.dbSendAt}</div>
+            )}
             <MsgCard
               handler={props.profileHandler}
               log={log}
@@ -48,7 +44,7 @@ const ChatBox = (props) => {
               myId={myId}
               name={props.chatinfo.partnerName}
             />
-            {log.dbSendAt !== previousDate && setPreviousDate(log.dbSendAt)}
+            {log.dbSendAt !== previousDateRef.current && (previousDateRef.current = log.dbSendAt)}
           </React.Fragment>
         ))}
         <div ref={cardEndRef}></div>
