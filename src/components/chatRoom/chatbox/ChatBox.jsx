@@ -18,7 +18,7 @@ const ChatBox = (props) => {
   const [prevId, setPrevId] = useState(null);
 
   const { formattedTime, updateFormattedTime } = useFormattedTime();
-  const cardEndRef = useRef(null);
+  const chatContainerRef = useRef(null);
   const previousDateRef = useRef('');
   const { jwtToken, decodedToken } = useJwtToken();
   const myId = decodedToken?.userId || '';
@@ -38,16 +38,6 @@ const ChatBox = (props) => {
     }
   }, [props.chatinfo.chatroomId]);
 
-  // useEffect(() => {
-  //   if (sock) {
-  //     stompDisConnect(); // 이전 채팅방 연결 끊기
-  //     const newSock = new sockjs('https://codevelop.store/code-velop');
-  //     const newStomp = StompJs.over(newSock);
-  //     setSock(newSock);
-  //     setStomp(newStomp);
-  //   }
-  // }, [props.chatinfo.chatroomId]);
-
   useEffect(() => {
     if (sock) {
       const stompConnect = () => {
@@ -57,6 +47,7 @@ const ChatBox = (props) => {
             stomp.subscribe(`/chatroom/${props.chatinfo.chatroomId}`, (message) => {
               const receiveMsg = JSON.parse(message.body);
               setData((prevData) => [...prevData, receiveMsg]);
+              scrollToBottom();
             });
           });
         } catch (err) {
@@ -96,9 +87,10 @@ const ChatBox = (props) => {
         } else {
           setPage(0);
           setData(res.data.data);
+          scrollToBottom();
         }
         setPrevId(props.chatinfo.chatroomId);
-        console.log(res.data.data);
+        scrollToBottom();
       } catch (error) {
         console.error('HTTP 요청 중 오류 발생:', error);
       }
@@ -131,13 +123,13 @@ const ChatBox = (props) => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  useEffect(() => {
-    cardEndRef.current.scrollIntoView({ behavior: 'smooth' });
-  }, [data]);
+  const scrollToBottom = () => {
+    chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+  };
 
   return (
     <S.ChatBox>
-      <S.ChatContainer>
+      <S.ChatContainer ref={chatContainerRef}>
         {data.map((log, index) => (
           <React.Fragment key={index}>
             {log.dbSendAt !== previousDateRef.current && (
@@ -153,7 +145,6 @@ const ChatBox = (props) => {
             {log.dbSendAt !== previousDateRef.current && (previousDateRef.current = log.dbSendAt)}
           </React.Fragment>
         ))}
-        <div ref={cardEndRef}></div>
         <ChattingBar
           chatHandler={chatHandler}
           sendHandler={sendMessage}

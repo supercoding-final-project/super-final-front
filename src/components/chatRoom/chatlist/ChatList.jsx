@@ -10,7 +10,7 @@ const ChatList = (props) => {
             key={index}
             data={data}
             handler={props.handleChatSelect}
-            lastChat={props.lastChat}
+            lastChat={data.lastChat}
           />
         ))}
       </S.ChatListBox>
