@@ -38,8 +38,8 @@ export function useChatSocket(chatroomId, myId) {
           stomp.connect(
             {
               heartbeat: {
-                outgoing: 1000, // 클라이언트에서 서버로 주기적으로 HEARTBEAT 메시지를 보내는 주기 (밀리초)
-                incoming: 1000, // 서버에서 클라이언트로 주기적으로 HEARTBEAT 메시지를 보내는 주기 (밀리초)
+                outgoing: 1000,
+                incoming: 1000,
               },
             },
             () => {
@@ -81,7 +81,7 @@ export function useChatSocket(chatroomId, myId) {
   useEffect(() => {
     const fetchChatLog = async () => {
       try {
-        const res = await axios.get('https://codevelop.store/api/v1/selectroom', {
+        const res = await axios.get('https://codevelop.store/api/v1/message', {
           params: {
             ChatRoomId: chatroomId,
           },
