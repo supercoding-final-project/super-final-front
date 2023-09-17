@@ -12,7 +12,7 @@ export function useChatSocket(chatroomId, myId) {
   const [data, setData] = useState([]);
   const [text, setText] = useState('');
   const { jwtToken, decodedToken } = useJwtToken();
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [prevId, setPrevId] = useState(null);
 
   // Initialize WebSocket and Stomp
@@ -71,6 +71,7 @@ export function useChatSocket(chatroomId, myId) {
           },
         });
         setData((prevData) => [...res.data.data, ...prevData]);
+        console.log(res.data.data);
       } catch (error) {
         console.error('HTTP 요청 중 오류 발생:', error);
       }
@@ -88,6 +89,7 @@ export function useChatSocket(chatroomId, myId) {
         });
         setPage(0);
         setData(res.data.data);
+        console.log(res.data.data);
       } catch (err) {
         console.log('HTTP 요청 에러', err);
       }
