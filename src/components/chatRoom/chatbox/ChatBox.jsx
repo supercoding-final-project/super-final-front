@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useChatSocket } from 'src/api/chatSocket';
 import { useFormattedTime } from 'src/hooks/useFormattedTime';
 import useJwtToken from 'src/hooks/useJwt';
@@ -8,10 +8,11 @@ import ChattingBar from './ChattingBar';
 import MsgCard from './MsgCard';
 
 const ChatBox = (props) => {
-  const { jwtToken, decodedToken } = useJwtToken();
   const { formattedTime, updateFormattedTime } = useFormattedTime();
   const cardEndRef = useRef(null);
-  const myId = decodedToken?.userId || ''; // decodedToken이 null이면 빈 문자열로 초기화
+  const [previousDate, setPreviousDate] = useState(null);
+  const { jwtToken, decodedToken } = useJwtToken();
+  const myId = decodedToken?.userId || '';
 
   const { data, text, setText, sendMessage } = useChatSocket(props.chatinfo.chatroomId, myId);
 
@@ -32,17 +33,21 @@ const ChatBox = (props) => {
     <S.ChatBox>
       <S.ChatContainer>
         {data.map((log, index) => (
-          <MsgCard
-            handler={props.profileHandler}
-            key={index}
-            log={log}
-            profileImg={props.chatinfo.profileImg}
-            myId={myId}
-            name={props.chatinfo.partnerName}
-          />
+          <React.Fragment key={index}>
+            {log.dbSendAt !== previousDate && <div className="date-line">{log.dbSendAt}</div>}
+            <MsgCard
+              handler={props.profileHandler}
+              log={log}
+              profileImg={props.chatinfo.profileImg}
+              myId={myId}
+              name={props.chatinfo.partnerName}
+            />
+            {setPreviousDate(log.dbSendAt)}
+          </React.Fragment>
         ))}
         <div ref={cardEndRef}></div>
         <ChattingBar chatHandler={chatHandler} sendHandler={sendHandler} text={text} />
+        <button></button>
       </S.ChatContainer>
     </S.ChatBox>
   );

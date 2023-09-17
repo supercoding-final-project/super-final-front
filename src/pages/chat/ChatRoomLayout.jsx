@@ -11,7 +11,6 @@ import * as S from './chat.style';
 const ChatRoomLayout = () => {
   const { jwtToken, decodedToken } = useJwtToken();
   const [selectedChat, setSelectedChat] = useState({});
-  const myId = decodedToken?.userId || ''; // decodedToken이 null이면 빈 문자열로 초기화
   const isMento = true;
   const [chatList, setChatList] = useState([]);
 
@@ -20,18 +19,16 @@ const ChatRoomLayout = () => {
   };
 
   useEffect(() => {
-    if (myId) {
-      const fetchChatList = async () => {
-        const res = await axios.get('https://codevelop.store/api/v1/chatrooms', {
-          params: {
-            userId: myId,
-          },
-        });
-        setChatList(res.data.data.chatRoom);
-      };
-      fetchChatList();
-    }
-  }, [myId]);
+    const fetchChatList = async () => {
+      const res = await axios.get('https://codevelop.store/api/v1/chatrooms', {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      });
+      setChatList(res.data.data.chatRoom);
+    };
+    fetchChatList();
+  }, [jwtToken]);
 
   return (
     <S.ChatRoomWrapper>

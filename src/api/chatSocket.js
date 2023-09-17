@@ -1,15 +1,17 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import sockjs from 'sockjs-client/dist/sockjs';
+import useJwtToken from 'src/hooks/useJwt';
 import StompJs from 'stompjs';
 
-import { useHttp } from './useHttp';
+// import { useHttp } from './useHttp';
 
 export function useChatSocket(chatroomId, myId) {
   const [sock, setSock] = useState(null);
   const [stomp, setStomp] = useState(null);
   const [data, setData] = useState([]);
   const [text, setText] = useState('');
+  const { jwtToken, decodedToken } = useJwtToken();
 
   // Initialize WebSocket and Stomp
   useEffect(() => {
@@ -52,6 +54,9 @@ export function useChatSocket(chatroomId, myId) {
         params: {
           ChatRoomId: chatroomId,
           page: 0,
+        },
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
         },
       });
       setData(res.data.data);

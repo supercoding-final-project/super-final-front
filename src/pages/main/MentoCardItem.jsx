@@ -21,11 +21,17 @@ const MentoCardItem = () => {
   };
 
   const createChatHandler = () => {
-    const myId = decodedToken.userId;
-    axios.post('https://codevelop.store/api/v1/createchat', {
-      user1Idx: myId,
-      user2Idx: 5,
-    });
+    axios.post(
+      'https://codevelop.store/api/v1/createchat',
+      {
+        anotherUserId: 5,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+        },
+      },
+    );
   };
 
   return (
