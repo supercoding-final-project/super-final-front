@@ -67,11 +67,7 @@ export function useChatSocket(chatroomId, myId) {
       }
     };
     fetchChatLog();
-  }, [page]);
-
-  useEffect(() => {
-    fetchChatLog();
-  }, [chatroomId]);
+  }, [page, chatroomId]);
 
   // Send message through WebSocket
   const sendMessage = async (formattedTime) => {
