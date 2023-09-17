@@ -26,7 +26,7 @@ const ChatBox = (props) => {
   };
 
   useEffect(() => {
-    cardEndRef.current.scrollIntoView();
+    cardEndRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [data]);
 
   return (
@@ -42,7 +42,7 @@ const ChatBox = (props) => {
               myId={myId}
               name={props.chatinfo.partnerName}
             />
-            {log.dbSendAt !== previousDate && setPreviousDate(log.dbSendAt)}
+            {setPreviousDate((prevDate) => (log.dbSendAt !== prevDate ? log.dbSendAt : prevDate))}
           </React.Fragment>
         ))}
         <div ref={cardEndRef}></div>
