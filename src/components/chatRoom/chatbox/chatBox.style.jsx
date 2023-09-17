@@ -8,7 +8,7 @@ export const ChatBox = styled.div`
 
 export const ChatContainer = styled.div`
   position: relative;
-  height: 65vh;
+  height: 80vh;
   overflow: auto;
 `;
 
@@ -83,7 +83,7 @@ export const ChattingBarWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70%;
+  width: 80%;
   background-color: white;
   height: 9rem;
   padding-bottom: 1rem;
