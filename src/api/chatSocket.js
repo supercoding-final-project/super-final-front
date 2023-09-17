@@ -6,7 +6,7 @@ import StompJs from 'stompjs';
 
 // import { useHttp } from './useHttp';
 
-export function useChatSocket(chatroomId) {
+export function useChatSocket(chatroomId, myId) {
   const [sock, setSock] = useState(null);
   const [stomp, setStomp] = useState(null);
   const [data, setData] = useState([]);
@@ -14,7 +14,7 @@ export function useChatSocket(chatroomId) {
   const { jwtToken, decodedToken } = useJwtToken();
   const [page, setPage] = useState(1);
   const [prevId, setPrevId] = useState(null);
-  const myId = decodedToken?.userId || '';
+
   // Initialize WebSocket and Stomp
   useEffect(() => {
     const newSock = new sockjs('https://codevelop.store/code-velop');
@@ -88,7 +88,6 @@ export function useChatSocket(chatroomId) {
           },
         });
         setData(res.data.data);
-        console.log(res.data.data);
       } catch (err) {
         console.log('HTTP 요청 에러', err);
       }
