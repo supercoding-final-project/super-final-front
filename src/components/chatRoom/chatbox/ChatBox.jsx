@@ -83,6 +83,7 @@ const ChatBox = (props) => {
         if (prevId === props.chatinfo.chatroomId) {
           setData((prevData) => [...res.data.data, ...prevData]);
         } else {
+          setPage(0);
           setData(res.data.data);
         }
         setPrevId(props.chatinfo.chatroomId);

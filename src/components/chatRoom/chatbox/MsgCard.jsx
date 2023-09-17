@@ -4,10 +4,10 @@ import * as S from './chatBox.style';
 
 const MsgCard = (props) => {
   const log = props.log;
-  const [isSend, setIsSend] = useState(false);
+  const [isSend, setIsSend] = useState(0);
 
   useEffect(() => {
-    if (log.senderId === props.myId) setIsSend(true);
+    if (log.senderId === props.myId) setIsSend(1);
     console.log(props.log.senderId, props.myId);
   }, [log.senderId]);
 
@@ -20,11 +20,11 @@ const MsgCard = (props) => {
           </S.ProfileImgBox>
         )}
         <S.MsgBox>
-          {isSend && <S.SendAt>{log.sendAt}</S.SendAt>}
+          {isSend === 1 && <S.SendAt>{log.sendAt}</S.SendAt>}
           <S.TextBox send={isSend}>
             <S.Text>{log.chatContent}</S.Text>
           </S.TextBox>
-          {!isSend && <S.SendAt>{log.sendAt}</S.SendAt>}
+          {isSend === 0 && <S.SendAt>{log.sendAt}</S.SendAt>}
         </S.MsgBox>
       </S.MsgContainer>
     </S.MsgCard>
