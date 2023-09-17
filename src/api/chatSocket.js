@@ -59,6 +59,7 @@ export function useChatSocket(chatroomId, myId) {
 
   // HTTP request logic
   useEffect(() => {
+    let prevChatroomId;
     const fetchPage = async () => {
       try {
         const res = await axios.get('https://codevelop.store/api/v1/message', {
@@ -71,7 +72,7 @@ export function useChatSocket(chatroomId, myId) {
           },
         });
 
-        if (chatroomIdChanged) {
+        if (chatroomId !== prevChatroomId) {
           setData(res.data.data);
           setPage(0);
         } else {
@@ -83,10 +84,6 @@ export function useChatSocket(chatroomId, myId) {
         console.error('HTTP 요청 중 오류 발생:', error);
       }
     };
-
-    // chatroomId가 변경되었는지 확인하는 변수
-    const chatroomIdChanged = chatroomId !== prevChatroomId;
-    const prevChatroomId = chatroomId;
 
     fetchPage();
   }, [chatroomId, page]);
