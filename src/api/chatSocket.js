@@ -59,7 +59,6 @@ export function useChatSocket(chatroomId, myId) {
 
   // HTTP request logic
   useEffect(() => {
-    let prevChatroomId;
     const fetchPage = async () => {
       try {
         const res = await axios.get('https://codevelop.store/api/v1/message', {
@@ -71,23 +70,14 @@ export function useChatSocket(chatroomId, myId) {
             Authorization: jwtToken,
           },
         });
-
-        if (chatroomId !== prevChatroomId) {
-          setData(res.data.data);
-          setPage(0);
-        } else {
-          setData((prevData) => [...res.data.data, ...prevData]);
-        }
-
+        setData((prevData) => [...res.data.data, ...prevData]);
         console.log(res.data.data);
       } catch (error) {
         console.error('HTTP 요청 중 오류 발생:', error);
       }
-      prevChatroomId = chatroomId;
     };
-
     fetchPage();
-  }, [chatroomId, page]);
+  }, [page, chatroomId]);
 
   // Send message through WebSocket
   const sendMessage = async (formattedTime) => {
