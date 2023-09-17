@@ -49,6 +49,7 @@ export function useChatSocket(chatroomId, myId) {
   }, [sock, stomp, chatroomId]);
 
   // HTTP request logic
+  // HTTP request logic
   useEffect(() => {
     const fetchChatLog = async () => {
       try {
@@ -61,7 +62,8 @@ export function useChatSocket(chatroomId, myId) {
             Authorization: jwtToken,
           },
         });
-        setData(res.data.data);
+
+        setData((prevData) => [...prevData, ...res.data.data]);
       } catch (error) {
         console.error('HTTP 요청 중 오류 발생:', error);
       }
