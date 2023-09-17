@@ -6,7 +6,7 @@ import StompJs from 'stompjs';
 
 // import { useHttp } from './useHttp';
 
-export function useChatSocket(chatroomId, myId, page) {
+export function useChatSocket(chatroomId, myId) {
   const [sock, setSock] = useState(null);
   const [stomp, setStomp] = useState(null);
   const [data, setData] = useState([]);
