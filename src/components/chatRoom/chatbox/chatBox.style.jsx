@@ -83,7 +83,7 @@ export const ChattingBarWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80%;
+  width: 100%;
   background-color: white;
   height: 9rem;
   padding-bottom: 1rem;
