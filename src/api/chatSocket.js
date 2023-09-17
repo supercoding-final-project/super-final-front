@@ -27,8 +27,7 @@ export function useChatSocket(chatroomId, myId) {
       if (stomp) {
         stomp.disconnect(() => {
           stomp.unsubscribe(chatroomId);
-        })
-        };
+        });
       }
     };
   }, [chatroomId]);
