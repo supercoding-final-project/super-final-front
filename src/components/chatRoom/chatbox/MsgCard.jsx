@@ -7,11 +7,12 @@ const MsgCard = (props) => {
   const log = props.log;
   const [isSend, setIsSend] = useState(false);
   const { jwtToken, decodedToken } = useJwtToken();
-  const myId = decodedToken?.userId || '';
+  const [myId, setMyId] = useState('');
 
   useEffect(() => {
+    setMyId(decodedToken.userId);
     if (log.senderId === myId) setIsSend(true);
-  }, [myId]);
+  }, [log.senderId]);
 
   return (
     <S.MsgCard send={isSend}>

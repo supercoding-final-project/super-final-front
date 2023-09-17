@@ -198,7 +198,6 @@ export const NoChatBtn = styled.button`
   cursor: pointer;
   border-radius: 0.25rem;
   border: none;
-  font-family: 'Pretendard', sans-serif;
 `;
 
 export const NoChatBox = styled.div`
