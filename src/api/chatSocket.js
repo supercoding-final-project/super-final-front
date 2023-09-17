@@ -15,42 +15,52 @@ export function useChatSocket(chatroomId, myId) {
   const [page, setPage] = useState(0);
   const [prevId, setPrevId] = useState(null);
 
+  // Initialize WebSocket and Stomp
   useEffect(() => {
-    const newSock = new sockjs('https://codevelop.store/code-velop');
-    const newStomp = StompJs.over(newSock);
-    setSock(newSock);
-    setStomp(newStomp);
-    if (sock && stomp) {
-      stompDisConnect();
-      stompConnect();
+    if (!sock) {
+      const newSock = new sockjs('http://localhost:8080/code-velop');
+      const newStomp = StompJs.over(newSock);
+      setSock(newSock);
+      setStomp(newStomp);
     } else {
-      stompConnect();
+      stompDisConnect();
+      const newSock = new sockjs('http://localhost:8080/code-velop');
+      const newStomp = StompJs.over(newSock);
+      setSock(newSock);
+      setStomp(newStomp);
     }
   }, [chatroomId]);
 
-  const stompConnect = () => {
-    try {
-      stomp.connect(
-        {
-          heartbeat: {
-            outgoing: 1000,
-            incoming: 1000,
-          },
-        },
-        () => {
-          stomp.subscribe(`/chatroom/${chatroomId}`, (message) => {
-            const receiveMsg = JSON.parse(message.body);
-            setData((prevData) => [...prevData, receiveMsg]);
-          });
-        },
-      );
-    } catch (err) {
-      console.error('WebSocket 연결 시도 중 오류 발생:', err);
+  // WebSocket connection logic
+  useEffect(() => {
+    if (sock) {
+      const stompConnect = () => {
+        try {
+          stomp.connect(
+            {
+              heartbeat: {
+                outgoing: 1000,
+                incoming: 1000,
+              },
+            },
+            () => {
+              stomp.subscribe(`/chatroom/${chatroomId}`, (message) => {
+                const receiveMsg = JSON.parse(message.body);
+                setData((prevData) => [...prevData, receiveMsg]);
+              });
+            },
+          );
+        } catch (err) {
+          console.error('WebSocket 연결 시도 중 오류 발생:', err);
+        }
+      };
+      stompConnect();
     }
-  };
+  }, [sock, chatroomId]);
 
   const stompDisConnect = () => {
     try {
+      // stomp.debug = null;
       stomp.disconnect(() => {
         stomp.unsubscribe(chatroomId);
       });
@@ -58,9 +68,6 @@ export function useChatSocket(chatroomId, myId) {
       console.log(err);
     }
   };
-  // Initialize WebSocket and Stomp
-
-  // WebSocket connection logic
 
   // HTTP request logic
   useEffect(() => {
@@ -79,7 +86,6 @@ export function useChatSocket(chatroomId, myId) {
           setData((prevData) => [...res.data.data, ...prevData]);
         } else {
           setData(res.data.data);
-          setPage(0);
         }
         setPrevId(chatroomId);
         console.log(res.data.data);
