@@ -42,7 +42,7 @@ const ChatBox = (props) => {
               myId={myId}
               name={props.chatinfo.partnerName}
             />
-            {setPreviousDate(log.dbSendAt)}
+            {log.dbSendAt !== previousDate && setPreviousDate(log.dbSendAt)}
           </React.Fragment>
         ))}
         <div ref={cardEndRef}></div>
