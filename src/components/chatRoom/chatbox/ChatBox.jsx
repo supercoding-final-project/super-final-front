@@ -99,7 +99,7 @@ const ChatBox = (props) => {
     setText(e.target.value);
   };
 
-  const sendMessage = async (formattedTime) => {
+  const sendMessage = async () => {
     const newMessage = {
       senderId: myId,
       chatContent: text,
