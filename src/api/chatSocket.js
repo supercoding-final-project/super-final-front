@@ -17,19 +17,16 @@ export function useChatSocket(chatroomId, myId) {
 
   // Initialize WebSocket and Stomp
   useEffect(() => {
+    if (stomp && sock) {
+      stomp.disconnect(() => {
+        stomp.unsubscribe(chatroomId);
+      });
+    }
     const newSock = new sockjs('https://codevelop.store/code-velop');
     const newStomp = StompJs.over(newSock);
 
     setSock(newSock);
     setStomp(newStomp);
-
-    return () => {
-      if (stomp) {
-        stomp.disconnect(() => {
-          stomp.unsubscribe(chatroomId);
-        });
-      }
-    };
   }, [chatroomId]);
 
   // WebSocket connection logic
