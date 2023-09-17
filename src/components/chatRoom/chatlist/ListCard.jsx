@@ -8,7 +8,7 @@ const ListCard = (props) => {
         <S.ProfileImg src={data.profileImg}></S.ProfileImg>
         <S.ListMsgBox>
           <S.PartnerName>{data.partnerName}</S.PartnerName>
-          <S.lastMsg>{data.lastChat}</S.lastMsg>
+          <S.lastMsg>{props.lastChat}</S.lastMsg>
         </S.ListMsgBox>
       </S.ChatListCard>
     </S.ChatListCardWrap>

@@ -112,15 +112,19 @@ const ChatBox = (props) => {
   };
 
   const sendMessage = async () => {
-    const newMessage = {
-      senderId: myId,
-      chatContent: text,
-      sendAt: formattedTime,
-      chatRoomId: props.chatinfo.chatroomId,
-    };
-    console.log(props.chatinfo.chatroomId);
-    stomp.send(`/ws/${props.chatinfo.chatroomId}`, {}, JSON.stringify(newMessage));
-    setText('');
+    const cleanedText = text.replace(/\n/g, '');
+    if (text.trim() !== '') {
+      const newMessage = {
+        senderId: myId,
+        chatContent: cleanedText,
+        sendAt: formattedTime,
+        chatRoomId: props.chatinfo.chatroomId,
+      };
+      console.log(props.chatinfo.chatroomId);
+      stomp.send(`/ws/${props.chatinfo.chatroomId}`, {}, JSON.stringify(newMessage));
+      setText('');
+      props.setLastChat(cleanedText);
+    }
   };
 
   const pageHandler = () => {
@@ -150,7 +154,12 @@ const ChatBox = (props) => {
           </React.Fragment>
         ))}
         <div ref={cardEndRef}></div>
-        <ChattingBar chatHandler={chatHandler} sendHandler={sendMessage} text={text} />
+        <ChattingBar
+          chatHandler={chatHandler}
+          sendHandler={sendMessage}
+          text={text}
+          setLastChat={props.setLastChat}
+        />
         <button onClick={pageHandler}>다음 페이지!</button>
       </S.ChatContainer>
     </S.ChatBox>

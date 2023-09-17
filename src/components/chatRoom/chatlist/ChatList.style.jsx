@@ -11,7 +11,9 @@ export const ChatListWrap = styled.div`
 export const ChatListBox = styled.div`
   width: 100%;
   height: 100vh;
-  overflow: auto;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 export const ChatListCardWrap = styled.div`

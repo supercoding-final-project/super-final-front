@@ -2,7 +2,7 @@ import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
 
 export const ChatBox = styled.div`
-  flex-direction: column;
+  // flex-direction: column;
   width: 70%;
 `;
 
@@ -10,12 +10,20 @@ export const ChatContainer = styled.div`
   position: relative;
   height: 80vh;
   overflow: auto;
+
+  // 하윤 추가
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 `;
 
 export const MsgCard = styled.div`
   display: flex;
   justify-content: ${(props) => (props.send === 1 ? 'flex-end' : 'flex-start')};
-  margin: 2rem;
+  // margin: 2rem;
+
+  // 하윤 변경
+  margin: 1rem 2rem;
 `;
 
 export const MsgContainer = styled.div`
