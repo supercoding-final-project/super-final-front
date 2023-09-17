@@ -106,6 +106,7 @@ const ChatBox = (props) => {
       sendAt: formattedTime,
       chatRoomId: props.chatinfo.chatroomId,
     };
+    console.log(props.chatinfo.chatroomId);
     stomp.send(`/ws/${props.chatinfo.chatroomId}`, {}, JSON.stringify(newMessage));
     setText('');
   };
