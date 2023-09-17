@@ -83,6 +83,7 @@ export function useChatSocket(chatroomId, myId) {
       } catch (error) {
         console.error('HTTP 요청 중 오류 발생:', error);
       }
+      prevChatroomId = chatroomId;
     };
 
     fetchPage();
