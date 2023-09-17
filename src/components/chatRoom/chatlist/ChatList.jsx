@@ -6,7 +6,12 @@ const ChatList = (props) => {
     <S.ChatListWrap>
       <S.ChatListBox>
         {props.list.map((data, index) => (
-          <ListCard key={index} data={data} handler={props.handleChatSelect} />
+          <ListCard
+            key={index}
+            data={data}
+            handler={props.handleChatSelect}
+            lastChat={props.lastChat}
+          />
         ))}
       </S.ChatListBox>
     </S.ChatListWrap>

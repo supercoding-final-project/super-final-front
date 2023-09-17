@@ -13,6 +13,7 @@ const ChatRoomLayout = () => {
   const [selectedChat, setSelectedChat] = useState({});
   const isMento = true;
   const [chatList, setChatList] = useState([]);
+  const [lastChat, setLastChat] = useState(chatList.lastChat);
 
   const handleChatSelect = (chat) => {
     setSelectedChat(chat);
@@ -35,9 +36,13 @@ const ChatRoomLayout = () => {
       {chatList.length === 0 ? (
         <NoChatList isMento={isMento} />
       ) : (
-        <ChatList list={chatList} handleChatSelect={handleChatSelect} />
+        <ChatList list={chatList} handleChatSelect={handleChatSelect} lastChat={lastChat} />
       )}
-      {Object.keys(selectedChat).length !== 0 ? <ChatBox chatinfo={selectedChat} /> : <NoChatBox />}
+      {Object.keys(selectedChat).length !== 0 ? (
+        <ChatBox chatinfo={selectedChat} setLastChat={setLastChat} />
+      ) : (
+        <NoChatBox />
+      )}
     </S.ChatRoomWrapper>
   );
 };
