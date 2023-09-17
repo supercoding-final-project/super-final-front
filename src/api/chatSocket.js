@@ -56,7 +56,7 @@ export function useChatSocket(chatroomId, myId) {
           page: 0,
         },
         headers: {
-          Authorization: `Bearer ${jwtToken}`,
+          Authorization: jwtToken,
         },
       });
       setData(res.data.data);
