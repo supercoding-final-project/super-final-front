@@ -23,14 +23,24 @@ const ChatBox = (props) => {
   const { jwtToken, decodedToken } = useJwtToken();
   const myId = decodedToken?.userId || '';
 
+  // useEffect(() => {
+  //   if (!sock) {
+  //     const newSock = new sockjs('https://codevelop.store/code-velop');
+  //     const newStomp = StompJs.over(newSock);
+  //     setSock(newSock);
+  //     setStomp(newStomp);
+  //   } else {
+  //     stompDisConnect();
+  //     const newSock = new sockjs('https://codevelop.store/code-velop');
+  //     const newStomp = StompJs.over(newSock);
+  //     setSock(newSock);
+  //     setStomp(newStomp);
+  //   }
+  // }, [props.chatinfo.chatroomId]);
+
   useEffect(() => {
-    if (!sock) {
-      const newSock = new sockjs('https://codevelop.store/code-velop');
-      const newStomp = StompJs.over(newSock);
-      setSock(newSock);
-      setStomp(newStomp);
-    } else {
-      stompDisConnect();
+    if (sock) {
+      stompDisConnect(); // 이전 채팅방 연결 끊기
       const newSock = new sockjs('https://codevelop.store/code-velop');
       const newStomp = StompJs.over(newSock);
       setSock(newSock);
@@ -59,12 +69,13 @@ const ChatBox = (props) => {
 
   const stompDisConnect = () => {
     try {
-      // stomp.debug = null;
-      stomp.disconnect(() => {
-        stomp.unsubscribe(props.chatinfo.chatroomId);
-      });
+      if (stomp) {
+        stomp.disconnect(() => {
+          console.log(`Disconnected from chatroom ${props.chatinfo.chatroomId}`);
+        });
+      }
     } catch (err) {
-      console.log(err);
+      console.error('Error disconnecting from WebSocket:', err);
     }
   };
 

@@ -8,9 +8,9 @@ const MsgCard = (props) => {
 
   useEffect(() => {
     if (log.senderId === props.myId) setIsSend(1);
-    console.log(props.log.senderId, props.myId);
+    else console.log(props.log.senderId, props.myId);
   }, []);
-
+  // 채팅 메시지 하나 하나가 이거입니다.
   return (
     <S.MsgCard send={isSend}>
       <S.MsgContainer>
