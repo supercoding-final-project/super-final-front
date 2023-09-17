@@ -23,30 +23,30 @@ const ChatBox = (props) => {
   const { jwtToken, decodedToken } = useJwtToken();
   const myId = decodedToken?.userId || '';
 
-  // useEffect(() => {
-  //   if (!sock) {
-  //     const newSock = new sockjs('https://codevelop.store/code-velop');
-  //     const newStomp = StompJs.over(newSock);
-  //     setSock(newSock);
-  //     setStomp(newStomp);
-  //   } else {
-  //     stompDisConnect();
-  //     const newSock = new sockjs('https://codevelop.store/code-velop');
-  //     const newStomp = StompJs.over(newSock);
-  //     setSock(newSock);
-  //     setStomp(newStomp);
-  //   }
-  // }, [props.chatinfo.chatroomId]);
-
   useEffect(() => {
-    if (sock) {
-      stompDisConnect(); // 이전 채팅방 연결 끊기
+    if (!sock) {
+      const newSock = new sockjs('https://codevelop.store/code-velop');
+      const newStomp = StompJs.over(newSock);
+      setSock(newSock);
+      setStomp(newStomp);
+    } else {
+      stompDisConnect();
       const newSock = new sockjs('https://codevelop.store/code-velop');
       const newStomp = StompJs.over(newSock);
       setSock(newSock);
       setStomp(newStomp);
     }
   }, [props.chatinfo.chatroomId]);
+
+  // useEffect(() => {
+  //   if (sock) {
+  //     stompDisConnect(); // 이전 채팅방 연결 끊기
+  //     const newSock = new sockjs('https://codevelop.store/code-velop');
+  //     const newStomp = StompJs.over(newSock);
+  //     setSock(newSock);
+  //     setStomp(newStomp);
+  //   }
+  // }, [props.chatinfo.chatroomId]);
 
   useEffect(() => {
     if (sock) {
