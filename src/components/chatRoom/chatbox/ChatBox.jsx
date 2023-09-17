@@ -29,7 +29,7 @@ const ChatBox = (props) => {
   };
 
   const pageHandler = () => {
-    setPage((prevPage) => prevPage + 1); // 이전 페이지를 가져와 1을 더한 후 반환
+    setPage((prevPage) => prevPage + 1);
   };
 
   useEffect(() => {
@@ -44,6 +44,7 @@ const ChatBox = (props) => {
             {log.dbSendAt !== previousDateRef.current && (
               <div className="date-line">{log.dbSendAt}</div>
             )}
+            {log.dbSendAt !== previousDateRef.current && (previousDateRef.current = log.dbSendAt)}
             <MsgCard
               handler={props.profileHandler}
               log={log}
@@ -51,7 +52,6 @@ const ChatBox = (props) => {
               myId={myId}
               name={props.chatinfo.partnerName}
             />
-            {log.dbSendAt !== previousDateRef.current && (previousDateRef.current = log.dbSendAt)}
           </React.Fragment>
         ))}
         <div ref={cardEndRef}></div>

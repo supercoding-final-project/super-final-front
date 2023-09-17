@@ -63,7 +63,7 @@ export function useChatSocket(chatroomId, myId) {
           },
         });
 
-        setData((prevData) => [...prevData, ...res.data.data]);
+        setData((prevData) => [...res.data.data, ...prevData]);
       } catch (error) {
         console.error('HTTP 요청 중 오류 발생:', error);
       }
