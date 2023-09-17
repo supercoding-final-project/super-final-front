@@ -11,10 +11,7 @@ const ChatBox = (props) => {
   const cardEndRef = useRef(null);
   const previousDateRef = useRef('');
 
-  const { data, text, setText, sendMessage, setPage } = useChatSocket(
-    props.chatinfo.chatroomId,
-    myId,
-  );
+  const { data, text, setText, sendMessage, setPage } = useChatSocket(props.chatinfo.chatroomId);
 
   const chatHandler = (e) => {
     updateFormattedTime();
