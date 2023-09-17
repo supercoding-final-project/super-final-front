@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
+import useJwtToken from 'src/hooks/useJwt';
 
 import * as S from './chatBox.style';
 
 const MsgCard = (props) => {
   const log = props.log;
   const [isSend, setIsSend] = useState(false);
+  const { jwtToken, decodedToken } = useJwtToken();
+  const myId = decodedToken?.userId || '';
 
   useEffect(() => {
-    if (log.senderId === props.myId) setIsSend(true);
-  }, [log.senderId]);
+    if (log.senderId === myId) setIsSend(true);
+  }, [myId]);
 
   return (
     <S.MsgCard send={isSend}>
