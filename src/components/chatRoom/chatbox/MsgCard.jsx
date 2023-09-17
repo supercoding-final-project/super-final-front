@@ -9,7 +9,7 @@ const MsgCard = (props) => {
   useEffect(() => {
     if (log.senderId === props.myId) setIsSend(1);
     console.log(props.log.senderId, props.myId);
-  }, [log.senderId]);
+  }, []);
 
   return (
     <S.MsgCard send={isSend}>
