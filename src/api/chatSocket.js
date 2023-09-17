@@ -74,6 +74,7 @@ export function useChatSocket(chatroomId, myId) {
           setData((prevData) => [...res.data.data, ...prevData]);
         } else {
           setData(res.data.data);
+          setPage(0);
         }
         setPrevId(chatroomId);
         console.log(res.data.data);
