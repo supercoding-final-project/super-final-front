@@ -28,7 +28,7 @@ const MentoCardItem = () => {
       },
       {
         headers: {
-          Authorization: `Bearer ${jwtToken}`,
+          Authorization: jwtToken,
         },
       },
     );
