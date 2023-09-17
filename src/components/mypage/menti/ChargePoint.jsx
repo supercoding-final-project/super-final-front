@@ -8,8 +8,7 @@ const ChargePoint = () => {
   const inputcash = useRef(0);
 
   const accesstoken =
-    'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwLCJhdXRob3JpdGllcyI6WyJNRU5URUUiXSwiaWF0IjoxNjk0ODMzNDgyLCJleHAiOjE2OTQ4MzcwODJ9.m0AhXLNSdQs1S-9EC8aE_do5PJ_eI47PieTjEPOqaBI';
-
+    'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwLCJhdXRob3JpdGllcyI6WyJNRU5URUUiXSwiaWF0IjoxNjk0ODM4NTEyLCJleHAiOjE2OTQ4NDIxMTJ9.JSfm8QSWUIg5C0PR7WYLCdBbcAR0LV8u7xxr7B-nkbs';
   const chargePointButton = async (inputpoint) => {
     const response = await fetch('https://codevelop.store/api/v1/users/paymoney', {
       method: 'POST',
@@ -24,9 +23,7 @@ const ChargePoint = () => {
     const successData = await response.json();
     console.log(successData);
   };
-
   const BonusPointCalculrator = (event) => {
-    const [charged, setChagred] = useState(false);
     let paymentamount = event.target.value;
 
     if (paymentamount < 0 && paymentamount == '') {

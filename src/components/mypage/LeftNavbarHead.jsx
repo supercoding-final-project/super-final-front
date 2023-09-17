@@ -1,7 +1,6 @@
 import * as S from 'src/pages/my/mentiMyLayout.style';
 
 const LeftNavbarHead = ({ User }) => {
-  console.log('네비헤드부분', User.point);
   return (
     <>
       <S.LeftNavbarHeadContainer>

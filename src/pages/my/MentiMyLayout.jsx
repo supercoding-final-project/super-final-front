@@ -4,7 +4,7 @@ import MentiInformation from 'src/components/mypage/menti/MentiInformation';
 import * as S from 'src/pages/my/mentiMyLayout.style';
 
 const accesstoken =
-  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwLCJhdXRob3JpdGllcyI6WyJNRU5URUUiXSwiaWF0IjoxNjk0ODMzNDgyLCJleHAiOjE2OTQ4MzcwODJ9.m0AhXLNSdQs1S-9EC8aE_do5PJ_eI47PieTjEPOqaBI';
+  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwLCJhdXRob3JpdGllcyI6WyJNRU5URUUiXSwiaWF0IjoxNjk0ODM4NTEyLCJleHAiOjE2OTQ4NDIxMTJ9.JSfm8QSWUIg5C0PR7WYLCdBbcAR0LV8u7xxr7B-nkbs';
 
 const user = async () => {
   try {
