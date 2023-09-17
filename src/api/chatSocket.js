@@ -49,22 +49,25 @@ export function useChatSocket(chatroomId, myId) {
   }, [sock, stomp, chatroomId]);
 
   // HTTP request logic
-  const fetchChatLog = async () => {
-    try {
-      const res = await axios.get('https://codevelop.store/api/v1/message', {
-        params: {
-          ChatRoomId: chatroomId,
-          page: page,
-        },
-        headers: {
-          Authorization: jwtToken,
-        },
-      });
-      setData(res.data.data);
-    } catch (error) {
-      console.error('HTTP 요청 중 오류 발생:', error);
-    }
-  };
+  useEffect(() => {
+    const fetchChatLog = async () => {
+      try {
+        const res = await axios.get('https://codevelop.store/api/v1/message', {
+          params: {
+            ChatRoomId: chatroomId,
+            page: page,
+          },
+          headers: {
+            Authorization: jwtToken,
+          },
+        });
+        setData(res.data.data);
+      } catch (error) {
+        console.error('HTTP 요청 중 오류 발생:', error);
+      }
+    };
+    fetchChatLog();
+  }, [page]);
 
   useEffect(() => {
     fetchChatLog();
