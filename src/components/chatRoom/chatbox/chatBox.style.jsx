@@ -14,7 +14,7 @@ export const ChatContainer = styled.div`
   // 하윤 추가
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
 `;
 
 export const MsgCard = styled.div`
@@ -101,10 +101,13 @@ export const ChattingBar = styled.textarea`
   box-sizing: border-box;
   padding: 20px 84px 20px 20px;
   width: 80%;
-  height: 100%;
+  // height: 100%; // 이거 쓰니까 채팅 창이 없을 때 9rem 이 되었다가 채팅 창이 생기면 쪼그라 들어영!
   border: 1px solid #bdbdbd;
   background-color: white;
   border-radius: 0.5rem;
+
+  // 하윤 변경
+  height: 9rem;
 
   &::placeholder {
     font-size: 0.875rem;
