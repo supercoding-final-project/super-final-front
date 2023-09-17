@@ -18,13 +18,13 @@ export function useChatSocket(chatroomId, myId) {
   // Initialize WebSocket and Stomp
   useEffect(() => {
     if (!sock) {
-      const newSock = new sockjs('http://localhost:8080/code-velop');
+      const newSock = new sockjs('https://codevelop.store/code-velop');
       const newStomp = StompJs.over(newSock);
       setSock(newSock);
       setStomp(newStomp);
     } else {
       stompDisConnect();
-      const newSock = new sockjs('http://localhost:8080/code-velop');
+      const newSock = new sockjs('https://codevelop.store/code-velop');
       const newStomp = StompJs.over(newSock);
       setSock(newSock);
       setStomp(newStomp);
