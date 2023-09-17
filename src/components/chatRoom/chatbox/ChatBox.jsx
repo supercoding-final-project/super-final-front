@@ -14,7 +14,10 @@ const ChatBox = (props) => {
   const { jwtToken, decodedToken } = useJwtToken();
   const myId = decodedToken?.userId || '';
 
-  const { data, text, setText, sendMessage } = useChatSocket(props.chatinfo.chatroomId, myId);
+  const { data, text, setText, sendMessage, setPage } = useChatSocket(
+    props.chatinfo.chatroomId,
+    myId,
+  );
 
   const chatHandler = (e) => {
     updateFormattedTime();
@@ -23,6 +26,10 @@ const ChatBox = (props) => {
 
   const sendHandler = () => {
     sendMessage(formattedTime);
+  };
+
+  const pageHandler = () => {
+    setPage((prevPage) => prevPage + 1); // 이전 페이지를 가져와 1을 더한 후 반환
   };
 
   useEffect(() => {
@@ -49,7 +56,7 @@ const ChatBox = (props) => {
         ))}
         <div ref={cardEndRef}></div>
         <ChattingBar chatHandler={chatHandler} sendHandler={sendHandler} text={text} />
-        <button></button>
+        <button onClick={pageHandler}>다음 페이지!</button>
       </S.ChatContainer>
     </S.ChatBox>
   );

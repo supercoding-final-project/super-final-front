@@ -6,12 +6,13 @@ import StompJs from 'stompjs';
 
 // import { useHttp } from './useHttp';
 
-export function useChatSocket(chatroomId, myId) {
+export function useChatSocket(chatroomId, myId, page) {
   const [sock, setSock] = useState(null);
   const [stomp, setStomp] = useState(null);
   const [data, setData] = useState([]);
   const [text, setText] = useState('');
   const { jwtToken, decodedToken } = useJwtToken();
+  const [page, setPage] = useState(0);
 
   // Initialize WebSocket and Stomp
   useEffect(() => {
@@ -53,7 +54,7 @@ export function useChatSocket(chatroomId, myId) {
       const res = await axios.get('https://codevelop.store/api/v1/message', {
         params: {
           ChatRoomId: chatroomId,
-          page: 2,
+          page: page,
         },
         headers: {
           Authorization: jwtToken,
@@ -86,5 +87,6 @@ export function useChatSocket(chatroomId, myId) {
     text,
     setText,
     sendMessage,
+    setPage,
   };
 }
