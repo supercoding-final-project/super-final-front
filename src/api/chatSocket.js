@@ -12,7 +12,7 @@ export function useChatSocket(chatroomId, myId) {
   const [data, setData] = useState([]);
   const [text, setText] = useState('');
   const { jwtToken, decodedToken } = useJwtToken();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [prevId, setPrevId] = useState(null);
 
   // Initialize WebSocket and Stomp
@@ -70,7 +70,12 @@ export function useChatSocket(chatroomId, myId) {
             Authorization: jwtToken,
           },
         });
-        setData((prevData) => [...res.data.data, ...prevData]);
+        if (prevId === chatroomId) {
+          setData((prevData) => [...res.data.data, ...prevData]);
+        } else {
+          setData(res.data.data);
+        }
+        setPrevId(chatroomId);
         console.log(res.data.data);
       } catch (error) {
         console.error('HTTP 요청 중 오류 발생:', error);
