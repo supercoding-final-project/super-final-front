@@ -8,6 +8,7 @@ const MsgCard = (props) => {
 
   useEffect(() => {
     if (log.senderId === props.myId) setIsSend(true);
+    console.log(props.log.senderId, props.myId);
   }, [log.senderId]);
 
   return (
