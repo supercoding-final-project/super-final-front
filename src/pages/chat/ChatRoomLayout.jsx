@@ -19,10 +19,11 @@ const ChatRoomLayout = () => {
   };
 
   useEffect(() => {
+    const myId = jwtToken;
     const fetchChatList = async () => {
       const res = await axios.get('https://codevelop.store/api/v1/chatrooms', {
         headers: {
-          Authorization: `Bearer ${jwtToken}`,
+          Authorization: `Bearer ${myId}`,
         },
       });
       setChatList(res.data.data.chatRoom);
