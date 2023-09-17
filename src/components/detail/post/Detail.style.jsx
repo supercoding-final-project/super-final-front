@@ -1,3 +1,4 @@
+import { sockjs } from 'sockjs-client/dist/sockjs';
 import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
 
@@ -96,5 +97,179 @@ export const ModalBtn = styled.div`
     padding: 1rem;
     cursor: pointer;
     margin-top: 1rem;
+  }
+`;
+
+export const PostApplicationModal = styled.div`
+  .tab-box {
+    color: #807e7d;
+    font-size: 12px;
+    display: flex;
+    gap: 20px;
+    padding-bottom: 4px;
+    cursor: pointer;
+    margin-bottom: 40px;
+    .active {
+      color: #fff;
+      border-bottom: 1px solid #fff;
+      padding-bottom: 4px;
+    }
+  }
+  .title {
+    width: 100%;
+    height: 52px;
+    padding: 12px 24px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 0.5px solid #807e7d;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .chose-date-box {
+    width: 100%;
+    height: 324px;
+    padding: 12px 18px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 0.5px solid #807e7d;
+    .option-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      &-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        p {
+          font-size: 18px;
+          font-weight: 700;
+        }
+      }
+      &-right {
+        margin-right: 20px;
+      }
+      .clicked {
+        margin-left: 20px;
+        font-size: 20px;
+        font-weight: 700;
+      }
+      svg {
+        cursor: pointer;
+      }
+    }
+    .date-container {
+      display: flex;
+      justify-content: space-between;
+      .calendar {
+        width: 216px;
+        height: 228px;
+        .week {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 16px;
+          li {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        .day {
+          display: flex;
+          flex-direction: column;
+          .row {
+            display: flex;
+            gap: 8px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+            &:nth-last-child(1) {
+              margin: 0;
+            }
+            li {
+              width: 24px;
+              height: 24px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              font-size: 12px;
+              font-weight: 700;
+              border-radius: 4px;
+              border: 0.5px solid #807e7d;
+              box-sizing: border-box;
+            }
+            .prev {
+              color: #807e7d;
+              cursor: default;
+            }
+            .today {
+              background-color: ${theme.color.point};
+              border: 0.5px solid ${theme.color.point};
+            }
+          }
+        }
+        p {
+          margin-top: 10px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 18px;
+          font-weight: 700;
+        }
+      }
+      .line {
+        width: 1px;
+        height: 256px;
+        background-color: #fff;
+      }
+      .time {
+        width: 312px;
+        height: 256px;
+        &-tab {
+          display: flex;
+          gap: 20px;
+          font-size: 20px;
+          font-weight: 700;
+          margin-bottom: 20px;
+          cursor: pointer;
+        }
+        .active {
+          color: #fff;
+          border-bottom: 2px solid #fff;
+          padding-bottom: 4px;
+        }
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          li {
+            width: 56px;
+            height: 28px;
+            padding: 6px 19px;
+            border-radius: 4px;
+            border: 1px solid #807e7d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: 700;
+          }
+          .chose {
+            border: 1px solid #29cc61;
+            background-color: #edfcf3;
+            color: #0f0f0f;
+          }
+        }
+      }
+    }
   }
 `;

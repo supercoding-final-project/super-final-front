@@ -49,6 +49,8 @@ Icon.propTypes = {
     'Review',
     'Fold',
     'Circle',
+    'Left',
+    'Right',
   ]).isRequired,
   size: PropTypes.number,
   color: PropTypes.string,
