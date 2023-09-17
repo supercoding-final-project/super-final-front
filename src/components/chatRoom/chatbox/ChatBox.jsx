@@ -44,7 +44,6 @@ const ChatBox = (props) => {
             {log.dbSendAt !== previousDateRef.current && (
               <div className="date-line">{log.dbSendAt}</div>
             )}
-            {log.dbSendAt !== previousDateRef.current && (previousDateRef.current = log.dbSendAt)}
             <MsgCard
               handler={props.profileHandler}
               log={log}
@@ -52,6 +51,7 @@ const ChatBox = (props) => {
               myId={myId}
               name={props.chatinfo.partnerName}
             />
+            {log.dbSendAt !== previousDateRef.current && (previousDateRef.current = log.dbSendAt)}
           </React.Fragment>
         ))}
         <div ref={cardEndRef}></div>
