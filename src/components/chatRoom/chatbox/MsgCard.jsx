@@ -7,9 +7,12 @@ const MsgCard = (props) => {
   const [isSend, setIsSend] = useState(0);
 
   useEffect(() => {
-    if (log.senderId === props.myId) setIsSend(1);
-    else console.log(props.log.senderId, props.myId);
-  }, []);
+    if (log.senderId === props.myId) {
+      setIsSend(1);
+    } else {
+      setIsSend(0);
+    }
+  }, [log.senderId, props.myId]);
   // 채팅 메시지 하나 하나가 이거입니다.
   return (
     <S.MsgCard send={isSend}>
