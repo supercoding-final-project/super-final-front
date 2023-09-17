@@ -11,3 +11,5 @@ export { ReactComponent as Star } from './star.svg';
 export { ReactComponent as Clover } from './clover.svg';
 export { ReactComponent as Rose } from './rose.svg';
 export { ReactComponent as Review } from './review.svg';
+export { ReactComponent as Fold } from './fold.svg';
+export { ReactComponent as Circle } from './circle.svg';

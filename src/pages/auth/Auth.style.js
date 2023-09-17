@@ -52,6 +52,7 @@ export const Kakao = styled.div`
   background-color: #FAE100;
   background-image: url('/assets/kakao.svg');
   margin-right: 0.625rem;
+  cursor: pointer;
 `;
 
 export const Google = styled.div`

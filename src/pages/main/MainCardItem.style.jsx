@@ -56,6 +56,12 @@ export const StackBox = styled.div`
     font-weight: 200;
     line-height: 140%;
     letter-spacing: -0.5px;
+    & .limit {
+      width: 180px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     &.bold {
       font-weight: 700;
     }
@@ -81,6 +87,11 @@ export const NickNameBox = styled.div`
       align-items: center;
       &.bold {
         font-weight: 700;
+        svg {
+          path {
+            fill: ${theme.color.grey1};
+          }
+        }
       }
     }
   }
@@ -90,12 +101,11 @@ export const MainCardButtonBox = styled.div`
   justify-content: space-between;
   button {
     display: flex;
-    padding: 8px 20px;
+    padding: 0.5rem 1.25rem;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 600;
-    line-height: 140%;
     letter-spacing: -0.5px;
   }
 `;

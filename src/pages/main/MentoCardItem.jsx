@@ -41,7 +41,7 @@ const MentoCardItem = () => {
         <S.StackBox>
           <div className="stack">
             <p className="title">직무</p>
-            <p className="desc">프론트엔드</p>
+            <p className="desc">BACKEND</p>
           </div>
           <div className="stack">
             <p className="title">경력</p>

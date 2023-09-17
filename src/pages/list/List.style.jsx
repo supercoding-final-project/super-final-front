@@ -1,48 +1,23 @@
+// import { theme } from 'src/globalLayout/GlobalStyle';
 import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
 
-export const MainWrapper = styled.div`
+export const ListWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
 `;
-
-export const StartCodeReviewBox = styled.div`
-  background-color: ${theme.color.point};
-  width: 414px;
-  height: 109px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 999px;
-  margin: 80px auto 0;
-  cursor: pointer;
-  overflow: hidden;
-  a {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: ${theme.color.bgc1};
-    font-family: Pretendard;
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-  }
-`;
-
-export const MainSearchContainer = styled.div`
-  width: 631px;
+export const ListSearchContainer = styled.div`
+  width: 1280px;
   margin: 80px auto 0;
   display: flex;
   flex-direction: column;
 `;
-export const MainSearchList = styled.ul`
+export const ListSearchList = styled.ul`
   display: flex;
   align-items: flex-start;
   gap: 20px;
 `;
-export const MainSearchItem = styled.li`
+export const ListSearchItem = styled.li`
   color: ${theme.color.grey5};
   font-size: 20px;
   font-weight: 200;
@@ -66,7 +41,7 @@ export const MainSearchItem = styled.li`
     }
   }
 `;
-export const MainSearchBox = styled.div`
+export const ListSearchBox = styled.div`
   display: flex;
   width: 100%;
   margin: 12px auto 20px;
@@ -81,7 +56,10 @@ export const MainSearchBox = styled.div`
       width: 30px;
       height: 45px;
       flex-shrink: 0;
-      background-color: ${theme.color.point};
+      background-color: ${theme.color.bgc2};
+      path {
+        stroke: ${theme.color.point};
+      }
     }
     label {
       display: flex;
@@ -91,23 +69,23 @@ export const MainSearchBox = styled.div`
         box-sizing: border-box;
         width: 100%;
         height: 69px;
-        background-color: ${theme.color.point};
+        background-color: ${theme.color.bgc2};
         border-radius: 999px;
-        border: none;
+        border: 0.5px solid ${theme.color.point};
         font-size: 20px;
         font-weight: 700;
         letter-spacing: -0.5px;
-        color: ${theme.color.bgc1};
+        color: ${theme.color.point};
         &:-moz-selection {
           background-color: ${theme.color.bgc1};
           color: ${theme.color.point};
         }
         &::selection {
-          background-color: ${theme.color.bgc1};
-          color: ${theme.color.point};
+          background-color: ${theme.color.point};
+          color: ${theme.color.bgc1};
         }
         &:focus {
-          outline-color: ${theme.color.sub3};
+          outline-color: ${theme.color.point};
         }
       }
     }
@@ -116,25 +94,24 @@ export const MainSearchBox = styled.div`
       right: 40px;
       border: none;
       cursor: pointer;
-      background-color: ${theme.color.point};
+      background-color: ${theme.color.bgc2};
       text-align: center;
       font-size: 32px;
       font-weight: 700;
       letter-spacing: -0.5px;
-      color: ${theme.color.sub3};
+      color: ${theme.color.point};
       transition: all ease-in-out 0.15s;
-      &:hover {
-        color: ${theme.color.bgc1};
-      }
     }
   }
 `;
 
-export const BestTechStackBox = styled.div`
+export const SearchFilterBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
   h3 {
+    display: flex;
+    justify-content: space-between;
     color: ${theme.color.grey1};
     font-size: 20px;
     font-weight: 700;
@@ -142,43 +119,64 @@ export const BestTechStackBox = styled.div`
     letter-spacing: -0.5px;
     padding-bottom: 4px;
     border-bottom: 0.5px solid ${theme.color.grey4};
+    & .fold {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      span {
+        color: ${theme.color.grey4};
+        font-family: Pretendard;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 200;
+        line-height: 140%;
+        letter-spacing: -0.5px;
+      }
+    }
   }
 `;
 
-export const BestTechStackList = styled.ul`
-  margin: 0 auto;
-  width: 506px;
-  flex-wrap: wrap;
+export const CategoryFilterBox = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 24px;
-`;
-export const BestTechStackItem = styled.li`
-  display: flex;
+  align-items: flex-start;
   flex-direction: column;
-  gap: 4px;
-  align-items: center;
-  cursor: pointer;
-  div {
-    width: 80px;
-    height: 80px;
-    border-radius: 80px;
-    border: 0.5px solid ${theme.color.grey4};
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
+  h3 {
+    display: flex;
+    align-items: center;
+    border-bottom: none;
+    svg {
+      padding: 0 4px;
+    }
   }
-  span {
-    color: ${theme.color.grey1};
-    text-align: center;
-    font-size: 16px;
-    font-weight: 200;
-    line-height: 140%;
-    letter-spacing: -0.5px;
+  ul {
+    flex-wrap: wrap;
+    display: flex;
+    column-gap: 12px;
+    row-gap: 4px;
+    li {
+      display: flex;
+      padding: 4px 12px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 999px;
+      cursor: pointer;
+      border: 0.5px solid ${theme.color.grey4};
+      color: ${theme.color.grey2};
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 140%;
+      letter-spacing: -0.5px;
+      &.active {
+        border: 1px solid ${theme.color.point};
+        background-color: ${theme.color.sub5};
+        color: ${theme.color.grey1};
+      }
+    }
   }
 `;
 
-export const MainCardsContainer = styled.div`
+export const ListCardsContainer = styled.div`
   margin-top: 80px;
   width: 100%;
   display: flex;
@@ -224,6 +222,38 @@ export const MainCardsContainer = styled.div`
       /* column-gap: 40.5px; */
       column-gap: 43.5px;
       row-gap: 40px;
+    }
+  }
+`;
+
+export const PaginationContainer = styled.div`
+  width: 100%;
+  margin: 172px auto 0;
+  ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      color: ${theme.color.grey1};
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      border: 0.5px solid ${theme.color.grey4};
+      border-radius: 4px;
+      cursor: pointer;
+      user-select: none;
+      &.next {
+        border: none;
+      }
+      &.active {
+        border: 0.5px solid ${theme.color.point};
+        background-color: ${theme.color.sub5};
+      }
     }
   }
 `;

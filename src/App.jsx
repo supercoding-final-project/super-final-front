@@ -11,6 +11,8 @@ import MainLayout from './pages/main/MainLayout';
 import MentoMainLayout from './pages/main/MentoMainLayout';
 import MentiMyLayout from './pages/my/MentiMyLayout';
 import MentoMyLayout from './pages/my/MentoMyLayout';
+import MentoListLayout from './pages/list/MentoListLayout';
+import PostListLayout from './pages/list/PostListLayout';
 import GlobalFonts from '../public/fonts/index.js';
 
 function App() {
@@ -53,6 +55,19 @@ function App() {
             {
               path: 'mento',
               element: <MentoMyLayout />,
+            },
+          ],
+        },
+        {
+          path: 'list',
+          children: [
+            {
+              path: 'mento',
+              element: <MentoListLayout />,
+            },
+            {
+              path: 'post',
+              element: <PostListLayout />,
             },
           ],
         },
