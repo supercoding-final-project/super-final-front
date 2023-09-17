@@ -7,21 +7,9 @@ import ProfileImage from '../ProfileImage';
 const FixInformation = ({ User }) => {
   const [enterNickanme, setEnterNickname] = useState(false);
   const [nicknameValue, setNicknameValue] = useState(User.nickname);
-  const [profileImage, setProfileImage] = useState();
+
   // const [,] = useState()
   // const [fixNickname, setFixNickname] = useState('')
-
-  //서버에 중복확인 요청보내기
-  const duplicateCheck = (changedNickname) => {
-    //유효성 검사 넣어야됨
-    console.log(changedNickname);
-
-    axios('url', {
-      changedNickname,
-    })
-      .then((response) => console.log(response))
-      .catch(alert('안됨'));
-  };
 
   const NickNameFixHandler = () => {
     setEnterNickname((prev) => !prev);
@@ -48,14 +36,13 @@ const FixInformation = ({ User }) => {
   };
   const saveNickName = () => {
     console.log(nicknameValue);
-    console.log(profileImage);
+
     return;
   };
   return (
     <>
       <S.FixInformationContainer>
-        <ProfileImage setProfileImage={setProfileImage} />
-        <button>이미지변경버튼 </button>
+        <ProfileImage />
         {enterNickanme ? (
           <S.FixInformationBox>
             <S.FixInformationLabel>닉네임</S.FixInformationLabel>

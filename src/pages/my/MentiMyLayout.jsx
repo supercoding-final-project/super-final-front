@@ -4,9 +4,9 @@ import MentiInformation from 'src/components/mypage/menti/MentiInformation';
 import * as S from 'src/pages/my/mentiMyLayout.style';
 
 const accesstoken =
-  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwLCJhdXRob3JpdGllcyI6WyJNRU5URUUiXSwiaWF0IjoxNjk0ODM4NTEyLCJleHAiOjE2OTQ4NDIxMTJ9.JSfm8QSWUIg5C0PR7WYLCdBbcAR0LV8u7xxr7B-nkbs';
-
-const user = async () => {
+  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwLCJhdXRob3JpdGllcyI6WyJNRU5URUUiXSwiaWF0IjoxNjk0OTUzMDk2LCJleHAiOjE2OTQ5NTY2OTZ9.5z8Bh8_zBMDoESL5doPUlNfe_Bqx3BEoRR_dHLINFgA';
+//포인트조회하기
+const userpoint = async () => {
   try {
     const response = await fetch('https://codevelop.store/api/v1/users/paymoney', {
       method: 'GET',
@@ -32,10 +32,10 @@ const MentiMyLayout = () => {
   const [type, setType] = useState('포인트 충전');
   const [paymoney, setPaymoney] = useState();
 
+  //멘티페이지접속시 포인트조회함
   useEffect(() => {
     const fetchData = async () => {
-      const userData = await user();
-      console.log('use이펙', userData);
+      const userData = await userpoint();
       setPaymoney(userData);
     };
 
@@ -89,40 +89,7 @@ const MentiMyLayout = () => {
         29: [],
         30: [],
         31: [],
-      },
-      '08': {
-        1: ['hajinsoo', 'MIKU'],
-        2: [],
-        3: [],
-        4: [],
-        5: ['hajinsoo', 'MIKU'],
-        6: [],
-        7: [],
-        8: [],
-        9: [],
-        10: ['hajinsoo', 'MIKU'],
-        11: [],
-        12: [],
-        13: [],
-        14: ['abc123'],
-        15: [],
-        16: [],
-        17: [],
-        18: ['abc123'],
-        19: ['abc123'],
-        20: [],
-        21: [],
-        22: [],
-        23: [],
-        24: [],
-        25: [],
-        26: [],
-        27: [],
-        28: [],
-        29: [],
-        30: [],
-        31: [],
-      },
+      }
     },
   };
 
