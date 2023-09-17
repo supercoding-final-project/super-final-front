@@ -151,7 +151,6 @@ const ChatBox = (props) => {
           text={text}
           setLastChat={props.setLastChat}
         />
-        <button onClick={pageHandler}>다음 페이지!</button>
       </S.ChatContainer>
     </S.ChatBox>
   );
