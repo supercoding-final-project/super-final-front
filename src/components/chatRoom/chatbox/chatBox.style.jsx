@@ -14,7 +14,7 @@ export const ChatContainer = styled.div`
 
 export const MsgCard = styled.div`
   display: flex;
-  justify-content: ${(props) => (props.send ? 'flex-end' : 'flex-start')};
+  justify-content: ${(props) => (props.send === 1 ? 'flex-end' : 'flex-start')};
   margin: 2rem;
 `;
 
@@ -51,8 +51,8 @@ export const TextBox = styled.div`
   border-radius: 0.625rem;
   padding: 0.7rem;
   margin-top: 0.5rem;
-  background-color: ${(props) => (props.send ? `${theme.color.point}` : '#EDFCF3')};
-  color: ${(props) => (props.send ? 'white' : 'black')};
+  background-color: ${(props) => (props.send === 1 ? `${theme.color.point}` : '#EDFCF3')};
+  color: ${(props) => (props.send === 1 ? 'white' : 'black')};
 `;
 
 export const Text = styled.p`
