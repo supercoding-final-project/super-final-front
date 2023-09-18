@@ -85,41 +85,48 @@ const MentiMyLayout = () => {
     예약확인: {
       '09': {
         1: ['hajinsoo', 'MIKU', '아이디가존나길때는어떻해요?', '아이디가존나길때는어떻해요?'],
-        2: [],
-        3: [],
-        4: [],
-        5: ['hajinsoo', 'MIKU'],
-        6: [],
-        7: [],
-        8: [],
-        9: [],
-        10: ['hajinsoo', 'MIKU'],
-        11: [],
-        12: [],
-        13: [],
-        14: ['abc123'],
-        15: [],
-        16: [],
-        17: [],
-        18: ['abc123'],
-        19: ['abc123'],
-        20: [],
-        21: [],
-        22: [],
-        23: [],
-        24: [],
-        25: [],
-        26: [],
-        27: [],
-        28: [],
-        29: [],
-        30: [],
-        31: [],
-      }
-    },
-  };
-  console.log(User)
+        '09': {
+          1: ['hajinsoo', 'MIKU', '아이디가존나길때는어떻해요?', '아이디가존나길때는어떻해요?'],
+          2: [],
+          3: [],
+          4: [],
+          5: ['hajinsoo', 'MIKU'],
+          5: ['hajinsoo', 'MIKU'],
+          6: [],
+          7: [],
+          8: [],
+          9: [],
+          10: ['hajinsoo', 'MIKU'],
+          10: ['hajinsoo', 'MIKU'],
+          11: [],
+          12: [],
+          13: [],
+          14: ['abc123'],
+          14: ['abc123'],
+          15: [],
+          16: [],
+          17: [],
+          18: ['abc123'],
+          19: ['abc123'],
+          20: [],
+          21: [],
+          22: [],
+          23: [],
+          24: [],
+          25: [],
+          26: [],
+          27: [],
+          28: [],
+          29: [],
+          30: [],
+          31: [],
+        }
+      },
+    };
+    console.log(User)
   const navItemHandler = (navtype) => {
+      setType(navtype);
+    };
     setType(navtype);
   };
 
@@ -130,6 +137,7 @@ const MentiMyLayout = () => {
         <MentiInformation informationtype={type} navtype={navtype} User={User} accesstoken={accesstoken}></MentiInformation>
       </S.DisFlex>
     </>
+  );
   );
 };
 
