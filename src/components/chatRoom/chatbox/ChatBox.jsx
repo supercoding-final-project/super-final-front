@@ -18,7 +18,7 @@ const ChatBox = (props) => {
   const [prevId, setPrevId] = useState(null);
 
   const { formattedTime, updateFormattedTime } = useFormattedTime();
-  const chatContainerRef = useRef(null);
+  const cardEndRef = useRef(null);
   const previousDateRef = useRef('');
   const { jwtToken, decodedToken } = useJwtToken();
   const myId = decodedToken?.userId || '';
@@ -47,7 +47,6 @@ const ChatBox = (props) => {
             stomp.subscribe(`/chatroom/${props.chatinfo.chatroomId}`, (message) => {
               const receiveMsg = JSON.parse(message.body);
               setData((prevData) => [...prevData, receiveMsg]);
-              scrollToBottom();
             });
           });
         } catch (err) {
@@ -87,10 +86,8 @@ const ChatBox = (props) => {
         } else {
           setPage(0);
           setData(res.data.data);
-          scrollToBottom();
         }
         setPrevId(props.chatinfo.chatroomId);
-        scrollToBottom();
       } catch (error) {
         console.error('HTTP 요청 중 오류 발생:', error);
       }
@@ -123,15 +120,15 @@ const ChatBox = (props) => {
     setPage((prevPage) => prevPage + 1);
   };
 
-  const scrollToBottom = () => {
-    chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-  };
+  useEffect(() => {
+    cardEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [data]);
 
   return (
     <S.ChatBox>
       <S.ChatContainer>
         {data.map((log, index) => (
-          <React.Fragment key={index} ref={chatContainerRef}>
+          <React.Fragment key={index}>
             {log.dbSendAt !== previousDateRef.current && (
               <div className="date-line">{log.dbSendAt}</div>
             )}
@@ -145,6 +142,7 @@ const ChatBox = (props) => {
             {log.dbSendAt !== previousDateRef.current && (previousDateRef.current = log.dbSendAt)}
           </React.Fragment>
         ))}
+        <div ref={cardEndRef}></div>
         <ChattingBar
           chatHandler={chatHandler}
           sendHandler={sendMessage}
