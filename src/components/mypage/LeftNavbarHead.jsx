@@ -4,7 +4,7 @@ const LeftNavbarHead = ({ User }) => {
   return (
     <>
       <S.LeftNavbarHeadContainer>
-        <S.NavBarHeadName>반갑습니다,{User.name} 님</S.NavBarHeadName>
+        <S.NavBarHeadName>반갑습니다,{User.nickname} 님</S.NavBarHeadName>
         <S.NavBarHeadPoint>
           <span style={{ fontSize: '1.3rem', fontWeight: '300' }}>보유 포인트</span>
           <span style={{ fontWeight: '900' }}>{User.point}P</span>

@@ -1,10 +1,11 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import LeftNavbar from 'src/components/mypage/LeftNavbar';
 import MentiInformation from 'src/components/mypage/menti/MentiInformation';
 import * as S from 'src/pages/my/mentiMyLayout.style';
 
 const accesstoken =
-  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwLCJhdXRob3JpdGllcyI6WyJNRU5URUUiXSwiaWF0IjoxNjk0OTUzMDk2LCJleHAiOjE2OTQ5NTY2OTZ9.5z8Bh8_zBMDoESL5doPUlNfe_Bqx3BEoRR_dHLINFgA';
+  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwLCJhdXRob3JpdGllcyI6WyJNRU5URUUiXSwiaWF0IjoxNjk1MDMzODc4LCJleHAiOjE2OTUwMzc0Nzh9.im8DGlSulv-5rg0JWRRT8mDpUXU-REF9XLt-nFpBpNc';
 //포인트조회하기
 const userpoint = async () => {
   try {
@@ -28,19 +29,46 @@ const userpoint = async () => {
   }
 };
 
+const UserInfo = async () => {
+  const url = "https://codevelop.store/api/v1/users/info"
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: accesstoken,
+      }
+    });
+    const data = response.data.data
+    return data
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
+
 const MentiMyLayout = () => {
   const [type, setType] = useState('포인트 충전');
-  const [paymoney, setPaymoney] = useState();
+  const [paymoney, setPaymoney] = useState(0);
+  const [userInfo, setUserInfo] = useState();
 
-  //멘티페이지접속시 포인트조회함
+  //멘티페이지접속시 포인트,유저정보 조회함
   useEffect(() => {
     const fetchData = async () => {
       const userData = await userpoint();
+      const userInfor = await UserInfo();
+      setUserInfo(userInfor)
       setPaymoney(userData);
     };
-
     fetchData();
   }, [paymoney]);
+
+  //멘티페이지접속시 유저정보 가져옴
+
+
+
+
+
 
   const navtype = {
     point: '포인트 충전',
@@ -52,9 +80,7 @@ const MentiMyLayout = () => {
   };
 
   const User = {
-    name: '하진수',
-    email: 'jumosd@icloud.com',
-    nickname: '하방방',
+    ...userInfo,
     point: paymoney,
     예약확인: {
       '09': {
@@ -92,7 +118,7 @@ const MentiMyLayout = () => {
       }
     },
   };
-
+  console.log(User)
   const navItemHandler = (navtype) => {
     setType(navtype);
   };
@@ -101,7 +127,7 @@ const MentiMyLayout = () => {
     <>
       <S.DisFlex>
         <LeftNavbar navItemHandler={navItemHandler} navtype={navtype} User={User} />
-        <MentiInformation informationtype={type} navtype={navtype} User={User}></MentiInformation>
+        <MentiInformation informationtype={type} navtype={navtype} User={User} accesstoken={accesstoken}></MentiInformation>
       </S.DisFlex>
     </>
   );

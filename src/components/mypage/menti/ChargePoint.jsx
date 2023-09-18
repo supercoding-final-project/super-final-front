@@ -1,14 +1,13 @@
 import { useRef, useState } from 'react';
 import * as S from 'src/pages/my/mentiMyLayout.style';
-const ChargePoint = () => {
+const ChargePoint = ({ accesstoken }) => {
   const [cash, setCash] = useState(0);
   const [vip, setVip] = useState(false);
   const [vvip, setVvip] = useState(false);
 
   const inputcash = useRef(0);
 
-  const accesstoken =
-    'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwLCJhdXRob3JpdGllcyI6WyJNRU5URUUiXSwiaWF0IjoxNjk0ODM4NTEyLCJleHAiOjE2OTQ4NDIxMTJ9.JSfm8QSWUIg5C0PR7WYLCdBbcAR0LV8u7xxr7B-nkbs';
+
   const chargePointButton = async (inputpoint) => {
     const response = await fetch('https://codevelop.store/api/v1/users/paymoney', {
       method: 'POST',
