@@ -52,7 +52,6 @@ const PostReview = () => {
           ))}
         </S.ReviewBox>
       </S.ReviewList>
-      <ReviewRegister />
     </>
   );
 };

@@ -30,22 +30,19 @@ const userpoint = async () => {
 };
 
 const UserInfo = async () => {
-  const url = "https://codevelop.store/api/v1/users/info"
+  const url = 'https://codevelop.store/api/v1/users/info';
   try {
     const response = await axios.get(url, {
       headers: {
         Authorization: accesstoken,
-      }
+      },
     });
-    const data = response.data.data
-    return data
+    const data = response.data.data;
+    return data;
   } catch (error) {
     console.log(error);
   }
-}
-
-
-
+};
 
 const MentiMyLayout = () => {
   const [type, setType] = useState('포인트 충전');
@@ -57,7 +54,7 @@ const MentiMyLayout = () => {
     const fetchData = async () => {
       const userData = await userpoint();
       const userInfor = await UserInfo();
-      setUserInfo(userInfor)
+      setUserInfo(userInfor);
       setPaymoney(userData);
     };
     fetchData();
@@ -110,11 +107,10 @@ const MentiMyLayout = () => {
         29: [],
         30: [],
         31: [],
-
       },
-    }
-  }
-  console.log(User)
+    },
+  };
+  console.log(User);
   const navItemHandler = (navtype) => {
     setType(navtype);
   };
@@ -123,11 +119,15 @@ const MentiMyLayout = () => {
     <>
       <S.DisFlex>
         <LeftNavbar navItemHandler={navItemHandler} navtype={navtype} User={User} />
-        <MentiInformation informationtype={type} navtype={navtype} User={User} accesstoken={accesstoken}></MentiInformation>
+        <MentiInformation
+          informationtype={type}
+          navtype={navtype}
+          User={User}
+          accesstoken={accesstoken}
+        ></MentiInformation>
       </S.DisFlex>
     </>
   );
-
 };
 
 export default MentiMyLayout;

@@ -76,9 +76,7 @@ export const Intro = styled.div`
 export const ReviewList = styled.div`
   margin-top: 2.5rem;
   padding-top: 2.5rem;
-  box-shadow:
-    0px -1px 0px rgba(128, 126, 125, 0.4),
-    0px 1px 0px rgba(128, 126, 125, 0.4);
+  box-shadow: 0px -1px 0px rgba(128, 126, 125, 0.4);
   margin-bottom: 2.5rem;
   padding-bottom: 2.5rem;
 `;
