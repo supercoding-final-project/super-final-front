@@ -49,7 +49,7 @@ const FixInformation = ({ User, accesstoken }) => {
         {
           email: emailRef.current.value,
           nickname: nicknameValue,
-          thubnailImageUrl: User.thumbnailImageUrl
+          thumbnailImageUrl: User.thumbnailImageUrl
         },
         {
           headers: {
