@@ -27,7 +27,6 @@ const FixInformation = ({ User, accesstoken }) => {
     if (pattern.test(check)) {
       console.log('첫글자 특문이거나 공백임 이거안됨');
     } else {
-      console.log(check);
       setNicknameValue(check);
     }
   };
@@ -42,6 +41,7 @@ const FixInformation = ({ User, accesstoken }) => {
 
   const correction = async () => {
     console.log(emailRef.current.value)
+    console.log(User.thumbnailImageUrl)
     const url = "https://codevelop.store/api/v1/mentees/info"
     try {
       const response = await axios.post(
@@ -49,7 +49,7 @@ const FixInformation = ({ User, accesstoken }) => {
         {
           email: emailRef.current.value,
           nickname: nicknameValue,
-          thubnailImageUrl: User.thubnailImageUrl
+          thubnailImageUrl: User.thumbnailImageUrl
         },
         {
           headers: {
