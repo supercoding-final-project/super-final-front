@@ -40,6 +40,22 @@ const MentoInformation = ({ informationtype, navtype, User }) => {
       </>
     );
   }
+  if (informationtype === navtype.reviews) {
+    return (
+      <>
+        <S.InformationContainer>
+          <S.DivFlexColumn>
+            <S.InformationBox>
+              <InformationHead text={navtype.reviews} />
+            </S.InformationBox>
+            {/* 여기다가 리뷰컴포넌트를 넣으면 됩니다 !! */}
+            {/* 여기다가 리뷰컴포넌트를 넣으면 됩니다 !! */}
+            {/* 여기다가 리뷰컴포넌트를 넣으면 됩니다 !! */}
+          </S.DivFlexColumn>
+        </S.InformationContainer>
+      </>
+    );
+  }
   if (informationtype === navtype.reservation) {
     return (
       <>
