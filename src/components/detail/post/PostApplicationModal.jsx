@@ -1,9 +1,14 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Button from 'src/components/common/Button';
 import { Icon } from 'src/components/common/icon/Icon';
 
+// import { theme } from 'src/globalLayout/GlobalStyle';
 import * as S from './Detail.style';
 
-const PostApplicationModal = () => {
+const PostApplicationModal = ({ setShowModal }) => {
+  // console.log(setShowModal);
+  const navigate = useNavigate();
   const mockData = [
     '00~01',
     '01~02',
@@ -19,7 +24,8 @@ const PostApplicationModal = () => {
     '11~12',
   ];
 
-  const [stepState, setStepState] = useState('신청하기');
+  // const [stepState, setStepState] = useState('신청하기');
+  const [stepState, setStepState] = useState('정보확인&결제');
   const [timeState, setTimeState] = useState('AM');
 
   const chageStepState = (e) => {
@@ -96,7 +102,7 @@ const PostApplicationModal = () => {
         return 'today';
       } else if (date) {
         // 조건문 수정 필요
-        console.log('체크 한 것일 때');
+        // console.log('체크 한 것일 때');
       } else {
         return '';
       }
@@ -124,7 +130,27 @@ const PostApplicationModal = () => {
       setSelectedTimes([...selectedTimes, time]);
     }
   };
-  console.log(selectedTimes);
+  // console.log(selectedTimes);
+
+  const clickStep = (state) => {
+    console.log(state);
+    if (state === '이전으로') {
+      navigate('/detail');
+    } else {
+      setStepState('정보확인&결제');
+    }
+  };
+
+  const clickInfoStep = (state) => {
+    if (state === '이전으로') {
+      console.log('이전으로');
+      setStepState('신청하기');
+    } else {
+      alert('결제 완료!');
+      setShowModal(false);
+      // navigate('/detail'); // 결제하기
+    }
+  };
 
   return (
     <S.PostApplicationModal>
@@ -178,15 +204,93 @@ const PostApplicationModal = () => {
                     >
                       {time}
                     </li>
-                    // <li className="chose" key={index}>{time}</li>
                   ))}
                 </ul>
               </div>
             </div>
           </div>
+          <div className="btn-box">
+            <Button
+              text="이전으로"
+              fontcolor="#807E7D"
+              bgcolor="#EDFCF3"
+              radius="4px"
+              fontSize="20px"
+              fontWeight={700}
+              onClick={() => clickStep('이전으로')}
+            />
+            <Button
+              text="다음으로"
+              fontcolor="#FCFCFB"
+              bgcolor="#29CC61"
+              radius="4px"
+              fontSize="20px"
+              fontWeight={700}
+              onClick={() => clickStep('다음으로')}
+            />
+          </div>
         </>
       ) : (
-        <p>정보확인</p>
+        <>
+          <p className="info-title">신청 정보 확인</p>
+          <ul className="info-container">
+            <li>
+              <span className="label">POST명</span>
+              <span className="info">[프론트/백엔드]이력서 및 포트폴리오 전략 상담</span>
+            </li>
+            <li>
+              <span className="label">멘토</span>
+              <span className="info">Lucy</span>
+            </li>
+            <li>
+              <span className="label">멘티</span>
+              <span className="info">김소미</span>
+            </li>
+            <li>
+              <span className="label">일정</span>
+              <div className="schedule-container">
+                <div className="row">
+                  <p className="date">23.09.20 (수) 00:00</p>~
+                  <p className="date">23.09.20 (수) 02:00</p>=<p className="total-time">2시간</p>
+                </div>
+
+                <div className="row">
+                  <p className="date">23.09.20 (수) 00:00</p>~
+                  <p className="date">23.09.20 (수) 02:00</p>=<p className="total-time">3시간</p>
+                </div>
+
+                <div className="row">
+                  <p className="date">23.09.20 (수) 00:00</p>~
+                  <p className="date">23.09.20 (수) 02:00</p>=<p className="total-time">2시간</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div className="price-container">
+            <span>결제 금액</span>
+            <span>총 7시간 = 343,000P</span>
+          </div>
+          <div className="btn-box">
+            <Button
+              text="이전으로"
+              fontcolor="#807E7D"
+              bgcolor="#EDFCF3"
+              radius="4px"
+              fontSize="20px"
+              fontWeight={700}
+              onClick={() => clickInfoStep('이전으로')}
+            />
+            <Button
+              text="결제하기"
+              fontcolor="#FCFCFB"
+              bgcolor="#29CC61"
+              radius="4px"
+              fontSize="20px"
+              fontWeight={700}
+              onClick={() => clickInfoStep('결제하기')}
+            />
+          </div>
+        </>
       )}
     </S.PostApplicationModal>
   );

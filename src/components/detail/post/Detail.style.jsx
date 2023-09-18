@@ -272,4 +272,80 @@ export const PostApplicationModal = styled.div`
       }
     }
   }
+  .btn-box {
+    margin-top: 40px;
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+  }
+  .info-title {
+    color: #fcfcfb;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #807e7d;
+    li {
+      display: flex;
+      /* align-items: center; */
+      gap: 27px;
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-size: 20px;
+      .label {
+        width: 100px;
+      }
+      .info {
+        font-weight: 200;
+      }
+      .schedule-container {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        .row {
+          display: flex;
+          gap: 4px;
+          font-size: 20px;
+          font-weight: 200;
+          .date {
+            width: 160px;
+            padding: 4px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            background-color: #fcfcfb;
+            color: #0f0f0e;
+            font-size: 16px;
+            font-weight: 200;
+          }
+          .total-time {
+            width: 80px;
+            padding: 4px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            background-color: #29cc61;
+            color: #fcfcfb;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+  .price-container {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    height: 28px;
+  }
 `;

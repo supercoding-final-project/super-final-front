@@ -37,8 +37,7 @@ const PostModal = () => {
       </S.ModalBtn>
       {showModal && (
         <Modal width="710px" height="617px" setShowModal={setShowModal}>
-          {/* <CalendarModal closeModalHandler={closeModalHandler}></CalendarModal> */}
-          <PostApplicationModal />
+          <PostApplicationModal setShowModal={setShowModal} />
         </Modal>
       )}
     </S.PostModal>
