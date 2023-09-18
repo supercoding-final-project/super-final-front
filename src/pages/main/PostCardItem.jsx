@@ -4,6 +4,9 @@ import { theme } from 'src/globalLayout/GlobalStyle';
 import { Link } from 'react-router-dom';
 
 const PostCardItem = () => {
+  const handleScrollInnerModal = () => {
+    document.body.style.overflowY = 'auto';
+  };
   return (
     <>
       <S.MainCardItem>
@@ -35,7 +38,12 @@ const PostCardItem = () => {
           </Link>
           {/* <Link to=`/detail/${postId}`> */}
           <Link to="/detail">
-            <Button text={'상세보기'} bgcolor={theme.color.point} fontcolor={theme.color.bgc1} />
+            <Button
+              onClick={handleScrollInnerModal}
+              text={'상세보기'}
+              bgcolor={theme.color.point}
+              fontcolor={theme.color.bgc1}
+            />
           </Link>
         </S.MainCardButtonBox>
       </S.MainCardItem>
