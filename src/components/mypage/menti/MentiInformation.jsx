@@ -7,7 +7,7 @@ import * as S from 'src/pages/my/mentiMyLayout.style';
 import ChargePoint from './ChargePoint';
 import FixInformation from './FixInformation';
 
-const Information = ({ informationtype, navtype, User }) => {
+const Information = ({ informationtype, navtype, User, accesstoken }) => {
   //상태관리
 
   if (informationtype === navtype.point) {
@@ -18,7 +18,7 @@ const Information = ({ informationtype, navtype, User }) => {
             <S.InformationBox>
               <InformationHead text={navtype.point} />
             </S.InformationBox>
-            <ChargePoint />
+            <ChargePoint accesstoken={accesstoken} />
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>
@@ -34,7 +34,7 @@ const Information = ({ informationtype, navtype, User }) => {
             <S.InformationBox>
               <InformationHead text={navtype.info} />
             </S.InformationBox>
-            <FixInformation User={User} />
+            <FixInformation User={User} accesstoken={accesstoken} />
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>
@@ -54,7 +54,7 @@ const Information = ({ informationtype, navtype, User }) => {
             <S.InformationBox>
               <InformationHead text={navtype.reservation} />
             </S.InformationBox>
-            <Calendar User={User}></Calendar>
+            <Calendar User={User} accesstoken={accesstoken}></Calendar>
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>

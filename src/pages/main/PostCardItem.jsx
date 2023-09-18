@@ -1,7 +1,8 @@
-import Button from 'src/components/common/Button';
-import * as S from './MainCardItem.style';
-import { theme } from 'src/globalLayout/GlobalStyle';
 import { Link } from 'react-router-dom';
+import Button from 'src/components/common/Button';
+import { theme } from 'src/globalLayout/GlobalStyle';
+
+import * as S from './MainCardItem.style';
 
 const PostCardItem = () => {
   const handleScrollInnerModal = () => {
