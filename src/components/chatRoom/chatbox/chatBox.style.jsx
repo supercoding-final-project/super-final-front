@@ -20,6 +20,13 @@ export const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${theme.color.grey5};
+    border-radius: 25px;
+  }
 `;
 
 export const MsgCard = styled.div`

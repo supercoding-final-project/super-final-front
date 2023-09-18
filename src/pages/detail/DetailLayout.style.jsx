@@ -103,18 +103,12 @@ export const ReviewCard = styled.div`
   margin-top: 1rem;
 `;
 
-export const Name = styled.div`
-  display: flex;
-
-  align-items: center;
-  width: 30%;
-`;
-
 export const Text = styled.div`
+  margin-top: 1rem;
   display: flex;
-
   align-items: center;
   margin-right: 0.5rem;
+  margin-bottom: 4rem;
 `;
 
 export const Rating = styled.div`
@@ -127,22 +121,36 @@ export const Rating = styled.div`
   color: white;
 `;
 
-export const ReviewPost = styled.div`
-  margin-top: 2.5rem;
-  margin-bottom: 10rem;
-
-  span {
-    font-size: 0.75rem;
-  }
+export const ReviewPostHeader = styled.div`
+  margin-top: 0.5rem;
+  display: flex;
+  width: 100%;
   div {
-    margin-top: 0.5rem;
+    margin-left: 1rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ${theme.color.point};
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    border-radius: 62.4375rem;
+    color: white;
   }
+`;
+
+export const ReviewPost = styled.div`
+  width: 30rem;
+  height: 10rem;
 
   input {
     border: none;
+    background-color: ${theme.color.grey3};
+    outline: none;
+    width: 100%;
+    height: 100%;
+    color: white;
   }
   button {
+    margin-top: 3rem;
     font-size: 0.75rem;
     background-color: ${theme.color.point};
     border: none;
