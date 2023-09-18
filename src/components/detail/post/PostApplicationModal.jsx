@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'src/components/common/Button';
 import { Icon } from 'src/components/common/icon/Icon';
 
+import Application from './application/Application';
 // import { theme } from 'src/globalLayout/GlobalStyle';
 import * as S from './Detail.style';
 
@@ -24,8 +25,8 @@ const PostApplicationModal = ({ setShowModal }) => {
     '11~12',
   ];
 
-  // const [stepState, setStepState] = useState('신청하기');
-  const [stepState, setStepState] = useState('정보확인&결제');
+  const [stepState, setStepState] = useState('신청하기');
+  // const [stepState, setStepState] = useState('정보확인&결제');
   const [timeState, setTimeState] = useState('AM');
 
   const chageStepState = (e) => {
@@ -36,22 +37,8 @@ const PostApplicationModal = ({ setShowModal }) => {
     setTimeState(e.currentTarget.textContent);
   };
 
-  const week = ['월', '화', '수', '목', '금', '토', '일'];
-
   // const
-
   const [current, setCurrent] = useState(new Date());
-  const [dateValue, setDateValue] = useState(
-    `${new Date().getFullYear()}년 ${new Date().getMonth() + 1}월 ${new Date().getDate()}일`,
-  );
-
-  const changeMonthHandler = (state) => {
-    if (state === 'prev') {
-      setCurrent(new Date(current.getFullYear(), current.getMonth() - 1));
-    } else {
-      setCurrent(new Date(current.getFullYear(), current.getMonth() + 1));
-    }
-  };
 
   const createCalendarDay = () => {
     const year = current.getFullYear();
@@ -163,73 +150,7 @@ const PostApplicationModal = ({ setShowModal }) => {
         </div>
       </div>
       {stepState === '신청하기' ? (
-        <>
-          <div className="title">날짜 및 시간 선택</div>
-          <div className="chose-date-box">
-            <div className="option-box">
-              <div className="option-box-left">
-                <Icon name="Left" onClick={() => changeMonthHandler('prev')} />
-                <Icon name="Right" onClick={() => changeMonthHandler('next')} />
-                <p>{current.getMonth() + 1}월</p>
-              </div>
-              <div className="option-box-right">
-                <div className="clicked">선택한 날짜 : {dateValue}</div>
-              </div>
-            </div>
-            <div className="date-container">
-              <div className="calendar">
-                <ul className="week">
-                  {week.map((day, index) => (
-                    <li key={index}>{day}</li>
-                  ))}
-                </ul>
-                <ul className="day">{createCalendarDay()}</ul>
-              </div>
-              <div className="line" />
-              <div className="time">
-                <div className="time-tab">
-                  <div className={timeState === 'AM' ? 'active' : null} onClick={changeTimeState}>
-                    AM
-                  </div>
-                  <div className={timeState === 'PM' ? 'active' : null} onClick={changeTimeState}>
-                    PM
-                  </div>
-                </div>
-                <ul>
-                  {mockData.map((time, index) => (
-                    <li
-                      key={index}
-                      className={selectedTimes.includes(time) ? 'chose' : ''}
-                      onClick={() => handleTimeItemClick(time)}
-                    >
-                      {time}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="btn-box">
-            <Button
-              text="이전으로"
-              fontcolor="#807E7D"
-              bgcolor="#EDFCF3"
-              radius="4px"
-              fontSize="20px"
-              fontWeight={700}
-              onClick={() => clickStep('이전으로')}
-            />
-            <Button
-              text="다음으로"
-              fontcolor="#FCFCFB"
-              bgcolor="#29CC61"
-              radius="4px"
-              fontSize="20px"
-              fontWeight={700}
-              onClick={() => clickStep('다음으로')}
-            />
-          </div>
-        </>
+        <Application current={current} setCurrent={setCurrent} />
       ) : (
         <>
           <p className="info-title">신청 정보 확인</p>
