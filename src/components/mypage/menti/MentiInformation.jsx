@@ -60,6 +60,27 @@ const Information = ({ informationtype, navtype, User, accesstoken }) => {
       </>
     );
   }
+  //리뷰 작성
+  //리뷰 작성
+  //리뷰 작성
+  //리뷰 작성
+  if (informationtype === navtype.reviews) {
+    return (
+      <>
+        <S.InformationContainer>
+          <S.DivFlexColumn>
+            <S.InformationBox>
+              <InformationHead text={navtype.reviews} />
+            </S.InformationBox>
+            {/* 여기에다가 컴포넌트를 넣으면 됩니다 */}
+            {/* 여기에다가 컴포넌트를 넣으면 됩니다 */}
+            {/* 여기에다가 컴포넌트를 넣으면 됩니다 */}
+            {/* 여기에다가 컴포넌트를 넣으면 됩니다 */}
+          </S.DivFlexColumn>
+        </S.InformationContainer>
+      </>
+    );
+  }
 
   if (informationtype === navtype.transactionHistory) {
     return (
