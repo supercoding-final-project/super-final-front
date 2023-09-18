@@ -221,8 +221,8 @@ export const MainCardsContainer = styled.div`
       width: 1280px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      /* column-gap: 40.5px; */
-      column-gap: 43.5px;
+      /* column-gap: 43.5px; */
+      column-gap: 50px;
       row-gap: 40px;
     }
   }
