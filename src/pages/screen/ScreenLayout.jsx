@@ -75,7 +75,7 @@ const ScreenLayout = () => {
       // console.log('성공 :', response.data);
       // localStorage.setItem('sessionId', response.data);
       setSession(response.data.data);
-      // console.log('session id :', response.data.data);
+      console.log('session id :', response.data.data);
       return response.data.data;
     } catch (error) {
       console.error('에러 :', error);
