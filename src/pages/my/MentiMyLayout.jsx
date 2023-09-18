@@ -67,7 +67,7 @@ const MentiMyLayout = () => {
     info: '회원 정보 수정',
     reservation: '예약확인',
     transactionHistory: '거래내역',
-    reviews: "리뷰 작성",
+    reviews: '리뷰 작성&관리',
     ordersHistory: '주문내역',
     logout: '로그아웃',
   };
