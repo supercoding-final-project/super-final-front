@@ -5,7 +5,7 @@ import MentiInformation from 'src/components/mypage/menti/MentiInformation';
 import * as S from 'src/pages/my/mentiMyLayout.style';
 
 const accesstoken =
-  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDQsImF1dGhvcml0aWVzIjpbIk1FTlRPUiJdLCJpYXQiOjE2OTUwNDY4MDIsImV4cCI6MTcyNjU4MjgwMn0.CWUTO-umu495meKXmYSiIg1j1cFBJcaoIOK33FrZ67A';
+  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjUyNTIsImF1dGhvcml0aWVzIjpbIk1FTlRFRSJdLCJpYXQiOjE2OTUwNTExMjQsImV4cCI6MTcyNjU4NzEyNH0.v0ly5U3mVe15JyctMOHxBT_YZUZev5szX623gy1ND8s';
 //포인트조회하기
 const userpoint = async () => {
   try {
@@ -65,11 +65,6 @@ const MentiMyLayout = () => {
 
   //멘티페이지접속시 유저정보 가져옴
 
-
-
-
-
-
   const navtype = {
     point: '포인트 충전',
     info: '회원 정보 수정',
@@ -85,48 +80,42 @@ const MentiMyLayout = () => {
     예약확인: {
       '09': {
         1: ['hajinsoo', 'MIKU', '아이디가존나길때는어떻해요?', '아이디가존나길때는어떻해요?'],
-        '09': {
-          1: ['hajinsoo', 'MIKU', '아이디가존나길때는어떻해요?', '아이디가존나길때는어떻해요?'],
-          2: [],
-          3: [],
-          4: [],
-          5: ['hajinsoo', 'MIKU'],
-          5: ['hajinsoo', 'MIKU'],
-          6: [],
-          7: [],
-          8: [],
-          9: [],
-          10: ['hajinsoo', 'MIKU'],
-          10: ['hajinsoo', 'MIKU'],
-          11: [],
-          12: [],
-          13: [],
-          14: ['abc123'],
-          14: ['abc123'],
-          15: [],
-          16: [],
-          17: [],
-          18: ['abc123'],
-          19: ['abc123'],
-          20: [],
-          21: [],
-          22: [],
-          23: [],
-          24: [],
-          25: [],
-          26: [],
-          27: [],
-          28: [],
-          29: [],
-          30: [],
-          31: [],
-        }
+        2: [],
+        3: [],
+        4: [],
+        5: ['hajinsoo', 'MIKU'],
+        6: [],
+        7: [],
+        8: [],
+        9: [],
+        10: ['hajinsoo', 'MIKU'],
+        11: [],
+        12: [],
+        13: [],
+        14: ['abc123'],
+        15: [],
+        16: [],
+        17: [],
+        18: ['abc123'],
+        19: ['abc123'],
+        20: [],
+        21: [],
+        22: [],
+        23: [],
+        24: [],
+        25: [],
+        26: [],
+        27: [],
+        28: [],
+        29: [],
+        30: [],
+        31: [],
+
       },
-    };
-    console.log(User)
+    }
+  }
+  console.log(User)
   const navItemHandler = (navtype) => {
-      setType(navtype);
-    };
     setType(navtype);
   };
 
@@ -138,7 +127,7 @@ const MentiMyLayout = () => {
       </S.DisFlex>
     </>
   );
-  );
+
 };
 
 export default MentiMyLayout;
