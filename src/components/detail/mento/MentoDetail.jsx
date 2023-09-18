@@ -1,6 +1,7 @@
+import PostCardItem from 'src/pages/main/PostCardItem';
+
 import * as S from './MentoDetail.style';
 import MentoProfile from '../MentoProfile';
-import PostCardItem from 'src/pages/main/PostCardItem';
 
 const MentoDetail = () => {
   return (

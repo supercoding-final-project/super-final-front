@@ -129,9 +129,9 @@ const ChatBox = (props) => {
 
   return (
     <S.ChatBox>
-      <S.ChatContainer ref={chatContainerRef}>
+      <S.ChatContainer>
         {data.map((log, index) => (
-          <React.Fragment key={index}>
+          <React.Fragment key={index} ref={chatContainerRef}>
             {log.dbSendAt !== previousDateRef.current && (
               <div className="date-line">{log.dbSendAt}</div>
             )}
