@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import * as S from './Detail.style';
 
 const PostModal = () => {
@@ -17,7 +19,9 @@ const PostModal = () => {
           <button>신청하기</button>
         </div>
         <div>
-          <button>문의하기</button>
+          <Link to="/chatroom">
+            <button>문의하기</button>
+          </Link>
         </div>
       </S.ModalBtn>
     </S.PostModal>

@@ -4,6 +4,11 @@ import { styled } from 'styled-components';
 export const ChatBox = styled.div`
   // flex-direction: column;
   width: 70%;
+
+  // 하윤 추가
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const ChatContainer = styled.div`
