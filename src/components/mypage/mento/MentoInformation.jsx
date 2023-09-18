@@ -20,7 +20,7 @@ const MentoInformation = ({ informationtype, navtype, User }) => {
             <S.InformationBox>
               <InformationHead text={navtype.borad} />
             </S.InformationBox>
-            <PostBorder></PostBorder>
+            <PostBorder User={User}></PostBorder>
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>
