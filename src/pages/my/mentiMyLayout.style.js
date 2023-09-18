@@ -321,6 +321,7 @@ letter-spacing: -0.5px;
 
 export const NickNameFixButton = styled.button`
 cursor: pointer;
+
 color: white;
 display: flex;
 padding: 12px 24px;

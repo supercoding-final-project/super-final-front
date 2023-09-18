@@ -5,7 +5,7 @@ import MentiInformation from 'src/components/mypage/menti/MentiInformation';
 import * as S from 'src/pages/my/mentiMyLayout.style';
 
 const accesstoken =
-  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwLCJhdXRob3JpdGllcyI6WyJNRU5URUUiXSwiaWF0IjoxNjk1MDMzODc4LCJleHAiOjE2OTUwMzc0Nzh9.im8DGlSulv-5rg0JWRRT8mDpUXU-REF9XLt-nFpBpNc';
+  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwLCJhdXRob3JpdGllcyI6WyJNRU5URUUiXSwiaWF0IjoxNjk1MDQwODE0LCJleHAiOjE2OTUwNDQ0MTR9.L4ssUWxMjjWe1cGZsvqK-o2cpQ2TtabA9TNA4vW9-IY';
 //포인트조회하기
 const userpoint = async () => {
   try {

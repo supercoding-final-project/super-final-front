@@ -12,6 +12,7 @@ const FixInformation = ({ User, accesstoken }) => {
   const [enterNickanme, setEnterNickname] = useState(false);
   const [nicknameValue, setNicknameValue] = useState(User.nickname);
   const nickNameRef = useRef('')
+  const emailRef = useRef('')
   // const [,] = useState()
   // const [fixNickname, setFixNickname] = useState('')
 
@@ -39,13 +40,14 @@ const FixInformation = ({ User, accesstoken }) => {
     setEnterNickname(false);
   };
 
-  const saveNickName = async () => {
+  const correction = async () => {
+    console.log(emailRef.current.value)
     const url = "https://codevelop.store/api/v1/mentees/info"
     try {
       const response = await axios.post(
         url,
         {
-          email: "test@test",
+          email: emailRef.current.value,
           nickname: nicknameValue,
           thubnailImageUrl: User.thubnailImageUrl
         },
@@ -79,7 +81,6 @@ const FixInformation = ({ User, accesstoken }) => {
               ref={nickNameRef}
               autoFocus
             ></S.FixInformationMentiNameInput>
-            <S.NickNameFixButton onClick={saveNickName} > 수정</S.NickNameFixButton>
           </S.FixInformationBox>
         ) : (
           <S.FixInformationBox>
@@ -87,9 +88,20 @@ const FixInformation = ({ User, accesstoken }) => {
             <S.FixInformationMentiName onClick={NickNameFixHandler}>
               {nicknameValue}
             </S.FixInformationMentiName>
-            <S.NickNameFixButton onClick={saveNickName}>수정</S.NickNameFixButton>
           </S.FixInformationBox>
         )}
+
+        <S.FixInformationBox>
+          <S.FixInformationLabel>이메일</S.FixInformationLabel>
+          <S.FixInformationMentiNameInput
+            placeholder="변경할 이메일을 입력해주세요"
+            onKeyDown={keyEnter}
+            onBlur={blurBox}
+            ref={emailRef}
+          ></S.FixInformationMentiNameInput>
+        </S.FixInformationBox>
+        <S.NickNameFixButton onClick={correction} > 정보수정하기</S.NickNameFixButton>
+
       </S.FixInformationContainer >
     </>
   );
