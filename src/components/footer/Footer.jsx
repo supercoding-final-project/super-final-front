@@ -4,7 +4,7 @@ import * as S from './Footer.style';
 import { Icon } from '../common/icon/Icon';
 
 const Footer = () => {
-  if (window.location.pathname === '/chatroom') return null;
+  if (window.location === '/chatroom') return null;
 
   return (
     <S.FooterWrapper>
