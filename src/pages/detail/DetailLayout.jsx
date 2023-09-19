@@ -4,15 +4,25 @@ import MentoProfile from 'src/components/detail/MentoProfile';
 import DetailIntro from 'src/components/detail/post/DetailIntro';
 import DetailModal from 'src/components/detail/post/DetailModal';
 import PostReview from 'src/components/detail/post/review/PostReview';
+import useJwtToken from 'src/hooks/useJwt';
 
 import * as S from './DetailLayout.style';
 
 const DetailLayout = () => {
   const [postId, setPostId] = useState(10);
   const [postData, setPostData] = useState({});
+  const { jwtToken } = useJwtToken();
 
   const getPostData = () => {
-    const res = axios.get(`https://codevelop.store/api/v1/post/${postId}`);
+    const res = axios.get(
+      `https://codevelop.store/api/v1/post/${postId}`,
+      {},
+      {
+        headers: {
+          Authorization: jwtToken,
+        },
+      },
+    );
     console.log(res);
     setPostData(res.data.data);
   };
