@@ -132,7 +132,7 @@ const ChatBox = (props) => {
             {log.dbSendAt !== previousDateRef.current && (
               <div className="date-line">{log.dbSendAt}</div>
             )}
-            {(previousDateRef.current = log.dbSendAt)}
+            {log.dbSendAt !== previousDateRef.current && (previousDateRef.current = log.dbSendAt)}
             <MsgCard
               handler={props.profileHandler}
               log={log}
