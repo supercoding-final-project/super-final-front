@@ -98,20 +98,24 @@ export const ReviewBox = styled.div`
   }
 `;
 
-export const ReviewCard = styled.div`
+export const ReviewCardWrap = styled.div`
   display: flex;
   margin-top: 1rem;
+`;
+
+export const Name = styled.div`
+  display: flex;
+  width: 20%;
 `;
 
 export const Text = styled.div`
-  margin-top: 1rem;
   display: flex;
   align-items: center;
   margin-right: 0.5rem;
-  margin-bottom: 4rem;
 `;
 
 export const Rating = styled.div`
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -141,12 +145,12 @@ export const ReviewPost = styled.div`
   width: 30rem;
   height: 10rem;
 
-  input {
+  textarea {
     border: none;
     background-color: ${theme.color.grey3};
     outline: none;
     width: 100%;
-    height: 100%;
+    height: 6rem;
     color: white;
   }
   button {
