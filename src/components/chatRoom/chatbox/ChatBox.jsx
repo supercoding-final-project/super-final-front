@@ -127,22 +127,21 @@ const ChatBox = (props) => {
   return (
     <S.ChatBox>
       <S.ChatContainer>
-        {data.map((log, index) => {
-          const isDifferentDate = log.dbSendAt !== previousDateRef.current;
-          previousDateRef.current = log.dbSendAt;
-          return (
-            <React.Fragment key={index}>
-              {isDifferentDate && <div className="date-line">{log.dbSendAt}</div>}
-              <MsgCard
-                handler={props.profileHandler}
-                log={log}
-                profileImg={props.chatinfo.profileImg}
-                myId={myId}
-                name={props.chatinfo.partnerName}
-              />
-            </React.Fragment>
-          );
-        })}
+        {data.map((log, index) => (
+          <React.Fragment key={index}>
+            {log.dbSendAt !== previousDateRef.current && (
+              <div className="date-line">{log.dbSendAt}</div>
+            )}
+            <MsgCard
+              handler={props.profileHandler}
+              log={log}
+              profileImg={props.chatinfo.profileImg}
+              myId={myId}
+              name={props.chatinfo.partnerName}
+            />
+            {(previousDateRef.current = log.dbSendAt)}
+          </React.Fragment>
+        ))}
         <div ref={cardEndRef}></div>
         <ChattingBar
           chatHandler={chatHandler}
