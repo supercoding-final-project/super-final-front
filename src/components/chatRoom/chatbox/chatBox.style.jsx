@@ -194,8 +194,8 @@ export const NoChatListWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25%;
-  height: 100vh;
+  width: 20%;
+  height: 40rem;
   border: 1px solid #bdbdbd;
   border-radius: 0.5rem;
   margin: 2rem;
