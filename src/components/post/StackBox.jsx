@@ -4,7 +4,7 @@ import { usePostRequest } from 'src/hooks/usePostRequest';
 import * as S from './PostBox.style';
 
 const StackBox = (props) => {
-  const mock = ['url1', 'url2', 'url3'];
+  const mock = ['SPRING', 'PYTHON', 'KOTLIN'];
   const [isActive, setIsActive] = useState(null);
   const updatePostData = usePostRequest();
 
