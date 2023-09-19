@@ -22,7 +22,6 @@ const ChatBox = (props) => {
   const previousDateRef = useRef('');
   const { jwtToken, decodedToken } = useJwtToken();
   const myId = decodedToken?.userId || '';
-  const formattedDate = formatDate(data.dbSendAt);
 
   useEffect(() => {
     if (!sock) {

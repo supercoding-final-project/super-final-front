@@ -29,7 +29,34 @@ export const ChatContainer = styled.div`
   }
 `;
 
-export const DateLine = styled.div``;
+export const DateLine = styled.div`
+  font-size: 0.8rem;
+  margin: 0 auto;
+  background-color: #fff;
+  color: #807e7d;
+  font-weight: 200;
+  letter-spacing: -0.5px;
+  padding: 0px 8px;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    height: 1px;
+    background-color: #807e7d;
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+`;
 
 export const MsgCard = styled.div`
   display: flex;
