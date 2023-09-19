@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 export const ChatBox = styled.div`
   // flex-direction: column;
-  width: 70%;
+  width: 100%;
 
   // 하윤 추가
   display: flex;
@@ -38,24 +38,6 @@ export const DateLine = styled.div`
   letter-spacing: -0.5px;
   padding: 0px 8px;
   position: relative;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 50%;
-    height: 1px;
-    background-color: #807e7d;
-  }
-
-  &::before {
-    left: 0;
-  }
-
-  &::after {
-    right: 0;
-  }
 `;
 
 export const MsgCard = styled.div`
@@ -256,7 +238,7 @@ export const NoChatBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 75%;
+  width: auto;
   height: 100vh;
   font-size: 2rem;
   border: 1px solid #bdbdbd;
