@@ -139,7 +139,7 @@ const ChatBox = (props) => {
               myId={myId}
               name={props.chatinfo.partnerName}
             />
-            {log.dbSendAt !== previousDateRef.current && (previousDateRef.current = log.dbSendAt)}
+            {(previousDateRef.current = log.dbSendAt)}
           </React.Fragment>
         ))}
         <div ref={cardEndRef}></div>
