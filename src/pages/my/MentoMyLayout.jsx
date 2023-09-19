@@ -1,5 +1,5 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useHttp } from 'src/api/useHttp';
 import LeftNavbar from 'src/components/mypage/LeftNavbar';
 import MentoInformation from 'src/components/mypage/mento/MentoInformation';
 import * as S from 'src/pages/my/mentoMyLayout.style';
@@ -8,8 +8,10 @@ import * as S from 'src/pages/my/mentoMyLayout.style';
 const accesstoken =
   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDQsImF1dGhvcml0aWVzIjpbIk1FTlRPUiJdLCJpYXQiOjE2OTUwNTExMjQsImV4cCI6MTcyNjU4NzEyNH0.sCThkhy4Xe8YGCa0jdho1TteZ-BtLMl_iQHQSAeLn_w';
 const MentoMyLayout = () => {
-  const [type, setType] = useState('주문내역');
+  const [type, setType] = useState('멘토 정보 수정');
   const [user, setUser] = useState()
+
+
   const navtype = {
     borad: "등록한 포스트",
     info: "멘토 정보 수정",
@@ -22,17 +24,15 @@ const MentoMyLayout = () => {
 
   useEffect(() => {
     async function logJSONData() {
-      const response = await fetch('https://codevelop.store/api/v1/mentors/info', {
+      const response = await axios.get('https://codevelop.store/api/v1/users/info', {
         headers: {
-          'Content-Type': 'application/json',
           Authorization: accesstoken
         },
-      });
-      const jsonData = await response.json();
-      setUser(jsonData.data);
+      })
+      const data = response.data.data
+      setUser(data)
     }
     logJSONData();
-
   }, []);
 
   const User = {
