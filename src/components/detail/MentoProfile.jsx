@@ -6,12 +6,10 @@ import * as S from './post/Detail.style';
 const MentoProfile = () => {
   const [mentoId, setMentoId] = useState(1005);
   const [mentoData, setMentoData] = useState({});
-  const [mentoCareer, setMentoCareer] = useState([]);
 
   const getMentoData = async () => {
     const res = await axios.get(`https://codevelop.store/api/v1/mentors/detail/${mentoId}`);
     setMentoData(res.data.data);
-    setMentoCareer(res.data.data.mentoCareerList);
     console.log(res.data.data);
   };
 
@@ -44,7 +42,10 @@ const MentoProfile = () => {
         <S.CareerList>
           <ol>
             <li>
-              <ul>{mentoCareer && mentoCareer.map((c, i) => <li key={i}>{c.fullString}</li>)}</ul>
+              <ul>
+                {mentoData.mentoCareerList &&
+                  mentoData.mentoCareerList.map((c, i) => <li key={i}>{c.fullString}</li>)}
+              </ul>
             </li>
             <li>{/* <ul>{stackLi}</ul> */}</li>
             <li>{mentoData.company}</li>

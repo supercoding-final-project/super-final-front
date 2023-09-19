@@ -4,12 +4,13 @@ const DetailIntro = (props) => {
     <S.Intro>
       <ol>
         {props.olName && <span>{props.olName}</span>}
-        {props.text.map((text, i) => (
-          <li key={i}>
-            <span>&bull;</span>
-            {text}
-          </li>
-        ))}
+        {props.text &&
+          props.text.map((text, i) => (
+            <li key={i}>
+              <span>&bull;</span>
+              {text}
+            </li>
+          ))}
       </ol>
     </S.Intro>
   );
