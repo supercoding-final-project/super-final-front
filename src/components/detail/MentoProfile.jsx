@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import * as S from './post/Detail.style';
 
 const MentoProfile = () => {
-  const [mentoId, setMentoId] = useState(6);
+  const [mentoId, setMentoId] = useState(1005);
   const [mentoData, setMentoData] = useState({});
   const [mentoCareer, setMentoCareer] = useState([]);
 
