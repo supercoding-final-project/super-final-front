@@ -5,7 +5,7 @@ import * as S from './post/Detail.style';
 
 const MentoProfile = () => {
   const [mentoId, setMentoId] = useState(6);
-  const [mentoData, SetMentoData] = useState({});
+  const [mentoData, SetMentoData] = useState([]);
 
   const getMentoData = async () => {
     const res = await axios.get(`https://codevelop.store/api/v1/mentors/detail/${mentoId}`);
