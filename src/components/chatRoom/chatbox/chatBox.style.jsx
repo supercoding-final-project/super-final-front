@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 export const ChatBox = styled.div`
   // flex-direction: column;
-  width: 100%;
+  width: 50%;
 
   // 하윤 추가
   display: flex;
@@ -51,7 +51,7 @@ export const MsgCard = styled.div`
 
 export const MsgContainer = styled.div`
   line-height: 1.2rem;
-  max-width: 50%;
+  max-width: 100%;
   display: flex;
 `;
 

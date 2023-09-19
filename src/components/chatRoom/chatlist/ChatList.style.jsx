@@ -9,7 +9,7 @@ export const ChatListWrap = styled.div`
 `;
 
 export const ChatListBox = styled.div`
-  width: 100%;
+  width: 50%;
   height: 100vh;
   text-overflow: ellipsis;
   overflow: hidden;
