@@ -3,7 +3,12 @@ import { styled } from 'styled-components';
 
 export const ChatBox = styled.div`
   // flex-direction: column;
-  width: 70%;
+  width: 50%;
+
+  // 하윤 추가
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const ChatContainer = styled.div`
@@ -15,6 +20,24 @@ export const ChatContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${theme.color.grey5};
+    border-radius: 25px;
+  }
+`;
+
+export const DateLine = styled.div`
+  font-size: 0.8rem;
+  margin: 0 auto;
+  background-color: #fff;
+  color: #807e7d;
+  font-weight: 200;
+  letter-spacing: -0.5px;
+  padding: 0px 8px;
+  position: relative;
 `;
 
 export const MsgCard = styled.div`
@@ -28,7 +51,7 @@ export const MsgCard = styled.div`
 
 export const MsgContainer = styled.div`
   line-height: 1.2rem;
-  max-width: 50%;
+  max-width: 100%;
   display: flex;
 `;
 
@@ -171,8 +194,8 @@ export const NoChatListWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25%;
-  height: 100vh;
+  width: 20%;
+  height: 40rem;
   border: 1px solid #bdbdbd;
   border-radius: 0.5rem;
   margin: 2rem;
@@ -215,8 +238,8 @@ export const NoChatBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 75%;
-  height: 100vh;
+  width: 50%;
+  height: 40rem;
   font-size: 2rem;
   border: 1px solid #bdbdbd;
   border-radius: 0.5rem;

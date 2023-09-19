@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+import MyReviews from 'src/components/detail/post/review/MyReviews';
 import Calendar from 'src/components/mypage/Calendar';
 import InformationHead from 'src/components/mypage/InformationHead';
 import * as S from 'src/pages/my/mentiMyLayout.style';
@@ -72,10 +73,7 @@ const Information = ({ informationtype, navtype, User, accesstoken }) => {
             <S.InformationBox>
               <InformationHead text={navtype.reviews} />
             </S.InformationBox>
-            {/* 여기에다가 컴포넌트를 넣으면 됩니다 */}
-            {/* 여기에다가 컴포넌트를 넣으면 됩니다 */}
-            {/* 여기에다가 컴포넌트를 넣으면 됩니다 */}
-            {/* 여기에다가 컴포넌트를 넣으면 됩니다 */}
+            <MyReviews />
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>

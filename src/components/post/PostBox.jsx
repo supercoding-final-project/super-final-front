@@ -5,12 +5,14 @@ import PostLevel from './PostLevel';
 import PostTitle from './PostTitle';
 import StackBox from './StackBox';
 import { Icon } from '../common/icon/Icon';
+import MentoProfile from '../detail/MentoProfile';
 
 const PostBox = () => {
   return (
     <S.PostWrap>
       <PostModal recoilKey="price" />
       <S.PostContainer>
+        <MentoProfile />
         <PostTitle recoilKey="title" />
         <PostLevel recoilKey="level" />
         <StackBox recoilKey="postStack" />
