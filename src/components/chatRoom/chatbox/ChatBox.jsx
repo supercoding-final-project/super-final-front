@@ -131,7 +131,19 @@ const ChatBox = (props) => {
         {data.map((log, index) => {
           if (log.dbSendAt !== previousDateRef.current) {
             previousDateRef.current = log.dbSendAt;
-            return <S.DateLine key={index}>{formattedDate}</S.DateLine>;
+            return (
+              <>
+                <S.DateLine key={index}>{formattedDate}</S.DateLine>
+                <MsgCard
+                  key={index}
+                  handler={props.profileHandler}
+                  log={log}
+                  profileImg={props.chatinfo.profileImg}
+                  myId={myId}
+                  name={props.chatinfo.partnerName}
+                />
+              </>
+            );
           }
           return (
             <MsgCard
