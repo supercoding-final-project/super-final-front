@@ -38,9 +38,6 @@ const ChatRoomLayout = () => {
       ) : (
         <ChatList list={chatList} handleChatSelect={handleChatSelect} lastChat={lastChat} />
       )}
-      <div className="hwasang" style={{ width: '100%' }}>
-        화상채팅화면~~~dddddddddddddㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ
-      </div>
       {Object.keys(selectedChat).length !== 0 ? (
         <ChatBox chatinfo={selectedChat} setLastChat={setLastChat} />
       ) : (

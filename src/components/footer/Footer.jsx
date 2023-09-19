@@ -1,9 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import * as S from './Footer.style';
 import { Icon } from '../common/icon/Icon';
 
 const Footer = () => {
+  const location = useLocation();
+
+  if (location.pathname === '/chatroom') {
+    return null;
+  }
   return (
     <>
       {window.location.pathname !== '/chatroom' && (
