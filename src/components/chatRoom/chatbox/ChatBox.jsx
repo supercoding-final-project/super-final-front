@@ -133,7 +133,7 @@ const ChatBox = (props) => {
             previousDateRef.current = log.dbSendAt;
             return (
               <>
-                <S.DateLine key={index}>{formattedDate}</S.DateLine>
+                <S.DateLine key={index}>{formatDate(log.dbSendAt)}</S.DateLine>
                 <MsgCard
                   key={index}
                   handler={props.profileHandler}
