@@ -2,6 +2,7 @@ import { Icon } from 'src/components/common/icon/Icon';
 import * as S from './List.style';
 import MentoCardItem from '../main/MentoCardItem';
 import { Link } from 'react-router-dom';
+import SearchFilterContainer from './ListSearchFilterContainer';
 
 const MentoListLayout = () => {
   return (
@@ -14,13 +15,7 @@ const MentoListLayout = () => {
           </S.ListSearchItem>
         </S.ListSearchList>
         <S.ListSearchBox>
-          <form>
-            <Icon name="Search" />
-            <label>
-              <input type="text" />
-            </label>
-            <button>검색</button>
-          </form>
+          <SearchFilterContainer />
         </S.ListSearchBox>
         <S.SearchFilterBox>
           <h3>

@@ -2,6 +2,7 @@ import { Icon } from 'src/components/common/icon/Icon';
 import * as S from './List.style';
 import PostCardItem from '../main/PostCardItem';
 import { Link } from 'react-router-dom';
+import ListSearchFilterContainer from './ListSearchFilterContainer';
 
 const PostListLayout = () => {
   return (
@@ -14,13 +15,7 @@ const PostListLayout = () => {
           <S.ListSearchItem className="active">POST</S.ListSearchItem>
         </S.ListSearchList>
         <S.ListSearchBox>
-          <form>
-            <Icon name="Search" />
-            <label>
-              <input type="text" />
-            </label>
-            <button>검색</button>
-          </form>
+          <ListSearchFilterContainer />
         </S.ListSearchBox>
         <S.SearchFilterBox>
           <h3>

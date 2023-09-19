@@ -1,13 +1,15 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Button from 'src/components/common/Button.jsx';
-import { Icon } from 'src/components/common/icon/Icon.jsx';
-import { theme } from 'src/globalLayout/GlobalStyle.js';
+// import searchFilterBox from '../list/searchFilterBox.jsx';
+// import Button from 'src/components/common/Button.jsx';
+// import { Icon } from 'src/components/common/icon/Icon.jsx';
+// import { theme } from 'src/globalLayout/GlobalStyle.js';
 
 import * as S from './Main.style.jsx';
 import MentoCardItem from './MentoCardItem.jsx';
 import PostCardItem from './PostCardItem.jsx';
+import MainSearchContainer from './MainSearchContainer.jsx';
 
 const MainLayout = () => {
   const [accessToken, setAccessToken] = useState('');
@@ -86,66 +88,7 @@ const MainLayout = () => {
         <S.StartCodeReviewBox>
           <Link to="/auth">코드 리뷰 시작하기!</Link>
         </S.StartCodeReviewBox>
-        <S.MainSearchContainer>
-          <S.MainSearchList>
-            <S.MainSearchItem className="active">멘토</S.MainSearchItem>
-            <S.MainSearchItem>POST</S.MainSearchItem>
-          </S.MainSearchList>
-          <S.MainSearchBox>
-            <form>
-              <Icon name="Search" />
-              <label>
-                <input type="text" />
-              </label>
-              <button>검색</button>
-            </form>
-          </S.MainSearchBox>
-          <S.BestTechStackBox>
-            <h3>BEST10 기술 스택</h3>
-            <S.BestTechStackList>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>Swift</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>JavaScript</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>Vue</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>Nextjs</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>Nodejs</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>Flutter</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>Kotlin</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>React</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>MSSQL</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>jQuery</span>
-              </S.BestTechStackItem>
-            </S.BestTechStackList>
-          </S.BestTechStackBox>
-        </S.MainSearchContainer>
+        <MainSearchContainer />
         <S.MainCardsContainer>
           <article>
             <div>
