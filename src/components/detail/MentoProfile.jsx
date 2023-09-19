@@ -12,6 +12,7 @@ const MentoProfile = () => {
     const res = await axios.get(`https://codevelop.store/api/v1/mentors/detail/${mentoId}`);
     setMentoData(res.data.data);
     setMentoCareer(res.data.data.mentoCareerList);
+    console.log(res.data.data);
   };
 
   useEffect(() => {
@@ -43,11 +44,7 @@ const MentoProfile = () => {
         <S.CareerList>
           <ol>
             <li>
-              <ul>
-                {mentoCareer.map((c, i) => (
-                  <li key={i}>{c.fullString}</li>
-                ))}
-              </ul>
+              <ul>{mentoCareer && mentoCareer.map((c, i) => <li key={i}>{c.fullString}</li>)}</ul>
             </li>
             <li>{/* <ul>{stackLi}</ul> */}</li>
             <li>{mentoData.company}</li>
