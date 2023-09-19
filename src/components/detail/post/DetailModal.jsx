@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import * as S from './Detail.style';
 
-const PostModal = () => {
+const PostModal = (props) => {
   return (
     <S.PostModal>
       <S.PostModalWrap>
@@ -10,7 +10,7 @@ const PostModal = () => {
           <div>1:1 코드리뷰</div>
           <div>
             1시간/
-            <span>49,000P</span>
+            <span>{props.price && props.price.toLocaleString()}P</span>
           </div>
         </S.PostModalContainer>
       </S.PostModalWrap>

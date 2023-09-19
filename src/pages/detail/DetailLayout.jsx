@@ -16,7 +16,8 @@ const DetailLayout = () => {
   const getPostData = async () => {
     const res = await axios.get(`https://codevelop.store/api/v1/post/${postId}`, {
       headers: {
-        Authorization: jwtToken,
+        Authorization:
+          'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjYsImF1dGhvcml0aWVzIjpbIk1FTlRFRSJdLCJpYXQiOjE2OTUxNTE1NTQsImV4cCI6MTY5NTE1NTE1NH0.Gu_oNjuzTmO7mh1qjP5vzHIG-y9sYFScmn3nf4ZCXmo',
       },
     });
     console.log(res);
@@ -42,7 +43,7 @@ const DetailLayout = () => {
 
   return (
     <S.DetailWrap>
-      <DetailModal />
+      <DetailModal price={postData.price} />
       <div style={{ width: '40%', marginRight: '15%' }}>
         <MentoProfile />
         <S.TitleBox>
@@ -52,8 +53,7 @@ const DetailLayout = () => {
         <S.StackBox>
           <div>기술스택</div>
           <div>
-            {postData.postStack &&
-              postData.postStack.map((stack, i) => <S.StackImg key={i} src={stack} />)}
+            <S.StackImg src={postData.postStack} />
           </div>
         </S.StackBox>
         <S.IntroTitle>소개</S.IntroTitle>
