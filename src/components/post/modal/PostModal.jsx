@@ -10,7 +10,7 @@ import * as S from './PostModal.style';
 
 const PostModal = (props) => {
   const [requestData, setRequestData] = useRecoilState(postRequestAtom);
-  const [price, setPrice] = useState(null);
+  const [price, setPrice] = useState(0);
   const { jwtToken } = useJwtToken();
   const updatePostData = usePostRequest();
   const handleOnChange = useCallback(
@@ -27,7 +27,7 @@ const PostModal = (props) => {
   const postHandler = async () => {
     axios
       .post(
-        'http://54.180.86.41:8080/api/v1/post',
+        'https://codevelop.store/api/v1/post',
         { params: requestData },
         {
           headers: {
