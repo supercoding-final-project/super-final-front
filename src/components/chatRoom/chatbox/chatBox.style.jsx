@@ -238,8 +238,8 @@ export const NoChatBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
-  height: 100vh;
+  width: 50%;
+  height: 40rem;
   font-size: 2rem;
   border: 1px solid #bdbdbd;
   border-radius: 0.5rem;
