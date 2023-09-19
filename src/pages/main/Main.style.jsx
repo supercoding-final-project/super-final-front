@@ -164,9 +164,12 @@ export const BestTechStackItem = styled.li`
     height: 80px;
     border-radius: 80px;
     border: 0.5px solid ${theme.color.grey4};
-    background-size: cover;
-    background-position: center;
+    display: flex;
+    align-items: center;
     overflow: hidden;
+    img {
+      width: 100%;
+    }
   }
   span {
     color: ${theme.color.grey1};
