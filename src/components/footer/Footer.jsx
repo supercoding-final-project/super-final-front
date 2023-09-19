@@ -1,9 +1,11 @@
-import React from 'react';
-import * as S from './Footer.style';
-import { Icon } from '../common/icon/Icon';
 import { Link } from 'react-router-dom';
 
+import * as S from './Footer.style';
+import { Icon } from '../common/icon/Icon';
+
 const Footer = () => {
+  if (window.location.pathname === '/chatroom') return null;
+
   return (
     <S.FooterWrapper>
       <footer>

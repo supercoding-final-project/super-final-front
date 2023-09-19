@@ -17,11 +17,12 @@ const ChatBox = (props) => {
   const [page, setPage] = useState(0);
   const [prevId, setPrevId] = useState(null);
 
-  const { formattedTime, updateFormattedTime } = useFormattedTime();
+  const { formattedTime, updateFormattedTime, formatDate } = useFormattedTime();
   const cardEndRef = useRef(null);
   const previousDateRef = useRef('');
   const { jwtToken, decodedToken } = useJwtToken();
   const myId = decodedToken?.userId || '';
+  const formattedDate = formatDate(data.dbSendAt);
 
   useEffect(() => {
     if (!sock) {
@@ -130,11 +131,7 @@ const ChatBox = (props) => {
         {data.map((log, index) => {
           if (log.dbSendAt !== previousDateRef.current) {
             previousDateRef.current = log.dbSendAt;
-            return (
-              <div className="date-line" key={index}>
-                {log.dbSendAt}
-              </div>
-            );
+            return <S.DateLine key={index}>{formattedDate}</S.DateLine>;
           }
           return (
             <MsgCard

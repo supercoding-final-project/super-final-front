@@ -29,6 +29,8 @@ export const ChatContainer = styled.div`
   }
 `;
 
+export const DateLine = styled.div``;
+
 export const MsgCard = styled.div`
   display: flex;
   justify-content: ${(props) => (props.send === 1 ? 'flex-end' : 'flex-start')};
