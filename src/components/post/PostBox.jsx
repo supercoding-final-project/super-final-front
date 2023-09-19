@@ -11,8 +11,8 @@ const PostBox = () => {
   return (
     <S.PostWrap>
       <PostModal recoilKey="price" />
-      <MentoProfile />
       <S.PostContainer>
+        <MentoProfile />
         <PostTitle recoilKey="title" />
         <PostLevel recoilKey="level" />
         <StackBox recoilKey="postStack" />

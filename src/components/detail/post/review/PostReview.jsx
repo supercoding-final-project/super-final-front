@@ -1,7 +1,6 @@
 import * as S from 'src/pages/detail/DetailLayout.style';
 
 import ReviewCard from './ReviewCard';
-import ReviewRegister from './ReviewRegister';
 
 const PostReview = () => {
   const mockReview = [

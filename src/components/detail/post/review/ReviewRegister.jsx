@@ -15,7 +15,7 @@ const ReviewRegister = (props) => {
         </div>
       </S.ReviewPostHeader>
       <S.Text>
-        <input placeholder="한줄 리뷰를 입력해주세요." />
+        <textarea placeholder="한줄 리뷰를 입력해주세요." />
       </S.Text>
       <button>리뷰 등록</button>
     </S.ReviewPost>
