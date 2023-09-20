@@ -58,9 +58,9 @@ const DetailLayout = () => {
         <S.IntroTitle>소개</S.IntroTitle>
         <DetailIntro olName="업무 경력" text={postData.workCareer} />
         <DetailIntro olName="강의 경력" text={postData.educateCareer} />
-        <S.IntroTitle>코드리뷰는 방식으로 진행돼요</S.IntroTitle>
+        <S.IntroTitle>코드리뷰는 이런 방식으로 진행돼요</S.IntroTitle>
         <DetailIntro text={postData.reviewStyle} />
-        <PostReview />
+        <PostReview postId={postId} />
       </div>
     </S.DetailWrap>
   );

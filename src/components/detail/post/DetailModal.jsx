@@ -1,8 +1,21 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import Modal from 'src/components/common/Modal';
 
 import * as S from './Detail.style';
+import PostApplicationModal from './PostApplicationModal';
 
-const PostModal = (props) => {
+const PostModal = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModalOpen = () => {
+    setShowModal(true);
+    document.body.style.overflowY = 'hidden';
+  };
+
+  // const postHandler = () => {
+  //   console.log('눌림');
+  // };
+
   return (
     <S.PostModal>
       <S.PostModalWrap>
@@ -16,7 +29,7 @@ const PostModal = (props) => {
       </S.PostModalWrap>
       <S.ModalBtn>
         <div>
-          <button>신청하기</button>
+          <button onClick={handleModalOpen}>신청하기</button>
         </div>
         <div>
           <Link to="/chatroom">
@@ -24,6 +37,11 @@ const PostModal = (props) => {
           </Link>
         </div>
       </S.ModalBtn>
+      {showModal && (
+        <Modal width="710px" height="617px" setShowModal={setShowModal}>
+          <PostApplicationModal setShowModal={setShowModal} />
+        </Modal>
+      )}
     </S.PostModal>
   );
 };
