@@ -16,7 +16,7 @@ const ReviewList = (props) => {
     <>
       {showModal && (
         <Modal setShowModal={setShowModal}>
-          <ReviewRegister title={info.post} />
+          <ReviewRegister title={info.title} />
         </Modal>
       )}
       <S.ListBox>
