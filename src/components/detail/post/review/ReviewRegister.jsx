@@ -12,8 +12,8 @@ const ReviewRegister = (props) => {
     star: 5,
   });
 
-  const postReview = () => {
-    axios.post('https://codevelop.store/api/v1/reviews', review, {
+  const postReview = async () => {
+    const res = await axios.post('https://codevelop.store/api/v1/reviews', review, {
       headers: {
         Authorization: jwtToken,
       },
@@ -21,9 +21,11 @@ const ReviewRegister = (props) => {
     props.setShowModal(false);
     document.body.style.overflowY = 'auto';
     props.onReviewChange();
+    window.alert(res.data.message);
   };
 
   const contentHandler = (e) => {
+    e.stopPropagation();
     setReview((prevData) => ({
       ...prevData,
       content: e.target.value,
@@ -45,9 +47,9 @@ const ReviewRegister = (props) => {
             <Icon
               key={starValue}
               name="Star"
-              onClick={() => starHandler(starValue)} // 클릭 시 별점 설정
+              onClick={() => starHandler(starValue)}
               style={{
-                color: starValue <= review.star ? 'yellow' : 'gray', // 선택된 별까지 색깔 변경
+                color: starValue <= review.star ? 'yellow' : 'gray',
                 cursor: 'pointer',
               }}
             />
