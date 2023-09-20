@@ -64,7 +64,7 @@ const MentoInformation = ({ informationtype, navtype, User, accesstoken }) => {
             <S.InformationBox>
               <InformationHead text={navtype.reservation} />
             </S.InformationBox>
-            <Reservation></Reservation>
+            <Reservation User={User}></Reservation>
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>
