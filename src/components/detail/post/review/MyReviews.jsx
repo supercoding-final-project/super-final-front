@@ -39,7 +39,7 @@ const MyReviews = () => {
   useEffect(() => {
     getReviewable();
     getMyReviews();
-  }, [jwtToken]);
+  }, [jwtToken, reviewableData, myReviews]);
   // const postMock = [
   //   {
   //     postId: 1,
