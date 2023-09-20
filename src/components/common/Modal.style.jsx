@@ -29,8 +29,8 @@ export const ModalCard = styled.div`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   position: relative;
-  background-color: #4d4b4a;
-  color: #fcfcfb;
+  background-color: ${theme.color.grey3};
+  color: ${theme.color.bgc1};
   box-sizing: border-box;
   overflow-y: auto;
   border-radius: 20px;
@@ -43,11 +43,15 @@ export const ModalCard = styled.div`
     background: transparent;
   }
 `;
+
 export const CloseBtn = styled.div`
   position: sticky;
   top: 0;
-  right: 0;
+  left: 100%;
   cursor: pointer;
   display: flex;
-  justify-content: flex-end;
+  width: 20px;
+  background-color: ${theme.color.grey3};
+  z-index: 10;
+  border-radius: 4px;
 `;

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+import MyReviews from 'src/components/detail/post/review/MyReviews';
 import Calendar from 'src/components/mypage/Calendar';
 import InformationHead from 'src/components/mypage/InformationHead';
 import * as S from 'src/pages/my/mentiMyLayout.style';
@@ -7,7 +8,7 @@ import * as S from 'src/pages/my/mentiMyLayout.style';
 import ChargePoint from './ChargePoint';
 import FixInformation from './FixInformation';
 
-const Information = ({ informationtype, navtype, User }) => {
+const Information = ({ informationtype, navtype, User, accesstoken }) => {
   //상태관리
 
   if (informationtype === navtype.point) {
@@ -18,7 +19,7 @@ const Information = ({ informationtype, navtype, User }) => {
             <S.InformationBox>
               <InformationHead text={navtype.point} />
             </S.InformationBox>
-            <ChargePoint />
+            <ChargePoint accesstoken={accesstoken} />
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>
@@ -34,7 +35,7 @@ const Information = ({ informationtype, navtype, User }) => {
             <S.InformationBox>
               <InformationHead text={navtype.info} />
             </S.InformationBox>
-            <FixInformation User={User} />
+            <FixInformation User={User} accesstoken={accesstoken} />
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>
@@ -54,7 +55,25 @@ const Information = ({ informationtype, navtype, User }) => {
             <S.InformationBox>
               <InformationHead text={navtype.reservation} />
             </S.InformationBox>
-            <Calendar User={User}></Calendar>
+            <Calendar User={User} accesstoken={accesstoken}></Calendar>
+          </S.DivFlexColumn>
+        </S.InformationContainer>
+      </>
+    );
+  }
+  //리뷰 작성
+  //리뷰 작성
+  //리뷰 작성
+  //리뷰 작성
+  if (informationtype === navtype.reviews) {
+    return (
+      <>
+        <S.InformationContainer>
+          <S.DivFlexColumn>
+            <S.InformationBox>
+              <InformationHead text={navtype.reviews} />
+            </S.InformationBox>
+            <MyReviews />
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>

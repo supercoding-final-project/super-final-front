@@ -15,3 +15,4 @@ export { ReactComponent as Fold } from './fold.svg';
 export { ReactComponent as Circle } from './circle.svg';
 export { ReactComponent as Left } from './left.svg';
 export { ReactComponent as Right } from './right.svg';
+export { ReactComponent as Setting } from './setting.svg';

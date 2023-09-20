@@ -51,6 +51,7 @@ Icon.propTypes = {
     'Circle',
     'Left',
     'Right',
+    'Setting',
   ]).isRequired,
   size: PropTypes.number,
   color: PropTypes.string,
