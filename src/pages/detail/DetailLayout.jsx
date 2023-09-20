@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import MentoProfile from 'src/components/detail/MentoProfile';
 import DetailIntro from 'src/components/detail/post/DetailIntro';
 import DetailModal from 'src/components/detail/post/DetailModal';
@@ -8,7 +9,7 @@ import PostReview from 'src/components/detail/post/review/PostReview';
 import * as S from './DetailLayout.style';
 
 const DetailLayout = () => {
-  const [postId, setPostId] = useState(10);
+  const { postId } = useParams();
   const [postData, setPostData] = useState({});
 
   const getPostData = async () => {

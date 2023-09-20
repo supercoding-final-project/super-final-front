@@ -99,14 +99,12 @@ const Header = () => {
           </div>
         </header>
       </div>
-      {
-        showModal && (
-          <Modal setShowModal={setShowModal} width="660px" height="760px">
-            <PostBox />
-          </Modal>
-        )
-      }
-    </S.HeaderWrap >
+      {showModal && (
+        <Modal setShowModal={setShowModal} width="660px" height="760px">
+          <PostBox setShowModal={setShowModal} />
+        </Modal>
+      )}
+    </S.HeaderWrap>
   );
 };
 

@@ -1,6 +1,7 @@
 // import axios from 'axios';
 import axios from 'axios';
 import { useCallback, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import useJwtToken from 'src/hooks/useJwt';
 import { usePostRequest } from 'src/hooks/usePostRequest';
@@ -9,6 +10,7 @@ import { postRequestAtom } from 'src/store/post/postRequestAtom';
 import * as S from './PostModal.style';
 
 const PostModal = (props) => {
+  const [postId, setPostId] = useState(10);
   const [requestData, setRequestData] = useRecoilState(postRequestAtom);
   const [price, setPrice] = useState(null);
   const { jwtToken } = useJwtToken();
@@ -16,8 +18,9 @@ const PostModal = (props) => {
   const handleOnChange = useCallback(
     (e) => {
       const inputPrice = e.target.value;
-      setPrice(inputPrice);
-      if (price.trim() !== '') {
+      const numericPrice = inputPrice.replace(/[^0-9]/g, '');
+      setPrice(numericPrice);
+      if (numericPrice !== '') {
         updatePostData(props.recoilKey, inputPrice);
       }
     },
@@ -25,15 +28,14 @@ const PostModal = (props) => {
   );
 
   const postHandler = async () => {
-    axios
-      .post('https://codevelop.store/api/v1/post', requestData, {
-        headers: {
-          Authorization: jwtToken,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-      });
+    props.setShowModal(false);
+    document.body.style.overflowY = 'auto';
+    const res = await axios.post('https://codevelop.store/api/v1/post', requestData, {
+      headers: {
+        Authorization: jwtToken,
+      },
+    });
+    // setPostId(res.data.data.postId);
   };
   return (
     <S.PostModal>
@@ -46,9 +48,11 @@ const PostModal = (props) => {
           </div>
         </S.PostModalContainer>
       </S.PostModalWrap>
-      <S.ModalBtn>
-        <button onClick={postHandler}>등록하기</button>
-      </S.ModalBtn>
+      <Link to={`/detail/${postId}`}>
+        <S.ModalBtn>
+          <button onClick={postHandler}>등록하기</button>
+        </S.ModalBtn>
+      </Link>
     </S.PostModal>
   );
 };
