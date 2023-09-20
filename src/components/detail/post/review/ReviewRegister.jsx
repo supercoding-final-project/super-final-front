@@ -18,7 +18,9 @@ const ReviewRegister = (props) => {
         Authorization: jwtToken,
       },
     });
-    console.log(review);
+    props.setShowModal(false);
+    document.body.style.overflowY = 'auto';
+    props.onReviewChange();
   };
 
   const contentHandler = (e) => {
@@ -29,7 +31,6 @@ const ReviewRegister = (props) => {
   };
 
   const starHandler = (selectedStar) => {
-    // 별점 선택 핸들러
     setReview((prevData) => ({
       ...prevData,
       star: selectedStar,

@@ -13,7 +13,13 @@ const ReviewBox = (props) => {
           ))}
         </S.BoxHeader>
         {props.data.map((info, i) => (
-          <ReviewList key={i} info={info} btnValue={props.btnValue} type={props.type} />
+          <ReviewList
+            key={i}
+            info={info}
+            btnValue={props.btnValue}
+            type={props.type}
+            onReviewChange={props.onReviewChange}
+          />
         ))}
       </S.ReviewBox>
     </S.ReviewBoxWrap>

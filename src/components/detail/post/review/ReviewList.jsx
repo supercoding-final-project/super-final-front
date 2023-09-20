@@ -22,13 +22,19 @@ const ReviewList = (props) => {
       },
     });
     window.alert(res.data.message);
+    props.onReviewChange();
   };
 
   return (
     <>
       {showModal && (
         <Modal setShowModal={setShowModal}>
-          <ReviewRegister title={info.title} orderSheetId={info.orderSheetId} />
+          <ReviewRegister
+            title={info.title}
+            orderSheetId={info.orderSheetId}
+            onReviewChange={props.onReviewChange()}
+            setShowModal={setShowModal}
+          />
         </Modal>
       )}
       <S.ListBox>
