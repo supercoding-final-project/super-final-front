@@ -1,3 +1,4 @@
+import { Icon } from 'src/components/common/icon/Icon';
 import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
 
@@ -134,7 +135,7 @@ export const ReviewPostHeader = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${theme.color.point};
+    background-color: white;
     padding: 0.25rem 0.5rem 0.25rem 0.5rem;
     border-radius: 62.4375rem;
     color: white;
@@ -164,4 +165,13 @@ export const ReviewPost = styled.div`
     cursor: pointer;
     margin-top: 1rem;
   }
+`;
+
+export const StyledStar = styled(Icon)`
+  path {
+    fill: ${(props) => (props.isSelected ? `${theme.color.point}` : 'transparent')};
+  }
+
+  cursor: pointer;
+  stroke: ${(props) => (props.isSelected ? 'transparent' : `${theme.color.grey5}`)};
 `;

@@ -1,7 +1,13 @@
+import ReviewRegister from 'src/components/detail/post/review/ReviewRegister';
+
 import * as S from './NotFound.style';
 
 const NotFoundLayout = () => {
-  return <S.NotFoundWrap>페이지를 찾을 수 없습니다.</S.NotFoundWrap>;
+  return (
+    <S.NotFoundWrap>
+      <ReviewRegister />
+    </S.NotFoundWrap>
+  );
 };
 
 export default NotFoundLayout;
