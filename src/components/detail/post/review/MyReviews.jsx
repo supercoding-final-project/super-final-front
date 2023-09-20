@@ -11,6 +11,14 @@ const MyReviews = () => {
   const [reviewableCursor, setReviewableCursor] = useState(0);
   const [myReviewCursor, setMyReviewCursor] = useState(0);
 
+  const handleReviewableChange = async () => {
+    await getReviewable();
+  };
+
+  const handleMyReviewsChange = async () => {
+    await getMyReviews();
+  };
+
   const getReviewable = async () => {
     // 공통 훅으로
     const res = await axios.get(
@@ -40,22 +48,6 @@ const MyReviews = () => {
     getReviewable();
     getMyReviews();
   }, [jwtToken]);
-  // const postMock = [
-  //   {
-  //     postId: 1,
-  //     mento: '하진수',
-  //     post: '[프론트엔드] 잘라 먹는 Typescript',
-  //     time: 1,
-  //     point: 20000,
-  //   },
-  //   {
-  //     postId: 2,
-  //     mento: '하방방',
-  //     post: '[백엔드] 구워 삶는 Spring',
-  //     time: 1,
-  //     point: 25000,
-  //   },
-  // ];
 
   const headerOptions = ['신청 시간', '포인트', '리뷰 작성', '리뷰 내용', '별점', '리뷰 삭제'];
   return (
@@ -66,6 +58,7 @@ const MyReviews = () => {
         btnValue="작성"
         data={reviewableData}
         type="POST"
+        onReviewChange={handleReviewableChange}
       />
       <ReviewBox
         title="내가 작성한 리뷰"
@@ -73,6 +66,7 @@ const MyReviews = () => {
         btnValue="삭제"
         data={myReviews}
         type="REVIEW"
+        onReviewChange={handleMyReviewsChange}
       />
     </div>
   );

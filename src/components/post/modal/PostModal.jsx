@@ -18,8 +18,9 @@ const PostModal = (props) => {
   const handleOnChange = useCallback(
     (e) => {
       const inputPrice = e.target.value;
-      setPrice(inputPrice);
-      if (price.trim() !== '') {
+      const numericPrice = inputPrice.replace(/[^0-9]/g, '');
+      setPrice(numericPrice);
+      if (numericPrice !== '') {
         updatePostData(props.recoilKey, inputPrice);
       }
     },
@@ -27,12 +28,13 @@ const PostModal = (props) => {
   );
 
   const postHandler = async () => {
+    props.setShowModal(false);
+    document.body.style.overflowY = 'auto';
     const res = await axios.post('https://codevelop.store/api/v1/post', requestData, {
       headers: {
         Authorization: jwtToken,
       },
     });
-    props.setShowModal(false);
     // setPostId(res.data.data.postId);
   };
   return (
