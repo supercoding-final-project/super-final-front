@@ -62,7 +62,7 @@ const ReviewRegister = (props) => {
       <S.Text>
         <textarea placeholder="한줄 리뷰를 입력해주세요." onChange={contentHandler} />
       </S.Text>
-      <button>리뷰 등록</button>
+      <button onClick={postReview}>리뷰 등록</button>
     </S.ReviewPost>
   );
 };
