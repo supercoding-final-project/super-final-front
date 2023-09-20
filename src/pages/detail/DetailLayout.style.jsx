@@ -135,7 +135,7 @@ export const ReviewPostHeader = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: ${theme.color.grey3};
     padding: 0.25rem 0.5rem 0.25rem 0.5rem;
     border-radius: 62.4375rem;
     color: white;
