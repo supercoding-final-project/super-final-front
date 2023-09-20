@@ -13,17 +13,11 @@ const ReviewRegister = (props) => {
   });
 
   const postReview = () => {
-    axios.post(
-      'https://codevelop.store/api/v1/reviews',
-      {
-        review,
+    axios.post('https://codevelop.store/api/v1/reviews', review, {
+      headers: {
+        Authorization: jwtToken,
       },
-      {
-        headers: {
-          Authorization: jwtToken,
-        },
-      },
-    );
+    });
     console.log(review);
   };
 
