@@ -27,12 +27,12 @@ const PostModal = (props) => {
   );
 
   const postHandler = async () => {
+    props.setShowModal(false);
     const res = await axios.post('https://codevelop.store/api/v1/post', requestData, {
       headers: {
         Authorization: jwtToken,
       },
     });
-    props.setShowModal(false);
     // setPostId(res.data.data.postId);
   };
   return (
