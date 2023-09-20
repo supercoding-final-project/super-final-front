@@ -147,7 +147,7 @@ export const BestTechStackBox = styled.div`
 
 export const BestTechStackList = styled.ul`
   margin: 0 auto;
-  width: 506px;
+  width: 580px;
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
@@ -165,10 +165,11 @@ export const BestTechStackItem = styled.li`
     border-radius: 80px;
     border: 0.5px solid ${theme.color.grey4};
     display: flex;
+    justify-content: center;
     align-items: center;
     overflow: hidden;
     img {
-      width: 100%;
+      width: 80%;
     }
   }
   span {

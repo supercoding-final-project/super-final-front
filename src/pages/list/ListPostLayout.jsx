@@ -44,42 +44,41 @@ const PostListLayout = () => {
               <span>스택</span>
             </h3>
             <ul>
-              <li className="active">JAVA</li>
               <li className="active">SPRING</li>
-              <li>JPA</li>
+              <li>PYTHON</li>
+              <li>KOTLIN</li>
+              <li>C_PLUS_PLUS</li>
               <li>SPRING_BOOT</li>
+              <li>JPA</li>
               <li>SPRING_JDBC</li>
+              <li>NODE_JS</li>
               <li>SQL</li>
               <li>DBMS_RDBMS</li>
               <li>REDIS</li>
               <li>POSTGRE_SQL</li>
-              <li>MSA</li>
               <li>REACT</li>
               <li>REACT_NATIVE</li>
               <li>VUE</li>
               <li>TYPE_SCRIPT</li>
               <li>NEXT_JS</li>
               <li>SVELTE</li>
-              <li>JAVA_SCRIPT</li>
               <li>KUBERNETES</li>
               <li>JENKINS</li>
               <li>GITHUB_ACTION</li>
               <li>HARBOR</li>
-              <li>DOCKER</li>
-              <li>PYTHON</li>
-              <li>KOTLIN</li>
-              <li>C_PLUS_PLUS</li>
-              <li>TYPE_SCRIPT</li>
               <li>JAVA</li>
               <li>JAVA_SCRIPT</li>
               <li>RUBY</li>
+              <li>AWS</li>
               <li>GO</li>
               <li>RUST</li>
-              <li>DBMS_RDBMS</li>
+              <li>KAFKA</li>
               <li>MYSQL</li>
               <li>MONGODB</li>
               <li>MARIA</li>
               <li>ORACLE</li>
+              <li>MSA</li>
+              <li>DOCKER</li>
             </ul>
           </S.CategoryFilterBox>
           <S.CategoryFilterBox>

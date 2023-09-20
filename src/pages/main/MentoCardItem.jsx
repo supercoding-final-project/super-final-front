@@ -9,9 +9,13 @@ import { theme } from 'src/globalLayout/GlobalStyle';
 import useJwtToken from 'src/hooks/useJwt';
 
 import * as S from './MainCardItem.style';
+import { mentoData } from '../list/mentoData';
 
 const MentoCardItem = () => {
   const { jwtToken, decodedToken } = useJwtToken();
+
+  const [mentoListData, setMentoListData] = useState(mentoData);
+
   // 모달이 열리는 위치에 필요한 코드 1/3
   const [showModal, setShowModal] = useState(false);
   // 모달이 열리는 위치에 필요한 코드 2/3
@@ -36,48 +40,50 @@ const MentoCardItem = () => {
 
   return (
     <>
-      <S.MainCardItem>
-        <h4>멘토 입니다. 가로 넓이 280기준.</h4>
-        <S.StackBox>
-          <div className="stack">
-            <p className="title">직무</p>
-            <p className="desc">BACKEND</p>
-          </div>
-          <div className="stack">
-            <p className="title">경력</p>
-            <p className="desc">미들</p>
-          </div>
-          <div className="stack bold">
-            <p className="title">현직</p>
-            <p className="desc">외국 금융권</p>
-          </div>
-        </S.StackBox>
-        <S.NickNameBox>
-          <div className="stack">
-            <p className="title">닉네임</p>
-            <p className="desc bold">
-              <Icon name="Star" /> <span>5.0</span>
-            </p>
-          </div>
-        </S.NickNameBox>
-        <hr />
-        <S.MainCardButtonBox>
-          <Link to="/chatroom">
+      {mentoListData.map((item) => (
+        <S.MainCardItem>
+          <h4>{item.introduction}</h4>
+          <S.StackBox>
+            <div className="stack">
+              <p className="title">직무</p>
+              <p className="desc">{item.currentDuty}</p>
+            </div>
+            <div className="stack">
+              <p className="title">경력</p>
+              <p className="desc">{item.currentPeriod}</p>
+            </div>
+            <div className="stack bold">
+              <p className="title">현직</p>
+              <p className="desc">{item.company}</p>
+            </div>
+          </S.StackBox>
+          <S.NickNameBox>
+            <div className="stack">
+              <p className="title">{item.nickname}</p>
+              <p className="desc bold">
+                <Icon name="Star" /> <span>5.0</span>
+              </p>
+            </div>
+          </S.NickNameBox>
+          <hr />
+          <S.MainCardButtonBox>
+            <Link to="/chatroom">
+              <Button
+                text={'문의하기'}
+                bgcolor={theme.color.point}
+                fontcolor={theme.color.bgc1}
+                onClick={createChatHandler}
+              />
+            </Link>
             <Button
-              text={'문의하기'}
+              text={'상세보기'}
               bgcolor={theme.color.point}
               fontcolor={theme.color.bgc1}
-              onClick={createChatHandler}
+              onClick={handleModalOpen}
             />
-          </Link>
-          <Button
-            text={'상세보기'}
-            bgcolor={theme.color.point}
-            fontcolor={theme.color.bgc1}
-            onClick={handleModalOpen}
-          />
-        </S.MainCardButtonBox>
-      </S.MainCardItem>
+          </S.MainCardButtonBox>
+        </S.MainCardItem>
+      ))}
       {/* 모달이 열리는 위치에 필요한 코드 3/3 - <Modal></Modal> 사이에는 클릭시 열릴 모달의 콘텐츠를 import */}
       {showModal && (
         <Modal setShowModal={setShowModal}>
