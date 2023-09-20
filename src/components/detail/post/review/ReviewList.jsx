@@ -20,17 +20,17 @@ const ReviewList = (props) => {
         </Modal>
       )}
       <S.ListBox>
-        <div>{info.mento}</div>
-        <div style={{ width: '40%' }}>{info.post}</div>
+        <div>{info.mentorNickname}</div>
+        <div style={{ width: '40%' }}>{info.title}</div>
         {props.type === 'POST' ? (
-          <div>{info.time}시간</div>
+          <div>{info.totalTime}시간</div>
         ) : (
-          <div style={{ justifyContent: 'flex-start' }}> {info.reviewContent}</div>
+          <div style={{ justifyContent: 'flex-start' }}> {info.content}</div>
         )}
         {props.type === 'POST' ? (
-          <div>{info.point.toLocaleString()}P</div>
+          <div>{info.totalPrice.toLocaleString()}P</div>
         ) : (
-          <div>{info.rating}</div>
+          <div>{info.star}</div>
         )}
 
         <div>
