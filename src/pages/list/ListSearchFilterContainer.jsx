@@ -1,11 +1,16 @@
 import { Icon } from 'src/components/common/icon/Icon';
 
-const ListSearchFilterContainer = () => {
+const ListSearchFilterContainer = ({ searchInput, handleInputChange, handleSearch }) => {
   return (
-    <form>
+    <form onSubmit={handleSearch}>
       <Icon name="Search" />
       <label>
-        <input type="text" />
+        <input
+          type="text"
+          value={searchInput}
+          onChange={handleInputChange}
+          // placeholder={`검색 (${activeTab})`}
+        />
       </label>
       <button>검색</button>
     </form>
