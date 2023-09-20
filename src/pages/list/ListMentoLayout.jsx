@@ -6,12 +6,13 @@ import { Icon } from 'src/components/common/icon/Icon';
 import { dutyType } from './dutyType';
 import * as S from './List.style';
 import SearchFilterContainer from './ListSearchFilterContainer';
+import PageBtn from './PageBtn';
 import MentoCardItem from '../main/MentoCardItem';
 
 const MentoListLayout = () => {
   const [dutyTypeData, setDutyTypeData] = useState(dutyType);
   const [mentors, setMentors] = useState([]);
-  const [cursor, setCursor] = useState(1);
+
   // const [activeTab, setActiveTab] = useState(tabData[0].id);
 
   const [selectedItems, setSelectedItems] = useState([]);
@@ -94,15 +95,7 @@ const MentoListLayout = () => {
         </S.ListCardsContainer>
       </S.ListSearchContainer>
       <S.PaginationContainer>
-        <ul>
-          <li className="active">1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-          <li className="next">다음</li>
-        </ul>
+        <PageBtn />
       </S.PaginationContainer>
     </S.ListWrapper>
   );

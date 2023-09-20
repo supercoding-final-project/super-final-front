@@ -7,7 +7,7 @@ import * as S from './MainCardItem.style';
 import { postData } from '../list/postData';
 
 const PostCardItem = () => {
-  const postId = 10;
+  const [postId, setPostId] = useState(10);
   // 이 부분 일단 10으로 해놨습니다 ! 이거만 변경해주시면 저한테 알아서 넘어와요 !
   const [postListData, setPostListData] = useState(postData);
 
