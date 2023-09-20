@@ -17,12 +17,14 @@ const PostReview = (props) => {
     );
     const newReviews = res.data.data.content;
     setReviews((prevReviews) => [...prevReviews, ...newReviews]);
-    const lastReview = newReviews[newReviews.length - 1];
-    setCursor(lastReview.reviewId);
   };
 
   const handleIntersection = (entries) => {
     if (entries[0].isIntersecting) {
+      const lastReview = reviews[reviews.length - 1];
+      if (lastReview) {
+        setCursor(lastReview.reviewId);
+      }
       getReviews();
     }
   };
@@ -33,7 +35,7 @@ const PostReview = (props) => {
     const observer = new IntersectionObserver(handleIntersection, {
       root: null,
       rootMargin: '0px',
-      threshold: 0.0,
+      threshold: 1.0,
     });
 
     if (cursorRef.current) {
