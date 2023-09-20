@@ -4,14 +4,14 @@ import { theme } from 'src/globalLayout/GlobalStyle';
 
 import * as S from './MainCardItem.style';
 
-const PostCardItem = () => {
+const PostCardItem = (props) => {
   const handleScrollInnerModal = () => {
     document.body.style.overflowY = 'auto';
   };
   return (
     <>
       <S.MainCardItem>
-        <h4>POST 입니다. 가로 넓이 280기준.</h4>
+        <h4>{props.data}POST 입니다. 가로 넓이 280기준.</h4>
         <S.StackBox>
           <div className="stack">
             <p className="title">직무</p>
