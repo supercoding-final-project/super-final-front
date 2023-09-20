@@ -171,7 +171,6 @@ export const StyledStar = styled(Icon)`
   path {
     fill: ${(props) => (props.isSelected ? `${theme.color.point}` : 'transparent')};
   }
-
   cursor: pointer;
   stroke: ${(props) => (props.isSelected ? 'transparent' : `${theme.color.grey5}`)};
 `;
