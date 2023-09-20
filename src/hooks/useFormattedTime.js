@@ -19,5 +19,10 @@ export const useFormattedTime = () => {
     setFormattedTime(getCurrentFormattedTime());
   };
 
-  return { formattedTime, updateFormattedTime };
+  const formatDate = (inputDate) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(inputDate).toLocaleDateString('ko-KR', options);
+  };
+
+  return { formattedTime, updateFormattedTime, formatDate };
 };

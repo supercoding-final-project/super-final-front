@@ -3,14 +3,13 @@ import { styled } from 'styled-components';
 export const ChatListWrap = styled.div`
   display: flex;
   justify-content: center;
-  width: 30%;
+  width: 20%;
   padding-left: 2rem;
   padding-right: 2rem;
 `;
 
 export const ChatListBox = styled.div`
   width: 100%;
-  height: 100vh;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
