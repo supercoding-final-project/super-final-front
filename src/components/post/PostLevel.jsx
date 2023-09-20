@@ -4,7 +4,7 @@ import { usePostRequest } from 'src/hooks/usePostRequest';
 import * as S from './PostBox.style';
 
 const PostLevel = (props) => {
-  const levels = ['입문', '초급', '중급', '고급', '최고급'];
+  const levels = ['입문', '초급', '중급', '상급', '최상'];
   const [isActive, setIsActive] = useState(null);
   const updatePostData = usePostRequest();
 
