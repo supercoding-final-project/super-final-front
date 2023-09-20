@@ -32,12 +32,14 @@ const ReviewRegister = (props) => {
     }));
   };
 
-  const starHandler = (selectedStar) => {
+  const handleStarClick = (starValue) => {
+    const updatedStar = starValue === review.star ? starValue - 1 : starValue;
     setReview((prevData) => ({
       ...prevData,
-      star: selectedStar,
+      star: updatedStar,
     }));
   };
+
   return (
     <S.ReviewPost>
       <S.ReviewPostHeader>
@@ -47,10 +49,11 @@ const ReviewRegister = (props) => {
             <Icon
               key={starValue}
               name="Star"
-              onClick={() => starHandler(starValue)}
+              onClick={() => handleStarClick(starValue)} // 별 클릭 시 변경 로직 적용
               style={{
-                color: starValue <= review.star ? 'yellow' : 'gray',
+                color: starValue <= review.star ? 'green' : 'transparent', // 투명과 초록색으로 변경
                 cursor: 'pointer',
+                border: `1px solid ${starValue <= review.star ? 'green' : 'transparent'}`, // 테두리 스타일을 초록색으로 설정
               }}
             />
           ))}
