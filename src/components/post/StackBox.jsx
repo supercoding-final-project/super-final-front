@@ -4,7 +4,6 @@ import { usePostRequest } from 'src/hooks/usePostRequest';
 import * as S from './PostBox.style';
 
 const StackBox = (props) => {
-  const mock = ['SPRING', 'PYTHON', 'KOTLIN'];
   const [isActive, setIsActive] = useState(null);
   const updatePostData = usePostRequest();
 
@@ -17,14 +16,15 @@ const StackBox = (props) => {
     <S.StackBox>
       <div>코드 리뷰를 진행할 기술 스택 중 하나를 선택해 주세요!</div>
       <div>
-        {mock.map((stack, i) => (
-          <S.StackImg
-            key={i}
-            src={stack}
-            active={stack === isActive}
-            onClick={() => handleImageClick(stack)}
-          />
-        ))}
+        {props.mentorStack &&
+          props.mentorStack.map((stack, i) => (
+            <S.StackImg
+              key={i}
+              src={stack.skillStackImg}
+              active={stack === isActive}
+              onClick={() => handleImageClick(stack.skillStackName)}
+            />
+          ))}
       </div>
     </S.StackBox>
   );

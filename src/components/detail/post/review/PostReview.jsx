@@ -17,21 +17,24 @@ const PostReview = (props) => {
     );
     const newReviews = res.data.data.content;
     setReviews((prevReviews) => [...prevReviews, ...newReviews]);
+    if (newReviews.length > 0) {
+      setCursor((prevCursor) => {
+        if (newReviews.length > 0) {
+          return newReviews[newReviews.length - 1].reviewId;
+        }
+        return prevCursor;
+      });
+    }
   };
 
   const handleIntersection = (entries) => {
     if (entries[0].isIntersecting) {
       getReviews();
-      const lastReview = reviews[reviews.length - 1];
-      if (lastReview) {
-        setCursor(lastReview.reviewId);
-      }
     }
   };
 
   useEffect(() => {
     getReviews();
-
     const observer = new IntersectionObserver(handleIntersection, {
       root: null,
       rootMargin: '0px',
@@ -48,44 +51,7 @@ const PostReview = (props) => {
       }
     };
   }, [props.postId]);
-  // const mockReview = [
-  //   {
-  //     reviewId: 1,
-  //     name: '김소미',
-  //     review: '항상 꼼꼼히 봐주셔서 감사합니다!',
-  //     rating: 4,
-  //   },
-  //   {
-  //     reviewId: 2,
-  //     name: '김동준',
-  //     review: '요즘같은 불경기에, 취업관련해서 도움이 되었어요',
-  //     rating: 3,
-  //   },
-  //   {
-  //     reviewId: 3,
-  //     name: '미쿠',
-  //     review: '역시 경력직이라 다른건가요?',
-  //     rating: 5,
-  //   },
-  //   {
-  //     reviewId: 4,
-  //     name: '김지우',
-  //     review: '스크롤 확인용',
-  //     rating: 1,
-  //   },
-  //   {
-  //     reviewId: 5,
-  //     name: '김지우',
-  //     review: '스크롤 확인용',
-  //     rating: 1,
-  //   },
-  //   {
-  //     reviewId: 6,
-  //     name: '김지우',
-  //     review: '스크롤 확인용',
-  //     rating: 1,
-  //   },
-  // ];
+
   return (
     <>
       <S.ReviewList>
