@@ -34,7 +34,7 @@ const MentoInformation = ({ informationtype, navtype, User, accesstoken }) => {
             <S.InformationBox>
               <InformationHead text={navtype.info} />
             </S.InformationBox>
-            <FixInformation User={User}></FixInformation>
+            <FixInformation User={User} accesstoken={accesstoken}></FixInformation>
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>

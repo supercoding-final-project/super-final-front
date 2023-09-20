@@ -4,16 +4,21 @@ import { useEffect, useRef, useState } from 'react'
 import * as S from "src/pages/my/mentoMyLayout.style"
 
 
-const FixInformation = ({ User, }) => {
+const FixInformation = ({ User, accesstoken }) => {
 
     //입력창 상태들
     const [enterNickanme, setEnterNickname] = useState(false)
     const [enterIncumbentJob, setEnterIncumbentJob] = useState(false)
     const [enterIntroduction, setEnterIntroduction] = useState(false)
 
+    //맨처음 유저조회를할때 커리어list를 한번만 조회하기위한 상태
+    const [executedOnce, setExecutedOnce] = useState(false);
+
     //멘토 정보 수정 인풋
-    const [nicknameValue, setNicknameValue] = useState(User.nickname);
+    const [nicknameValue, setNicknameValue] = useState("");
     const [incumbentValue, setIncumbentValue] = useState("");
+    const [dutyType, setDutyType] = useState("");
+
     const [introduction, setIntroduction] = useState("");
     const [careerList, setCareerList] = useState([])
     const [careerObjects, setCareerObjects] = useState([])
@@ -44,12 +49,8 @@ const FixInformation = ({ User, }) => {
 
     useEffect(() => {
         console.log(User)
-        if (User.mentorProfile?.careers && User) {
-            User.mentorProfile.careers?.map((item) => {
-                let career = (item["dutyName"] + "_" + item["period"])
-                setCareerList(prev => [...prev, career])
-            })
-        }
+
+        setNicknameValue(User.nickname)
     }, [User])
 
     useEffect(() => {
@@ -63,11 +64,44 @@ const FixInformation = ({ User, }) => {
             setSkillStackList(User.mentorProfile.skillStacks)
         }
     }, [User.mentorProfile?.skillStacks])
+
     useEffect(() => {
         if (User.mentorProfile?.introduction) {
             setIntroduction(User.mentorProfile.introduction)
         }
     }, [User.mentorProfile?.introduction])
+
+    useEffect(() => {
+
+        if (User.mentorProfile?.careers) {
+            User.mentorProfile.careers?.map((item) => {
+                let career = (item["dutyName"] + "||" + item["period"])
+                setCareerList(prev => [...prev, career])
+            })
+        }
+    }, [User?.mentorProfile?.careers])
+
+
+
+    useEffect(() => {
+        setCareerObjects([]);
+        if (careerList.length > 0) {
+            careerList.map((career) => {
+                let [dutyName, period] = career.split('||')
+                setCareerObjects(prev => [
+                    ...prev,
+                    {
+                        "dutyName": dutyName,
+                        "period": period
+                    }
+                ])
+            })
+        }
+    }
+        , [careerList,])
+
+
+
 
 
     const NickNameFixHandler = () => {
@@ -126,7 +160,6 @@ const FixInformation = ({ User, }) => {
             if (pattern.test(check) || check === "") {
                 return
             } else {
-                console.log(enteredNickName.trim())
                 setIncumbentValue(enteredNickName.trim());
             }
         }
@@ -148,7 +181,7 @@ const FixInformation = ({ User, }) => {
     }
 
     const addCareerHandler = () => {
-        let duty = dutyRef.current.value
+        let duty = dutyType
         let years = dutyYearRef.current.value
         let month = dutyMonthRef.current.value
         const pattern = /[~!@#$%^&*()]/
@@ -156,61 +189,58 @@ const FixInformation = ({ User, }) => {
             return
         }
 
-        if (duty.trim() === "" || duty.trim() === " ") {
-            dutyRef.current.value = '';
+        if (month > 12) {
+            duty = '';
+            dutyYearRef.current.value = '';
+            dutyMonthRef.current.value = '';
+            return
+        }
+        if (years === '' && month === '') {
+            duty = '';
+            dutyYearRef.current.value = '';
+            dutyMonthRef.current.value = '';
+            return
+        } if (years === '0' && month === '0') {
+            duty = '';
             dutyYearRef.current.value = '';
             dutyMonthRef.current.value = '';
             return
         }
 
-        if (month > 12) {
-            dutyRef.current.value = '';
-            dutyYearRef.current.value = '';
-            dutyMonthRef.current.value = '';
-            return
-        }
         if (years === '' || years === "0") {
-            let mentoCareer = duty + "_" + month + "개월"
-            setCareerList(prev => [...prev, mentoCareer])
-            dutyRef.current.value = '';
+            let mentoCareer = duty + "||" + month + "개월"
+            setCareerList((prev) => [...prev, mentoCareer]);
+            duty = '';
             dutyYearRef.current.value = '';
             dutyMonthRef.current.value = '';
             return
         }
 
         if (month === '' || month === "0") {
-            let mentoCareer = duty + "_" + years + "년"
-            setCareerList(prev => [...prev, mentoCareer])
-            dutyRef.current.value = '';
+            let mentoCareer = duty + "||" + years + "년"
+            setCareerList((prev) => [...prev, mentoCareer]);
+            duty = '';
             dutyYearRef.current.value = '';
             dutyMonthRef.current.value = '';
             return
         }
-        let mentoCareer = duty + "_" + years + "년" + month + "개월"
-        setCareerList(prev => [...prev, mentoCareer])
-        dutyRef.current.value = '';
+        let mentoCareer = duty + "||" + years + "년" + month + "개월"
+        setCareerList((prev) => [...prev, mentoCareer]);
+        duty = '';
         dutyYearRef.current.value = '';
         dutyMonthRef.current.value = '';
     }
 
     const careerEnterKeyDown = (event) => {
         if (event.key === "Enter") {
+            console.log("엔터키를 눌렀다")
             addCareerHandler()
-            careerList.map((career, index) => {
-                let [dutyName, period] = career.split('_')
-                console.log("dutyName", dutyName)
-                console.log("period", period)
-                setCareerObjects(prev => [
-                    ...prev,
-                    {
-                        "dutyName": dutyName,
-                        "period": period
-                    }
-                ])
-            })
-            dutyRef.current.focus()
         }
     }
+    const addCareerButton = () => {
+        addCareerHandler()
+    }
+
     const dutyDeleteHandler = (index) => {
         const updatedCareerList = careerList.filter((item, i) => i !== index);
         setCareerList(updatedCareerList)
@@ -224,7 +254,7 @@ const FixInformation = ({ User, }) => {
 
     //기술스택 설정하는곳
     // 선택한 옵션에 따라 하위 옵션을 설정하는 함수
-    const handleOptionChange = (event) => {
+    const handleSkillOptionChange = (event) => {
         const selectedValue = event.target.value;
         setSelectedOption(selectedValue);
 
@@ -244,6 +274,13 @@ const FixInformation = ({ User, }) => {
         }
     };
 
+    const handleIncumbentJobChange = (event) => {
+        const selectedValue = event.target.value;
+        console.log(selectedValue)
+        setDutyType(selectedValue)
+
+    }
+
 
     const selectSkill = (event) => {
         const selectedSkill = event.target.value;
@@ -255,15 +292,39 @@ const FixInformation = ({ User, }) => {
         setSkillStackList(prev => [...prev, selectedSkill])
     }
 
-    const fixMentorInformation = () => {
-        console.log("careerList", careerList)
-        console.log("careerObjects", careerObjects)
-        console.log("FIXINFORMATION", FIXINFORMATION)
+    const fixMentorInformation = async () => {
 
-
-
-
+        console.log(FIXINFORMATION)
+        const response = await axios.post('https://codevelop.store/api/v1/mentors/info',
+            FIXINFORMATION,
+            {
+                headers: {
+                    Authorization: accesstoken
+                }
+            })
+        console.log(response)
     }
+
+
+
+
+    // {
+    //     "thumbnailImageUrl": "https://i.ytimg.com/vi/M-E95XZe8wE/maxresdefault.jpg",
+    //     "nickname": "김호식",
+    //     "email": "hosick@sosick.com",
+    //     "introduction": "난 치킨집이나 차려야겠다",
+    //     "company": "맥도날드",
+    //     "searchable": true,
+    //     "careers": [{
+    //         "dutyName": "BACKEND_DEVELOPER",
+    //         "period": "3년"
+    //     },
+    //     {
+    //         "dutyName": "FRONTEND_DEVELOPER",
+    //         "period": "3년 5개월"
+    //     }],
+    //     "skillStacks": ["아무것도못해요", "아무것도못해요", "아무것도못해요",]
+    // }
 
     return (
         <>
@@ -278,7 +339,7 @@ const FixInformation = ({ User, }) => {
                     <S.FixInformationBox>
                         <S.FixInformationLabel>닉네임</S.FixInformationLabel>
                         {!nicknameValue ?
-                            <S.FixInformationMentiName onClick={NickNameFixHandler}>{User.nickname}</S.FixInformationMentiName>
+                            <S.FixInformationMentiName onClick={NickNameFixHandler}>{nicknameValue}</S.FixInformationMentiName>
                             : <S.FixInformationMentiName onClick={NickNameFixHandler}>{nicknameValue}</S.FixInformationMentiName>
                         }
                         <S.NickNameFixButton onClick={fixNickName}>수정</S.NickNameFixButton>
@@ -288,16 +349,28 @@ const FixInformation = ({ User, }) => {
                 <div>
                     <S.FixInformationBox>
                         <S.FixInformationLabel>경력</S.FixInformationLabel>
-                        <S.FixInformationMentiIncumbentJobInput placeholder='직무를 적어주세요' ref={dutyRef} />
+                        <S.SkillStackSelect onChange={handleIncumbentJobChange}>
+                            <option value="NONE">선택하세요</option>
+                            <option value="BACKEND_DEVELOPER">BACKEND_DEVELOPER</option>
+                            <option value="FRONTEND_DEVELOPER">FRONTEND_DEVELOPER</option>
+                            <option value="FULL_STACK_DEVELOPER">FULL_STACK_DEVELOPER</option>
+                            <option value="MOBILE_APP_DEVELOPER">MOBILE_APP_DEVELOPER</option>
+                            <option value="DEVOPS_ENGINEER">DEVOPS_ENGINEER</option>
+                            <option value="DATA_ENGINEER">DATA_ENGINEER</option>
+                            <option value="GAME_DEVELOPER">GAME_DEVELOPER</option>
+                            <option value="AI_ML_ENGINEER">AI_ML_ENGINEER</option>
+                            <option value="SECURITY_ENGINEER">SECURITY_ENGINEER</option>
+                        </S.SkillStackSelect>
+
                         <S.MentoCareerYearInput type="number" ref={dutyYearRef} placeholder='년' onKeyDown={careerEnterKeyDown} />
                         <S.MentoCareerMonthInput type="number" ref={dutyMonthRef} placeholder='개월' onKeyDown={careerEnterKeyDown} />
-                        <S.NickNameFixButton onClick={addCareerHandler}>추가 </S.NickNameFixButton>
+                        <S.NickNameFixButton onClick={addCareerButton}>추가</S.NickNameFixButton>
                     </S.FixInformationBox>
                 </div>
                 <S.FixInformationBox>
                     <S.FixInformationLabel>기술스택</S.FixInformationLabel>
 
-                    <S.SkillStackSelect value={selectedOption} onChange={handleOptionChange}>
+                    <S.SkillStackSelect value={selectedOption} onChange={handleSkillOptionChange}>
                         <option value="">선택하세요</option>
                         <option value="BACKEND">BACKEND</option>
                         <option value="FRONTEND">FRONTEND</option>
@@ -330,7 +403,7 @@ const FixInformation = ({ User, }) => {
                     <S.FixInformationBox>
                         <S.FixInformationLabel>현직</S.FixInformationLabel>
                         <S.FixInformationMentiIncumbentJob onClick={JobFixHandler} >  {incumbentValue}</S.FixInformationMentiIncumbentJob>
-                        <S.NickNameFixButton >수정</S.NickNameFixButton>
+
                     </S.FixInformationBox>
                 }
 
@@ -373,6 +446,7 @@ const FixInformation = ({ User, }) => {
                     :
                     <div onClick={IntroductionFixHandler}>{introduction}</div>
                 }
+                <S.introductionMentor style={{ width: "100%", height: "50px" }} placeholder='한줄 소개 입력하기' ref={textRef} onBlur={blurIntroductionBox}></S.introductionMentor>
             </S.FixInformationContainer>
             <button onClick={fixMentorInformation}>수정</button>
         </>
