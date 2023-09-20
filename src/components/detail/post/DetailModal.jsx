@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Modal from 'src/components/common/Modal';
 
 import * as S from './Detail.style';
 import PostApplicationModal from './PostApplicationModal';
 
-const PostModal = () => {
+const PostModal = (props) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleModalOpen = () => {
