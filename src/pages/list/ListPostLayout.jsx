@@ -3,8 +3,48 @@ import * as S from './List.style';
 import PostCardItem from '../main/PostCardItem';
 import { Link } from 'react-router-dom';
 import ListSearchFilterContainer from './ListSearchFilterContainer';
+import { skillStackCategoryType } from './skillStackCategoryType';
+import { skillStackType } from './skillStackType';
+import { useState } from 'react';
+import { levelType } from './levelType';
 
 const PostListLayout = () => {
+  const [skillStackCategoryTypeData, setSkillStackCategoryTypeData] =
+    useState(skillStackCategoryType);
+  const [skillStackTypeData, setSkillStackTypeData] = useState(skillStackType);
+  const [levelTypeData, setLevelTypeData] = useState(levelType);
+  const [selectedItems1, setSelectedItems1] = useState([]);
+  const [selectedItems2, setSelectedItems2] = useState([]);
+  const [selectedItems3, setSelectedItems3] = useState([]);
+
+  const handleTechClick1 = (item) => {
+    // 이미 선택된 아이템이라면 선택 해제
+    if (selectedItems1.includes(item)) {
+      setSelectedItems1(selectedItems1.filter((i) => i !== item));
+    } else {
+      // 새로운 아이템 선택
+      setSelectedItems1([...selectedItems1, item]);
+    }
+  };
+
+  const handleTechClick2 = (item) => {
+    if (selectedItems2.includes(item)) {
+      setSelectedItems2(selectedItems2.filter((i) => i !== item));
+    } else {
+      // 새로운 아이템 선택
+      setSelectedItems2([...selectedItems2, item]);
+    }
+  };
+
+  const handleTechClick3 = (item) => {
+    if (selectedItems3.includes(item)) {
+      setSelectedItems3(selectedItems3.filter((i) => i !== item));
+    } else {
+      // 새로운 아이템 선택
+      setSelectedItems3([...selectedItems3, item]);
+    }
+  };
+
   return (
     <S.ListWrapper>
       <S.ListSearchContainer>
@@ -30,12 +70,24 @@ const PostListLayout = () => {
               <span>직무</span>
             </h3>
             <ul>
-              <li className="active">BACKEND</li>
-              <li>FRONTEND</li>
-              <li>INFRA</li>
-              <li>INFRA</li>
-              <li>PROGRAMMING_LANGUAGE</li>
-              <li>DBA</li>
+              {/* {dutyTypeData.map((item) => (
+                <li
+                  className={selectedItems.includes(item.id) ? 'active' : ''}
+                  key={item.id}
+                  onClick={() => handleTechClick(item.id)}
+                >
+                  {item.currentDuty}
+                </li>
+              ))} */}
+              {skillStackCategoryTypeData.map((item) => (
+                <li
+                  className={selectedItems1.includes(item.id) ? 'active' : ''}
+                  key={item.id}
+                  onClick={() => handleTechClick1(item.id)}
+                >
+                  {item.skillStackCategoryType}
+                </li>
+              ))}
             </ul>
           </S.CategoryFilterBox>
           <S.CategoryFilterBox>
@@ -44,41 +96,15 @@ const PostListLayout = () => {
               <span>스택</span>
             </h3>
             <ul>
-              <li className="active">SPRING</li>
-              <li>PYTHON</li>
-              <li>KOTLIN</li>
-              <li>C_PLUS_PLUS</li>
-              <li>SPRING_BOOT</li>
-              <li>JPA</li>
-              <li>SPRING_JDBC</li>
-              <li>NODE_JS</li>
-              <li>SQL</li>
-              <li>DBMS_RDBMS</li>
-              <li>REDIS</li>
-              <li>POSTGRE_SQL</li>
-              <li>REACT</li>
-              <li>REACT_NATIVE</li>
-              <li>VUE</li>
-              <li>TYPE_SCRIPT</li>
-              <li>NEXT_JS</li>
-              <li>SVELTE</li>
-              <li>KUBERNETES</li>
-              <li>JENKINS</li>
-              <li>GITHUB_ACTION</li>
-              <li>HARBOR</li>
-              <li>JAVA</li>
-              <li>JAVA_SCRIPT</li>
-              <li>RUBY</li>
-              <li>AWS</li>
-              <li>GO</li>
-              <li>RUST</li>
-              <li>KAFKA</li>
-              <li>MYSQL</li>
-              <li>MONGODB</li>
-              <li>MARIA</li>
-              <li>ORACLE</li>
-              <li>MSA</li>
-              <li>DOCKER</li>
+              {skillStackTypeData.map((item) => (
+                <li
+                  className={selectedItems2.includes(item.id) ? 'active' : ''}
+                  key={item.id}
+                  onClick={() => handleTechClick2(item.id)}
+                >
+                  {item.postStack}
+                </li>
+              ))}
             </ul>
           </S.CategoryFilterBox>
           <S.CategoryFilterBox>
@@ -87,9 +113,15 @@ const PostListLayout = () => {
               <span>레벨</span>
             </h3>
             <ul>
-              <li className="active">입문</li>
-              <li>초급</li>
-              <li>중급</li>
+              {levelTypeData.map((item) => (
+                <li
+                  className={selectedItems3.includes(item.id) ? 'active' : ''}
+                  key={item.id}
+                  onClick={() => handleTechClick3(item.id)}
+                >
+                  {item.level}
+                </li>
+              ))}
             </ul>
           </S.CategoryFilterBox>
         </S.SearchFilterBox>
@@ -99,13 +131,6 @@ const PostListLayout = () => {
               <h3>POST</h3>
             </div>
             <ul>
-              <PostCardItem />
-              <PostCardItem />
-              <PostCardItem />
-              <PostCardItem />
-              <PostCardItem />
-              <PostCardItem />
-              <PostCardItem />
               <PostCardItem />
             </ul>
           </article>

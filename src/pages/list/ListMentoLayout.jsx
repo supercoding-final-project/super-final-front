@@ -3,8 +3,33 @@ import * as S from './List.style';
 import MentoCardItem from '../main/MentoCardItem';
 import { Link } from 'react-router-dom';
 import SearchFilterContainer from './ListSearchFilterContainer';
+import { useState } from 'react';
+import { dutyType } from './dutyType';
+import { theme } from 'src/globalLayout/GlobalStyle';
 
 const MentoListLayout = () => {
+  const [dutyTypeData, setDutyTypeData] = useState(dutyType);
+  // const [activeTab, setActiveTab] = useState(tabData[0].id);
+
+  const [selectedItems, setSelectedItems] = useState([]);
+  // const handleTabClick = (filtered) => {
+  //   setDutyTypeData(filtered);
+  // };
+  // const getActiveTabContent = () => {
+  //   const activeTabData = tabData.find((tab) => tab.id === activeTab);
+  //   return activeTabData ? activeTabData.content : [];
+  // };
+  const handleTechClick = (item) => {
+    // 이미 선택된 아이템이라면 선택 해제
+    if (selectedItems.includes(item)) {
+      setSelectedItems(selectedItems.filter((i) => i !== item));
+    } else {
+      // 새로운 아이템 선택
+      setSelectedItems([...selectedItems, item]);
+    }
+  };
+  // const listItems = ['아이템 1', '아이템 2', '아이템 3', '아이템 4'];
+
   return (
     <S.ListWrapper>
       <S.ListSearchContainer>
@@ -30,59 +55,15 @@ const MentoListLayout = () => {
               <span>직무</span>
             </h3>
             <ul>
-              <li className="active">BACKEND_DEVELOPER</li>
-              <li>FRONTEND_DEVELOPER</li>
-              <li>FULL_STACK_DEVELOPER</li>
-              <li>MOBILE_APP_DEVELOPER</li>
-              <li>DEVOPS_ENGINEER</li>
-              <li>DATA_ENGINEER</li>
-              <li>GAME_DEVELOPER</li>
-              <li>DATA_ENGINEER</li>
-              <li>AI_ML_ENGINEER</li>
-              <li>SECURITY_ENGINEER</li>
-            </ul>
-          </S.CategoryFilterBox>
-          <S.CategoryFilterBox>
-            <h3>
-              <Icon name="Circle" size={20} />
-              <span>스택</span>
-            </h3>
-            <ul>
-              <li className="active">SPRING</li>
-              <li>PYTHON</li>
-              <li>KOTLIN</li>
-              <li>C_PLUS_PLUS</li>
-              <li>SPRING_BOOT</li>
-              <li>JPA</li>
-              <li>SPRING_JDBC</li>
-              <li>NODE_JS</li>
-              <li>SQL</li>
-              <li>DBMS_RDBMS</li>
-              <li>REDIS</li>
-              <li>POSTGRE_SQL</li>
-              <li>REACT</li>
-              <li>REACT_NATIVE</li>
-              <li>VUE</li>
-              <li>TYPE_SCRIPT</li>
-              <li>NEXT_JS</li>
-              <li>SVELTE</li>
-              <li>KUBERNETES</li>
-              <li>JENKINS</li>
-              <li>GITHUB_ACTION</li>
-              <li>HARBOR</li>
-              <li>JAVA</li>
-              <li>JAVA_SCRIPT</li>
-              <li>RUBY</li>
-              <li>AWS</li>
-              <li>GO</li>
-              <li>RUST</li>
-              <li>KAFKA</li>
-              <li>MYSQL</li>
-              <li>MONGODB</li>
-              <li>MARIA</li>
-              <li>ORACLE</li>
-              <li>MSA</li>
-              <li>DOCKER</li>
+              {dutyTypeData.map((item) => (
+                <li
+                  className={selectedItems.includes(item.id) ? 'active' : ''}
+                  key={item.id}
+                  onClick={() => handleTechClick(item.id)}
+                >
+                  {item.currentDuty}
+                </li>
+              ))}
             </ul>
           </S.CategoryFilterBox>
         </S.SearchFilterBox>
@@ -92,13 +73,6 @@ const MentoListLayout = () => {
               <h3>멘토</h3>
             </div>
             <ul>
-              <MentoCardItem />
-              <MentoCardItem />
-              <MentoCardItem />
-              <MentoCardItem />
-              <MentoCardItem />
-              <MentoCardItem />
-              <MentoCardItem />
               <MentoCardItem />
             </ul>
           </article>

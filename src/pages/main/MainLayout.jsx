@@ -101,9 +101,6 @@ const MainLayout = () => {
             </div>
             <ul>
               <MentoCardItem />
-              <MentoCardItem />
-              <MentoCardItem />
-              <MentoCardItem />
             </ul>
           </article>
           <article>
@@ -116,9 +113,6 @@ const MainLayout = () => {
               </p>
             </div>
             <ul>
-              <PostCardItem />
-              <PostCardItem />
-              <PostCardItem />
               <PostCardItem />
             </ul>
           </article>

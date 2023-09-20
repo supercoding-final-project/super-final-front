@@ -22,6 +22,19 @@ export const MainCardItem = styled.li`
     font-weight: 700;
     line-height: 140%;
     letter-spacing: -0.5px;
+
+    width: 230px;
+    height: 89.6px;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    /* display: -webkit-box; */
+
+    /* -webkit-box-orient: vertical; */
   }
   .under_contents {
     margin-top: 20px;

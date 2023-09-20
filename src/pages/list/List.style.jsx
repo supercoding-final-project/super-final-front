@@ -168,7 +168,7 @@ export const CategoryFilterBox = styled.div`
       line-height: 140%;
       letter-spacing: -0.5px;
       &.active {
-        border: 1px solid ${theme.color.point};
+        border: 0.5px solid ${theme.color.point};
         background-color: ${theme.color.sub5};
         color: ${theme.color.grey1};
       }

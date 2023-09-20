@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'src/components/common/Button';
 import { Icon } from 'src/components/common/icon/Icon';
@@ -9,12 +9,12 @@ import { theme } from 'src/globalLayout/GlobalStyle';
 import useJwtToken from 'src/hooks/useJwt';
 
 import * as S from './MainCardItem.style';
-import { mentoData } from '../list/mentoData';
 
 const MentoCardItem = () => {
   const { jwtToken, decodedToken } = useJwtToken();
 
-  const [mentoListData, setMentoListData] = useState(mentoData);
+  // 테스트
+  const [mentors, setMentors] = useState([]);
 
   // 모달이 열리는 위치에 필요한 코드 1/3
   const [showModal, setShowModal] = useState(false);
@@ -38,10 +38,23 @@ const MentoCardItem = () => {
     );
   };
 
+  useEffect(() => {
+    // API 요청 로직 (Axios 등 사용)
+    axios
+      .get('https://codevelop.store/api/v1/mentors')
+      .then((response) => {
+        // API 응답 데이터를 상태로 설정
+        setMentors(response.data.data.content);
+      })
+      .catch((error) => {
+        console.error('API 요청 에러:', error);
+      });
+  }, []);
+
   return (
     <>
-      {mentoListData.map((item) => (
-        <S.MainCardItem>
+      {mentors.map((item) => (
+        <S.MainCardItem key={item.mentorId}>
           <h4>{item.introduction}</h4>
           <S.StackBox>
             <div className="stack">
@@ -61,7 +74,7 @@ const MentoCardItem = () => {
             <div className="stack">
               <p className="title">{item.nickname}</p>
               <p className="desc bold">
-                <Icon name="Star" /> <span>5.0</span>
+                <Icon name="Star" /> <span>{item.star}</span>
               </p>
             </div>
           </S.NickNameBox>
