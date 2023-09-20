@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useJwtToken from 'src/hooks/useJwt';
 
 import ReviewBox from './ReviewBox';
@@ -7,11 +7,14 @@ import ReviewBox from './ReviewBox';
 const MyReviews = () => {
   const { jwtToken } = useJwtToken();
   const [reviewableData, setReviewableData] = useState([]);
-  const [cursor, setCursor] = useState(0);
+  const [myReviews, setMyReviews] = useState([]);
+  const [reviewableCursor, setReviewableCursor] = useState(0);
+  const [myReviewCursor, setMyReviewCursor] = useState(0);
 
   const getReviewable = async () => {
+    // 공통 훅으로
     const res = await axios.get(
-      `https://codevelop.store/api/v1/reviews/reviewable?cursor=${cursor}&pageSize=${5}`,
+      `https://codevelop.store/api/v1/reviews/reviewable?cursor=${reviewableCursor}&pageSize=${5}`,
       {
         headers: {
           Authorization: jwtToken,
@@ -20,6 +23,23 @@ const MyReviews = () => {
     );
     setReviewableData(res.data.data.content);
   };
+
+  const getMyReviews = async () => {
+    const res = await axios.get(
+      `https://codevelop.store/api/v1/reviews/byUserId?cursor=${myReviewCursor}&pageSize=${5}`,
+      {
+        headers: {
+          Authorization: jwtToken,
+        },
+      },
+    );
+    setMyReviews(res.data.data.content);
+  };
+
+  useEffect(() => {
+    getReviewable();
+    getMyReviews();
+  }, [jwtToken]);
   // const postMock = [
   //   {
   //     postId: 1,
@@ -36,36 +56,7 @@ const MyReviews = () => {
   //     point: 25000,
   //   },
   // ];
-  const reviewMock = [
-    {
-      reviewId: 1,
-      mento: '김지우',
-      post: 'React스럽게~^^',
-      reviewContent: '너무 좋은 강의였어요 특히, 추상화 부분이 맘에 듭니다.',
-      rating: 5,
-    },
-    {
-      reviewId: 2,
-      mento: '홍종민',
-      post: '대한민국 예비군의 기초',
-      reviewContent: '충성! 1중대 1소대 병장 김지우입니다. 다름이 아니라...',
-      rating: 4,
-    },
-    {
-      reviewId: 3,
-      mento: '조하윤',
-      post: '퍼블리싱의 모든것',
-      reviewContent: '진짜 전 퍼블리싱의 왕을 만났어요. 다시 태어났습니다.',
-      rating: 5,
-    },
-    {
-      reviewId: 4,
-      mento: '스크롤',
-      post: '확인용',
-      reviewContent: '스크롤 확인용',
-      rating: 5,
-    },
-  ];
+
   const headerOptions = ['신청 시간', '포인트', '리뷰 작성', '리뷰 내용', '별점', '리뷰 삭제'];
   return (
     <div>
@@ -73,14 +64,14 @@ const MyReviews = () => {
         title="리뷰 작성 가능한 포스트"
         headerOption={headerOptions.slice(0, 3)}
         btnValue="작성"
-        data={postMock}
+        data={reviewableData}
         type="POST"
       />
       <ReviewBox
         title="내가 작성한 리뷰"
         headerOption={headerOptions.slice(3, 6)}
         btnValue="삭제"
-        data={reviewMock}
+        data={myReviews}
         type="REVIEW"
       />
     </div>
