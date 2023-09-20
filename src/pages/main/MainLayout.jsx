@@ -2,10 +2,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// import searchFilterBox from '../list/searchFilterBox.jsx';
-// import Button from 'src/components/common/Button.jsx';
-// import { Icon } from 'src/components/common/icon/Icon.jsx';
-// import { theme } from 'src/globalLayout/GlobalStyle.js';
 import * as S from './Main.style.jsx';
 import MainSearchContainer from './MainSearchContainer.jsx';
 import MentoCardItem from './MentoCardItem.jsx';

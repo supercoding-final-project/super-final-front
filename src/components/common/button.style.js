@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
+  font-family: 'Pretendard', sans-serif;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   background-color: ${(props) => props.bgcolor};

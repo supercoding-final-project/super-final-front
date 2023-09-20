@@ -120,5 +120,6 @@ export const MainCardButtonBox = styled.div`
     font-size: 1.25rem;
     font-weight: 600;
     letter-spacing: -0.5px;
+    border-radius: 4px;
   }
 `;
