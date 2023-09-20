@@ -23,12 +23,7 @@ export const HeaderWrap = styled.div`
         cursor: pointer;
         color: ${theme.color.grey4};
         font-size: 20px;
-        font-weight: 200;
         letter-spacing: -0.5px;
-        &.bold {
-          color: ${theme.color.grey1};
-          font-weight: 700;
-        }
       }
     }
   }
@@ -69,3 +64,19 @@ export const Logo = styled.h1`
     height: 100%;
   }
 `;
+
+//멘티와 멘토를 바꿀수있는 박스
+export const MentoMentoSwapBox = styled.nav`
+
+`
+//멘티 멘토 스왑 버튼들
+export const MentiSwapButton = styled.div`
+
+  font-weight: ${props => (props.$mento ? "normal" : "bold")};
+
+`
+export const MentoSwapButton = styled.div`
+
+  font-weight: ${props => (props.$mento ? "bold" : "normal")};
+`
+
