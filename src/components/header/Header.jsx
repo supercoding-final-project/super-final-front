@@ -55,7 +55,7 @@ const Header = () => {
       </div>
       {showModal && (
         <Modal setShowModal={setShowModal} width="660px" height="760px">
-          <PostBox />
+          <PostBox setShowModal={setShowModal} />
         </Modal>
       )}
     </S.HeaderWrap>
