@@ -33,7 +33,7 @@ const PostReview = (props) => {
     const observer = new IntersectionObserver(handleIntersection, {
       root: null,
       rootMargin: '0px',
-      threshold: 1.0,
+      threshold: 0.0,
     });
 
     if (cursorRef.current) {
