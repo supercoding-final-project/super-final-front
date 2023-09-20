@@ -1,14 +1,17 @@
-import { Icon } from 'src/components/common/icon/Icon';
-import * as S from './List.style';
-import MentoCardItem from '../main/MentoCardItem';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import SearchFilterContainer from './ListSearchFilterContainer';
-import { useState } from 'react';
+import { Icon } from 'src/components/common/icon/Icon';
+
 import { dutyType } from './dutyType';
-import { theme } from 'src/globalLayout/GlobalStyle';
+import * as S from './List.style';
+import SearchFilterContainer from './ListSearchFilterContainer';
+import MentoCardItem from '../main/MentoCardItem';
 
 const MentoListLayout = () => {
   const [dutyTypeData, setDutyTypeData] = useState(dutyType);
+  const [mentors, setMentors] = useState([]);
+  const [cursor, setCursor] = useState(1);
   // const [activeTab, setActiveTab] = useState(tabData[0].id);
 
   const [selectedItems, setSelectedItems] = useState([]);
@@ -29,6 +32,16 @@ const MentoListLayout = () => {
     }
   };
   // const listItems = ['아이템 1', '아이템 2', '아이템 3', '아이템 4'];
+
+  const getMentoCard = async () => {
+    const res = await axios.get('https://codevelop.store/api/v1/mentors?pageSize=8');
+    setMentors(res.data.data.content);
+    console.log(mentors);
+  };
+
+  useEffect(() => {
+    getMentoCard();
+  }, []);
 
   return (
     <S.ListWrapper>
@@ -73,7 +86,9 @@ const MentoListLayout = () => {
               <h3>멘토</h3>
             </div>
             <ul>
-              <MentoCardItem />
+              {mentors.map((data, index) => (
+                <MentoCardItem key={index} data={data} />
+              ))}
             </ul>
           </article>
         </S.ListCardsContainer>

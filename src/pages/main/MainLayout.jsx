@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
 // import searchFilterBox from '../list/searchFilterBox.jsx';
 // import Button from 'src/components/common/Button.jsx';
 // import { Icon } from 'src/components/common/icon/Icon.jsx';
 // import { theme } from 'src/globalLayout/GlobalStyle.js';
-
 import * as S from './Main.style.jsx';
+import MainSearchContainer from './MainSearchContainer.jsx';
 import MentoCardItem from './MentoCardItem.jsx';
 import PostCardItem from './PostCardItem.jsx';
-import MainSearchContainer from './MainSearchContainer.jsx';
 
 const MainLayout = () => {
   const [accessToken, setAccessToken] = useState('');
@@ -61,9 +61,6 @@ const MainLayout = () => {
         setCookie('access_token', accessToken, 1);
         // 리프레쉬 토큰을 쿠키에 30일간 저장;
         setCookie('refresh_token', refreshToken, 30);
-
-        console.log('Access Token:', accessToken);
-        console.log('Refresh Token:', refreshToken);
       })
       .catch((err) => {
         console.error(err);
@@ -83,17 +80,14 @@ const MainLayout = () => {
     };
   }, []);
 
+  const getMentoCard = async () => {
+    const res = await axios.get('https://codevelop.store/api/v1/mentors?pageSize=4');
+    setMentors(res.data.data.content);
+    console.log(mentors);
+  };
+
   useEffect(() => {
-    // API 요청 로직 (Axios 등 사용)
-    axios
-      .get('https://codevelop.store/api/v1/mentors?pageSize=4')
-      .then((response) => {
-        // API 응답 데이터를 상태로 설정
-        setMentors(response.data.data.content);
-      })
-      .catch((error) => {
-        console.error('API 요청 에러:', error);
-      });
+    getMentoCard();
   }, []);
 
   return (
@@ -114,8 +108,8 @@ const MainLayout = () => {
               </p>
             </div>
             <ul>
-              {mentors.map((item) => (
-                <MentoCardItem />
+              {mentors.map((data, index) => (
+                <MentoCardItem key={index} data={data} />
               ))}
             </ul>
           </article>
