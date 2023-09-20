@@ -10,13 +10,15 @@ const MentoProfile = (props) => {
   const getMentoData = async () => {
     const res = await axios.get(`https://codevelop.store/api/v1/mentors/detail/${mentoId}`);
     setMentoData(res.data.data);
-    // if (props.stackLoader) {
-    //   props.stackLoader(res.data.data.mentorSkillStackList);
-    // }
+
+    if (props.stackLoader) {
+      props.stackLoader(res.data.data.mentorSkillStackList);
+    }
   };
 
   useEffect(() => {
     getMentoData();
+    console.log(mentoData);
   }, [mentoId]);
 
   return (

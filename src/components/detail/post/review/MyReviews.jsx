@@ -1,23 +1,41 @@
-import * as S from './Review.style';
+import axios from 'axios';
+import { useState } from 'react';
+import useJwtToken from 'src/hooks/useJwt';
+
 import ReviewBox from './ReviewBox';
 
 const MyReviews = () => {
-  const postMock = [
-    {
-      postId: 1,
-      mento: '하진수',
-      post: '[프론트엔드] 잘라 먹는 Typescript',
-      time: 1,
-      point: 20000,
-    },
-    {
-      postId: 2,
-      mento: '하방방',
-      post: '[백엔드] 구워 삶는 Spring',
-      time: 1,
-      point: 25000,
-    },
-  ];
+  const { jwtToken } = useJwtToken();
+  const [reviewableData, setReviewableData] = useState([]);
+  const [cursor, setCursor] = useState(0);
+
+  const getReviewable = async () => {
+    const res = await axios.get(
+      `https://codevelop.store/api/v1/reviews/reviewable?cursor=${cursor}&pageSize=${5}`,
+      {
+        headers: {
+          Authorization: jwtToken,
+        },
+      },
+    );
+    setReviewableData(res.data.data.content);
+  };
+  // const postMock = [
+  //   {
+  //     postId: 1,
+  //     mento: '하진수',
+  //     post: '[프론트엔드] 잘라 먹는 Typescript',
+  //     time: 1,
+  //     point: 20000,
+  //   },
+  //   {
+  //     postId: 2,
+  //     mento: '하방방',
+  //     post: '[백엔드] 구워 삶는 Spring',
+  //     time: 1,
+  //     point: 25000,
+  //   },
+  // ];
   const reviewMock = [
     {
       reviewId: 1,
