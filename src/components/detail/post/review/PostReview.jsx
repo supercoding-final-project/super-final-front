@@ -86,7 +86,7 @@ const PostReview = (props) => {
   // ];
   return (
     <>
-      <S.ReviewList>
+      <S.ReviewList ref={cursorRef}>
         <S.ReviewTitle>멘티의 한 줄 리뷰</S.ReviewTitle>
         <S.ReviewBox>
           {reviews.map((d, i) => (
