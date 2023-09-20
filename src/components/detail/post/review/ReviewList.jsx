@@ -32,7 +32,7 @@ const ReviewList = (props) => {
           <ReviewRegister
             title={info.title}
             orderSheetId={info.orderSheetId}
-            onReviewChange={props.onReviewChange()}
+            onReviewChange={props.onReviewChange}
             setShowModal={setShowModal}
           />
         </Modal>
