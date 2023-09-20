@@ -1,12 +1,14 @@
-import { Icon } from 'src/components/common/icon/Icon';
-import * as S from './List.style';
-import PostCardItem from '../main/PostCardItem';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Icon } from 'src/components/common/icon/Icon';
+
+import { levelType } from './levelType';
+import * as S from './List.style';
 import ListSearchFilterContainer from './ListSearchFilterContainer';
+import PageBtn from './PageBtn';
 import { skillStackCategoryType } from './skillStackCategoryType';
 import { skillStackType } from './skillStackType';
-import { useState } from 'react';
-import { levelType } from './levelType';
+import PostCardItem from '../main/PostCardItem';
 
 const PostListLayout = () => {
   const [skillStackCategoryTypeData, setSkillStackCategoryTypeData] =
@@ -16,6 +18,7 @@ const PostListLayout = () => {
   const [selectedItems1, setSelectedItems1] = useState([]);
   const [selectedItems2, setSelectedItems2] = useState([]);
   const [selectedItems3, setSelectedItems3] = useState([]);
+  const [page, setPage] = useState(1);
 
   const handleTechClick1 = (item) => {
     // 이미 선택된 아이템이라면 선택 해제
@@ -137,15 +140,7 @@ const PostListLayout = () => {
         </S.ListCardsContainer>
       </S.ListSearchContainer>
       <S.PaginationContainer>
-        <ul>
-          <li className="active">1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-          <li className="next">다음</li>
-        </ul>
+        <PageBtn />
       </S.PaginationContainer>
     </S.ListWrapper>
   );
