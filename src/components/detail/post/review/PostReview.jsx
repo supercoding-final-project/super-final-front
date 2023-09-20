@@ -13,7 +13,7 @@ const PostReview = (props) => {
     const res = await axios.get(
       `https://codevelop.store/api/v1/reviews/byPostId?postId=${
         props.postId
-      }&cursor=${cursor}pageSize=${10} `,
+      }&cursor=${cursor}&pageSize=${10} `,
     );
     const newReviews = res.data.data.content;
     setReviews((prevReviews) => [...prevReviews, ...newReviews]);
