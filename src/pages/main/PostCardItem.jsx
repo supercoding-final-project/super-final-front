@@ -6,6 +6,7 @@ import * as S from './MainCardItem.style';
 import { useEffect, useState } from 'react';
 import { postData } from '../list/postData';
 
+
 const PostCardItem = () => {
   const [postListData, setPostListData] = useState(postData);
 
@@ -18,7 +19,7 @@ const PostCardItem = () => {
       })),
     );
   }, []);
-
+  
   const handleScrollInnerModal = () => {
     document.body.style.overflowY = 'auto';
   };

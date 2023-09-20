@@ -9,7 +9,7 @@ import MentoTransactionHistory from './MentoTransactionHistory';
 import PostBorder from './PostBorder';
 import Reservation from './Reservation';
 
-const MentoInformation = ({ informationtype, navtype, User }) => {
+const MentoInformation = ({ informationtype, navtype, User, accesstoken }) => {
   //상태관리
 
   if (informationtype === navtype.borad) {
@@ -20,7 +20,7 @@ const MentoInformation = ({ informationtype, navtype, User }) => {
             <S.InformationBox>
               <InformationHead text={navtype.borad} />
             </S.InformationBox>
-            <PostBorder></PostBorder>
+            <PostBorder User={User} accesstoken={accesstoken}></PostBorder>
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>
@@ -34,7 +34,7 @@ const MentoInformation = ({ informationtype, navtype, User }) => {
             <S.InformationBox>
               <InformationHead text={navtype.info} />
             </S.InformationBox>
-            <FixInformation User={User}></FixInformation>
+            <FixInformation User={User} accesstoken={accesstoken}></FixInformation>
           </S.DivFlexColumn>
         </S.InformationContainer>
       </>
