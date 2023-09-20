@@ -46,15 +46,11 @@ const ReviewRegister = (props) => {
         <span>{props.title}</span>
         <div>
           {[1, 2, 3, 4, 5].map((starValue) => (
-            <Icon
+            <S.StyledStar
               key={starValue}
               name="Star"
-              onClick={() => handleStarClick(starValue)} // 별 클릭 시 변경 로직 적용
-              style={{
-                color: starValue <= review.star ? 'green' : 'transparent', // 투명과 초록색으로 변경
-                cursor: 'pointer',
-                border: `1px solid ${starValue <= review.star ? 'green' : 'transparent'}`, // 테두리 스타일을 초록색으로 설정
-              }}
+              isSelected={starValue <= review.star} // isSelected prop를 사용하여 선택 여부 전달
+              onClick={() => handleStarClick(starValue)}
             />
           ))}
         </div>
