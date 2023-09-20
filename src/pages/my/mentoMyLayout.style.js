@@ -146,6 +146,7 @@ gap: 40px;
 border-radius: 12px;
 border: 0.5px solid #808080;
 margin-bottom: 1rem;
+background-color: white;
 `
 
 export const Label = styled.label`
@@ -306,7 +307,7 @@ justify-content: start;
 align-items: center;
 `
 export const FixInformationLabel = styled.div`
-width: 70px;
+width: 75px;
  color: #000;
 font-family: Abel;
 font-size: 20px;

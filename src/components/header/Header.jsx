@@ -6,6 +6,7 @@ import { Icon } from 'src/components/common/icon/Icon';
 import { theme } from 'src/globalLayout/GlobalStyle';
 
 import * as S from './Header.style';
+import MentiToMentoModal from './MentiToMentoModal';
 import logo from '../../logo.svg';
 import Modal from '../common/Modal';
 import PostBox from '../post/PostBox';
@@ -49,7 +50,7 @@ const Header = () => {
     try {
       const response = await axios.get("https://codevelop.store/api/v1/users/info", {
         headers: {
-          Authorization: mento_access_token
+          Authorization: menti_access_token
         }
       })
       setUserInfo(response.data.data.mentorProfile)
@@ -102,6 +103,11 @@ const Header = () => {
       {showModal && (
         <Modal setShowModal={setShowModal} width="660px" height="760px">
           <PostBox setShowModal={setShowModal} />
+        </Modal>
+      )}
+      {mentiToMentoModal && (
+        <Modal setShowModal={setMentiToMentoModal} width="800px" height="700px">
+          <MentiToMentoModal />
         </Modal>
       )}
     </S.HeaderWrap>
