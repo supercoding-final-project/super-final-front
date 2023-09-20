@@ -1,13 +1,14 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'src/components/common/Button';
 import { theme } from 'src/globalLayout/GlobalStyle';
 
 import * as S from './MainCardItem.style';
-import { useEffect, useState } from 'react';
 import { postData } from '../list/postData';
 
-
 const PostCardItem = () => {
+  const postId = 10;
+  // 이 부분 일단 10으로 해놨습니다 ! 이거만 변경해주시면 저한테 알아서 넘어와요 !
   const [postListData, setPostListData] = useState(postData);
 
   // 모달 카드의 가격의 뒤에서 세번째 위치에 콤마(,) 붙여주는 코드
@@ -19,7 +20,7 @@ const PostCardItem = () => {
       })),
     );
   }, []);
-  
+
   const handleScrollInnerModal = () => {
     document.body.style.overflowY = 'auto';
   };
@@ -55,7 +56,7 @@ const PostCardItem = () => {
               <Button text={'문의하기'} bgcolor={theme.color.point} fontcolor={theme.color.bgc1} />
             </Link>
             {/* <Link to=`/detail/${postId}`> */}
-            <Link to="/detail">
+            <Link to={`/detail/${postId}`}>
               <Button
                 onClick={handleScrollInnerModal}
                 text={'상세보기'}
