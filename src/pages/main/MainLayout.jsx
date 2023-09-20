@@ -14,6 +14,7 @@ import MainSearchContainer from './MainSearchContainer.jsx';
 const MainLayout = () => {
   const [accessToken, setAccessToken] = useState('');
   const [refreshToken, setRefreshToken] = useState('');
+  const [mentors, setMentors] = useState([]);
 
   const setCookie = (name, value, days) => {
     const date = new Date();
@@ -82,6 +83,19 @@ const MainLayout = () => {
     };
   }, []);
 
+  useEffect(() => {
+    // API 요청 로직 (Axios 등 사용)
+    axios
+      .get('https://codevelop.store/api/v1/mentors?pageSize=4')
+      .then((response) => {
+        // API 응답 데이터를 상태로 설정
+        setMentors(response.data.data.content);
+      })
+      .catch((error) => {
+        console.error('API 요청 에러:', error);
+      });
+  }, []);
+
   return (
     <>
       <S.MainWrapper>
@@ -100,7 +114,9 @@ const MainLayout = () => {
               </p>
             </div>
             <ul>
-              <MentoCardItem />
+              {mentors.map((item) => (
+                <MentoCardItem />
+              ))}
             </ul>
           </article>
           <article>
