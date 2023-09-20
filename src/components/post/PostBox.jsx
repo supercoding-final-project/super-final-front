@@ -9,7 +9,7 @@ import StackBox from './StackBox';
 import { Icon } from '../common/icon/Icon';
 import MentoProfile from '../detail/MentoProfile';
 
-const PostBox = () => {
+const PostBox = (props) => {
   const [mentorStack, setMentorStack] = useState([]);
 
   const stackLoader = (stack) => {
@@ -17,7 +17,7 @@ const PostBox = () => {
   };
   return (
     <S.PostWrap>
-      <PostModal recoilKey="price" />
+      <PostModal recoilKey="price" setShowModal={props.setShowModal} />
       <S.PostContainer>
         <MentoProfile stackLoader={stackLoader} />
         <PostTitle recoilKey="title" />

@@ -32,6 +32,7 @@ const PostModal = (props) => {
         Authorization: jwtToken,
       },
     });
+    props.setShowModal(false);
     // setPostId(res.data.data.postId);
   };
   return (
