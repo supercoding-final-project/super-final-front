@@ -1,4 +1,4 @@
-const mentor = {
+export const mentor = {
   success: true,
   status: 0,
   message: 'string',
@@ -45,7 +45,7 @@ const mentor = {
   ],
 };
 
-const skill = {
+export const skill = {
   success: true,
   status: 0,
   message: 'string',
@@ -91,5 +91,3 @@ const skill = {
     },
   ],
 };
-
-export default { mentor, skill };
