@@ -1,9 +1,8 @@
-import { useState } from 'react';
-import { useHttp } from 'src/api/useHttp';
+import { useEffect, useState } from 'react';
 
 import * as S from './Reservation.style';
 
-const Reservation = () => {
+const Reservation = ({ User }) => {
   const reservationTime = [
     '0000',
     '0100',
@@ -30,17 +29,28 @@ const Reservation = () => {
     '2200',
     '2300',
   ];
+  const [mentoId, setMentoId] = useState('')
+  //멘토아이디 받아오기!
 
-  // 요일별 선택한 시간 배열
-  const [selectedTimes, setSelectedTimes] = useState({
-    일: [],
-    월: [],
-    화: [],
-    수: [],
-    목: [],
-    금: [],
-    토: [],
-  });
+
+  useEffect(() => {
+    if (User.mentorProfile && User.mentorProfile.mentorId) {
+      setMentoId(User.mentorProfile.mentorId);
+    }
+  }, [User.mentorProfile?.mentorId, User.mentorProfile])
+
+  console.log(mentoId)
+  const [selectedTimes, setSelectedTimes] = useState(
+    {
+      일: [],
+      월: [],
+      화: [],
+      수: [],
+      목: [],
+      금: [],
+      토: [],
+    }
+  );
 
   // 선택한 요일 상태
   const [selectedDay, setSelectedDay] = useState('일');
@@ -60,19 +70,16 @@ const Reservation = () => {
     }));
   };
 
+
+
   // 예약 버튼 클릭 핸들러
   const handleReservation = () => {
     console.log(`요일: ${selectedDay}, 시간: ${selectedTimes[selectedDay].join(', ')} 예약됨`);
+    console.log(selectedTimes);
   };
 
-  console.log(selectedTimes);
   return (
     <>
-      <div>달력이 보여짐</div>
-      <S.DivFlex>
-        <S.Weekdays>평일</S.Weekdays>
-        <S.Weekend>주말</S.Weekend>
-      </S.DivFlex>
       <S.DivGrid7>
         <S.Sunday $selectWeekendDay={selectedDay === '일'} onClick={() => handleDayClick('일')}>
           일
@@ -109,6 +116,17 @@ const Reservation = () => {
             </S.ReservationTime>
           ))}
         </S.DivGrid>
+      </div>
+
+      <div>
+        예약시간
+        <div>월: {selectedTimes["월"].length === 0 ? " " : selectedTimes["월"].join(', ')}</div>
+        <div>화: {selectedTimes["화"].length === 0 ? " " : selectedTimes["화"].join(', ')}</div>
+        <div>수: {selectedTimes["수"].length === 0 ? " " : selectedTimes["수"].join(', ')}</div>
+        <div>목: {selectedTimes["목"].length === 0 ? " " : selectedTimes["목"].join(', ')}</div>
+        <div>금: {selectedTimes["금"].length === 0 ? " " : selectedTimes["금"].join(', ')}</div>
+        <div>토: {selectedTimes["토"].length === 0 ? " " : selectedTimes["토"].join(', ')}</div>
+        <div>일: {selectedTimes["일"].length === 0 ? " " : selectedTimes["일"].join(', ')}</div>
       </div>
 
       <button onClick={handleReservation}>시간예약</button>

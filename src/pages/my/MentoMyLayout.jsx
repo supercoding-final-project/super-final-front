@@ -8,7 +8,7 @@ import * as S from 'src/pages/my/mentoMyLayout.style';
 const accesstoken =
   'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDQsImF1dGhvcml0aWVzIjpbIk1FTlRPUiJdLCJpYXQiOjE2OTUwNTExMjQsImV4cCI6MTcyNjU4NzEyNH0.sCThkhy4Xe8YGCa0jdho1TteZ-BtLMl_iQHQSAeLn_w';
 const MentoMyLayout = () => {
-  const [type, setType] = useState('멘토 정보 수정');
+  const [type, setType] = useState('예약 시간 설정');
   const [user, setUser] = useState()
 
 
