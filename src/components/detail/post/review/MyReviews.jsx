@@ -11,11 +11,8 @@ const MyReviews = () => {
   const [reviewableCursor, setReviewableCursor] = useState(0);
   const [myReviewCursor, setMyReviewCursor] = useState(0);
 
-  const handleReviewableChange = async () => {
+  const onReviewChange = async () => {
     await getReviewable();
-  };
-
-  const handleMyReviewsChange = async () => {
     await getMyReviews();
   };
 
@@ -58,7 +55,7 @@ const MyReviews = () => {
         btnValue="작성"
         data={reviewableData}
         type="POST"
-        onReviewChange={handleReviewableChange}
+        onReviewChange={onReviewChange}
       />
       <ReviewBox
         title="내가 작성한 리뷰"
@@ -66,7 +63,7 @@ const MyReviews = () => {
         btnValue="삭제"
         data={myReviews}
         type="REVIEW"
-        onReviewChange={handleMyReviewsChange}
+        onReviewChange={onReviewChange}
       />
     </div>
   );
