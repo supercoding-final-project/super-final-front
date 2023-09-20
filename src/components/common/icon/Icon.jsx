@@ -49,6 +49,8 @@ Icon.propTypes = {
     'Review',
     'Fold',
     'Circle',
+    'Left',
+    'Right',
     'Setting',
   ]).isRequired,
   size: PropTypes.number,

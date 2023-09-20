@@ -11,36 +11,38 @@ import * as S from './chat.style';
 const ChatRoomLayout = () => {
   const { jwtToken, decodedToken } = useJwtToken();
   const [selectedChat, setSelectedChat] = useState({});
-  const myId = decodedToken?.userId || ''; // decodedToken이 null이면 빈 문자열로 초기화
   const isMento = true;
   const [chatList, setChatList] = useState([]);
+  const [lastChat, setLastChat] = useState(chatList.lastChat);
 
   const handleChatSelect = (chat) => {
     setSelectedChat(chat);
   };
 
   useEffect(() => {
-    if (myId) {
-      const fetchChatList = async () => {
-        const res = await axios.get('https://codevelop.store/api/v1/chatrooms', {
-          params: {
-            userId: myId,
-          },
-        });
-        setChatList(res.data.data.chatRoom);
-      };
-      fetchChatList();
-    }
-  }, [myId]);
+    const fetchChatList = async () => {
+      const res = await axios.get('https://codevelop.store/api/v1/chatrooms', {
+        headers: {
+          Authorization: jwtToken,
+        },
+      });
+      setChatList(res.data.data.chatRoom);
+    };
+    fetchChatList();
+  }, [jwtToken]);
 
   return (
     <S.ChatRoomWrapper>
       {chatList.length === 0 ? (
         <NoChatList isMento={isMento} />
       ) : (
-        <ChatList list={chatList} handleChatSelect={handleChatSelect} />
+        <ChatList list={chatList} handleChatSelect={handleChatSelect} lastChat={lastChat} />
       )}
-      {Object.keys(selectedChat).length !== 0 ? <ChatBox chatinfo={selectedChat} /> : <NoChatBox />}
+      {Object.keys(selectedChat).length !== 0 ? (
+        <ChatBox chatinfo={selectedChat} setLastChat={setLastChat} />
+      ) : (
+        <NoChatBox />
+      )}
     </S.ChatRoomWrapper>
   );
 };

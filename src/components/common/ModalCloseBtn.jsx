@@ -1,6 +1,7 @@
 import React from 'react';
-import * as S from './Modal.style';
+
 import { Icon } from './icon/Icon';
+import * as S from './Modal.style';
 
 const ModalCloseBtn = ({ handleCloseModal }) => {
   return (

@@ -2,25 +2,56 @@ import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
 
 export const ChatBox = styled.div`
+  // flex-direction: column;
+  width: 50%;
+
+  // 하윤 추가
+  display: flex;
   flex-direction: column;
-  width: 70%;
+  justify-content: space-between;
 `;
 
 export const ChatContainer = styled.div`
   position: relative;
-  height: 65vh;
+  height: 80vh;
   overflow: auto;
+
+  // 하윤 추가
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${theme.color.grey5};
+    border-radius: 25px;
+  }
+`;
+
+export const DateLine = styled.div`
+  font-size: 0.8rem;
+  margin: 0 auto;
+  background-color: #fff;
+  color: #807e7d;
+  font-weight: 200;
+  letter-spacing: -0.5px;
+  padding: 0px 8px;
+  position: relative;
 `;
 
 export const MsgCard = styled.div`
   display: flex;
-  justify-content: ${(props) => (props.send ? 'flex-end' : 'flex-start')};
-  margin: 2rem;
+  justify-content: ${(props) => (props.send === 1 ? 'flex-end' : 'flex-start')};
+  // margin: 2rem;
+
+  // 하윤 변경
+  margin: 1rem 2rem;
 `;
 
 export const MsgContainer = styled.div`
   line-height: 1.2rem;
-  max-width: 50%;
+  max-width: 100%;
   display: flex;
 `;
 
@@ -51,8 +82,8 @@ export const TextBox = styled.div`
   border-radius: 0.625rem;
   padding: 0.7rem;
   margin-top: 0.5rem;
-  background-color: ${(props) => (props.send ? `${theme.color.point}` : '#EDFCF3')};
-  color: ${(props) => (props.send ? 'white' : 'black')};
+  background-color: ${(props) => (props.send === 1 ? `${theme.color.point}` : '#EDFCF3')};
+  color: ${(props) => (props.send === 1 ? 'white' : 'black')};
 `;
 
 export const Text = styled.p`
@@ -83,7 +114,7 @@ export const ChattingBarWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70%;
+  width: 100%;
   background-color: white;
   height: 9rem;
   padding-bottom: 1rem;
@@ -93,10 +124,13 @@ export const ChattingBar = styled.textarea`
   box-sizing: border-box;
   padding: 20px 84px 20px 20px;
   width: 80%;
-  height: 100%;
+  // height: 100%; // 이거 쓰니까 채팅 창이 없을 때 9rem 이 되었다가 채팅 창이 생기면 쪼그라 들어영!
   border: 1px solid #bdbdbd;
   background-color: white;
   border-radius: 0.5rem;
+
+  // 하윤 변경
+  height: 9rem;
 
   &::placeholder {
     font-size: 0.875rem;
@@ -160,8 +194,8 @@ export const NoChatListWrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25%;
-  height: 100vh;
+  width: 20%;
+  height: 40rem;
   border: 1px solid #bdbdbd;
   border-radius: 0.5rem;
   margin: 2rem;
@@ -198,15 +232,14 @@ export const NoChatBtn = styled.button`
   cursor: pointer;
   border-radius: 0.25rem;
   border: none;
-  font-family: 'Pretendard', sans-serif;
 `;
 
 export const NoChatBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 75%;
-  height: 100vh;
+  width: 50%;
+  height: 40rem;
   font-size: 2rem;
   border: 1px solid #bdbdbd;
   border-radius: 0.5rem;

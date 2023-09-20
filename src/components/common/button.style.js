@@ -8,7 +8,10 @@ export const Button = styled.button`
   outline: none;
   border: none;
   padding: 10px 25px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
+  border-radius: ${(props) => props.radius};
+  font-size: ${(props) => props.fontSize};
+  font-weight: ${(props) => props.fontWeight};
   cursor: pointer;
   transition: all 0.3s;
 
