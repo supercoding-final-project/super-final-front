@@ -1,4 +1,3 @@
-import { sockjs } from 'sockjs-client/dist/sockjs';
 import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
 
@@ -206,12 +205,22 @@ export const PostApplicationModal = styled.div`
               box-sizing: border-box;
             }
             .prev {
-              color: #807e7d;
+              background-color: #333231;
+              color: #4d4b4a;
               cursor: default;
             }
             .today {
               background-color: ${theme.color.point};
               border: 0.5px solid ${theme.color.point};
+            }
+            .not-include {
+              color: #807e7d;
+              cursor: pointer;
+            }
+            .checked {
+              background-color: #edfcf3;
+              color: #0f0f0e;
+              border: 1px solid #29cc61;
             }
           }
         }
@@ -261,12 +270,20 @@ export const PostApplicationModal = styled.div`
             justify-content: center;
             cursor: pointer;
             font-size: 20px;
-            font-weight: 700;
+            font-weight: 600;
           }
           .chose {
             border: 1px solid #29cc61;
             background-color: #edfcf3;
             color: #0f0f0f;
+          }
+          .have {
+            color: #cccbca;
+          }
+          .close {
+            background-color: #333231;
+            color: #4d4b4a;
+            cursor: default;
           }
         }
       }
