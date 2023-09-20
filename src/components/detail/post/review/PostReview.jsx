@@ -21,11 +21,11 @@ const PostReview = (props) => {
 
   const handleIntersection = (entries) => {
     if (entries[0].isIntersecting) {
+      getReviews();
       const lastReview = reviews[reviews.length - 1];
       if (lastReview) {
         setCursor(lastReview.reviewId);
       }
-      getReviews();
     }
   };
 
@@ -47,7 +47,7 @@ const PostReview = (props) => {
         observer.unobserve(cursorRef.current);
       }
     };
-  }, [cursor, props.postId]);
+  }, [props.postId]);
   // const mockReview = [
   //   {
   //     reviewId: 1,
@@ -92,7 +92,7 @@ const PostReview = (props) => {
         <S.ReviewTitle>멘티의 한 줄 리뷰</S.ReviewTitle>
         <S.ReviewBox>
           {reviews.map((d, i) => (
-            <ReviewCard key={i} data={d} setCursor={setCursor} />
+            <ReviewCard key={i} data={d} />
           ))}
         </S.ReviewBox>
       </S.ReviewList>
