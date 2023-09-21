@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import Button from 'src/components/common/Button';
 import {
   postApplicationRequestAtom,
@@ -13,7 +13,8 @@ const ButtonBox = ({ setShowModal, total }) => {
   const navigate = useNavigate();
   const params = useParams();
 
-  const data = useRecoilValue(postApplicationRequestAtom);
+  const [data, setData] = useRecoilState(postApplicationRequestAtom);
+  console.log(data);
   const selectTime = data.selectTime;
 
   const postPay = async () => {
@@ -36,6 +37,12 @@ const ButtonBox = ({ setShowModal, total }) => {
         // alert('결제완료!');
         setShowModal(false);
         navigate(`/detail/${params.postId}`); // 결제로직
+        setData({
+          postId: null,
+          selectTime: [],
+          totalPrice: 0,
+        });
+
         setStep('신청하기');
       } catch (error) {
         console.error(error.message);
