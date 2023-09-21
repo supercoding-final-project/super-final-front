@@ -33,7 +33,12 @@ export const ScreenWrap = styled.div`
           max-width: 415px;
           width: 100%;
           height: 100%;
-          background-color: #f2f1eb;
+          /* background-color: #f2f1eb; */
+          video {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+          }
         }
       }
       .main-screen {

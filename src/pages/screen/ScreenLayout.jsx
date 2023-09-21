@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 // import { OpenVidu } from 'openvidu-browser';
 // import { useEffect, useState } from 'react';
 import * as S from './screen.style';
+import ShareScreen from './ShareScreen';
 import { Icon } from '../../components/common/icon/Icon';
 
 const ScreenLayout = () => {
@@ -30,9 +31,9 @@ const ScreenLayout = () => {
 
   const [subscribers, setSubscribers] = useState([]);
   const videoRef = useRef(null);
-  const shareRef = useRef(null);
+
   const [mainStreamManager, setMainStreamManager] = useState(undefined);
-  const [screenShareActive, setScreenShareActive] = useState(false);
+
   const [cameraActive, setCameraActive] = useState(true);
 
   console.log(
@@ -51,6 +52,8 @@ const ScreenLayout = () => {
     subscribers,
   );
 
+  console.log('-----------------------------------', subscribers);
+
   const OV = new OpenVidu();
 
   useEffect(() => {
@@ -66,24 +69,19 @@ const ScreenLayout = () => {
     };
 
     createSessionAndToken();
-  }, []);
+    // console.log('===================', subscribers);
+  }, [session]);
 
+  const data = {
+    mediaMode: 'ROUTED',
+    recordingMode: 'MANUAL',
+    customSessionId: 'code', //여기에 멘토 이름으로 세션ID
+  };
   // 백 server와 session의 id값 가져오기
   const fetchDataID = async () => {
-    const data = {
-      mediaMode: 'ROUTED',
-      recordingMode: 'MANUAL',
-      customSessionId: '', //여기에 멘토 이름으로 세션ID
-    };
-
-    //Base64로 변환해서 보내기
-    const base64 = btoa('openviduapp:MY_SECRET');
-    // console.log('Authorization :', `Basic ${base64}`);
-
     try {
       const response = await axios.post('http://13.124.66.205:8080/api/v1/video/create', data, {
         headers: {
-          // Authorization: `Basic ${base64}`,
           'Content-Type': 'application/json',
         },
       });
@@ -128,10 +126,7 @@ const ScreenLayout = () => {
   };
 
   const initializeSession = async (sessionData, tokenData) => {
-    console.log('-------------Session 초기화-----------');
-    // console.log(sessionData);
-    // console.log(tokenData);
-    // console.log('가져온 토큰은 ', tokenData);
+    // console.log('-------------Session 초기화-----------');
     const mySession = OV.initSession();
     if (tokenData !== null) {
       mySession.connect(tokenData, { clientData: myUserName }).then(async () => {
@@ -182,17 +177,19 @@ const ScreenLayout = () => {
   // console.log('subscribers :::::', subscribers);
   // console.log('publisher :::::', publisher);
 
+  // 화면이 보일 곳
   useEffect(() => {
     if (publisher !== null && videoRef.current) {
       publisher.addVideoElement(videoRef.current);
     }
   }, [publisher]);
 
-  useEffect(() => {
-    if (publisher !== null && shareRef.current) {
-      publisher.addVideoElement(shareRef.current);
-    }
-  }, [publisher]);
+  // 화면공유가 보일 곳
+  // useEffect(() => {
+  //   if (publisher !== null && shareRef.current) {
+  //     publisher.addVideoElement(shareRef.current);
+  //   }
+  // }, [publisher]);
 
   // 마이크 설정 변경 함수
   const toggleMicrophone = () => {
@@ -237,52 +234,14 @@ const ScreenLayout = () => {
   };
   // console.log(option);
 
-  const toggleScreenSharing = async () => {
-    console.log('화면 공유 눌림');
-    console.log(publisher, OV);
-    if (publisher && OV) {
-      if (screenShareActive) {
-        // 화면 공유 중지
-        try {
-          await publisher.unpublish();
-          setScreenShareActive(false);
-          setOption({ ...option, screen: false });
-        } catch (error) {
-          console.error('화면 공유 중지 오류:', error);
-        }
-      } else {
-        // 화면 공유 시작
-        try {
-          const screenSharePublisher = OV.initPublisher(undefined, {
-            videoSource: 'screen',
-            publishAudio: true,
-            publishVideo: true,
-            resolution: '1920x1080',
-            frameRate: 30,
-          });
-
-          screenSharePublisher.once('accessAllowed', () => {
-            screenSharePublisher.stream
-              .getMediaStream()
-              .getVideoTracks()[0]
-              .addEventListener('ended', () => {
-                console.log('사용자가 "화면 공유 중지" 버튼을 눌렀습니다.');
-                toggleScreenSharing(); // 화면 공유 중지 함수 호출
-              });
-
-            session.publish(screenSharePublisher);
-            setPublisher(screenSharePublisher);
-            setScreenShareActive(true);
-            setOption({ ...option, screen: true });
-          });
-
-          screenSharePublisher.once('accessDenied', () => {
-            console.warn('화면 공유 접근이 거부되었습니다.');
-          });
-        } catch (error) {
-          console.error('화면 공유 시작 오류:', error);
-        }
-      }
+  const toggleScreenShare = () => {
+    console.log('눌림');
+    if (option.screen) {
+      // 화면 공유 중지 시
+      // setOption({ ...option, screen: false });
+    } else {
+      // 화면 공유 시작 시
+      setOption({ ...option, screen: true });
     }
   };
 
@@ -293,9 +252,16 @@ const ScreenLayout = () => {
           <div className="screen-other">
             <div className="user"></div>
             <div className="user"></div>
-            <div className="share-screen">
-              <video ref={shareRef} autoPlay={true}></video>
-            </div>
+
+            {option.screen && (
+              <div className="share-screen">
+                <ShareScreen
+                  sessionId={data.customSessionId}
+                  option={option}
+                  setOption={setOption}
+                />
+              </div>
+            )}
           </div>
           <div className="main-screen">
             <video ref={videoRef} autoPlay={true}></video>
@@ -306,7 +272,8 @@ const ScreenLayout = () => {
           <Icon name={option.camera ? 'CameraActive' : 'CameraDefault'} onClick={toggleCamera} />
           <Icon
             name={option.screen ? 'ShareActive' : 'ShareDefault'}
-            onClick={toggleScreenSharing}
+            // onClick={toggleScreenSharing}
+            onClick={toggleScreenShare}
           />
 
           <div className="option-close" onClick={leaveSession}>
