@@ -53,9 +53,7 @@ const PostModal = (props) => {
         </S.PostModalContainer>
       </S.PostModalWrap>
       <S.ModalBtn>
-        <button onClick={postHandler} disabled={price.length === 0}>
-          등록하기
-        </button>
+        <button onClick={postHandler}>등록하기</button>
       </S.ModalBtn>
     </S.PostModal>
   );
