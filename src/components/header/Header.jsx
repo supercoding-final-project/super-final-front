@@ -29,18 +29,30 @@ const Header = () => {
   const [showModal, setShowModal] = useState(false);
   const [mentiToMentoModal, setMentiToMentoModal] = useState(false);
 
-  // 로그인여부 확인 상태
-  // const [loginState, setLoginState] = useState(false);
-  // 멘티,멘토 상태
-  // User정보
-  const [mento, setMento] = useState(false);
-  const [userInfo, setUserInfo] = useState('');
-
-  //1. 쿠키를 확인해서 'access-token' 안에있으면 로그인여부 true
-  //2. 로그인여부 true 멘티글자가 두꺼워짐
-
-  const mentiMentoSwapButton = () => {
-    setMento(!mento);
+  // 멘티 로그인일 때
+  const response = {
+    email: null,
+    menteeId: 5337,
+    nickname: '심채운',
+    thumbnailImageUrl:
+      'http://k.kakaocdn.net/dn/daSnSB/btsuejJ4Luj/yC1DsjfDmFmhFITZiuZCPK/img_110x110.jpg',
+    userId: 8563,
+    // mentorProfile: null,
+    mentorProfile: {
+      mentorId: 1,
+      company: '슈퍼코딩',
+      introduction: '헤이 모두들 안녕 내가 누군지 아니~?',
+      currentDutyName: 'BACKEND_DEVELOPER',
+      currentPeriod: '6년',
+      searchable: true,
+      careers: [
+        {
+          dutyName: 'BACKEND_DEVELOPER',
+          period: '6년',
+        },
+      ],
+      skillStacks: ['JAVA', 'SPRING'],
+    },
   };
 
   const handleModalOpen = () => {
@@ -48,13 +60,8 @@ const Header = () => {
     document.body.style.overflowY = 'hidden';
   };
 
-  const mentiToMento = () => {
-    console.log("전환버튼누름 ")
-    if (userInfo === null) {
-      console.log('멘토로 전환하자!!');
-      setMentiToMentoModal(true);
-    }
-  };
+  const [user, setUser] = useState(response);
+  const [loginState, setLoginState] = useState(null);
 
   const User = async () => {
     try {
@@ -63,35 +70,99 @@ const Header = () => {
           Authorization: cookie,
         },
       });
-      console.log(response.data);
-      setUserInfo(response.data.data.mentorProfile);
+      console.log(response.data.data);
+      if (response.data.data.mentorProfile === null) {
+        setLoginState('MENTEE');
+      } else {
+        setLoginState('MENTOR');
+      }
+      setUser(response.data.data);
     } catch (error) {
       console.log(error);
+      setLoginState(null);
     }
   };
   useEffect(() => {
     User();
   }, []);
 
-  // console.log(userInfo)
+  const checkUserInfo = () => {
+    if (user === null) {
+      return (
+        <div className="header-menu">
+          <div className="menu" style={{ color: theme.color.point }}>
+            <Link to="/auth">로그인</Link>
+          </div>
+        </div>
+      );
+    } else if (user !== null && user.mentorProfile === null) {
+      return (
+        <div className="header-menu">
+          <div className="menu">
+            <Link to="/chatroom">채팅</Link>
+          </div>
+          <div className="menu">
+            <Link to="/my/menti">마이페이지</Link>
+          </div>
+          <div className="menu">
+            <Link to="/">로그아웃</Link>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="header-menu">
+          <div className="menu" onClick={handleModalOpen}>
+            포스팅 작성
+          </div>
+          <div className="menu">
+            <Link to="/chatroom">채팅</Link>
+          </div>
+          <div className="menu">
+            <Link to="/my/menti">마이페이지</Link>
+          </div>
+          <div className="menu">
+            <Link to="/">로그아웃</Link>
+          </div>
+        </div>
+      );
+    }
+  };
+
+  useEffect(() => {
+    checkUserInfo();
+  }, [user]);
+
+  const clickToggle = (role) => {
+    console.log(role);
+    if (role === 'MENTEE') {
+      return;
+    } else {
+      setMentiToMentoModal(true);
+    }
+  };
 
   return (
     <S.HeaderWrap>
       <div className="nav-wrapper">
         <S.MentoMentoSwapBox>
-          <S.MentiSwapButton $mento={mento} onClick={mentiMentoSwapButton}>
-            멘티
+          <S.MentiSwapButton>
+            <span
+              className={loginState === 'MENTEE' ? 'active' : ''}
+              onClick={() => clickToggle('MENTEE')}
+            >
+              멘티
+            </span>
           </S.MentiSwapButton>
           <Icon name="NavBar" size={20} style={{ padding: '0 10px' }} />
-          <S.MentoSwapButton
-            $mento={mento}
-            onClick={() => {
-              mentiMentoSwapButton();
-              mentiToMento();
-            }}
-          >
-            멘토
-          </S.MentoSwapButton>
+          <S.MentiSwapButton>
+            <span
+              className={loginState === 'MENTOR' ? 'active' : ''}
+              onClick={() => clickToggle('MENTOR')}
+            >
+              멘토
+            </span>
+          </S.MentiSwapButton>
         </S.MentoMentoSwapBox>
       </div>
       <div className="header-wrapper">
@@ -101,23 +172,7 @@ const Header = () => {
               <img src={logo} alt="logo" />
             </Link>
           </S.Logo>
-          <div className="header-menu">
-            <div className="menu" onClick={handleModalOpen}>
-              포스팅 작성
-            </div>
-            <div className="menu">
-              <Link to="/chatroom">채팅</Link>
-            </div>
-            <div className="menu">
-              <Link to="/my/menti">마이페이지</Link>
-            </div>
-            <div className="menu">
-              <Link to="/">로그아웃</Link>
-            </div>
-            <div className="menu" style={{ color: theme.color.point }}>
-              <Link to="/auth">로그인</Link>
-            </div>
-          </div>
+          {checkUserInfo()}
         </header>
       </div>
       {showModal && (
