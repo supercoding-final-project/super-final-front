@@ -27,7 +27,7 @@ const ButtonBox = ({ setShowModal, total }) => {
         totalPrice: total,
       };
       try {
-        const response = await axios.post(`http://13.124.66.205:8080/api/v1/post/order`, body, {
+        const response = await axios.post(`https://codevelop.store/api/v1/post/order`, body, {
           headers: {
             Authorization: accesstoken,
           },
