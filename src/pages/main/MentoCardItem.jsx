@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Button from 'src/components/common/Button';
 import { Icon } from 'src/components/common/icon/Icon';
 import Modal from 'src/components/common/Modal';
@@ -13,6 +13,7 @@ import * as S from './MainCardItem.style';
 const MentoCardItem = (props) => {
   const item = props.data;
   const { jwtToken } = useJwtToken();
+  const navigate = useNavigate();
 
   // 모달이 열리는 위치에 필요한 코드 1/3
   const [showModal, setShowModal] = useState(false);
@@ -34,6 +35,7 @@ const MentoCardItem = (props) => {
         },
       },
     );
+    navigate('/chatroom');
   };
 
   return (
@@ -64,14 +66,12 @@ const MentoCardItem = (props) => {
         </S.NickNameBox>
         <hr />
         <S.MainCardButtonBox>
-          <Link to="/chatroom">
-            <Button
-              text={'문의하기'}
-              bgcolor={theme.color.point}
-              fontcolor={theme.color.bgc1}
-              onClick={createChatHandler}
-            />
-          </Link>
+          <Button
+            text={'문의하기'}
+            bgcolor={theme.color.point}
+            fontcolor={theme.color.bgc1}
+            onClick={createChatHandler}
+          />
           <Button
             text={'상세보기'}
             bgcolor={theme.color.point}
