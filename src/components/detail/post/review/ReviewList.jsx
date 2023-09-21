@@ -22,7 +22,7 @@ const ReviewList = (props) => {
       },
     });
     window.alert(res.data.message);
-    // props.onReviewChange();
+    props.onReviewChange();
   };
 
   return (

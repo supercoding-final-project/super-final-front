@@ -13,29 +13,33 @@ const ReviewBox = (props) => {
 
   const { jwtToken } = useJwtToken();
 
-  // const onReviewChange = async () => {
-  //   await getMyReviews();
-  // };
+  const onReviewChange = async () => {
+    await getData();
+  };
+
+  const getData = async () => {
+    const res = await axios.get(
+      `https://codevelop.store/api/v1/reviews/${props.endPoint}?cursor=${cursor}&pageSize=5`,
+      {
+        headers: {
+          Authorization: jwtToken,
+        },
+      },
+    );
+    const newData = res.data.data.content;
+    if (newData.length > 0) {
+      setCursor(newData[newData.length - 1][props.cursorPoint]);
+    }
+    if (res.data.data.last) setLast(true);
+    else setLast(false);
+    setData((prevData) => [...prevData, ...newData]);
+  };
 
   useEffect(() => {
     const getMyReviews = async (entries) => {
       if (last) return;
       if (entries[0].isIntersecting) {
-        const res = await axios.get(
-          `https://codevelop.store/api/v1/reviews/${props.endPoint}?cursor=${cursor}&pageSize=5`,
-          {
-            headers: {
-              Authorization: jwtToken,
-            },
-          },
-        );
-        const newData = res.data.data.content;
-        if (newData.length > 0) {
-          setCursor(newData[newData.length - 1][props.cursorPoint]);
-        }
-        if (res.data.data.last) setLast(true);
-        else setLast(false);
-        setData((prevData) => [...prevData, ...newData]);
+        getData();
       }
     };
     const options = {
@@ -55,7 +59,7 @@ const ReviewBox = (props) => {
         cursorRef.current.disconnect();
       }
     };
-  }, [cursor, data, jwtToken, props]);
+  }, [cursor, data, jwtToken]);
 
   const triggerRef = useRef();
 
@@ -76,7 +80,7 @@ const ReviewBox = (props) => {
             info={info}
             btnValue={props.btnValue}
             type={props.type}
-            // onReviewChange={onReviewChange}
+            onReviewChange={onReviewChange}
           />
         ))}
         <div ref={triggerRef}></div>
