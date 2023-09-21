@@ -60,7 +60,7 @@ const Header = () => {
     document.body.style.overflowY = 'hidden';
   };
 
-  const [user, setUser] = useState(response);
+  const [user, setUser] = useState(null);
   const [loginState, setLoginState] = useState(null);
 
   const User = async () => {
@@ -182,7 +182,7 @@ const Header = () => {
       )}
       {mentiToMentoModal && (
         <Modal setShowModal={setMentiToMentoModal} width="800px" height="900px">
-          <MentiToMentoModal menti_access_token={menti_access_token} />
+          <MentiToMentoModal />
         </Modal>
       )}
     </S.HeaderWrap>
