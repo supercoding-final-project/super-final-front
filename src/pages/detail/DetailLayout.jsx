@@ -15,6 +15,7 @@ const DetailLayout = () => {
   const getPostData = async () => {
     const res = await axios.get(`https://codevelop.store/api/v1/post/${postId}`);
     setPostData(res.data.data);
+    // console.log(res.data.data);
   };
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const DetailLayout = () => {
 
   return (
     <S.DetailWrap>
-      <DetailModal price={postData.price} />
+      <DetailModal price={postData.price} title={postData.title} />
       <div style={{ width: '40%', marginRight: '15%' }}>
         <MentoProfile mentorId={postData.mentorId} />
         <S.TitleBox>

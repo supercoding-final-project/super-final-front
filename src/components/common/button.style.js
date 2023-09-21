@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
+  font-family: 'Pretendard', sans-serif;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
   background-color: ${(props) => props.bgcolor};
@@ -31,6 +32,19 @@ export const Button = styled.button`
             background-color: #fff;
             color: var(--main-color);
           }
+        `;
+
+      case 'registerTime':
+        return css`
+          width: 54px;
+          height: 22px;
+          padding: 4px 12px;
+          box-sizing: content-box;
+          border-radius: 4px;
+          background-color: #29cc61;
+          font-size: 15px;
+          font-weight: 700;
+          color: #fcfcfb;
         `;
 
       default:

@@ -14,8 +14,6 @@ const MentoCardItem = (props) => {
   const item = props.data;
   const { jwtToken } = useJwtToken();
 
-  // 테스트
-
   // 모달이 열리는 위치에 필요한 코드 1/3
   const [showModal, setShowModal] = useState(false);
   // 모달이 열리는 위치에 필요한 코드 2/3

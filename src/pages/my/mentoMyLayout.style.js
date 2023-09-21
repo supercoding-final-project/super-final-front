@@ -307,7 +307,7 @@ justify-content: start;
 align-items: center;
 `
 export const FixInformationLabel = styled.div`
-width: 75px;
+width: 80px;
  color: #000;
 font-family: Abel;
 font-size: 20px;
@@ -376,7 +376,7 @@ font-style: normal;
 line-height: 140%; /* 28px */
 letter-spacing: -0.5px;
 display: flex;
-width: 200px;
+width: 300px;
 padding: 12px 24px;
 align-items: center;
 border-radius: 4px;

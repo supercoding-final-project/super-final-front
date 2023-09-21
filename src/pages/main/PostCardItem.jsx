@@ -11,16 +11,6 @@ const PostCardItem = () => {
   // 이 부분 일단 10으로 해놨습니다 ! 이거만 변경해주시면 저한테 알아서 넘어와요 !
   const [postListData, setPostListData] = useState(postData);
 
-  // 모달 카드의 가격의 뒤에서 세번째 위치에 콤마(,) 붙여주는 코드
-  useEffect(() => {
-    setPostListData((prevData) =>
-      prevData.map((item) => ({
-        ...item,
-        price: item.price.toLocaleString(),
-      })),
-    );
-  }, []);
-
   const handleScrollInnerModal = () => {
     document.body.style.overflowY = 'auto';
   };
@@ -28,7 +18,7 @@ const PostCardItem = () => {
   return (
     <>
       {postListData.map((item) => (
-        <S.MainCardItem>
+        <S.MainCardItem key={item.id}>
           <h4>{item.title}</h4>
           <S.StackBox>
             <div className="stack">
@@ -41,7 +31,7 @@ const PostCardItem = () => {
             </div>
             <div className="stack bold">
               <p className="title">가격</p>
-              <p className="desc">{item.price}P</p>
+              <p className="desc">{item.price.toLocaleString()}P</p>
             </div>
           </S.StackBox>
           <S.NickNameBox>

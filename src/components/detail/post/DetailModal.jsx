@@ -53,8 +53,12 @@ const PostModal = (props) => {
       </S.ModalBtn>
       {showModal && (
         <Modal width="710px" height="617px" setShowModal={setShowModal}>
-          <PostApplicationModal setShowModal={setShowModal} />
-          {/* 여기에 props.mentorId props로 주면 넘어갑니다~ */}
+          <PostApplicationModal
+            setShowModal={setShowModal}
+            price={props.price}
+            title={props.title}
+            mentorId={props.mentorId}
+          />
         </Modal>
       )}
     </S.PostModal>

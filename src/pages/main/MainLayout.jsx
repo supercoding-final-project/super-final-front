@@ -1,20 +1,29 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-// import searchFilterBox from '../list/searchFilterBox.jsx';
-// import Button from 'src/components/common/Button.jsx';
-// import { Icon } from 'src/components/common/icon/Icon.jsx';
-// import { theme } from 'src/globalLayout/GlobalStyle.js';
 import * as S from './Main.style.jsx';
 import MainSearchContainer from './MainSearchContainer.jsx';
 import MentoCardItem from './MentoCardItem.jsx';
 import PostCardItem from './PostCardItem.jsx';
+import { useRecoilState } from 'recoil';
+import { keywordAtom, mentorListAtom } from 'src/store/filter/recoilState.js';
+import MainSearchLink from './MainSearchLink.jsx';
 
 const MainLayout = () => {
   const [accessToken, setAccessToken] = useState('');
   const [refreshToken, setRefreshToken] = useState('');
-  const [mentors, setMentors] = useState([]);
+
+  // 모든 멘토 조회 API
+  // const [mentors, setMentors] = useState([]);
+  const [mentors, setMentors] = useRecoilState(mentorListAtom);
+  // 멘토 키워드 조회 API
+  // const [mentorsKeyword, setMentorsKeyword] = useState([]);
+  const [mentorsKeyword, setMentorsKeyword] = useRecoilState(keywordAtom);
+  const [keyword, setKeyword] = useState(''); // 입력 값을 관리하는 상태
+  const [activeTab, setActiveTab] = useState('mento'); // 초기값으로 'mento' 탭을 활성화
+  const navigate = useNavigate();
+  // 멘토 키워드 조회 API - recoil ver
 
   const setCookie = (name, value, days) => {
     const date = new Date();
@@ -90,13 +99,56 @@ const MainLayout = () => {
     getMentoCard();
   }, []);
 
+  const getMentorKeywordCard = async () => {
+    try {
+      const res = await axios.get(`https://codevelop.store/api/v1/mentors?keyword=${keyword}`);
+      setMentorsKeyword(res.data.data.content);
+      console.log('mentorsKeyword', mentorsKeyword);
+    } catch (error) {
+      console.error('API 요청 에러:', error);
+    }
+  };
+
+  useEffect(() => {
+    getMentorKeywordCard();
+  }, [keyword]); // keyword 상태가 변경될 때마다 API 요청을 다시 보냄
+
+  const handleInputChange = (e) => {
+    setKeyword(e.target.value); // useState()
+    // setSearchInput(e.target.value); // recoil
+  };
+
+  const handleTabClick = (tab) => {
+    // setActiveTab(tab); // useState()
+    setActiveTab(tab); // recoil
+  };
+
+  const handleSearch = () => {
+    if (activeTab === 'mento') {
+      navigate('/list/mento'); // 멘토 탭이 active일 때 '/list/mento'로 이동
+    } else if (activeTab === 'post') {
+      navigate('/list/post'); // POST 탭이 active일 때 '/list/post'로 이동
+    }
+    // 여기서 검색 결과를 필터링하고 표시하도록 로직을 추가하세요.
+    // 검색 결과를 state에 저장하고, 이를 렌더링하는 방식으로 구현할 수 있습니다.
+  };
+
   return (
     <>
       <S.MainWrapper>
         <S.StartCodeReviewBox>
           <Link to="/auth">코드 리뷰 시작하기!</Link>
         </S.StartCodeReviewBox>
-        <MainSearchContainer />
+        <MainSearchContainer
+          activeTab={activeTab}
+          handleTabClick={handleTabClick}
+          handleSearch={handleSearch}
+          handleInputChange={handleInputChange}
+          keyword={keyword}
+        />
+        {/* <MainSearchLink activeTab={activeTab} handleSearch={handleSearch}>
+          검색하기
+        </MainSearchLink> */}
         <S.MainCardsContainer>
           <article>
             <div>

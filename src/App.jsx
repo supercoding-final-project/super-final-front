@@ -14,7 +14,9 @@ import MainLayout from './pages/main/MainLayout';
 import MentoMainLayout from './pages/main/MentoMainLayout';
 import MentiMyLayout from './pages/my/MentiMyLayout';
 import MentoMyLayout from './pages/my/MentoMyLayout';
+import ScreenLayout from './pages/screen/ScreenLayout';
 import GlobalFonts from '../public/fonts/index.js';
+import { RecoilRoot } from 'recoil';
 
 function App() {
   const router = createBrowserRouter([
@@ -39,13 +41,14 @@ function App() {
           element: <ChatRoomLayout />,
         },
         {
-          path: 'chatroom',
-          element: <ChatRoomLayout />,
+          path: 'screenroom',
+          element: <ScreenLayout />,
         },
         {
           path: 'detail/:postId',
           element: <DetailLayout />,
         },
+
         {
           path: 'my',
           children: [
@@ -87,13 +90,15 @@ export default App;
 const Root = () => {
   return (
     <>
-      <GlobalFonts />
-      <ScrollToTop />
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+      <RecoilRoot>
+        <GlobalFonts />
+        <ScrollToTop />
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </RecoilRoot>
     </>
   );
 };

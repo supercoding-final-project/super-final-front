@@ -233,9 +233,15 @@ const MentiToMentoModal = () => {
 
                 <S.FixInformationBox>
                     <S.FixInformationLabel> <span style={{ color: "red" }}>*</span> 현직</S.FixInformationLabel>
-                    <S.FixInformationMentiIncumbentJobInput placeholder='현재 직업을 입력해주세요' onChange={EnteredincumbentJobCheck} onKeyDown={keyEnterIncumbent} onBlur={blurIncumbentJobNameBox} autoFocus></S.FixInformationMentiIncumbentJobInput>
+                    <S.FixInformationMentiIncumbentJobInput placeholder='현재 직업을 입력해주세요' onChange={EnteredincumbentJobCheck} onKeyDown={keyEnterIncumbent} onBlur={blurIncumbentJobNameBox} ></S.FixInformationMentiIncumbentJobInput>
                 </S.FixInformationBox>
-
+                <S.FixInformationBox>
+                    <S.FixInformationLabel> <span style={{ color: "red" }}>*</span> 자기소개</S.FixInformationLabel>
+                    <S.FixInformationMentiIncumbentJobInput placeholder='자기 소개를 입력해주세요' onChange={EnteredincumbentJobCheck} onKeyDown={keyEnterIncumbent} onBlur={blurIncumbentJobNameBox} ></S.FixInformationMentiIncumbentJobInput>
+                </S.FixInformationBox>
+                <S.DivFlex>
+                    <div onClick={addCareerButton}>추가</div>
+                </S.DivFlex>
             </S.FixInformationContainer>
         </>
     );

@@ -1,4 +1,4 @@
-import { atom, selector, selectorFamily } from 'recoil';
+import { atom, selector } from 'recoil';
 
 export const postApplicationAtom = atom({
   key: 'postApplicationAtom',
@@ -12,28 +12,28 @@ export const postApplicationAtom = atom({
   },
 });
 
-export const postTimeDataSelector = (postId) =>
-  selector({
-    key: 'postTimeDataSelector',
-    get: async () => {
-      console.log(postId);
+// export const postTimeDataSelector = (postId) =>
+//   selector({
+//     key: 'postTimeDataSelector',
+//     get: async () => {
+//       console.log(postId);
 
-      // const days = get(postQueryStringRequestAtom);
-      // const days = encodeURIComponent(get(postQueryStringRequestAtom));
-      // console.log(days);
+//       // const days = get(postQueryStringRequestAtom);
+//       // const days = encodeURIComponent(get(postQueryStringRequestAtom));
+//       // console.log(days);
 
-      // const response = await axios.get(
-      //   `http://13.124.66.205:8080//api/v1/post/day?postId=${postId}&days=${days}`,
-      // );
-      // const response = {
-      //   success: true,
-      //   status: 200,
-      //   message: '멘토의 신청가능한 시간이 조회되었습니다.',
-      //   data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      // };
-      // return response.data; // 요청 결과를 반환
-    },
-  });
+//       // const response = await axios.get(
+//       //   `http://13.124.66.205:8080//api/v1/post/day?postId=${postId}&days=${days}`,
+//       // );
+//       // const response = {
+//       //   success: true,
+//       //   status: 200,
+//       //   message: '멘토의 신청가능한 시간이 조회되었습니다.',
+//       //   data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+//       // };
+//       // return response.data; // 요청 결과를 반환
+//     },
+//   });
 
 export const postApplicationStepSelector = selector({
   key: 'postApplicationStepSelector',
@@ -118,11 +118,6 @@ export const postApplicationRequestSelectTimeSelector = selector({
     // 중복된 day가 있는지 확인
     const isDuplicate = applicationRequest.selectTime.some((selectTime) => selectTime.day === day);
 
-    // const data = {
-    //   day,
-    //   timeList: [],
-    // };
-    // return data;
     if (isDuplicate) {
       // 중복이 있을 경우, 마지막으로 추가된 값을 반환
       const lastSelectTime =
@@ -139,10 +134,6 @@ export const postApplicationRequestSelectTimeSelector = selector({
   },
 
   set: ({ set }, newSelectTime) => {
-    // set(postApplicationRequestAtom, (prevApplicationRequest) => ({
-    //   ...prevApplicationRequest,
-    //   selectTime: [...prevApplicationRequest.selectTime, newSelectTime],
-    // }));
     set(postApplicationRequestAtom, (prevApplicationRequest) => {
       // 이미 존재하는 day의 데이터를 업데이트하거나, 없을 경우 새로 추가
       const updatedSelectTime = prevApplicationRequest.selectTime.filter(
@@ -155,3 +146,31 @@ export const postApplicationRequestSelectTimeSelector = selector({
     });
   },
 });
+
+// export const postApplicationRequestSelectPriceSelector = selector({
+//   key: 'postApplicationRequestSelectPriceSelector',
+//   get: ({ get }) => {
+//     // const price = get(postQueryStringRequestAtom);
+//     const request = get(postQueryStringRequestAtom);
+//     const totalLength = request.selectTime;
+//     console.log(totalLength);
+//     return request;
+//   },
+//   set: ({ set }, price) => {
+//     set(postQueryStringRequestAtom, (prevPostQueryStringRequestAtom) => ({
+//       ...prevPostQueryStringRequestAtom,
+//       price,
+//     }));
+//   },
+// });
+
+// export const postApplicationRequestSelectIdSelector = selector({
+//   key: 'postApplicationRequestSelectIdSelector',
+//   get: ({ get }) => {
+//     const id = get(postQueryStringRequestAtom);
+//     return id;
+//   },
+//   set: ({ set }, id) => {
+//     set(postQueryStringRequestAtom, id);
+//   },
+// });
