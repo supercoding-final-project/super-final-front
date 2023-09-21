@@ -19,8 +19,6 @@ const PostApplicationModal = ({ setShowModal, price, title }) => {
     setStep(e.currentTarget.textContent);
   };
 
-  // const atom = useRecoilValue(postApplicationAtom);
-  // console.log(atom);
   const [timeState, setTimeState] = useState('AM');
   return (
     <S.PostApplicationModal>

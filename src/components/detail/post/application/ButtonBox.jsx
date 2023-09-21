@@ -15,21 +15,6 @@ const ButtonBox = ({ setShowModal, total }) => {
 
   const data = useRecoilValue(postApplicationRequestAtom);
   const selectTime = data.selectTime;
-  console.log(selectTime);
-
-  console.log(params.postId);
-  console.log(selectTime);
-  console.log(total);
-
-  const jwtToken =
-    'eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjUyNTIsImF1dGhvcml0aWVzIjpbIk1FTlRFRSJdLCJpYXQiOjE2OTUwNTExMjQsImV4cCI6MTcyNjU4NzEyNH0.v0ly5U3mVe15JyctMOHxBT_YZUZev5szX623gy1ND8s';
-
-  const parts = jwtToken.split('.');
-  const header = JSON.parse(atob(parts[0])); // Header 디코딩
-  const payload = JSON.parse(atob(parts[1])); // Payload 디코딩
-
-  console.log('Header:', header);
-  console.log('Payload:', payload);
 
   const postPay = async () => {
     const accesstoken =
@@ -41,14 +26,13 @@ const ButtonBox = ({ setShowModal, total }) => {
         selectTime,
         totalPrice: total,
       };
-      console.log(body);
       try {
         const response = await axios.post(`http://13.124.66.205:8080/api/v1/post/order`, body, {
           headers: {
             Authorization: accesstoken,
           },
         });
-        console.log(response.data);
+        console.log('성공적');
       } catch (error) {
         console.error(error.message);
       }
@@ -64,10 +48,11 @@ const ButtonBox = ({ setShowModal, total }) => {
     } else if (step === '정보확인&결제' && state === '이전으로') {
       setStep('신청하기');
     } else if (step === '정보확인&결제' && state === '결제하기') {
-      // alert('결제완료!');
-      // setShowModal(false);
-      // navigate(`/detail/${params.postId}`); // 결제로직
+      alert('결제완료!');
+      setShowModal(false);
+      navigate(`/detail/${params.postId}`); // 결제로직
       postPay();
+      setStep('신청하기');
     }
   };
   return (

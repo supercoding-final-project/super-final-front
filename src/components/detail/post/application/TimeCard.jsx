@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLinkClickHandler, useParams } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import Button from 'src/components/common/Button';
 import {
@@ -18,6 +18,9 @@ const TimeCard = ({ timeState, setTimeState }) => {
 
   const day = useRecoilValue(postQueryStringRequestSelector);
   // console.log(day);
+
+  const [res, setRes] = useState(null);
+  console.log('res:', res);
 
   const response = {
     success: true,
@@ -51,6 +54,7 @@ const TimeCard = ({ timeState, setTimeState }) => {
         },
       );
       console.log(response.data);
+      // setRes(response.data.data);
     } catch (error) {
       console.error(error.message);
     }

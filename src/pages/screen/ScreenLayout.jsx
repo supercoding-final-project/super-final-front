@@ -18,17 +18,38 @@ const ScreenLayout = () => {
     screen: false,
   });
 
+  console.log(option);
+
   const [session, setSession] = useState(null);
+  console.log(session);
   const [sessionStatus, setSessionStatus] = useState(undefined);
-  const [token, setToken] = useState(null);
+  console.log(sessionStatus);
+  const [token, setToken] = useState(null); // 서버로부터 받은 토큰
   const [myUserName, setMyUserName] = useState('채운');
   const [publisher, setPublisher] = useState(null);
 
   const [subscribers, setSubscribers] = useState([]);
   const videoRef = useRef(null);
-
+  const shareRef = useRef(null);
+  const [mainStreamManager, setMainStreamManager] = useState(undefined);
   const [screenShareActive, setScreenShareActive] = useState(false);
   const [cameraActive, setCameraActive] = useState(true);
+
+  console.log(
+    '여기봐라-------------------- :',
+    'session :',
+    session,
+    '/  sessionStatus :',
+    sessionStatus,
+    '/  token :',
+    token,
+    '/  myUserName :',
+    myUserName,
+    '/  publisher :',
+    publisher,
+    '/  subscribers :',
+    subscribers,
+  );
 
   const OV = new OpenVidu();
 
@@ -67,7 +88,7 @@ const ScreenLayout = () => {
         },
       });
       setSession(response.data.data);
-      console.log('session id :', response);
+      console.log('session id :', response.data.data);
       return response.data.data;
     } catch (error) {
       console.error('에러 :', error);
@@ -101,39 +122,60 @@ const ScreenLayout = () => {
     }
   };
 
-  const initializeSession = async (sessionData, tokenData) => {
-    console.log('가져온 토큰은 ', tokenData);
-    const mySession = OV.initSession();
+  const deleteSubscriber = (streamManager) => {
+    let updatedSubscribers = subscribers.filter((sub) => sub !== streamManager);
+    setSubscribers(updatedSubscribers);
+  };
 
-    try {
-      await mySession.connect(tokenData, { clientData: myUserName });
-      console.log('세션 연결 성공');
-    } catch (error) {
-      console.error('세션 연결 오류 :', error);
+  const initializeSession = async (sessionData, tokenData) => {
+    console.log('-------------Session 초기화-----------');
+    // console.log(sessionData);
+    // console.log(tokenData);
+    // console.log('가져온 토큰은 ', tokenData);
+    const mySession = OV.initSession();
+    if (tokenData !== null) {
+      mySession.connect(tokenData, { clientData: myUserName }).then(async () => {
+        let publisher = await OV.initPublisherAsync(undefined, {
+          audioSource: undefined,
+          videoSource: undefined,
+          // videoSource: 'screen', // 화면 공유할 때 필요
+          publishAudio: true,
+          publishVideo: true,
+          resolution: '640x480',
+          frameRate: 30,
+          insertMode: 'APPEND',
+          mirror: false,
+        });
+        mySession.publish(publisher);
+
+        const devices = await OV.getDevices();
+        const videoDevices = devices.filter((device) => device.kind === 'videoinput');
+        const currentVideoDeviceId = publisher.stream
+          .getMediaStream()
+          .getVideoTracks()[0]
+          .getSettings().deviceId;
+        const currentVideoDevice = videoDevices.find(
+          (device) => device.deviceId === currentVideoDeviceId,
+        );
+
+        setMainStreamManager(publisher);
+        setPublisher(publisher);
+      });
     }
 
-    const publisher = OV.initPublisher(undefined, {
-      audioSource: undefined,
-      // videoSource: 'screen', // 화면 공유할 때 필요
-      videoSource: 'camera',
-      publishAudio: true,
-      publishVideo: true,
-      resolution: '640x480',
-      frameRate: 30,
-      insertMode: 'APPEND',
-      mirror: false,
-    });
-
-    mySession.publish(publisher);
-
-    setPublisher(publisher);
-
-    // 스트림 생성
     mySession.on('streamCreated', (event) => {
       const subscriber = mySession.subscribe(event.stream, undefined);
-      setSubscribers((prevSubscribers) => [...prevSubscribers, subscriber]);
+      setSubscribers([...subscribers, subscriber]);
     });
-    console.log(mySession);
+
+    mySession.on('streamDestroyed', (event) => {
+      deleteSubscriber(event.stream.streamManager);
+    });
+
+    mySession.on('exception', (exception) => {
+      console.warn(exception);
+    });
+
     setSessionStatus(mySession);
   };
 
@@ -146,9 +188,16 @@ const ScreenLayout = () => {
     }
   }, [publisher]);
 
+  useEffect(() => {
+    if (publisher !== null && shareRef.current) {
+      publisher.addVideoElement(shareRef.current);
+    }
+  }, [publisher]);
+
   // 마이크 설정 변경 함수
   const toggleMicrophone = () => {
     console.log('마이크 눌림');
+    console.log(publisher);
     if (publisher) {
       const newStatus = !publisher.stream.getMediaStream().getAudioTracks()[0].enabled;
       // console.log(!publisher.stream, 'gdgd');
@@ -161,6 +210,7 @@ const ScreenLayout = () => {
   // 카메라 설정 변경 함수
   const toggleCamera = () => {
     if (publisher) {
+      console.log('제발');
       const newStatus = !publisher.stream.getMediaStream().getVideoTracks()[0].enabled;
       publisher.publishVideo(newStatus);
       console.log(newStatus);
@@ -243,7 +293,9 @@ const ScreenLayout = () => {
           <div className="screen-other">
             <div className="user"></div>
             <div className="user"></div>
-            <div className="share-screen"></div>
+            <div className="share-screen">
+              <video ref={shareRef} autoPlay={true}></video>
+            </div>
           </div>
           <div className="main-screen">
             <video ref={videoRef} autoPlay={true}></video>
