@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import * as S from 'src/pages/my/mentoMyLayout.style';
-const MentiToMentoModal = ({ cookie, setLoginState }) => {
+const MentiToMentoModal = ({ menti_access_token }) => {
   //멘토 정보 수정 인풋
 
   const [incumbentValue, setIncumbentValue] = useState('');
@@ -47,7 +47,7 @@ const MentiToMentoModal = ({ cookie, setLoginState }) => {
 
   const keyEnterIncumbent = (event) => {
     if (event.key === 'Enter') {
-      // setEnterIncumbentJob(prev => !prev)
+      //   setEnterIncumbentJob((prev) => !prev);
       let enteredNickName = event.target.value;
       // 특수문자 및 빈 문자열 체크
       const pattern = /[~!@#\\#$%<>^&*\s]/;
@@ -59,9 +59,9 @@ const MentiToMentoModal = ({ cookie, setLoginState }) => {
       }
     }
   };
-  // const blurIncumbentJobNameBox = () => {
-  //     setEnterIncumbentJob(false)
-  // }
+  //   const blurIncumbentJobNameBox = () => {
+  //     setEnterIncumbentJob(false);
+  //   };
 
   const addCareerHandler = () => {
     let duty = dutyType;
@@ -230,29 +230,25 @@ const MentiToMentoModal = ({ cookie, setLoginState }) => {
       console.log('입력안됬어요');
       return;
     }
-    const body = {
-      company: incumbentRef.current.value,
-      careers: careerList,
-      skills: skillStackList,
-      introduction: introductionRef.current.value,
-    };
-    try {
-      const response = await axios.post(
+
+    const response = await axios
+      .post(
         'https://codevelop.store/api/v1/users/role/join/mentor',
-        body,
+        {
+          company: incumbentRef.current.value,
+          careers: careerObjects,
+          skills: skillStackList,
+          introduction: introductionRef.current.value,
+        },
         {
           headers: {
-            Authorization: cookie,
-            'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+            Authorization: menti_access_token,
           },
         },
-      );
-
-      console.log(response.data);
-      setLoginState('MENTOR');
-    } catch (error) {
-      console.error(error.message);
-    }
+      )
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
+    console.log(response);
   };
 
   return (
