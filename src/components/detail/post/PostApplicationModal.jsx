@@ -9,7 +9,7 @@ import Application from './application/Application';
 import DetailInformation from './application/DetailInformation';
 import * as S from './Detail.style';
 
-const PostApplicationModal = ({ setShowModal }) => {
+const PostApplicationModal = ({ setShowModal, price, title, mentoId }) => {
   // 최적화를 위해 selector 사용
   // 이유 : atom을 직접적으로 업데이트하면 불필요하게 리렌더링 발생하거나 많은 데이터를 가져오게 됨
   const step = useRecoilValue(postApplicationStepSelector);
@@ -19,8 +19,6 @@ const PostApplicationModal = ({ setShowModal }) => {
     setStep(e.currentTarget.textContent);
   };
 
-  // const atom = useRecoilValue(postApplicationAtom);
-  // console.log(atom);
   const [timeState, setTimeState] = useState('AM');
   return (
     <S.PostApplicationModal>
@@ -39,7 +37,12 @@ const PostApplicationModal = ({ setShowModal }) => {
           setTimeState={setTimeState}
         />
       ) : (
-        <DetailInformation setShowModal={setShowModal} />
+        <DetailInformation
+          setShowModal={setShowModal}
+          price={price}
+          title={title}
+          mentoId={mentoId}
+        />
       )}
     </S.PostApplicationModal>
   );

@@ -5,15 +5,21 @@ import MentoProfile from 'src/components/detail/MentoProfile';
 import DetailIntro from 'src/components/detail/post/DetailIntro';
 import DetailModal from 'src/components/detail/post/DetailModal';
 import PostReview from 'src/components/detail/post/review/PostReview';
+import useJwtToken from 'src/hooks/useJwt';
 
 import * as S from './DetailLayout.style';
 
 const DetailLayout = () => {
   const { postId } = useParams();
   const [postData, setPostData] = useState({});
+  const { jwtToken } = useJwtToken();
 
   const getPostData = async () => {
-    const res = await axios.get(`https://codevelop.store/api/v1/post/${postId}`);
+    const res = await axios.get(`https://codevelop.store/api/v1/post/${postId}`, {
+      headers: {
+        Authorization: jwtToken,
+      },
+    });
     setPostData(res.data.data);
   };
 
@@ -23,9 +29,15 @@ const DetailLayout = () => {
 
   return (
     <S.DetailWrap>
-      <DetailModal price={postData.price} />
+      <DetailModal
+        price={postData.price}
+        title={postData.title}
+        mentoId={postData.mentorId}
+        permission={postData.permission}
+        postId={postId}
+      />
       <div style={{ width: '40%', marginRight: '15%' }}>
-        <MentoProfile />
+        <MentoProfile mentorId={postData.mentorId} />
         <S.TitleBox>
           <span>{postData.level}</span>
           <h2>{postData.title}</h2>

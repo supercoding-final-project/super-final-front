@@ -82,6 +82,7 @@ const ReviewBox = (props) => {
             btnValue={props.btnValue}
             type={props.type}
             onReviewChange={onReviewChange}
+            setCursor={setCursor}
           />
         ))}
         <div ref={triggerRef}></div>

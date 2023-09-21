@@ -21,7 +21,7 @@ const StackBox = (props) => {
             <S.StackImg
               key={i}
               src={stack.skillStackImg}
-              active={stack === isActive}
+              active={stack.skillStackName === isActive}
               onClick={() => handleImageClick(stack.skillStackName)}
             />
           ))}
