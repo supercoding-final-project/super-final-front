@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import sockjs from 'sockjs-client/dist/sockjs';
 import { useFormattedTime } from 'src/hooks/useFormattedTime';
 import useJwtToken from 'src/hooks/useJwt';
@@ -16,6 +16,7 @@ const ChatBox = (props) => {
   const [text, setText] = useState('');
   const [page, setPage] = useState(0);
   const [prevId, setPrevId] = useState(null);
+  const [logEndRef] = useRef(null);
 
   const { formattedTime, updateFormattedTime, formatDate } = useFormattedTime();
   const cardEndRef = useRef(null);
@@ -116,9 +117,32 @@ const ChatBox = (props) => {
     }
   };
 
-  const pageHandler = () => {
-    setPage((prevPage) => prevPage + 1);
-  };
+  useEffect(() => {
+    const pageUp = (entries) => {
+      if (entries[0].isIntersecting) {
+        setPage((prevPage) => prevPage + 1);
+      }
+    };
+    const options = {
+      root: null,
+      rootMargin: '6px',
+      threshold: 0.7,
+    };
+
+    logEndRef.current = new IntersectionObserver(pageUp, options);
+
+    if (logEndRef.current) {
+      logEndRef.current.observe(triggerRef.current);
+    }
+
+    return () => {
+      if (logEndRef.current) {
+        logEndRef.current.disconnect();
+      }
+    };
+  }, []);
+
+  const triggerRef = useRef();
 
   useEffect(() => {
     cardEndRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -127,6 +151,7 @@ const ChatBox = (props) => {
   return (
     <S.ChatBox>
       <S.ChatContainer>
+        <div ref={triggerRef}></div>
         {data.map((log, index) => {
           if (log.dbSendAt !== previousDateRef.current) {
             previousDateRef.current = log.dbSendAt;
