@@ -66,17 +66,17 @@ export const Logo = styled.h1`
 `;
 
 //멘티와 멘토를 바꿀수있는 박스
-export const MentoMentoSwapBox = styled.nav`
-
-`
+export const MentoMentoSwapBox = styled.nav``;
 //멘티 멘토 스왑 버튼들
 export const MentiSwapButton = styled.div`
-
-  font-weight: ${props => (props.$mento ? "normal" : "bold")};
-
-`
-export const MentoSwapButton = styled.div`
-
-  font-weight: ${props => (props.$mento ? "bold" : "normal")};
-`
-
+  color: #807e7d;
+  .active {
+    color: #0f0f0e;
+    font-weight: 700;
+  }
+  /* font-weight: ${(props) => (props.state === 'MENTEE' ? 'normal' : 'bold')};
+  color: ${(props) => (props.state === 'MENTEE' ? 'red' : ' #807e7d')}; */
+`;
+// export const MentoSwapButton = styled.div`
+//   font-weight: ${(props) => (props.$mento ? 'bold' : 'normal')};
+// `;
