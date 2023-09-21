@@ -24,7 +24,7 @@ const ShareScreen = ({ sessionId, setOption, option }) => {
     try {
       // console.log(session);
       const getResponse = await axios.post(
-        `http://13.124.66.205:8080/api/v1/video/enter/${sessionId}`,
+        `https://codevelop.store/api/v1/video/enter/${sessionId}`,
         connection,
         {
           header: {

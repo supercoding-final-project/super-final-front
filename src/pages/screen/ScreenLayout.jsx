@@ -80,7 +80,7 @@ const ScreenLayout = () => {
   // 백 server와 session의 id값 가져오기
   const fetchDataID = async () => {
     try {
-      const response = await axios.post('http://13.124.66.205:8080/api/v1/video/create', data, {
+      const response = await axios.post('https://codevelop.store/api/v1/video/create', data, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -104,7 +104,7 @@ const ScreenLayout = () => {
     try {
       // console.log(session);
       const getResponse = await axios.post(
-        `http://13.124.66.205:8080/api/v1/video/enter/${session}`,
+        `https://codevelop.store/api/v1/video/enter/${session}`,
         connection,
         {
           header: {
