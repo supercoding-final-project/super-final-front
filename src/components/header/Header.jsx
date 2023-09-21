@@ -182,7 +182,7 @@ const Header = () => {
       )}
       {mentiToMentoModal && (
         <Modal setShowModal={setMentiToMentoModal} width="800px" height="900px">
-          <MentiToMentoModal />
+          <MentiToMentoModal cookie={cookie} />
         </Modal>
       )}
     </S.HeaderWrap>
