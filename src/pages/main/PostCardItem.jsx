@@ -1,16 +1,15 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from 'src/components/common/Button';
 import { theme } from 'src/globalLayout/GlobalStyle';
 import useJwtToken from 'src/hooks/useJwt';
 
 import * as S from './MainCardItem.style';
-import { postData } from '../list/postData';
 
 const PostCardItem = (props) => {
   const { jwtToken } = useJwtToken();
-  const [postId, setPostId] = useState(3);
+  const navigate = useNavigate();
+
   // 이 부분 일단 10으로 해놨습니다 ! 이거만 변경해주시면 저한테 알아서 넘어와요 !
   // const [postListData, setPostListData] = useState(postData);
 
@@ -20,11 +19,11 @@ const PostCardItem = (props) => {
     document.body.style.overflowY = 'auto';
   };
 
-  const createChatHandler = () => {
-    axios.post(
+  const createChatHandler = async () => {
+    await axios.post(
       'https://codevelop.store/api/v1/createchat',
       {
-        anotherUserId: postListData.mentorId,
+        anotherUserId: item.mentorId,
       },
       {
         headers: {
@@ -32,6 +31,7 @@ const PostCardItem = (props) => {
         },
       },
     );
+    navigate('/chatroom');
   };
 
   return (
@@ -60,11 +60,15 @@ const PostCardItem = (props) => {
         </S.NickNameBox>
         <hr />
         <S.MainCardButtonBox>
-          <Link to="/chatroom">
-            <Button text={'문의하기'} bgcolor={theme.color.point} fontcolor={theme.color.bgc1} />
-          </Link>
+          <Button
+            text={'문의하기'}
+            bgcolor={theme.color.point}
+            fontcolor={theme.color.bgc1}
+            onClick={createChatHandler}
+          />
+
           {/* <Link to=`/detail/${postId}`> */}
-          <Link to={`/detail/${postId}`}>
+          <Link to={`/detail/${item.postId}`}>
             <Button
               onClick={handleScrollInnerModal}
               text={'상세보기'}
@@ -74,7 +78,6 @@ const PostCardItem = (props) => {
           </Link>
         </S.MainCardButtonBox>
       </S.MainCardItem>
-    
     </>
   );
 };
