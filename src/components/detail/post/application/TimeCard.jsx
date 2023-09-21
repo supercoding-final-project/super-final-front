@@ -44,9 +44,11 @@ const TimeCard = ({ timeState, setTimeState }) => {
     'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjUyNTIsImF1dGhvcml0aWVzIjpbIk1FTlRFRSJdLCJpYXQiOjE2OTUwNTExMjQsImV4cCI6MTcyNjU4NzEyNH0.v0ly5U3mVe15JyctMOHxBT_YZUZev5szX623gy1ND8s';
 
   const fetchDayClose = async () => {
+    // http://13.124.66.205:8080
     try {
       const response = await axios.get(
-        `http://13.124.66.205:8080/api/v1/post/day?postId=${id}&days=${day}`,
+        `https://codevelop.store/api/v1/post/day?postId=${id}&days=${day}`,
+
         {
           headers: {
             Authorization: accesstoken,
