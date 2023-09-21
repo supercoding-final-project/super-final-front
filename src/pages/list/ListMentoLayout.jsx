@@ -22,11 +22,18 @@ const MentoListLayout = () => {
   // 모든 멘토 조회 API
   const [mentors, setMentors] = useState([]);
   // const [mentors, setMentors] = useRecoilState(mentorListAtom);
+  // 멘토 페이징 API
+  // const [mentorsPaging, setMentorsPaging] = useState([]); // Store the list of mentors
+  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지를 상태로 관리
+  const [totalPages, setTotalPages] = useState(1); // 초기값 1로 설정
+
   // 멘토 키워드 조회 API
   const [mentorsKeyword, setMentorsKeyword] = useState([]);
   // const [mentorsKeyword, setMentorsKeyword] = useRecoilState(keywordAtom);
   const [keyword, setKeyword] = useState(''); // 입력 값을 관리하는 상태
   const [activeTab, setActiveTab] = useState('mento'); // 초기값으로 'mento' 탭을 활성화
+
+  // const pageSize = 8; // 페이지 크기를 설정합니다.
 
   const handleTechClick1 = (item) => {
     if (selectedItems1.includes(item)) {
@@ -44,19 +51,23 @@ const MentoListLayout = () => {
     }
   };
 
-  const getMentoCard = async () => {
-    const res = await axios.get('https://codevelop.store/api/v1/mentors?pageSize=8');
-    setMentors(res.data.data.content);
-    console.log(mentors);
-  };
+  // const getMentoCard = async () => {
+  //   const res = await axios.get('https://codevelop.store/api/v1/mentors?pageSize=8');
+  //   // const res = await axios.get('https://codevelop.store/api/v1/mentors?');
+  //   setMentors(res.data.data.content);
+  //   console.log(mentors);
+  //   //이거 주의
+  //   // mentorsKeyword.length > 0 ? mentorsKeyword : mentors;
+  // };
 
-  useEffect(() => {
-    getMentoCard();
-  }, []);
+  // useEffect(() => {
+  //   getMentoCard();
+  // }, []);
 
   const getMentorKeywordCard = async () => {
     try {
       const res = await axios.get(`https://codevelop.store/api/v1/mentors?keyword=${keyword}`);
+
       setMentorsKeyword(res.data.data.content);
       console.log('mentorsKeyword', mentorsKeyword);
     } catch (error) {
@@ -73,33 +84,39 @@ const MentoListLayout = () => {
     // setSearchInput(e.target.value); // recoil
   };
 
-  const handleTabClick = (tab) => {
-    // setActiveTab(tab); // useState()
-    setActiveTab(tab); // recoil
-  };
-
-  // const handleSearch = () => {
-  //   if (activeTab === 'mento') {
-  //     navigate('/list/mento'); // 멘토 탭이 active일 때 '/list/mento'로 이동
-  //   } else if (activeTab === 'post') {
-  //     navigate('/list/post'); // POST 탭이 active일 때 '/list/post'로 이동
-  //   }
-  //   // 여기서 검색 결과를 필터링하고 표시하도록 로직을 추가하세요.
-  //   // 검색 결과를 state에 저장하고, 이를 렌더링하는 방식으로 구현할 수 있습니다.
-  // };
-
-  // const getMentoKeywordCard = async () => {
-  //   const res = await axios.get('https://codevelop.store/api/v1/mentors?keyword=진수');
-  //   // setMentorsKeyword(res.data.data.content);
-  //   console.log('mentorsKeyword', mentorsKeyword);
-  // };
-
-  // useEffect(() => {
-  //   getMentoKeywordCard();
-  // }, []);
-
   // mentorsKeyword 상태에 따라 멘토 카드를 필터링하여 출력
   const filteredMentors = mentorsKeyword.length > 0 ? mentorsKeyword : mentors;
+
+  useEffect(() => {
+    // API로부터 멘토 데이터를 가져오는 함수
+    const getMentoCard = async () => {
+      const res = await axios.get(
+        `https://codevelop.store/api/v1/mentors?pageSize=8&page=${currentPage}`,
+      );
+      setMentors(res.data.data.content);
+      setTotalPages(Math.ceil(res.data.data.totalElements / 8));
+    };
+
+    getMentoCard();
+  }, [currentPage]);
+
+  // useEffect(() => {
+  //   // API로부터 멘토 데이터를 가져오는 함수
+  //   const getMentoCard = async () => {
+  //     const res = await axios.get(
+  //       `https://codevelop.store/api/v1/mentors?pageSize=${pageSize}&page=${currentPage}`,
+  //     );
+  //     setMentors(res.data.data.content);
+  //     setTotalPages(Math.ceil(res.data.data.totalElements / pageSize));
+  //   };
+
+  //   getMentoCard();
+  // }, [currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+  //
 
   return (
     <S.ListWrapper>
@@ -165,10 +182,22 @@ const MentoListLayout = () => {
             <div>
               <h3>멘토</h3>
             </div>
+            {/* 합체 */}
+            {/* <ul> */}
+
+            {/* </ul> */}
+
+            {/* 이게 페이지네이션 */}
             <ul>
-              {filteredMentors.map((data, index) => (
-                <MentoCardItem key={index} data={data} />
+              {mentors.map((mentor) => (
+                <MentoCardItem key={mentor.mentorId} data={mentor} />
               ))}
+            </ul>
+            {/* 이게 검색 */}
+            <ul>
+              {/* {filteredMentors.map((data, index) => (
+                <MentoCardItem key={index} data={data} />
+              ))} */}
             </ul>
             {/* <ul>
               {mentors.map((data, index) => (
@@ -179,7 +208,12 @@ const MentoListLayout = () => {
         </S.ListCardsContainer>
       </S.ListSearchContainer>
       <S.PaginationContainer>
-        <PageBtn />
+        {/* <PageBtn mentorsPaging={mentorsPaging} setMentorsPaging={setMentorsPaging} /> */}
+        <PageBtn
+          totalPages={totalPages}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
       </S.PaginationContainer>
     </S.ListWrapper>
   );

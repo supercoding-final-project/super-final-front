@@ -508,3 +508,14 @@ align-items: center;
 border-radius: 4px;
 border: 0.5px solid #808080;
 `
+
+//제출버튼
+
+export const SubmitButton = styled.button`
+cursor: pointer;
+    width: 100%;
+    padding: 10px 15px;
+    background-color:${theme.color.point};
+    color: white;
+    font-size: 1.6rem;
+`

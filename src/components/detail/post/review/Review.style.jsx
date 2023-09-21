@@ -68,7 +68,7 @@ export const ListBox = styled.div`
     letter-spacing: -0.03125rem;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: normal;
+    white-space: nowrap;
   }
   button {
     display: flex;

@@ -32,6 +32,15 @@ export const ChatContainer = styled.div`
 export const PageUpBtn = styled.button`
   margin: 0px auto;
   width: 60%;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  position: sticky;
+  top: 0;
+  background-color: ${theme.color.bgc5};
+  border-radius: 1rem;
+  border: none;
+  z-index: 30;
 `;
 
 export const DateLine = styled.div`

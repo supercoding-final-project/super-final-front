@@ -181,8 +181,8 @@ const Header = () => {
         </Modal>
       )}
       {mentiToMentoModal && (
-        <Modal setShowModal={setMentiToMentoModal} width="800px" height="700px">
-          <MentiToMentoModal />
+        <Modal setShowModal={setMentiToMentoModal} width="800px" height="900px">
+          <MentiToMentoModal menti_access_token={menti_access_token} />
         </Modal>
       )}
     </S.HeaderWrap>

@@ -230,6 +230,7 @@ export const PaginationContainer = styled.div`
   width: 100%;
   margin: 172px auto 0;
   ul {
+    flex-wrap: wrap;
     display: flex;
     justify-content: center;
     gap: 20px;
