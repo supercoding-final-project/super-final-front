@@ -22,16 +22,16 @@ const TimeCard = ({ timeState, setTimeState }) => {
   const [res, setRes] = useState(null);
   console.log('res:', res);
 
-  const response = {
-    success: true,
-    status: 200,
-    message: '멘토의 신청가능한 시간이 조회되었습니다.',
-    data: {
-      am: [2, 3, 4, 6, 7, 9, 10],
-      pm: [1, 4, 5, 6, 7, 10, 11, 12],
-    },
-  };
-  const mockData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  // const response = {
+  //   success: true,
+  //   status: 200,
+  //   message: '멘토의 신청가능한 시간이 조회되었습니다.',
+  //   data: {
+  //     am: [2, 3, 4, 6, 7, 9, 10],
+  //     pm: [1, 4, 5, 6, 7, 10, 11, 12],
+  //   },
+  // };
+  const mockData = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   const changeTimeState = (e) => {
     setTimeState(e.currentTarget.textContent);
@@ -56,7 +56,7 @@ const TimeCard = ({ timeState, setTimeState }) => {
         },
       );
       console.log(response.data);
-      // setRes(response.data.data);
+      setRes(response.data.data);
     } catch (error) {
       console.error(error.message);
     }
@@ -93,7 +93,7 @@ const TimeCard = ({ timeState, setTimeState }) => {
       if (selectedTimesAM.includes(time)) {
         setSelectedTimesAM((prevState) => prevState.filter((item) => item !== time));
         setTimeArray((prevTimeArray) => prevTimeArray.filter((item) => item !== time));
-      } else if (!response.data.am.includes(time)) {
+      } else if (!res?.am.includes(time)) {
         return;
       } else {
         setSelectedTimesAM((prevState) => [...prevState, time]);
@@ -103,7 +103,7 @@ const TimeCard = ({ timeState, setTimeState }) => {
       if (selectedTimesPM.includes(time)) {
         setSelectedTimesPM((prevState) => prevState.filter((item) => item !== time));
         setTimeArray((prevTimeArray) => prevTimeArray.filter((item) => item !== time + 12));
-      } else if (!response.data.pm.includes(time)) {
+      } else if (!res?.pm.includes(time)) {
         return;
       } else {
         setSelectedTimesPM((prevState) => [...prevState, time]);
@@ -119,9 +119,9 @@ const TimeCard = ({ timeState, setTimeState }) => {
         return 'chose';
       } else if (amChosenTimes?.includes(time)) {
         return 'chose';
-      } else if (mockData.includes(time) && response.data.am.includes(time)) {
+      } else if (mockData.includes(time) && res?.am.includes(time)) {
         return 'have';
-      } else if (!response.data.am.includes(time)) {
+      } else if (!res?.am.includes(time)) {
         return 'close';
       }
     } else if (timeState === 'PM') {
@@ -132,9 +132,9 @@ const TimeCard = ({ timeState, setTimeState }) => {
         return 'chose';
       } else if (pmChosenTimes?.includes(time)) {
         return 'chose';
-      } else if (mockData.includes(time) && response.data.pm.includes(time)) {
+      } else if (mockData.includes(time) && res?.pm.includes(time)) {
         return 'have';
-      } else if (!response.data.pm.includes(time)) {
+      } else if (!res?.pm.includes(time)) {
         return 'close';
       }
     }
