@@ -106,7 +106,7 @@ const Header = () => {
         </Modal>
       )}
       {mentiToMentoModal && (
-        <Modal setShowModal={setMentiToMentoModal} width="800px" height="700px">
+        <Modal setShowModal={setMentiToMentoModal} width="800px" height="900px">
           <MentiToMentoModal />
         </Modal>
       )}

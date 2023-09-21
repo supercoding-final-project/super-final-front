@@ -1,22 +1,15 @@
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import * as S from "src/pages/my/mentoMyLayout.style"
 const MentiToMentoModal = () => {
 
-    //입력창 상태들
-    const [enterNickanme, setEnterNickname] = useState(false)
-
-    const [enterIntroduction, setEnterIntroduction] = useState(false)
-
-    //맨처음 유저조회를할때 커리어list를 한번만 조회하기위한 상태
-    const [executedOnce, setExecutedOnce] = useState(false);
-
     //멘토 정보 수정 인풋
-    const [nicknameValue, setNicknameValue] = useState("");
+
     const [incumbentValue, setIncumbentValue] = useState("");
+    const [introductionValue, setIntroductionValue] = useState("");
     const [dutyType, setDutyType] = useState("");
 
-    const [introduction, setIntroduction] = useState("");
+
     const [careerList, setCareerList] = useState([])
     const [careerObjects, setCareerObjects] = useState([])
 
@@ -26,10 +19,10 @@ const MentiToMentoModal = () => {
     const [subOptions, setSubOptions] = useState([]); // 선택한 옵션에 따른 하위 옵션을 저장하는 상태 변수
     const [skillStackList, setSkillStackList] = useState([]); // 선택한 옵션에 따른 하위 옵션을 저장하는 상태 변수
 
-    const dutyRef = useRef()
+
     const dutyYearRef = useRef()
     const dutyMonthRef = useRef()
-    const textRef = useRef()
+
 
 
 
@@ -46,6 +39,18 @@ const MentiToMentoModal = () => {
             setIncumbentValue(enteredincumbentJobCheck.trim());
         }
     }
+    const EnteredIntroductionCheck = (event) => {
+        let enteredincumbentJobCheck = event.target.value;
+        // 특수문자 및 빈 문자열 체크
+        const pattern = /[~!@#\\#$%<>^&*\s]/;
+        const check = enteredincumbentJobCheck.trim();
+        if (pattern.test(check) || check === "") {
+            return
+        } else {
+            setIntroductionValue(enteredincumbentJobCheck.trim());
+        }
+    }
+
     const keyEnterIncumbent = (event) => {
         if (event.key === "Enter") {
             setEnterIncumbentJob(prev => !prev)
@@ -148,11 +153,9 @@ const MentiToMentoModal = () => {
 
     const handleIncumbentJobChange = (event) => {
         const selectedValue = event.target.value;
-        console.log(selectedValue)
         setDutyType(selectedValue)
 
     }
-
 
     const selectSkill = (event) => {
         const selectedSkill = event.target.value;
@@ -163,20 +166,43 @@ const MentiToMentoModal = () => {
         console.log('선택한 기술스택:', selectedSkill);
         setSkillStackList(prev => [...prev, selectedSkill])
     }
-
-    const fixMentorInformation = async () => {
-
-        console.log(FIXINFORMATION)
-        const response = await axios.post('https://codevelop.store/api/v1/mentors/info',
-            FIXINFORMATION,
-            {
-                headers: {
-                    Authorization: accesstoken
-                }
-            })
-        console.log(response)
+    const dutyDeleteHandler = (index) => {
+        const updatedCareerList = careerList.filter((item, i) => i !== index);
+        setCareerList(updatedCareerList)
     }
 
+
+    const skillDeleteHandler = (index) => {
+        const updatedCareerList = skillStackList.filter((item, i) => i !== index);
+        setSkillStackList(updatedCareerList)
+
+    }
+
+    useEffect(() => {
+        setCareerObjects([])
+        const newcareerList = careerList.map(career => {
+            let [dutyName, period] = career.split('||')
+            setCareerObjects(prev => [
+                ...prev,
+                {
+                    "dutyName": dutyName,
+                    "period": period
+                }
+            ])
+
+        })
+
+    }, [careerList])
+
+
+    const switchToMentor = () => {
+        console.log("현직", incumbentValue)
+        console.log("자기소개", introductionValue)
+        console.log("경력", careerList)
+        console.log("기술스택", skillStackList)
+        console.log("커리어객체", careerObjects)
+
+    }
 
     return (
         <>
@@ -233,16 +259,44 @@ const MentiToMentoModal = () => {
 
                 <S.FixInformationBox>
                     <S.FixInformationLabel> <span style={{ color: "red" }}>*</span> 현직</S.FixInformationLabel>
-                    <S.FixInformationMentiIncumbentJobInput placeholder='현재 직업을 입력해주세요' onChange={EnteredincumbentJobCheck} onKeyDown={keyEnterIncumbent} onBlur={blurIncumbentJobNameBox} ></S.FixInformationMentiIncumbentJobInput>
+                    <S.FixInformationMentiIncumbentJobInput placeholder='현재 직업을 입력해주세요' onChange={EnteredincumbentJobCheck} onKeyDown={keyEnterIncumbent} ></S.FixInformationMentiIncumbentJobInput>
                 </S.FixInformationBox>
                 <S.FixInformationBox>
                     <S.FixInformationLabel> <span style={{ color: "red" }}>*</span> 자기소개</S.FixInformationLabel>
-                    <S.FixInformationMentiIncumbentJobInput placeholder='자기 소개를 입력해주세요' onChange={EnteredincumbentJobCheck} onKeyDown={keyEnterIncumbent} onBlur={blurIncumbentJobNameBox} ></S.FixInformationMentiIncumbentJobInput>
+                    <S.FixInformationMentiIncumbentJobInput placeholder='자기 소개를 입력해주세요' onChange={EnteredIntroductionCheck} onKeyDown={keyEnterIncumbent} ></S.FixInformationMentiIncumbentJobInput>
                 </S.FixInformationBox>
                 <S.DivFlex>
                     <div onClick={addCareerButton}>추가</div>
                 </S.DivFlex>
-            </S.FixInformationContainer>
+                <div>
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                        <S.FixInformationLabel>경력  </S.FixInformationLabel><span style={{ fontSize: "0.8rem", color: "#F48070", letterSpacing: "0.2rem" }}>*누르면삭제되요</span>
+                    </div>
+                    <S.DivGrid>
+                        {careerList.map((item, index) => {
+                            return (
+                                <S.dutyTag key={index} onClick={() => dutyDeleteHandler(index)}>{item}
+                                </S.dutyTag>
+                            )
+                        })}
+                    </S.DivGrid>
+                </div>
+                <div>
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                        <S.FixInformationLabel>기술스택  </S.FixInformationLabel><span style={{ fontSize: "0.8rem", color: "#F48070", letterSpacing: "0.2rem" }}>*누르면삭제되요</span>
+                    </div>
+                    <S.DivGrid>
+                        {skillStackList.map((item, index) => {
+                            return (
+                                <S.dutyTag key={index} onClick={() => skillDeleteHandler(index)}>{item}
+                                </S.dutyTag>
+                            )
+                        })}
+                    </S.DivGrid>
+                </div>
+
+                <S.SubmitButton onClick={switchToMentor}>멘토로 전환하기</S.SubmitButton>
+            </S.FixInformationContainer >
         </>
     );
 };

@@ -306,26 +306,6 @@ const FixInformation = ({ User, accesstoken }) => {
     }
 
 
-
-
-    // {
-    //     "thumbnailImageUrl": "https://i.ytimg.com/vi/M-E95XZe8wE/maxresdefault.jpg",
-    //     "nickname": "김호식",
-    //     "email": "hosick@sosick.com",
-    //     "introduction": "난 치킨집이나 차려야겠다",
-    //     "company": "맥도날드",
-    //     "searchable": true,
-    //     "careers": [{
-    //         "dutyName": "BACKEND_DEVELOPER",
-    //         "period": "3년"
-    //     },
-    //     {
-    //         "dutyName": "FRONTEND_DEVELOPER",
-    //         "period": "3년 5개월"
-    //     }],
-    //     "skillStacks": ["아무것도못해요", "아무것도못해요", "아무것도못해요",]
-    // }
-
     return (
         <>
             <S.FixInformationContainer>
