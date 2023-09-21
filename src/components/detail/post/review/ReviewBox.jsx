@@ -13,8 +13,9 @@ const ReviewBox = (props) => {
 
   const { jwtToken } = useJwtToken();
 
-  const onReviewChange = async () => {
-    await getData();
+  const onReviewChange = () => {
+    setCursor(0);
+    getData();
   };
 
   const getData = async () => {
