@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from 'src/components/common/icon/Icon';
 
@@ -10,7 +10,10 @@ import { skillStackCategoryType } from './skillStackCategoryType';
 import { skillStackType } from './skillStackType';
 import PostCardItem from '../main/PostCardItem';
 
-const PostListLayout = () => {
+const ListPostLayout = () => {
+  // POST 키워드 조회 API
+  const [posts, setPosts] = useState([]);
+
   const [skillStackCategoryTypeData, setSkillStackCategoryTypeData] =
     useState(skillStackCategoryType);
   const [skillStackTypeData, setSkillStackTypeData] = useState(skillStackType);
@@ -47,6 +50,18 @@ const PostListLayout = () => {
       setSelectedItems3([...selectedItems3, item]);
     }
   };
+
+  // POST 카드 API
+  const getPostCard = async () => {
+    // const res = await axios.get(`https://codevelop.store/api/v1/post/search?word= &page=1&size=8`);
+    const res = await axios.get(`https://codevelop.store/api/v1/post/search?word= &page=1&size=8`);
+    setPosts(res.data.data.postList);
+    console.log(posts);
+  };
+
+  useEffect(() => {
+    getPostCard();
+  }, []);
 
   return (
     <S.ListWrapper>
@@ -137,4 +152,4 @@ const PostListLayout = () => {
   );
 };
 
-export default PostListLayout;
+export default ListPostLayout;

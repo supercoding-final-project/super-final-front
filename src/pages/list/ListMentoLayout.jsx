@@ -12,7 +12,7 @@ import { skillStackType } from './skillStackType';
 // import { useRecoilState } from 'recoil';
 // import { keywordAtom, mentorListAtom } from 'src/store/filter/recoilState';
 
-const MentoListLayout = () => {
+const ListMentoLayout = () => {
   // 필터링 더미데이터
   const [dutyTypeData, setDutyTypeData] = useState(dutyType);
   const [skillStackTypeData, setSkillStackTypeData] = useState(skillStackType);
@@ -219,4 +219,4 @@ const MentoListLayout = () => {
   );
 };
 
-export default MentoListLayout;
+export default ListMentoLayout;
