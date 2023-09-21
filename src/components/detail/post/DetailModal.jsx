@@ -57,7 +57,7 @@ const PostModal = (props) => {
             setShowModal={setShowModal}
             price={props.price}
             title={props.title}
-            mentorId={props.mentorId}
+            mentoId={props.mentoId}
           />
         </Modal>
       )}
