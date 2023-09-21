@@ -108,7 +108,7 @@ const MentiToMentoModal = ({ menti_access_token }) => {
       dutyMonthRef.current.value = '';
       return;
     }
-    let mentoCareer = duty + '||' + years + '년' + month + '개월';
+    let mentoCareer = duty + '||' + years + '년 ' + month + '개월';
     setCareerList((prev) => [...prev, mentoCareer]);
     duty = '';
     dutyYearRef.current.value = '';
