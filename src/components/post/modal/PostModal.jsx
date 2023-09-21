@@ -1,7 +1,7 @@
 // import axios from 'axios';
 import axios from 'axios';
 import { useCallback, useState } from 'react';
-import { unstable_HistoryRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import useJwtToken from 'src/hooks/useJwt';
 import { usePostRequest } from 'src/hooks/usePostRequest';
@@ -14,7 +14,7 @@ const PostModal = (props) => {
   const [price, setPrice] = useState(null);
   const { jwtToken } = useJwtToken();
   const updatePostData = usePostRequest();
-  const history = unstable_HistoryRouter(); // useHistory 추가
+  const history = useNavigate();
 
   const handleOnChange = useCallback(
     (e) => {
