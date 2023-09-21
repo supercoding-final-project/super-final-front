@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import useJwtToken from 'src/hooks/useJwt';
 import { usePostRequest } from 'src/hooks/usePostRequest';
+import { useShowToast } from 'src/hooks/useToast';
 import { postRequestAtom } from 'src/store/post/postRequestAtom';
 
 import * as S from './PostModal.style';
@@ -29,15 +30,20 @@ const PostModal = (props) => {
   );
 
   const postHandler = async () => {
-    props.setShowModal(false);
-    document.body.style.overflowY = 'auto';
-    const res = await axios.post('https://codevelop.store/api/v1/post', requestData, {
-      headers: {
-        Authorization: jwtToken,
-      },
-    });
-    const postId = res.data.data;
-    navigate(`/detail/${postId}`);
+    try {
+      const res = await axios.post('https://codevelop.store/api/v1/post', requestData, {
+        headers: {
+          Authorization: jwtToken,
+        },
+      });
+
+      props.setShowModal(false);
+      document.body.style.overflowY = 'auto';
+      const postId = res.data.data;
+      navigate(`/detail/${postId}`);
+    } catch (err) {
+      useShowToast(err.response.data.message, 'top-center', 2000);
+    }
   };
 
   return (
