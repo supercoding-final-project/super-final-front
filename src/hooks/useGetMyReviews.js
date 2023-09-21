@@ -14,5 +14,6 @@ export const useGetMyReviews = async (endPoint, setData) => {
       },
     },
   );
-  return setData(res.data.data.content);
+  setData(res.data.data.content);
+  return useGetMyReviews;
 };
