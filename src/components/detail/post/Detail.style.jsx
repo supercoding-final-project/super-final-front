@@ -122,9 +122,14 @@ export const PostApplicationModal = styled.div`
     border-radius: 4px;
     border: 0.5px solid #807e7d;
     display: flex;
-    align-items: center;
+    align-items: end;
     font-size: 20px;
     margin-bottom: 8px;
+    span {
+      color: #807e7d;
+      font-size: 12px;
+      margin-left: 5px;
+    }
   }
   .chose-date-box {
     width: 100%;
@@ -325,11 +330,12 @@ export const PostApplicationModal = styled.div`
         gap: 8px;
         .row {
           display: flex;
+          align-items: center;
           gap: 4px;
           font-size: 20px;
           font-weight: 200;
           .date {
-            width: 160px;
+            /* width: 160px; 원래*/
             padding: 4px 12px;
             display: flex;
             align-items: center;
@@ -350,6 +356,19 @@ export const PostApplicationModal = styled.div`
             background-color: #29cc61;
             color: #fcfcfb;
             font-weight: 700;
+          }
+          .selected-time {
+            background-color: #fcfcfb;
+            width: 17px;
+            height: 17px;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 16px;
+            color: #0f0f0f;
+            /* box-sizing: content-box; */
           }
         }
       }

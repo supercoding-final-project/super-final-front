@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useLinkClickHandler, useParams } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import Button from 'src/components/common/Button';
 import {
   postApplicationRequestAtom,
   postApplicationRequestSelectTimeSelector,
@@ -7,22 +10,28 @@ import {
 } from 'src/store/post/postApplicationAtom';
 
 const TimeCard = ({ timeState, setTimeState }) => {
+  const params = useParams();
+  const id = Number(params.postId);
   const atom = useRecoilValue(postApplicationRequestAtom);
 
   const setSelectTime = useSetRecoilState(postApplicationRequestSelectTimeSelector);
 
   const day = useRecoilValue(postQueryStringRequestSelector);
+  // console.log(day);
 
-  const response = {
-    success: true,
-    status: 200,
-    message: '멘토의 신청가능한 시간이 조회되었습니다.',
-    data: {
-      am: [2, 3, 4, 6, 7, 9, 10],
-      pm: [1, 4, 5, 6, 7, 10, 11, 12],
-    },
-  };
-  const mockData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const [res, setRes] = useState(null);
+  console.log('res:', res);
+
+  // const response = {
+  //   success: true,
+  //   status: 200,
+  //   message: '멘토의 신청가능한 시간이 조회되었습니다.',
+  //   data: {
+  //     am: [2, 3, 4, 6, 7, 9, 10],
+  //     pm: [1, 4, 5, 6, 7, 10, 11, 12],
+  //   },
+  // };
+  const mockData = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   const changeTimeState = (e) => {
     setTimeState(e.currentTarget.textContent);
@@ -30,6 +39,31 @@ const TimeCard = ({ timeState, setTimeState }) => {
 
   const [selectedTimesAM, setSelectedTimesAM] = useState([]);
   const [selectedTimesPM, setSelectedTimesPM] = useState([]);
+
+  const accesstoken =
+    'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjUyNTIsImF1dGhvcml0aWVzIjpbIk1FTlRFRSJdLCJpYXQiOjE2OTUwNTExMjQsImV4cCI6MTcyNjU4NzEyNH0.v0ly5U3mVe15JyctMOHxBT_YZUZev5szX623gy1ND8s';
+
+  const fetchDayClose = async () => {
+    // http://13.124.66.205:8080
+    try {
+      const response = await axios.get(
+        `https://codevelop.store/api/v1/post/day?postId=${id}&days=${day}`,
+
+        {
+          headers: {
+            Authorization: accesstoken,
+          },
+        },
+      );
+      console.log(response.data);
+      setRes(response.data.data);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+  useEffect(() => {
+    fetchDayClose();
+  }, [day]);
 
   // const fetchTimeDataAtom = useRecoilValue(postTimeDataSelector(5)); // 현재 에러 발생
 
@@ -55,11 +89,11 @@ const TimeCard = ({ timeState, setTimeState }) => {
 
   const handleTimeItemClick = (time) => {
     if (timeState === 'AM') {
-      console.log('am일때');
+      // console.log('am일때');
       if (selectedTimesAM.includes(time)) {
         setSelectedTimesAM((prevState) => prevState.filter((item) => item !== time));
         setTimeArray((prevTimeArray) => prevTimeArray.filter((item) => item !== time));
-      } else if (!response.data.am.includes(time)) {
+      } else if (!res?.am.includes(time)) {
         return;
       } else {
         setSelectedTimesAM((prevState) => [...prevState, time]);
@@ -69,7 +103,7 @@ const TimeCard = ({ timeState, setTimeState }) => {
       if (selectedTimesPM.includes(time)) {
         setSelectedTimesPM((prevState) => prevState.filter((item) => item !== time));
         setTimeArray((prevTimeArray) => prevTimeArray.filter((item) => item !== time + 12));
-      } else if (!response.data.pm.includes(time)) {
+      } else if (!res?.pm.includes(time)) {
         return;
       } else {
         setSelectedTimesPM((prevState) => [...prevState, time]);
@@ -85,9 +119,9 @@ const TimeCard = ({ timeState, setTimeState }) => {
         return 'chose';
       } else if (amChosenTimes?.includes(time)) {
         return 'chose';
-      } else if (mockData.includes(time) && response.data.am.includes(time)) {
+      } else if (mockData.includes(time) && res?.am.includes(time)) {
         return 'have';
-      } else if (!response.data.am.includes(time)) {
+      } else if (!res?.am.includes(time)) {
         return 'close';
       }
     } else if (timeState === 'PM') {
@@ -98,9 +132,9 @@ const TimeCard = ({ timeState, setTimeState }) => {
         return 'chose';
       } else if (pmChosenTimes?.includes(time)) {
         return 'chose';
-      } else if (mockData.includes(time) && response.data.pm.includes(time)) {
+      } else if (mockData.includes(time) && res?.pm.includes(time)) {
         return 'have';
-      } else if (!response.data.pm.includes(time)) {
+      } else if (!res?.pm.includes(time)) {
         return 'close';
       }
     }
@@ -135,7 +169,8 @@ const TimeCard = ({ timeState, setTimeState }) => {
         <div className={timeState === 'PM' ? 'active' : null} onClick={changeTimeState}>
           PM
         </div>
-        <button onClick={registerTime}>날짜등록</button>
+        {/* <button >날짜등록</button> */}
+        <Button text="날짜등록" onClick={registerTime} purpose="registerTime" />
       </div>
       <ul>
         {mockData.map((time, index) => (

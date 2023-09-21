@@ -20,7 +20,9 @@ const Application = ({ setShowModal, timeState, setTimeState }) => {
 
   return (
     <>
-      <div className="title">날짜 및 시간 선택</div>
+      <div className="title">
+        날짜 및 시간 선택 <span>(최소 1시간 선택)</span>
+      </div>
       <div className="chose-date-box">
         <div className="option-box">
           <div className="option-box-left">

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useJwtToken from 'src/hooks/useJwt';
 
 import PostInputBox from './input/PostInputBox';
 import PostModal from './modal/PostModal';
@@ -11,6 +12,8 @@ import MentoProfile from '../detail/MentoProfile';
 
 const PostBox = (props) => {
   const [mentorStack, setMentorStack] = useState([]);
+  // const { decodedToken } = useJwtToken();
+  // const mentorId = decodedToken?.mentorId || '';
 
   const stackLoader = (stack) => {
     setMentorStack(stack);
@@ -19,7 +22,7 @@ const PostBox = (props) => {
     <S.PostWrap>
       <PostModal recoilKey="price" setShowModal={props.setShowModal} />
       <S.PostContainer>
-        <MentoProfile stackLoader={stackLoader} />
+        <MentoProfile stackLoader={stackLoader} mentorId={1005} />
         <PostTitle recoilKey="title" />
         <PostLevel recoilKey="level" />
         <StackBox recoilKey="postStack" mentorStack={mentorStack} />
