@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import * as S from 'src/pages/my/mentoMyLayout.style';
-const MentiToMentoModal = ({ cookie }) => {
+const MentiToMentoModal = ({ cookie, setLoginState }) => {
   //멘토 정보 수정 인풋
 
   const [incumbentValue, setIncumbentValue] = useState('');
@@ -230,26 +230,29 @@ const MentiToMentoModal = ({ cookie }) => {
       console.log('입력안됬어요');
       return;
     }
-
-    const response = await axios
-      .post(
+    const body = {
+      company: incumbentRef.current.value,
+      careers: careerList,
+      skills: skillStackList,
+      introduction: introductionRef.current.value,
+    };
+    try {
+      const response = await axios.post(
         'https://codevelop.store/api/v1/users/role/join/mentor',
-        {
-          company: incumbentRef.current.value,
-          careers: careerObjects,
-          skills: skillStackList,
-          introduction: introductionRef.current.value,
-        },
+        body,
         {
           headers: {
             Authorization: cookie,
             'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
           },
         },
-      )
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
-    console.log(response);
+      );
+
+      console.log(response.data);
+      setLoginState('MENTOR');
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   return (
