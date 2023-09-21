@@ -30,6 +30,7 @@ export const ChatContainer = styled.div`
 `;
 
 export const PageUpBtn = styled.button`
+  margin: 0px auto;
   width: 60%;
 `;
 
