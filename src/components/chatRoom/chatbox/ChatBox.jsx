@@ -127,8 +127,8 @@ const ChatBox = (props) => {
 
     setPrevScrollTop(currentScrollTop);
 
-    scrollBarRef.current.scrollTop = currentScrollTop - scrollDiff;
     setPage((prevPage) => prevPage + 1);
+    scrollBarRef.current.scrollTop = currentScrollTop - scrollDiff;
   };
 
   useEffect(() => {
