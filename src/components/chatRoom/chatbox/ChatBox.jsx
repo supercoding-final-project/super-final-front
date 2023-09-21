@@ -15,6 +15,7 @@ const ChatBox = (props) => {
   const [data, setData] = useState([]);
   const [text, setText] = useState('');
   const [page, setPage] = useState(0);
+  let send = 0;
   const [prevId, setPrevId] = useState(null);
   const logEndRef = useRef(null);
 
@@ -48,6 +49,7 @@ const ChatBox = (props) => {
             stomp.subscribe(`/chatroom/${props.chatinfo.chatroomId}`, (message) => {
               const receiveMsg = JSON.parse(message.body);
               setData((prevData) => [...prevData, receiveMsg]);
+              send = send + 1;
             });
           });
         } catch (err) {
@@ -59,6 +61,7 @@ const ChatBox = (props) => {
   }, [sock, props.chatinfo.chatroomId]);
 
   const stompDisConnect = () => {
+    send = 0;
     try {
       if (stomp) {
         stomp.disconnect(() => {
@@ -146,7 +149,7 @@ const ChatBox = (props) => {
 
   useEffect(() => {
     cardEndRef.current.scrollIntoView({ behavior: 'smooth' });
-  }, [data]);
+  }, [send]);
 
   return (
     <S.ChatBox>
