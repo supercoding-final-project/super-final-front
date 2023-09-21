@@ -37,9 +37,10 @@ export const PageUpBtn = styled.button`
   padding-top: 1rem;
   position: sticky;
   top: 0;
-  background-color: ${theme.color.grey5};
+  background-color: ${theme.color.bgc5};
   border-radius: 1rem;
   border: none;
+  z-index: 30;
 `;
 
 export const DateLine = styled.div`
