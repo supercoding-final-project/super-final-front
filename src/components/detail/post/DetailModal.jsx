@@ -24,7 +24,7 @@ const PostModal = (props) => {
     await axios.post(
       'https://codevelop.store/api/v1/createchat',
       {
-        anotherUserId: props.mentorId,
+        mentorId: props.mentorId,
       },
       {
         headers: {

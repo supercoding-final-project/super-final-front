@@ -26,7 +26,7 @@ const MentoCardItem = (props) => {
     await axios.post(
       'https://codevelop.store/api/v1/createchat',
       {
-        anotherUserId: item.mentorId,
+        mentorId: item.mentorId,
       },
       {
         headers: {
