@@ -1,21 +1,34 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'src/components/common/Modal';
+import useJwtToken from 'src/hooks/useJwt';
 
 import * as S from './Detail.style';
 import PostApplicationModal from './PostApplicationModal';
 
 const PostModal = (props) => {
   const [showModal, setShowModal] = useState(false);
+  const { jwtToken } = useJwtToken();
 
   const handleModalOpen = () => {
     setShowModal(true);
     document.body.style.overflowY = 'hidden';
   };
 
-  // const postHandler = () => {
-  //   console.log('눌림');
-  // };
+  const createChatHandler = () => {
+    axios.post(
+      'https://codevelop.store/api/v1/createchat',
+      {
+        anotherUserId: props.mentorId,
+      },
+      {
+        headers: {
+          Authorization: jwtToken,
+        },
+      },
+    );
+  };
 
   return (
     <S.PostModal>
@@ -34,13 +47,14 @@ const PostModal = (props) => {
         </div>
         <div>
           <Link to="/chatroom">
-            <button>문의하기</button>
+            <button onClick={createChatHandler}>문의하기</button>
           </Link>
         </div>
       </S.ModalBtn>
       {showModal && (
         <Modal width="710px" height="617px" setShowModal={setShowModal}>
           <PostApplicationModal setShowModal={setShowModal} />
+          {/* 여기에 props.mentorId props로 주면 넘어갑니다~ */}
         </Modal>
       )}
     </S.PostModal>
