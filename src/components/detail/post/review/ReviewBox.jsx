@@ -17,22 +17,25 @@ const ReviewBox = (props) => {
   // };
 
   useEffect(() => {
-    const getMyReviews = async () => {
-      const res = await axios.get(
-        `https://codevelop.store/api/v1/reviews/${props.endPoint}?cursor=${cursor}&pageSize=5`,
-        {
-          headers: {
-            Authorization: jwtToken,
+    const getMyReviews = async (entries) => {
+      if (last) return;
+      if (entries[0].isIntersecting) {
+        const res = await axios.get(
+          `https://codevelop.store/api/v1/reviews/${props.endPoint}?cursor=${cursor}&pageSize=5`,
+          {
+            headers: {
+              Authorization: jwtToken,
+            },
           },
-        },
-      );
-      const newData = res.data.data.content;
-      if (newData.length > 0) {
-        setCursor(newData[newData.length - 1].props.cursorPoint);
+        );
+        const newData = res.data.data.content;
+        if (newData.length > 0) {
+          setCursor(newData[newData.length - 1].props.cursorPoint);
+        }
+        if (res.data.data.last) setLast(true);
+        else setLast(false);
+        setData((prevData) => [...prevData, ...newData]);
       }
-      if (res.data.data.last) setLast(true);
-      else setLast(false);
-      setData((prevData) => [...prevData, ...newData]);
     };
     const options = {
       root: null,
