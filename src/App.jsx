@@ -14,6 +14,7 @@ import MainLayout from './pages/main/MainLayout';
 import MentoMainLayout from './pages/main/MentoMainLayout';
 import MentiMyLayout from './pages/my/MentiMyLayout';
 import MentoMyLayout from './pages/my/MentoMyLayout';
+import ScreenLayout from './pages/screen/ScreenLayout';
 import GlobalFonts from '../public/fonts/index.js';
 
 function App() {

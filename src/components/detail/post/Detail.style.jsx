@@ -122,9 +122,14 @@ export const PostApplicationModal = styled.div`
     border-radius: 4px;
     border: 0.5px solid #807e7d;
     display: flex;
-    align-items: center;
+    align-items: end;
     font-size: 20px;
     margin-bottom: 8px;
+    span {
+      color: #807e7d;
+      font-size: 12px;
+      margin-left: 5px;
+    }
   }
   .chose-date-box {
     width: 100%;

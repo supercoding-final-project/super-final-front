@@ -19,14 +19,11 @@ const ScreenLayout = () => {
   });
 
   const [session, setSession] = useState(null);
-  // console.log(' session:', session);
   const [sessionStatus, setSessionStatus] = useState(undefined);
   const [token, setToken] = useState(null);
-  // console.log(' token:', token);
   const [myUserName, setMyUserName] = useState('채운');
   const [publisher, setPublisher] = useState(null);
-  // console.log(publisher);
-  // const [mainStreamManager, setMainStreamManager] = useState(undefined);
+
   const [subscribers, setSubscribers] = useState([]);
   const videoRef = useRef(null);
 
@@ -39,11 +36,9 @@ const ScreenLayout = () => {
     // OpenVidu 세션 생성 및 토큰 요청
     const createSessionAndToken = async () => {
       const sessionData = await fetchDataID(); // 세션 생성 요청
-      // console.log(sessionData);
       setSession(sessionData);
 
       const tokenData = await fetchDataConnection(sessionData); // 토큰 요청
-      // console.log(tokenData);
       setToken(tokenData);
 
       initializeSession(sessionData, tokenData);
@@ -57,12 +52,12 @@ const ScreenLayout = () => {
     const data = {
       mediaMode: 'ROUTED',
       recordingMode: 'MANUAL',
-      customSessionId: 'simchaewoon', //여기에 멘토 이름으로 세션ID
+      customSessionId: '', //여기에 멘토 이름으로 세션ID
     };
 
     //Base64로 변환해서 보내기
     const base64 = btoa('openviduapp:MY_SECRET');
-    // console.log(base64);
+    // console.log('Authorization :', `Basic ${base64}`);
 
     try {
       const response = await axios.post('http://13.124.66.205:8080/api/v1/video/create', data, {
@@ -71,11 +66,8 @@ const ScreenLayout = () => {
           'Content-Type': 'application/json',
         },
       });
-      // console.log('Authorization :', `Basic ${base64}`);
-      // console.log('성공 :', response.data);
-      // localStorage.setItem('sessionId', response.data);
       setSession(response.data.data);
-      console.log('session id :', response.data.data);
+      console.log('session id :', response);
       return response.data.data;
     } catch (error) {
       console.error('에러 :', error);
@@ -101,7 +93,7 @@ const ScreenLayout = () => {
           },
         },
       );
-      // console.log('성공 :', getResponse.data.data);
+      console.log('성공 :', getResponse);
       setToken(getResponse.data.data);
       return getResponse.data.data;
     } catch (error) {
@@ -110,10 +102,7 @@ const ScreenLayout = () => {
   };
 
   const initializeSession = async (sessionData, tokenData) => {
-    // OpenVidu 세션 초기화 및 연결
-    // OV = new OpenVidu();
-    // console.log(sessionData);
-    // console.log(OV);
+    console.log('가져온 토큰은 ', tokenData);
     const mySession = OV.initSession();
 
     try {
@@ -148,8 +137,8 @@ const ScreenLayout = () => {
     setSessionStatus(mySession);
   };
 
-  console.log('subscribers :::::', subscribers);
-  console.log('publisher :::::', publisher);
+  // console.log('subscribers :::::', subscribers);
+  // console.log('publisher :::::', publisher);
 
   useEffect(() => {
     if (publisher !== null && videoRef.current) {
@@ -273,7 +262,7 @@ const ScreenLayout = () => {
           </div>
         </div>
       </div>
-      <div className="chat">채팅</div>
+      {/* <div className="chat">채팅</div> */}
     </S.ScreenWrap>
   );
 };

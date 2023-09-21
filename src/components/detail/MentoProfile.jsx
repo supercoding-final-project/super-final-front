@@ -18,7 +18,6 @@ const MentoProfile = (props) => {
 
   useEffect(() => {
     getMentoData();
-    console.log(mentoData);
   }, [mentoId]);
 
   return (

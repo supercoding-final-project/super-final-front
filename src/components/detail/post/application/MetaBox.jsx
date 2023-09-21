@@ -1,11 +1,11 @@
 import Schedule from './Schedule';
 
-const MetaBox = () => {
+const MetaBox = ({ title }) => {
   return (
     <ul className="info-container">
       <li>
         <span className="label">POST명</span>
-        <span className="info">[프론트/백엔드]이력서 및 포트폴리오 전략 상담</span>
+        <span className="info">{title}</span>
       </li>
       <li>
         <span className="label">멘토</span>
