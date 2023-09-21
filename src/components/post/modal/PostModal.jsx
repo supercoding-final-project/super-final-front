@@ -14,7 +14,7 @@ const PostModal = (props) => {
   const [price, setPrice] = useState(null);
   const { jwtToken } = useJwtToken();
   const updatePostData = usePostRequest();
-  const history = useNavigate();
+  let navigate = useNavigate();
 
   const handleOnChange = useCallback(
     (e) => {
@@ -37,7 +37,7 @@ const PostModal = (props) => {
       },
     });
     const postId = res.data.data;
-    history.push(`/detail/${postId}`);
+    navigate(`/detail/${postId}`);
   };
 
   return (
