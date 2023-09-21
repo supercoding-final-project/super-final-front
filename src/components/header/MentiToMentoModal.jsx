@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import * as S from 'src/pages/my/mentoMyLayout.style';
-const MentiToMentoModal = ({ menti_access_token }) => {
+const MentiToMentoModal = ({ cookie }) => {
   //멘토 정보 수정 인풋
 
   const [incumbentValue, setIncumbentValue] = useState('');
@@ -242,7 +242,8 @@ const MentiToMentoModal = ({ menti_access_token }) => {
         },
         {
           headers: {
-            Authorization: menti_access_token,
+            Authorization: cookie,
+            'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
           },
         },
       )
