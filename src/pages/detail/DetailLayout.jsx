@@ -24,7 +24,7 @@ const DetailLayout = () => {
 
   return (
     <S.DetailWrap>
-      <DetailModal price={postData.price} title={postData.title} />
+      <DetailModal price={postData.price} title={postData.title} mentorId={postData.mentorId} />
       <div style={{ width: '40%', marginRight: '15%' }}>
         <MentoProfile mentorId={postData.mentorId} />
         <S.TitleBox>
