@@ -1,7 +1,8 @@
 
+import axios from 'axios';
 import { useEffect, useRef, useState } from 'react'
 import * as S from "src/pages/my/mentoMyLayout.style"
-const MentiToMentoModal = () => {
+const MentiToMentoModal = ({ menti_access_token }) => {
 
     //멘토 정보 수정 인풋
 
@@ -22,6 +23,9 @@ const MentiToMentoModal = () => {
 
     const dutyYearRef = useRef()
     const dutyMonthRef = useRef()
+
+    const incumbentRef = useRef()
+    const introductionRef = useRef()
 
 
 
@@ -180,7 +184,7 @@ const MentiToMentoModal = () => {
 
     useEffect(() => {
         setCareerObjects([])
-        const newcareerList = careerList.map(career => {
+        careerList.map(career => {
             let [dutyName, period] = career.split('||')
             setCareerObjects(prev => [
                 ...prev,
@@ -195,14 +199,38 @@ const MentiToMentoModal = () => {
     }, [careerList])
 
 
-    const switchToMentor = () => {
-        console.log("현직", incumbentValue)
-        console.log("자기소개", introductionValue)
+    const switchToMentor = async () => {
+        console.log("현직", incumbentRef.current.value)
+        console.log("자기소개", introductionRef.current.value)
         console.log("경력", careerList)
         console.log("기술스택", skillStackList)
         console.log("커리어객체", careerObjects)
+        if (!incumbentRef.current.value || !introductionRef.current.value || careerList.length === 0 || skillStackList.length === 0) {
+            console.log("입력안됬어요")
+            return
+        }
 
+
+        const response = await axios.post("https://codevelop.store/api/v1/users/role/join/mentor", {
+            "company": incumbentRef.current.value,
+            "careers": careerObjects,
+            "skills": skillStackList,
+            "introduction": introductionRef.current.value,
+        },
+            {
+                headers: {
+
+                    Authorization: menti_access_token
+
+                }
+            }
+        )
+            .then(res => console.log(res))
+            .catch(error => console.log(error))
+        console.log(response)
     }
+
+
 
     return (
         <>
@@ -259,11 +287,11 @@ const MentiToMentoModal = () => {
 
                 <S.FixInformationBox>
                     <S.FixInformationLabel> <span style={{ color: "red" }}>*</span> 현직</S.FixInformationLabel>
-                    <S.FixInformationMentiIncumbentJobInput placeholder='현재 직업을 입력해주세요' onChange={EnteredincumbentJobCheck} onKeyDown={keyEnterIncumbent} ></S.FixInformationMentiIncumbentJobInput>
+                    <S.FixInformationMentiIncumbentJobInput placeholder='현재 직업을 입력해주세요' ref={incumbentRef} onChange={EnteredincumbentJobCheck} onKeyDown={keyEnterIncumbent} ></S.FixInformationMentiIncumbentJobInput>
                 </S.FixInformationBox>
                 <S.FixInformationBox>
                     <S.FixInformationLabel> <span style={{ color: "red" }}>*</span> 자기소개</S.FixInformationLabel>
-                    <S.FixInformationMentiIncumbentJobInput placeholder='자기 소개를 입력해주세요' onChange={EnteredIntroductionCheck} onKeyDown={keyEnterIncumbent} ></S.FixInformationMentiIncumbentJobInput>
+                    <S.FixInformationMentiIncumbentJobInput placeholder='자기 소개를 입력해주세요' ref={introductionRef} onChange={EnteredIntroductionCheck} onKeyDown={keyEnterIncumbent} ></S.FixInformationMentiIncumbentJobInput>
                 </S.FixInformationBox>
                 <S.DivFlex>
                     <div onClick={addCareerButton}>추가</div>
