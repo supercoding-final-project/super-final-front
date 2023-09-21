@@ -78,12 +78,13 @@ const ReviewBox = (props) => {
     const getMyReviews = async (entries) => {
       if (last) return;
       if (entries[0].isIntersecting) {
-        const headers = {
-          Authorization: jwtToken,
-        };
         const res = await axios.get(
           `https://codevelop.store/api/v1/reviews/${props.endPoint}?cursor=${cursor}&pageSize=5`,
-          { headers },
+          {
+            headers: {
+              Authorization: jwtToken,
+            },
+          },
         );
         const newData = res.data.data.content;
         if (newData.length > 0) {
@@ -111,7 +112,7 @@ const ReviewBox = (props) => {
         cursorRef.current.disconnect();
       }
     };
-  }, [cursor, data]);
+  }, [cursor, data, jwtToken]);
   const triggerRef = useRef();
 
   return (
