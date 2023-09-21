@@ -41,16 +41,30 @@ const PostModal = (props) => {
           </div>
         </S.PostModalContainer>
       </S.PostModalWrap>
-      <S.ModalBtn>
-        <div>
-          <button onClick={handleModalOpen}>신청하기</button>
-        </div>
-        <div>
-          <Link to="/chatroom">
-            <button onClick={createChatHandler}>문의하기</button>
-          </Link>
-        </div>
-      </S.ModalBtn>
+      {props.permission ? (
+        <S.ModalBtn>
+          <div>
+            <button onClick={handleModalOpen}>수정하기</button>
+          </div>
+          <div>
+            <Link to="/chatroom">
+              <button onClick={createChatHandler}>삭제하기</button>
+            </Link>
+          </div>
+        </S.ModalBtn>
+      ) : (
+        <S.ModalBtn>
+          <div>
+            <button onClick={handleModalOpen}>신청하기</button>
+          </div>
+          <div>
+            <Link to="/chatroom">
+              <button onClick={createChatHandler}>문의하기</button>
+            </Link>
+          </div>
+        </S.ModalBtn>
+      )}
+
       {showModal && (
         <Modal width="710px" height="617px" setShowModal={setShowModal}>
           <PostApplicationModal

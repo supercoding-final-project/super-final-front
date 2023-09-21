@@ -26,12 +26,12 @@ const MentoCardItem = (props) => {
     axios.post(
       'https://codevelop.store/api/v1/createchat',
       {
-        anotherUserId: item.mentorId,
-      },
-      {
         headers: {
           Authorization: jwtToken,
         },
+      },
+      {
+        anotherUserId: item.mentorId,
       },
     );
   };
