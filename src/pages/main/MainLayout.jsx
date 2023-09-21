@@ -23,7 +23,8 @@ const MainLayout = () => {
   const [keyword, setKeyword] = useState(''); // 입력 값을 관리하는 상태
   const [activeTab, setActiveTab] = useState('mento'); // 초기값으로 'mento' 탭을 활성화
   const navigate = useNavigate();
-  // 멘토 키워드 조회 API - recoil ver
+  // POST 키워드 조회 API
+  const [posts, setPosts] = useState([]);
 
   const setCookie = (name, value, days) => {
     const date = new Date();
@@ -133,6 +134,18 @@ const MainLayout = () => {
     // 검색 결과를 state에 저장하고, 이를 렌더링하는 방식으로 구현할 수 있습니다.
   };
 
+  // POST 카드 API
+  const getPostCard = async () => {
+    // const res = await axios.get(`https://codevelop.store/api/v1/post/search?word= &page=1&size=8`);
+    const res = await axios.get(`https://codevelop.store/api/v1/post/search?word= &page=1&size=4`);
+    setPosts(res.data.data.postList);
+    console.log(posts);
+  };
+
+  useEffect(() => {
+    getPostCard();
+  }, []);
+
   return (
     <>
       <S.MainWrapper>
@@ -175,7 +188,9 @@ const MainLayout = () => {
               </p>
             </div>
             <ul>
-              <PostCardItem />
+              {posts.map((data, index, postId) => (
+                <PostCardItem key={index} data={data} id={postId} />
+              ))}
             </ul>
           </article>
         </S.MainCardsContainer>
