@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 import sockjs from 'sockjs-client/dist/sockjs';
 import { useFormattedTime } from 'src/hooks/useFormattedTime';
 import useJwtToken from 'src/hooks/useJwt';
@@ -18,7 +19,7 @@ const ChatBox = (props) => {
   const [prevId, setPrevId] = useState(null);
   const [lastChat, setLastChat] = useState('');
   const scrollBarRef = useRef();
-  const [prevScrollTop, setPrevScrollTop] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { formattedTime, updateFormattedTime, formatDate } = useFormattedTime();
   const cardEndRef = useRef(null);
@@ -74,7 +75,6 @@ const ChatBox = (props) => {
   };
 
   useEffect(() => {
-    setPrevScrollTop(scrollBarRef.current.scrollTop);
     const fetchPage = async () => {
       try {
         const res = await axios.get('https://codevelop.store/api/v1/message', {
@@ -122,17 +122,28 @@ const ChatBox = (props) => {
   };
 
   const pageUp = () => {
-    const currentScrollTop = scrollBarRef.current.scrollTop;
-    const scrollDiff = currentScrollTop - prevScrollTop;
-
-    setPrevScrollTop(currentScrollTop);
-
+    const temp = scrollBarRef.current.scrollHeight;
     setPage((prevPage) => prevPage + 1);
-    scrollBarRef.current.scrollTop = currentScrollTop - scrollDiff;
+    window.scrollTo(0, scrollBarRef.current.scrollHeight - temp);
+    setIsLoading(false);
+  };
+
+  const handleScroll = () => {
+    if (window.scrollY < 60 && !isLoading) {
+      setIsLoading(true);
+      setTimeout(pageUp, 1200);
+    }
   };
 
   useEffect(() => {
-    cardEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isLoading]);
+
+  useEffect(() => {
+    scrollBarRef.current.scrollTop = 0;
   }, [lastChat]);
 
   return (
@@ -167,7 +178,7 @@ const ChatBox = (props) => {
             />
           );
         })}
-        <div ref={cardEndRef}></div>
+        {isLoading && <div>로딩 중입니다.</div>}
         <ChattingBar
           chatHandler={chatHandler}
           sendHandler={sendMessage}
