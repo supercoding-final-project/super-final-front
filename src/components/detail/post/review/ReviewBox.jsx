@@ -18,45 +18,46 @@ const ReviewBox = (props) => {
   // };
 
   useEffect(() => {
-    const getMyReviews = async (entries) => {
-      if (last) return;
-      if (entries[0].isIntersecting) {
-        const res = await axios.get(
-          `https://codevelop.store/api/v1/reviews/${props.endPoint}?cursor=${cursor}&pageSize=5`,
-          {
-            headers: {
-              Authorization: jwtToken,
-            },
+    const getMyReviews = async () => {
+      // if (last) return;
+      // if (entries[0].isIntersecting) {
+      const res = await axios.get(
+        `https://codevelop.store/api/v1/reviews/${props.endPoint}?cursor=${cursor}&pageSize=5`,
+        {
+          headers: {
+            Authorization: jwtToken,
           },
-        );
-        const newData = res.data.data.content;
-        if (newData.length > 0) {
-          setCursor(newData[newData.length - 1].props.cursorPoint);
-        }
-        if (res.data.data.last) setLast(true);
-        else setLast(false);
-        setData((prevData) => [...prevData, ...newData]);
-      }
+        },
+      );
+      const newData = res.data.data.content;
+      // if (newData.length > 0) {
+      //   setCursor(newData[newData.length - 1].props.cursorPoint);
+      // }
+      // if (res.data.data.last) setLast(true);
+      // else setLast(false);
+      setData((prevData) => [...prevData, ...newData]);
+      // }
     };
-    const options = {
-      root: null,
-      rootMargin: '6px',
-      threshold: 0.7,
-    };
+    // const options = {
+    //   root: null,
+    //   rootMargin: '6px',
+    //   threshold: 0.7,
+    // };
 
-    cursorRef.current = new IntersectionObserver(getMyReviews, options);
+    // cursorRef.current = new IntersectionObserver(getMyReviews, options);
 
-    if (cursorRef.current) {
-      cursorRef.current.observe(triggerRef.current);
-    }
+    // if (cursorRef.current) {
+    //   cursorRef.current.observe(triggerRef.current);
+    // }
 
-    return () => {
-      if (cursorRef.current) {
-        cursorRef.current.disconnect();
-      }
-    };
-  }, [cursor, data]);
-  const triggerRef = useRef();
+    // return () => {
+    //   if (cursorRef.current) {
+    //     cursorRef.current.disconnect();
+    //   }
+    // };
+    getMyReviews();
+  }, [data]);
+  // const triggerRef = useRef();
 
   return (
     <S.ReviewBoxWrap>
@@ -78,7 +79,7 @@ const ReviewBox = (props) => {
             // onReviewChange={onReviewChange}
           />
         ))}
-        <div ref={triggerRef}></div>
+        {/* <div ref={triggerRef}></div> */}
       </S.ReviewBox>
     </S.ReviewBoxWrap>
   );
