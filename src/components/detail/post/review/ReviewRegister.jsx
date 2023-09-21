@@ -20,6 +20,7 @@ const ReviewRegister = (props) => {
     });
     props.setShowModal(false);
     document.body.style.overflowY = 'auto';
+    props.setCursor(0);
     props.onReviewChange();
     window.alert(res.data.message);
   };
