@@ -10,7 +10,7 @@ import { postRequestAtom } from 'src/store/post/postRequestAtom';
 import * as S from './PostModal.style';
 
 const PostModal = (props) => {
-  const [postId, setPostId] = useState(10);
+  const [postId, setPostId] = useState(null);
   const [requestData, setRequestData] = useRecoilState(postRequestAtom);
   const [price, setPrice] = useState(null);
   const { jwtToken } = useJwtToken();
@@ -35,7 +35,7 @@ const PostModal = (props) => {
         Authorization: jwtToken,
       },
     });
-    // setPostId(res.data.data.postId);
+    setPostId(res.data.data);
   };
   return (
     <S.PostModal>
