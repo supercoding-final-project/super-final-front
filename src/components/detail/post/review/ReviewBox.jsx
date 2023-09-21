@@ -13,9 +13,9 @@ const ReviewBox = (props) => {
 
   const { jwtToken } = useJwtToken();
 
-  const onReviewChange = () => {
+  const onReviewChange = async () => {
     setCursor(0);
-    getData();
+    await getData();
   };
 
   const getData = async () => {
@@ -82,6 +82,7 @@ const ReviewBox = (props) => {
             btnValue={props.btnValue}
             type={props.type}
             onReviewChange={onReviewChange}
+            setCursor={setCursor}
           />
         ))}
         <div ref={triggerRef}></div>
