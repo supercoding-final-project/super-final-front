@@ -33,6 +33,10 @@ const ButtonBox = ({ setShowModal, total }) => {
           },
         });
         console.log('성공적');
+        // alert('결제완료!');
+        setShowModal(false);
+        navigate(`/detail/${params.postId}`); // 결제로직
+        setStep('신청하기');
       } catch (error) {
         console.error(error.message);
       }
@@ -48,11 +52,7 @@ const ButtonBox = ({ setShowModal, total }) => {
     } else if (step === '정보확인&결제' && state === '이전으로') {
       setStep('신청하기');
     } else if (step === '정보확인&결제' && state === '결제하기') {
-      alert('결제완료!');
-      setShowModal(false);
-      navigate(`/detail/${params.postId}`); // 결제로직
       postPay();
-      setStep('신청하기');
     }
   };
   return (
