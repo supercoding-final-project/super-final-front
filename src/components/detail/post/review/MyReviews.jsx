@@ -10,6 +10,7 @@ const MyReviews = () => {
         btnValue="작성"
         endPoint="reviewable"
         type="POST"
+        cursorPoint="orderSheetId"
       />
       <ReviewBox
         title="내가 작성한 리뷰"
@@ -17,6 +18,7 @@ const MyReviews = () => {
         btnValue="삭제"
         endPoint="byUserId"
         type="REVIEW"
+        cursorPoint="reviewId"
       />
     </div>
   );
