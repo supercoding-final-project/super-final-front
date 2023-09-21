@@ -12,8 +12,8 @@ import MentoProfile from '../detail/MentoProfile';
 
 const PostBox = (props) => {
   const [mentorStack, setMentorStack] = useState([]);
-  const { decodedToken } = useJwtToken();
-  const mentorId = decodedToken?.mentorId || '';
+  // const { decodedToken } = useJwtToken();
+  // const mentorId = decodedToken?.mentorId || '';
 
   const stackLoader = (stack) => {
     setMentorStack(stack);
@@ -22,7 +22,7 @@ const PostBox = (props) => {
     <S.PostWrap>
       <PostModal recoilKey="price" setShowModal={props.setShowModal} />
       <S.PostContainer>
-        <MentoProfile stackLoader={stackLoader} mentorId={mentorId} />
+        <MentoProfile stackLoader={stackLoader} mentorId={1005} />
         <PostTitle recoilKey="title" />
         <PostLevel recoilKey="level" />
         <StackBox recoilKey="postStack" mentorStack={mentorStack} />

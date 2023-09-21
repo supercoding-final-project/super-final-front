@@ -34,6 +34,7 @@ const DetailLayout = () => {
         title={postData.title}
         mentoId={postData.mentorId}
         permission={postData.permission}
+        postId={postId}
       />
       <div style={{ width: '40%', marginRight: '15%' }}>
         <MentoProfile mentorId={postData.mentorId} />
