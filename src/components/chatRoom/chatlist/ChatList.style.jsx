@@ -6,6 +6,7 @@ export const ChatListWrap = styled.div`
   width: 20%;
   padding-left: 2rem;
   padding-right: 2rem;
+  overflow: auto;
 `;
 
 export const ChatListBox = styled.div`
