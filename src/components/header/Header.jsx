@@ -84,7 +84,7 @@ const Header = () => {
   };
   useEffect(() => {
     User();
-  }, [loginState, user]);
+  }, []);
 
   const checkUserInfo = () => {
     if (user === null) {
