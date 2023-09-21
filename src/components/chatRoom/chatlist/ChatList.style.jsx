@@ -4,6 +4,7 @@ export const ChatListWrap = styled.div`
   display: flex;
   justify-content: center;
   width: 20%;
+  height: 40rem;
   padding-left: 2rem;
   padding-right: 2rem;
   overflow: auto;
@@ -11,9 +12,7 @@ export const ChatListWrap = styled.div`
 
 export const ChatListBox = styled.div`
   width: 100%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  height: 100%;
 `;
 
 export const ChatListCardWrap = styled.div`
@@ -57,5 +56,7 @@ export const lastMsg = styled.div`
   margin-top: 1rem;
   height: 1rem;
   width: 100%;
-  overflow-x: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 `;
