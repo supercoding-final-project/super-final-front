@@ -16,7 +16,7 @@ const ChatBox = (props) => {
   const [text, setText] = useState('');
   const [page, setPage] = useState(0);
   const [prevId, setPrevId] = useState(null);
-  const [logEndRef] = useRef(null);
+  const logEndRef = useRef(null);
 
   const { formattedTime, updateFormattedTime, formatDate } = useFormattedTime();
   const cardEndRef = useRef(null);
@@ -79,7 +79,8 @@ const ChatBox = (props) => {
             page: page,
           },
           headers: {
-            Authorization: jwtToken,
+            Authorization:
+              'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjYsImF1dGhvcml0aWVzIjpbIk1FTlRFRSJdLCJpYXQiOjE2OTUzMTk1NDcsImV4cCI6MTY5NTMyMzE0N30.c9zjZW1c7pC_Ua_5kdpaj3toShOorrYczywtL-jY6x0',
           },
         });
         if (prevId === props.chatinfo.chatroomId) {
