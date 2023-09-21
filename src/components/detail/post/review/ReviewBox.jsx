@@ -55,7 +55,8 @@ const ReviewBox = (props) => {
         cursorRef.current.disconnect();
       }
     };
-  }, [cursor, data, jwtToken]);
+  }, [cursor, data, jwtToken, props]);
+
   const triggerRef = useRef();
 
   return (
