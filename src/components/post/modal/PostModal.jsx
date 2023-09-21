@@ -10,7 +10,7 @@ import { postRequestAtom } from 'src/store/post/postRequestAtom';
 import * as S from './PostModal.style';
 
 const PostModal = (props) => {
-  const [postId, setPostId] = useState(null);
+  const [redirectPath, setRedirectPath] = useState(null);
   const [requestData, setRequestData] = useRecoilState(postRequestAtom);
   const [price, setPrice] = useState(null);
   const { jwtToken } = useJwtToken();
@@ -35,8 +35,12 @@ const PostModal = (props) => {
         Authorization: jwtToken,
       },
     });
-    setPostId(res.data.data);
+    setRedirectPath(`/detail/${res.data.data}`);
   };
+
+  if (redirectPath) {
+    return <Link to={redirectPath} />;
+  }
   return (
     <S.PostModal>
       <S.PostModalWrap>
@@ -48,13 +52,11 @@ const PostModal = (props) => {
           </div>
         </S.PostModalContainer>
       </S.PostModalWrap>
-      {postId !== null && (
-        <Link to={`/detail/${postId}`}>
-          <S.ModalBtn>
-            <button onClick={postHandler}>등록하기</button>
-          </S.ModalBtn>
-        </Link>
-      )}
+      <S.ModalBtn>
+        <button onClick={postHandler} disabled={price.length === 0}>
+          등록하기
+        </button>
+      </S.ModalBtn>
     </S.PostModal>
   );
 };
