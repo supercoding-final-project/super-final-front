@@ -32,6 +32,7 @@ const PostModal = (props) => {
         },
       },
     );
+    navigate('/chatroom');
   };
 
   const handleDelete = async () => {
@@ -66,12 +67,10 @@ const PostModal = (props) => {
       {props.permission ? (
         <S.ModalBtn>
           <div>
-            <button onClick={handlePatch}>수정하기</button>
+            <button>수정하기</button>
           </div>
           <div>
-            <Link to="/chatroom">
-              <button onClick={handleDelete}>삭제하기</button>
-            </Link>
+            <button onClick={handleDelete}>삭제하기</button>
           </div>
         </S.ModalBtn>
       ) : (
@@ -80,9 +79,7 @@ const PostModal = (props) => {
             <button onClick={handleModalOpen}>신청하기</button>
           </div>
           <div>
-            <Link to="/chatroom">
-              <button onClick={createChatHandler}>문의하기</button>
-            </Link>
+            <button onClick={createChatHandler}>문의하기</button>
           </div>
         </S.ModalBtn>
       )}
@@ -93,7 +90,7 @@ const PostModal = (props) => {
             setShowModal={setShowModal}
             price={props.price}
             title={props.title}
-            mentoId={props.mentoId}
+            mentoId={props.mentorId}
           />
         </Modal>
       )}
