@@ -184,14 +184,7 @@ const MentoListLayout = () => {
             </div>
             {/* 합체 */}
             {/* <ul> */}
-            {/* {mentors.slice((currentPage - 1) * pageSize, currentPage * pageSize).map((mentor) => (
-                <MentoCardItem key={mentor.mentorId} data={mentor} />
-              ))} */}
-            {/* {(mentorsKeyword.length > 0 ? mentorsKeyword : mentors)
-                .slice((currentPage - 1) * pageSize, currentPage * pageSize)
-                .map((mentor) => (
-                  <MentoCardItem key={mentor.mentorId} data={mentor} />
-                ))} */}
+
             {/* </ul> */}
 
             {/* 이게 페이지네이션 */}
