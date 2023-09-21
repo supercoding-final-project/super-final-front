@@ -16,12 +16,10 @@ const ChatBox = (props) => {
   const [text, setText] = useState('');
   const [page, setPage] = useState(0);
   const [prevId, setPrevId] = useState(null);
-  const logEndRef = useRef(null);
 
   const { formattedTime, updateFormattedTime, formatDate } = useFormattedTime();
   const cardEndRef = useRef(null);
   const previousDateRef = useRef('');
-  const [isLoading, setIsLoading] = useState(false);
   const { jwtToken, decodedToken } = useJwtToken();
   const myId = decodedToken?.userId || '';
 
@@ -118,36 +116,18 @@ const ChatBox = (props) => {
     }
   };
 
+  const pageUp = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
+
   useEffect(() => {
-    const pageUp = (entries) => {
-      if (entries[0].isIntersecting) {
-        setIsLoading(true);
-        setPage((prevPage) => prevPage + 1);
-      }
-    };
-    const options = {
-      root: null,
-      rootMargin: '6px',
-      threshold: 0.7,
-    };
-
-    logEndRef.current = new IntersectionObserver(pageUp, options);
-
-    if (logEndRef.current) {
-      logEndRef.current.observe(logEndRef.current);
-    }
-
-    return () => {
-      if (logEndRef.current) {
-        logEndRef.current.disconnect();
-      }
-    };
-  }, []);
+    cardEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [data]);
 
   return (
     <S.ChatBox>
       <S.ChatContainer>
-        <div ref={logEndRef}></div>
+        <S.PageUpBtn onClick={pageUp}>이전 대화 불러오기</S.PageUpBtn>
         {data.map((log, index) => {
           if (log.dbSendAt !== previousDateRef.current) {
             previousDateRef.current = log.dbSendAt;
@@ -176,7 +156,7 @@ const ChatBox = (props) => {
             />
           );
         })}
-        {isLoading && <div>Loading...</div>}
+        <div ref={cardEndRef}></div>
         <ChattingBar
           chatHandler={chatHandler}
           sendHandler={sendMessage}
