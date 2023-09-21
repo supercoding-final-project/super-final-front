@@ -1,7 +1,7 @@
 // import axios from 'axios';
 import axios from 'axios';
 import { useCallback, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { unstable_HistoryRouter } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import useJwtToken from 'src/hooks/useJwt';
 import { usePostRequest } from 'src/hooks/usePostRequest';
@@ -10,11 +10,12 @@ import { postRequestAtom } from 'src/store/post/postRequestAtom';
 import * as S from './PostModal.style';
 
 const PostModal = (props) => {
-  const [redirectPath, setRedirectPath] = useState(null);
   const [requestData, setRequestData] = useRecoilState(postRequestAtom);
   const [price, setPrice] = useState(null);
   const { jwtToken } = useJwtToken();
   const updatePostData = usePostRequest();
+  const history = unstable_HistoryRouter(); // useHistory 추가
+
   const handleOnChange = useCallback(
     (e) => {
       const inputPrice = e.target.value;
@@ -35,12 +36,10 @@ const PostModal = (props) => {
         Authorization: jwtToken,
       },
     });
-    setRedirectPath(`/detail/${res.data.data}`);
+    const postId = res.data.data;
+    history.push(`/detail/${postId}`);
   };
 
-  if (redirectPath) {
-    return <Link to={redirectPath} />;
-  }
   return (
     <S.PostModal>
       <S.PostModalWrap>
