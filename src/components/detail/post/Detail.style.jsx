@@ -330,11 +330,12 @@ export const PostApplicationModal = styled.div`
         gap: 8px;
         .row {
           display: flex;
+          align-items: center;
           gap: 4px;
           font-size: 20px;
           font-weight: 200;
           .date {
-            width: 160px;
+            /* width: 160px; 원래*/
             padding: 4px 12px;
             display: flex;
             align-items: center;
@@ -355,6 +356,19 @@ export const PostApplicationModal = styled.div`
             background-color: #29cc61;
             color: #fcfcfb;
             font-weight: 700;
+          }
+          .selected-time {
+            background-color: #fcfcfb;
+            width: 17px;
+            height: 17px;
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 16px;
+            color: #0f0f0f;
+            /* box-sizing: content-box; */
           }
         }
       }
