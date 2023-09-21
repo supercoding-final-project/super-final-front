@@ -4,11 +4,10 @@ import { useEffect, useState } from 'react';
 import * as S from './post/Detail.style';
 
 const MentoProfile = (props) => {
-  const [mentoId, setMentoId] = useState(1005);
   const [mentoData, setMentoData] = useState({});
 
   const getMentoData = async () => {
-    const res = await axios.get(`https://codevelop.store/api/v1/mentors/detail/${mentoId}`);
+    const res = await axios.get(`https://codevelop.store/api/v1/mentors/detail/${props.mentorId}`);
     setMentoData(res.data.data);
 
     if (props.stackLoader) {

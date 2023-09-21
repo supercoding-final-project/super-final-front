@@ -26,7 +26,7 @@ const MentoCardItem = (props) => {
     axios.post(
       'https://codevelop.store/api/v1/createchat',
       {
-        anotherUserId: item.mentoId,
+        anotherUserId: item.mentorId,
       },
       {
         headers: {
@@ -82,7 +82,7 @@ const MentoCardItem = (props) => {
       </S.MainCardItem>
       {showModal && (
         <Modal setShowModal={setShowModal}>
-          <MentoDetail />
+          <MentoDetail mentorId={item.mentorId} />
         </Modal>
       )}
     </>
