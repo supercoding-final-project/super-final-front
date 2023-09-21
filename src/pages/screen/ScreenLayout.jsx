@@ -250,8 +250,8 @@ const ScreenLayout = () => {
       <div className="screenBox">
         <div className="screen">
           <div className="screen-other">
-            <div className="user"></div>
-            <div className="user"></div>
+            {/* <div className="user"></div>
+            <div className="user"></div> */}
 
             {option.screen && (
               <div className="share-screen">
