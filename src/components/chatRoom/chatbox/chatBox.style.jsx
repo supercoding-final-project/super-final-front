@@ -29,6 +29,10 @@ export const ChatContainer = styled.div`
   }
 `;
 
+export const PageUpBtn = styled.button`
+  width: 60%;
+`;
+
 export const DateLine = styled.div`
   font-size: 0.8rem;
   margin: 0 auto;

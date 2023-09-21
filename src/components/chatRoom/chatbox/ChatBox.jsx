@@ -16,7 +16,6 @@ const ChatBox = (props) => {
   const [text, setText] = useState('');
   const [page, setPage] = useState(0);
   const [prevId, setPrevId] = useState(null);
-  const [logEndRef] = useRef(null);
 
   const { formattedTime, updateFormattedTime, formatDate } = useFormattedTime();
   const cardEndRef = useRef(null);
@@ -117,32 +116,9 @@ const ChatBox = (props) => {
     }
   };
 
-  useEffect(() => {
-    const pageUp = (entries) => {
-      if (entries[0].isIntersecting) {
-        setPage((prevPage) => prevPage + 1);
-      }
-    };
-    const options = {
-      root: null,
-      rootMargin: '6px',
-      threshold: 0.7,
-    };
-
-    logEndRef.current = new IntersectionObserver(pageUp, options);
-
-    if (logEndRef.current) {
-      logEndRef.current.observe(triggerRef.current);
-    }
-
-    return () => {
-      if (logEndRef.current) {
-        logEndRef.current.disconnect();
-      }
-    };
-  }, []);
-
-  const triggerRef = useRef();
+  const pageUp = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
 
   useEffect(() => {
     cardEndRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -151,7 +127,7 @@ const ChatBox = (props) => {
   return (
     <S.ChatBox>
       <S.ChatContainer>
-        <div ref={triggerRef}></div>
+        <S.PageUpBtn onClick={pageUp}>이전 대화 불러오기</S.PageUpBtn>
         {data.map((log, index) => {
           if (log.dbSendAt !== previousDateRef.current) {
             previousDateRef.current = log.dbSendAt;
