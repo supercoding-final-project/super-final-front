@@ -28,7 +28,7 @@ const ReviewBox = (props) => {
       );
       const newData = res.data.data.content;
       if (newData.length > 0) {
-        setCursor(newData[newData.length - 1].reviewId);
+        setCursor(newData[newData.length - 1].props.cursorPoint);
       }
       if (res.data.data.last) setLast(true);
       else setLast(false);
@@ -71,7 +71,7 @@ const ReviewBox = (props) => {
             info={info}
             btnValue={props.btnValue}
             type={props.type}
-            onReviewChange={onReviewChange}
+            // onReviewChange={onReviewChange}
           />
         ))}
         <div ref={triggerRef}></div>
