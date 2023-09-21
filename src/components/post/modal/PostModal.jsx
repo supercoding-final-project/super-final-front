@@ -48,11 +48,15 @@ const PostModal = (props) => {
           </div>
         </S.PostModalContainer>
       </S.PostModalWrap>
-      <Link to={`/detail/${postId}`}>
-        <S.ModalBtn>
-          <button onClick={postHandler}>등록하기</button>
-        </S.ModalBtn>
-      </Link>
+      {postId !== null && (
+        <Link to={`/detail/${postId}`}>
+          <S.ModalBtn>
+            <button onClick={postHandler} disabled={price.length === 0}>
+              등록하기
+            </button>
+          </S.ModalBtn>
+        </Link>
+      )}
     </S.PostModal>
   );
 };
