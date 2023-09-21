@@ -84,7 +84,7 @@ const Header = () => {
   };
   useEffect(() => {
     User();
-  }, []);
+  }, [loginState, user]);
 
   const checkUserInfo = () => {
     if (user === null) {
@@ -131,7 +131,7 @@ const Header = () => {
 
   useEffect(() => {
     checkUserInfo();
-  }, [user]);
+  }, [user, loginState]);
 
   const clickToggle = (role) => {
     console.log(role);
