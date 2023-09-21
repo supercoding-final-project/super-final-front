@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Icon } from 'src/components/common/icon/Icon';
 
 import * as S from './chatBox.style';
@@ -18,9 +19,11 @@ const ChattingBar = (props) => {
         onKeyUp={handleKeyUp}
         value={props.text}
       />
-      <S.VideoChatBtn>
-        <Icon name="VideoChat" size={40}></Icon>
-      </S.VideoChatBtn>
+      <Link to="/screenroom">
+        <S.VideoChatBtn>
+          <Icon name="VideoChat" size={40}></Icon>
+        </S.VideoChatBtn>
+      </Link>
       <S.SendBtn onClick={props.sendHandler}>전송</S.SendBtn>
     </S.ChattingBarWrapper>
   );

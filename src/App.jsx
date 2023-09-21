@@ -1,8 +1,10 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import ScrollToTop from './globalLayout/ScrollToTop';
+import ToastProvider from './globalLayout/ToastProvider';
 import AuthLayout from './pages/auth/AuthLayout';
 // import MentiAuthLayout from './pages/auth/menti/MentiAuthLayout';
 import ChatRoomLayout from './pages/chat/ChatRoomLayout';
@@ -16,7 +18,6 @@ import MentiMyLayout from './pages/my/MentiMyLayout';
 import MentoMyLayout from './pages/my/MentoMyLayout';
 import ScreenLayout from './pages/screen/ScreenLayout';
 import GlobalFonts from '../public/fonts/index.js';
-import { RecoilRoot } from 'recoil';
 
 function App() {
   const router = createBrowserRouter([
@@ -98,6 +99,7 @@ const Root = () => {
           <Outlet />
         </main>
         <Footer />
+        <ToastProvider />
       </RecoilRoot>
     </>
   );
