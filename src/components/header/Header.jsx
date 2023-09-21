@@ -49,6 +49,7 @@ const Header = () => {
   };
 
   const mentiToMento = () => {
+    console.log("전환버튼누름 ")
     if (userInfo === null) {
       console.log('멘토로 전환하자!!');
       setMentiToMentoModal(true);
@@ -125,8 +126,8 @@ const Header = () => {
         </Modal>
       )}
       {mentiToMentoModal && (
-        <Modal setShowModal={setMentiToMentoModal} width="800px" height="700px">
-          <MentiToMentoModal />
+        <Modal setShowModal={setMentiToMentoModal} width="800px" height="900px">
+          <MentiToMentoModal menti_access_token={menti_access_token} />
         </Modal>
       )}
     </S.HeaderWrap>
