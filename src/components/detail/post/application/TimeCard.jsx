@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useLinkClickHandler, useParams } from 'react-router-dom';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import Button from 'src/components/common/Button';
 import {
   postApplicationRequestAtom,
   postApplicationRequestSelectTimeSelector,
@@ -7,11 +10,17 @@ import {
 } from 'src/store/post/postApplicationAtom';
 
 const TimeCard = ({ timeState, setTimeState }) => {
+  const params = useParams();
+  const id = Number(params.postId);
   const atom = useRecoilValue(postApplicationRequestAtom);
 
   const setSelectTime = useSetRecoilState(postApplicationRequestSelectTimeSelector);
 
   const day = useRecoilValue(postQueryStringRequestSelector);
+  // console.log(day);
+
+  const [res, setRes] = useState(null);
+  console.log('res:', res);
 
   const response = {
     success: true,
@@ -30,6 +39,29 @@ const TimeCard = ({ timeState, setTimeState }) => {
 
   const [selectedTimesAM, setSelectedTimesAM] = useState([]);
   const [selectedTimesPM, setSelectedTimesPM] = useState([]);
+
+  const accesstoken =
+    'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjUyNTIsImF1dGhvcml0aWVzIjpbIk1FTlRFRSJdLCJpYXQiOjE2OTUwNTExMjQsImV4cCI6MTcyNjU4NzEyNH0.v0ly5U3mVe15JyctMOHxBT_YZUZev5szX623gy1ND8s';
+
+  const fetchDayClose = async () => {
+    try {
+      const response = await axios.get(
+        `http://13.124.66.205:8080/api/v1/post/day?postId=${id}&days=${day}`,
+        {
+          headers: {
+            Authorization: accesstoken,
+          },
+        },
+      );
+      console.log(response.data);
+      // setRes(response.data.data);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+  useEffect(() => {
+    fetchDayClose();
+  }, [day]);
 
   // const fetchTimeDataAtom = useRecoilValue(postTimeDataSelector(5)); // 현재 에러 발생
 
@@ -55,7 +87,7 @@ const TimeCard = ({ timeState, setTimeState }) => {
 
   const handleTimeItemClick = (time) => {
     if (timeState === 'AM') {
-      console.log('am일때');
+      // console.log('am일때');
       if (selectedTimesAM.includes(time)) {
         setSelectedTimesAM((prevState) => prevState.filter((item) => item !== time));
         setTimeArray((prevTimeArray) => prevTimeArray.filter((item) => item !== time));
@@ -135,7 +167,8 @@ const TimeCard = ({ timeState, setTimeState }) => {
         <div className={timeState === 'PM' ? 'active' : null} onClick={changeTimeState}>
           PM
         </div>
-        <button onClick={registerTime}>날짜등록</button>
+        {/* <button >날짜등록</button> */}
+        <Button text="날짜등록" onClick={registerTime} purpose="registerTime" />
       </div>
       <ul>
         {mockData.map((time, index) => (

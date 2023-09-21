@@ -13,10 +13,6 @@ const PostModal = (props) => {
     document.body.style.overflowY = 'hidden';
   };
 
-  // const postHandler = () => {
-  //   console.log('눌림');
-  // };
-
   return (
     <S.PostModal>
       <S.PostModalWrap>
@@ -40,7 +36,11 @@ const PostModal = (props) => {
       </S.ModalBtn>
       {showModal && (
         <Modal width="710px" height="617px" setShowModal={setShowModal}>
-          <PostApplicationModal setShowModal={setShowModal} />
+          <PostApplicationModal
+            setShowModal={setShowModal}
+            price={props.price}
+            title={props.title}
+          />
         </Modal>
       )}
     </S.PostModal>

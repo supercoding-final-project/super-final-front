@@ -34,6 +34,19 @@ export const Button = styled.button`
           }
         `;
 
+      case 'registerTime':
+        return css`
+          width: 54px;
+          height: 22px;
+          padding: 4px 12px;
+          box-sizing: content-box;
+          border-radius: 4px;
+          background-color: #29cc61;
+          font-size: 15px;
+          font-weight: 700;
+          color: #fcfcfb;
+        `;
+
       default:
         return;
     }
