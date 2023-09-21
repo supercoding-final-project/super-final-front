@@ -73,15 +73,6 @@ const PostListLayout = () => {
               <span>직무</span>
             </h3>
             <ul>
-              {/* {dutyTypeData.map((item) => (
-                <li
-                  className={selectedItems.includes(item.id) ? 'active' : ''}
-                  key={item.id}
-                  onClick={() => handleTechClick(item.id)}
-                >
-                  {item.currentDuty}
-                </li>
-              ))} */}
               {skillStackCategoryTypeData.map((item) => (
                 <li
                   className={selectedItems1.includes(item.id) ? 'active' : ''}

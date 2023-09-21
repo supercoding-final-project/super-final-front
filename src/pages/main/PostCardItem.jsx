@@ -18,7 +18,7 @@ const PostCardItem = () => {
   return (
     <>
       {postListData.map((item) => (
-        <S.MainCardItem>
+        <S.MainCardItem key={item.id}>
           <h4>{item.title}</h4>
           <S.StackBox>
             <div className="stack">

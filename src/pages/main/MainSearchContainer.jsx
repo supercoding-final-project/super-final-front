@@ -1,14 +1,19 @@
 import * as S from './Main.style.jsx';
 import React, { useEffect, useState } from 'react';
-import ListSearchFilterContainer from '../list/ListSearchFilterContainer.jsx';
-import { Link, useNavigate } from 'react-router-dom';
+// import ListSearchFilterContainer from '../list/ListSearchFilterContainer.jsx';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import MainSearchLink from './MainSearchLink.jsx';
 
-const MainSearchContainer = () => {
+const MainSearchContainer = ({
+  activeTab,
+  handleTabClick,
+  handleSearch,
+  handleInputChange,
+  keyword,
+}) => {
+  // Top10 기술 스택 조회 API
   const [skillStacksData, setSkillStacksData] = useState([]); // API에서 가져온 데이터를 저장할 상태
-  const [activeTab, setActiveTab] = useState('mento'); // 초기값으로 'mento' 탭을 활성화
-  const [searchInput, setSearchInput] = useState('');
-  const navigate = useNavigate();
 
   useEffect(() => {
     // 컴포넌트가 마운트되었을 때 API GET 요청 보내기
@@ -23,24 +28,6 @@ const MainSearchContainer = () => {
         console.error('API 요청 에러:', error);
       });
   }, []); // 빈 배열을 전달하여 한 번만 실행되도록 설정
-
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
-
-  const handleInputChange = (e) => {
-    setSearchInput(e.target.value);
-  };
-
-  const handleSearch = () => {
-    if (activeTab === 'mento') {
-      navigate('/list/mento'); // 멘토 탭이 active일 때 '/list/mento'로 이동
-    } else if (activeTab === 'post') {
-      navigate('/list/post'); // POST 탭이 active일 때 '/list/post'로 이동
-    }
-    // 여기서 검색 결과를 필터링하고 표시하도록 로직을 추가하세요.
-    // 검색 결과를 state에 저장하고, 이를 렌더링하는 방식으로 구현할 수 있습니다.
-  };
 
   return (
     <S.MainSearchContainer>
@@ -62,18 +49,21 @@ const MainSearchContainer = () => {
         </S.MainSearchItem>
       </S.MainSearchList>
       <S.MainSearchBox>
-        <ListSearchFilterContainer
+        <MainSearchLink activeTab={activeTab} handleSearch={handleSearch} keyword={keyword} />
+        {/* <ListSearchFilterContainer
           searchInput={searchInput}
-          handleInputChange={handleInputChange}
+          activeTab={activeTab}
           handleSearch={handleSearch}
-        />
+          handleInputChange={handleInputChange}
+          keyword={keyword}
+        /> */}
       </S.MainSearchBox>
       <S.BestTechStackBox>
         <h3>BEST10 기술 스택</h3>
         <S.BestTechStackList>
           {skillStacksData.map((item) => (
-            <Link to="/list/post">
-              <S.BestTechStackItem key={item.skillStackName}>
+            <Link to="/list/post" key={item.skillStackName}>
+              <S.BestTechStackItem>
                 <div>
                   <img src={item.skillStackImg} alt={item.skillStackName} />
                 </div>
