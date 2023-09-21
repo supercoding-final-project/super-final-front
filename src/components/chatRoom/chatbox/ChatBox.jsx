@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
-import { useSetRecoilState } from 'recoil';
 import sockjs from 'sockjs-client/dist/sockjs';
 import { useFormattedTime } from 'src/hooks/useFormattedTime';
 import useJwtToken from 'src/hooks/useJwt';
@@ -18,8 +17,6 @@ const ChatBox = (props) => {
   const [page, setPage] = useState(0);
   const [prevId, setPrevId] = useState(null);
   const [lastChat, setLastChat] = useState('');
-  const scrollBarRef = useRef();
-  const [isLoading, setIsLoading] = useState(false);
 
   const { formattedTime, updateFormattedTime, formatDate } = useFormattedTime();
   const cardEndRef = useRef(null);
@@ -94,7 +91,7 @@ const ChatBox = (props) => {
         }
         setPrevId(props.chatinfo.chatroomId);
       } catch (error) {
-        console.error('에러', error);
+        console.error('HTTP 요청 중 오류 발생:', error);
       }
     };
     fetchPage();
@@ -122,32 +119,15 @@ const ChatBox = (props) => {
   };
 
   const pageUp = () => {
-    const temp = scrollBarRef.current.scrollHeight;
     setPage((prevPage) => prevPage + 1);
-    window.scrollTo(0, scrollBarRef.current.scrollHeight - temp);
-    setIsLoading(false);
-  };
-
-  const handleScroll = () => {
-    if (window.scrollY < 60 && !isLoading) {
-      setIsLoading(true);
-      setTimeout(pageUp, 1200);
-    }
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isLoading]);
-
-  useEffect(() => {
-    scrollBarRef.current.scrollTop = 0;
+    cardEndRef.current.scrollIntoView({ behavior: 'smooth' });
   }, [lastChat]);
 
   return (
-    <S.ChatBox ref={scrollBarRef}>
+    <S.ChatBox>
       <S.ChatContainer>
         <S.PageUpBtn onClick={pageUp}>이전 대화 불러오기</S.PageUpBtn>
         {data.map((log, index) => {
@@ -178,7 +158,7 @@ const ChatBox = (props) => {
             />
           );
         })}
-        {isLoading && <div>로딩 중입니다.</div>}
+        <div ref={cardEndRef}></div>
         <ChattingBar
           chatHandler={chatHandler}
           sendHandler={sendMessage}
