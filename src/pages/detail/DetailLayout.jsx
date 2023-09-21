@@ -32,7 +32,7 @@ const DetailLayout = () => {
       <DetailModal
         price={postData.price}
         title={postData.title}
-        mentoId={postData.mentorId}
+        mentorId={postData.mentorId}
         permission={postData.permission}
         postId={postId}
       />
@@ -45,7 +45,7 @@ const DetailLayout = () => {
         <S.StackBox>
           <div>기술스택</div>
           <div>
-            <S.StackImg src={postData.postStack} />
+            <S.StackImg src={postData.skillStackImg} />
           </div>
         </S.StackBox>
         <S.IntroTitle>소개</S.IntroTitle>

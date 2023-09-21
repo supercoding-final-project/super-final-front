@@ -46,7 +46,7 @@ export const StackImg = styled.img`
   height: 4rem;
   border-radius: 25rem;
   margin-right: 1rem;
-  background-color: grey;
+  border: 1px solid ${theme.color.grey5};
 `;
 
 export const IntroTitle = styled.div`
