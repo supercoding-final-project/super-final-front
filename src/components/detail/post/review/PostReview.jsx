@@ -5,52 +5,50 @@ import * as S from 'src/pages/detail/DetailLayout.style';
 import ReviewCard from './ReviewCard';
 
 const PostReview = (props) => {
+  const [last, setLast] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [cursor, setCursor] = useState(0);
   const cursorRef = useRef(null);
-
-  const getReviews = async () => {
-    const res = await axios.get(
-      `https://codevelop.store/api/v1/reviews/byPostId?postId=${
-        props.postId
-      }&cursor=${cursor}&pageSize=${10} `,
-    );
-    const newReviews = res.data.data.content;
-    setReviews((prevReviews) => [...prevReviews, ...newReviews]);
-    if (newReviews.length > 0) {
-      setCursor((prevCursor) => {
-        if (newReviews.length > 0) {
-          return newReviews[newReviews.length - 1].reviewId;
-        }
-        return prevCursor;
-      });
-    }
-  };
-
-  const handleIntersection = (entries) => {
-    if (entries[0].isIntersecting) {
-      getReviews();
-    }
-  };
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getReviews();
-    const observer = new IntersectionObserver(handleIntersection, {
+    const getReviews = async (entries) => {
+      if (last) return;
+      if (entries[0].isIntersecting) {
+        const res = await axios.get(
+          `https://codevelop.store/api/v1/reviews/byPostId?postId=${
+            props.postId
+          }&cursor=${cursor}&pageSize=${5} `,
+        );
+        const newReviews = res.data.data.content;
+        if (newReviews.length > 0) {
+          setCursor(newReviews[newReviews.length - 1].reviewId);
+        }
+        if (res.data.data.last) setLast(true);
+        else setLast(false);
+        setReviews((prevReviews) => [...prevReviews, ...newReviews]);
+      }
+    };
+    const options = {
       root: null,
-      rootMargin: '0px',
-      threshold: 1.0,
-    });
+      rootMargin: '6px',
+      threshold: 0.7,
+    };
+
+    cursorRef.current = new IntersectionObserver(getReviews, options);
 
     if (cursorRef.current) {
-      observer.observe(cursorRef.current);
+      cursorRef.current.observe(triggerRef.current);
     }
 
     return () => {
       if (cursorRef.current) {
-        observer.unobserve(cursorRef.current);
+        cursorRef.current.disconnect();
       }
     };
-  }, [props.postId]);
+  }, [cursor]);
+
+  const triggerRef = useRef();
 
   return (
     <>
@@ -60,7 +58,7 @@ const PostReview = (props) => {
           {reviews.map((d, i) => (
             <ReviewCard key={i} data={d} />
           ))}
-          <div ref={cursorRef}></div>
+          <div ref={triggerRef}></div>
         </S.ReviewBox>
       </S.ReviewList>
     </>
