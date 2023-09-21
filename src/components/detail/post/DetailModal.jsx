@@ -16,8 +16,8 @@ const PostModal = (props) => {
     document.body.style.overflowY = 'hidden';
   };
 
-  const createChatHandler = () => {
-    axios.post(
+  const createChatHandler = async () => {
+    await axios.post(
       'https://codevelop.store/api/v1/createchat',
       {
         anotherUserId: props.mentorId,
