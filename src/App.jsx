@@ -16,6 +16,7 @@ import MentiMyLayout from './pages/my/MentiMyLayout';
 import MentoMyLayout from './pages/my/MentoMyLayout';
 import ScreenLayout from './pages/screen/ScreenLayout';
 import GlobalFonts from '../public/fonts/index.js';
+import { RecoilRoot } from 'recoil';
 
 function App() {
   const router = createBrowserRouter([
@@ -89,13 +90,15 @@ export default App;
 const Root = () => {
   return (
     <>
-      <GlobalFonts />
-      <ScrollToTop />
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+      <RecoilRoot>
+        <GlobalFonts />
+        <ScrollToTop />
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </RecoilRoot>
     </>
   );
 };

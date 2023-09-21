@@ -1,6 +1,69 @@
+import axios from 'axios';
+import { useEffect, useRef, useState } from 'react';
+import useJwtToken from 'src/hooks/useJwt';
+
 import * as S from './Review.style';
 import ReviewList from './ReviewList';
+
 const ReviewBox = (props) => {
+  const [data, setData] = useState([]);
+  const [cursor, setCursor] = useState(0);
+  const [last, setLast] = useState(false);
+  const cursorRef = useRef(null);
+
+  const { jwtToken } = useJwtToken();
+
+  const onReviewChange = () => {
+    setCursor(0);
+    getData();
+  };
+
+  const getData = async () => {
+    const res = await axios.get(
+      `https://codevelop.store/api/v1/reviews/${props.endPoint}?cursor=${cursor}&pageSize=5`,
+      {
+        headers: {
+          Authorization: jwtToken,
+        },
+      },
+    );
+    const newData = res.data.data.content;
+    if (newData.length > 0) {
+      setCursor(newData[newData.length - 1][props.cursorPoint]);
+    }
+    if (res.data.data.last) setLast(true);
+    else setLast(false);
+    setData((prevData) => [...prevData, ...newData]);
+  };
+
+  useEffect(() => {
+    const getMyReviews = async (entries) => {
+      if (last) return;
+      if (entries[0].isIntersecting) {
+        getData();
+      }
+    };
+    const options = {
+      root: null,
+      rootMargin: '6px',
+      threshold: 0.7,
+    };
+
+    cursorRef.current = new IntersectionObserver(getMyReviews, options);
+
+    if (cursorRef.current) {
+      cursorRef.current.observe(triggerRef.current);
+    }
+
+    return () => {
+      if (cursorRef.current) {
+        cursorRef.current.disconnect();
+      }
+    };
+  }, [cursor, data, jwtToken]);
+
+  const triggerRef = useRef();
+
   return (
     <S.ReviewBoxWrap>
       <h1>{props.title}</h1>
@@ -12,15 +75,17 @@ const ReviewBox = (props) => {
             <div key={i}>{option}</div>
           ))}
         </S.BoxHeader>
-        {props.data.map((info, i) => (
+        {data.map((info, i) => (
           <ReviewList
             key={i}
             info={info}
             btnValue={props.btnValue}
             type={props.type}
-            onReviewChange={props.onReviewChange}
+            onReviewChange={onReviewChange}
+            setCursor={setCursor}
           />
         ))}
+        <div ref={triggerRef}></div>
       </S.ReviewBox>
     </S.ReviewBoxWrap>
   );

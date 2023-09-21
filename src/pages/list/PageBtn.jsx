@@ -5,6 +5,7 @@ const PageBtn = () => {
   const [totalPages, setTotalPages] = useState(6);
   const pageHandler = (page) => {
     setPage(page);
+    console.log(page);
   };
   return (
     <ul>

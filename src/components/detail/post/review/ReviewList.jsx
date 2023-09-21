@@ -22,6 +22,7 @@ const ReviewList = (props) => {
       },
     });
     window.alert(res.data.message);
+    props.setCursor(0);
     props.onReviewChange();
   };
 
@@ -33,6 +34,7 @@ const ReviewList = (props) => {
             title={info.title}
             orderSheetId={info.orderSheetId}
             onReviewChange={props.onReviewChange}
+            setCursor={props.setCursor}
             setShowModal={setShowModal}
           />
         </Modal>

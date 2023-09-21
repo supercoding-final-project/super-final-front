@@ -109,6 +109,9 @@ export const MainSearchBox = styled.div`
         &:focus {
           outline-color: ${theme.color.sub3};
         }
+        &::placeholder {
+          color: ${theme.color.sub3};
+        }
       }
     }
     button {
