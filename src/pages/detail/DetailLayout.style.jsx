@@ -1,3 +1,4 @@
+import { Icon } from 'src/components/common/icon/Icon';
 import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
 
@@ -76,9 +77,7 @@ export const Intro = styled.div`
 export const ReviewList = styled.div`
   margin-top: 2.5rem;
   padding-top: 2.5rem;
-  box-shadow:
-    0px -1px 0px rgba(128, 126, 125, 0.4),
-    0px 1px 0px rgba(128, 126, 125, 0.4);
+  box-shadow: 0px -1px 0px rgba(128, 126, 125, 0.4);
   margin-bottom: 2.5rem;
   padding-bottom: 2.5rem;
 `;
@@ -100,26 +99,24 @@ export const ReviewBox = styled.div`
   }
 `;
 
-export const ReviewCard = styled.div`
+export const ReviewCardWrap = styled.div`
   display: flex;
   margin-top: 1rem;
 `;
 
 export const Name = styled.div`
   display: flex;
-
-  align-items: center;
-  width: 30%;
+  width: 20%;
 `;
 
 export const Text = styled.div`
   display: flex;
-
   align-items: center;
   margin-right: 0.5rem;
 `;
 
 export const Rating = styled.div`
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -129,22 +126,36 @@ export const Rating = styled.div`
   color: white;
 `;
 
-export const ReviewPost = styled.div`
-  margin-top: 2.5rem;
-  margin-bottom: 10rem;
-
-  span {
-    font-size: 0.75rem;
-  }
+export const ReviewPostHeader = styled.div`
+  margin-top: 0.5rem;
+  display: flex;
+  width: 100%;
   div {
-    margin-top: 0.5rem;
+    margin-left: 1rem;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ${theme.color.grey3};
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    border-radius: 62.4375rem;
+    color: white;
   }
+`;
 
-  input {
+export const ReviewPost = styled.div`
+  width: 30rem;
+  height: 10rem;
+
+  textarea {
     border: none;
+    background-color: ${theme.color.grey3};
+    outline: none;
+    width: 100%;
+    height: 6rem;
+    color: white;
   }
   button {
+    margin-top: 3rem;
     font-size: 0.75rem;
     background-color: ${theme.color.point};
     border: none;
@@ -154,4 +165,12 @@ export const ReviewPost = styled.div`
     cursor: pointer;
     margin-top: 1rem;
   }
+`;
+
+export const StyledStar = styled(Icon)`
+  path {
+    fill: ${(props) => (props.isSelected ? `${theme.color.point}` : 'transparent')};
+  }
+  cursor: pointer;
+  stroke: ${(props) => (props.isSelected ? 'transparent' : `${theme.color.grey5}`)};
 `;

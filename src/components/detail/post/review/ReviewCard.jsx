@@ -3,14 +3,15 @@ import * as S from 'src/pages/detail/DetailLayout.style';
 
 const ReviewCard = (props) => {
   return (
-    <S.ReviewCard>
-      <S.Name>{props.data.name}</S.Name>
-      <S.Text>{props.data.review}</S.Text>
+    <S.ReviewCardWrap>
+      <S.Name>{props.data.nickname}</S.Name>
+      <S.Text>{props.data.content}</S.Text>
       <S.Rating>
         <Icon name="Star" color="white" />
-        {props.data.rating}
+        {props.data.star}
       </S.Rating>
-    </S.ReviewCard>
+      {/* 회차 정보 입력 */}
+    </S.ReviewCardWrap>
   );
 };
 

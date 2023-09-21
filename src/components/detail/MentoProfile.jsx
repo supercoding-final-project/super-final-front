@@ -1,21 +1,34 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
 import * as S from './post/Detail.style';
 
-const MentoProfile = () => {
-  const mock = {
-    career: ['프론트엔드 2년 1개월', '백엔드 1년 2개월'],
-    stack: ['React.js', 'Typescript', 'Next.js'],
-    job: '토스뱅크 개발자',
+const MentoProfile = (props) => {
+  const [mentoId, setMentoId] = useState(1005);
+  const [mentoData, setMentoData] = useState({});
+
+  const getMentoData = async () => {
+    const res = await axios.get(`https://codevelop.store/api/v1/mentors/detail/${mentoId}`);
+    setMentoData(res.data.data);
+
+    if (props.stackLoader) {
+      props.stackLoader(res.data.data.mentorSkillStackList);
+    }
   };
-  const careerLi = mock.career.map((item, index) => <li key={index}>{item}</li>);
-  const stackLi = mock.stack.map((item, index) => <li key={index}>{item}</li>);
+
+  useEffect(() => {
+    getMentoData();
+    console.log(mentoData);
+  }, [mentoId]);
+
   return (
     <S.MentoProfileBox>
       <S.SmallFont>멘토 소개</S.SmallFont>
       <S.ImgAndName>
-        <img></img>
-        나는야 멘토
+        <img src={mentoData.thumbnailImageUrl}></img>
+        {mentoData.nickname}
       </S.ImgAndName>
-      <S.JobAndIntro>[프론트엔드] 전 진짜 대충하는 멘토에요</S.JobAndIntro>
+      <S.JobAndIntro>{mentoData.introduction}</S.JobAndIntro>
       <S.SmallFont>멘토 이력</S.SmallFont>
       <S.Summary>
         <S.Career>
@@ -28,12 +41,18 @@ const MentoProfile = () => {
         <S.CareerList>
           <ol>
             <li>
-              <ul>{careerLi}</ul>
+              <ul>
+                {mentoData.mentorCareerList &&
+                  mentoData.mentorCareerList.map((c, i) => <li key={i}>{c.fullString}</li>)}
+              </ul>
             </li>
             <li>
-              <ul>{stackLi}</ul>
+              <ul>
+                {mentoData.mentorSkillStackList &&
+                  mentoData.mentorSkillStackList.map((c, i) => <li key={i}>{c.skillStackName}</li>)}
+              </ul>
             </li>
-            <li>{mock.job}</li>
+            <li>{mentoData.company}</li>
           </ol>
         </S.CareerList>
       </S.Summary>

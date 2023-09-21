@@ -1,17 +1,16 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Button from 'src/components/common/Button.jsx';
-import { Icon } from 'src/components/common/icon/Icon.jsx';
-import { theme } from 'src/globalLayout/GlobalStyle.js';
 
 import * as S from './Main.style.jsx';
+import MainSearchContainer from './MainSearchContainer.jsx';
 import MentoCardItem from './MentoCardItem.jsx';
 import PostCardItem from './PostCardItem.jsx';
 
 const MainLayout = () => {
   const [accessToken, setAccessToken] = useState('');
   const [refreshToken, setRefreshToken] = useState('');
+  const [mentors, setMentors] = useState([]);
 
   const setCookie = (name, value, days) => {
     const date = new Date();
@@ -58,9 +57,6 @@ const MainLayout = () => {
         setCookie('access_token', accessToken, 1);
         // 리프레쉬 토큰을 쿠키에 30일간 저장;
         setCookie('refresh_token', refreshToken, 30);
-
-        console.log('Access Token:', accessToken);
-        console.log('Refresh Token:', refreshToken);
       })
       .catch((err) => {
         console.error(err);
@@ -80,72 +76,23 @@ const MainLayout = () => {
     };
   }, []);
 
+  const getMentoCard = async () => {
+    const res = await axios.get('https://codevelop.store/api/v1/mentors?pageSize=4');
+    setMentors(res.data.data.content);
+    console.log(mentors);
+  };
+
+  useEffect(() => {
+    getMentoCard();
+  }, []);
+
   return (
     <>
       <S.MainWrapper>
         <S.StartCodeReviewBox>
           <Link to="/auth">코드 리뷰 시작하기!</Link>
         </S.StartCodeReviewBox>
-        <S.MainSearchContainer>
-          <S.MainSearchList>
-            <S.MainSearchItem className="active">멘토</S.MainSearchItem>
-            <S.MainSearchItem>POST</S.MainSearchItem>
-          </S.MainSearchList>
-          <S.MainSearchBox>
-            <form>
-              <Icon name="Search" />
-              <label>
-                <input type="text" />
-              </label>
-              <button>검색</button>
-            </form>
-          </S.MainSearchBox>
-          <S.BestTechStackBox>
-            <h3>BEST10 기술 스택</h3>
-            <S.BestTechStackList>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>Swift</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>JavaScript</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>Vue</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>Nextjs</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>Nodejs</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>Flutter</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>Kotlin</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>React</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>MSSQL</span>
-              </S.BestTechStackItem>
-              <S.BestTechStackItem>
-                <div></div>
-                <span>jQuery</span>
-              </S.BestTechStackItem>
-            </S.BestTechStackList>
-          </S.BestTechStackBox>
-        </S.MainSearchContainer>
+        <MainSearchContainer />
         <S.MainCardsContainer>
           <article>
             <div>
@@ -157,10 +104,9 @@ const MainLayout = () => {
               </p>
             </div>
             <ul>
-              <MentoCardItem />
-              <MentoCardItem />
-              <MentoCardItem />
-              <MentoCardItem />
+              {mentors.map((data, index) => (
+                <MentoCardItem key={index} data={data} />
+              ))}
             </ul>
           </article>
           <article>
@@ -173,9 +119,6 @@ const MainLayout = () => {
               </p>
             </div>
             <ul>
-              <PostCardItem />
-              <PostCardItem />
-              <PostCardItem />
               <PostCardItem />
             </ul>
           </article>

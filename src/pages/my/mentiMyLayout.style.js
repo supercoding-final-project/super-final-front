@@ -27,9 +27,9 @@ width: 100%;
 
 export const NavBarContainer = styled.div`
  width: 250px;
- height: 100vh;
  padding-top: 2rem;
  background-color: white;
+ height: 100vh;
 
 `
 
@@ -321,6 +321,7 @@ letter-spacing: -0.5px;
 
 export const NickNameFixButton = styled.button`
 cursor: pointer;
+
 color: white;
 display: flex;
 padding: 12px 24px;

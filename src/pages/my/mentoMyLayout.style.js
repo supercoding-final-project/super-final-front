@@ -1,8 +1,10 @@
+import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
 
 export const DisFlex = styled.div`
     display: flex;
-    ;
+
+    
 `
 export const DisFlexStartCenter = styled.div`
 display: flex;
@@ -20,9 +22,20 @@ export const DivFlex = styled.div`
     ;
 `
 
+export const DivGrid = styled.div`
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    justify-content: center;
+    align-items: center
+    ;
+`
+
+
 export const DivFlexColumn = styled.div`
 width: 100%;
     display: flex;
+    height: 100%;
     flex-direction: column;
 `
 
@@ -126,14 +139,14 @@ export const CalendarContainer = styled.div`
 `
 export const FixInformationContainer = styled.div`
  display: flex;
-width: 955px;
-padding: 40px;
+padding: 20px;
 flex-direction: column;
 align-items: flex-start;
 gap: 40px;
 border-radius: 12px;
 border: 0.5px solid #808080;
 margin-bottom: 1rem;
+background-color: white;
 `
 
 export const Label = styled.label`
@@ -294,7 +307,7 @@ justify-content: start;
 align-items: center;
 `
 export const FixInformationLabel = styled.div`
-width: 70px;
+width: 80px;
  color: #000;
 font-family: Abel;
 font-size: 20px;
@@ -322,7 +335,6 @@ letter-spacing: -0.5px;
 
 
 export const NickNameFixButton = styled.button`
-
 cursor: pointer;
 color: white;
 padding: 12px 24px;
@@ -364,7 +376,7 @@ font-style: normal;
 line-height: 140%; /* 28px */
 letter-spacing: -0.5px;
 display: flex;
-width: 200px;
+width: 300px;
 padding: 12px 24px;
 align-items: center;
 border-radius: 4px;
@@ -458,14 +470,25 @@ justify-content: center;
 align-items: center;
 border-radius: 5px;
 background-color: aliceblue;
-padding: 5px 15px;
+padding: 5px 5px;
 margin-left: 1rem;
 margin-top: 1rem;
+font-size: 0.8rem;
+transition: 0.3s ;
+cursor: pointer;
+&:hover{
+    color: red;
+    scale:1.02;
+}
 `
 
 export const dutyTagDeleteButton = styled.button`
     cursor: pointer;
     margin-left: 5px;
+    border-style: none;
+    padding: 2px 4px;
+    color:white;
+    background-color: #CCCBCA;
 `
 
 export const introductionMentor = styled.textarea`
@@ -473,4 +496,15 @@ export const introductionMentor = styled.textarea`
     outline: none;
     resize: none;
 
+`
+
+export const SkillStackSelect = styled.select`
+    font-family: Pretendard;
+font-size: 20px;
+font-style: normal;
+line-height: 140%;
+padding: 12px 12px;
+align-items: center;
+border-radius: 4px;
+border: 0.5px solid #808080;
 `

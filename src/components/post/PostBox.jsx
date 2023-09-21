@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import PostInputBox from './input/PostInputBox';
 import PostModal from './modal/PostModal';
 import * as S from './PostBox.style';
@@ -5,15 +7,22 @@ import PostLevel from './PostLevel';
 import PostTitle from './PostTitle';
 import StackBox from './StackBox';
 import { Icon } from '../common/icon/Icon';
+import MentoProfile from '../detail/MentoProfile';
 
-const PostBox = () => {
+const PostBox = (props) => {
+  const [mentorStack, setMentorStack] = useState([]);
+
+  const stackLoader = (stack) => {
+    setMentorStack(stack);
+  };
   return (
     <S.PostWrap>
-      <PostModal recoilKey="price" />
+      <PostModal recoilKey="price" setShowModal={props.setShowModal} />
       <S.PostContainer>
+        <MentoProfile stackLoader={stackLoader} />
         <PostTitle recoilKey="title" />
         <PostLevel recoilKey="level" />
-        <StackBox recoilKey="postStack" />
+        <StackBox recoilKey="postStack" mentorStack={mentorStack} />
         <S.InputTitle>
           <Icon name="Review" />
           소개

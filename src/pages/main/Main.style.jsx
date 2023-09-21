@@ -147,7 +147,7 @@ export const BestTechStackBox = styled.div`
 
 export const BestTechStackList = styled.ul`
   margin: 0 auto;
-  width: 506px;
+  width: 580px;
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
@@ -164,9 +164,13 @@ export const BestTechStackItem = styled.li`
     height: 80px;
     border-radius: 80px;
     border: 0.5px solid ${theme.color.grey4};
-    background-size: cover;
-    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
+    img {
+      width: 80%;
+    }
   }
   span {
     color: ${theme.color.grey1};
@@ -221,8 +225,8 @@ export const MainCardsContainer = styled.div`
       width: 1280px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      /* column-gap: 40.5px; */
-      column-gap: 43.5px;
+      /* column-gap: 43.5px; */
+      column-gap: 50px;
       row-gap: 40px;
     }
   }
