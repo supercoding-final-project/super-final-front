@@ -17,7 +17,7 @@ const MentoProfile = (props) => {
 
   useEffect(() => {
     getMentoData();
-  }, [mentoId]);
+  }, [props.mentorId]);
 
   return (
     <S.MentoProfileBox>
