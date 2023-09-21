@@ -79,8 +79,7 @@ const ChatBox = (props) => {
             page: page,
           },
           headers: {
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjYsImF1dGhvcml0aWVzIjpbIk1FTlRFRSJdLCJpYXQiOjE2OTUzMTk1NDcsImV4cCI6MTY5NTMyMzE0N30.c9zjZW1c7pC_Ua_5kdpaj3toShOorrYczywtL-jY6x0',
+            Authorization: jwtToken,
           },
         });
         if (prevId === props.chatinfo.chatroomId) {
