@@ -14,25 +14,25 @@ const MetaBox = ({ title, mentoId }) => {
   }
 
   const cookie = getCookie('access_token');
-  console.log(cookie);
+  // console.log(cookie);
 
   const mentiName = async () => {
     try {
-      console.log(cookie);
+      // console.log(cookie);
       const response = await axios.get(`https://codevelop.store/api/v1/users/info`, {
         headers: {
           Authorization: cookie,
           'Content-Type': 'application/json',
         },
       });
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setMentiNick(response.data.data.nickname);
       return response.data.data.nickname;
     } catch (error) {
       console.error(error.message);
     }
   };
-  console.log(mentiName);
+  // console.log(mentiName);
 
   const mentoName = async () => {
     try {
@@ -41,7 +41,7 @@ const MetaBox = ({ title, mentoId }) => {
           'Content-Type': 'application/json',
         },
       });
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setMentoNick(response.data.data.nickname);
       return response.data.data.nickname;
     } catch (error) {
