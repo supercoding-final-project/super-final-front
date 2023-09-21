@@ -17,6 +17,8 @@ const ChatBox = (props) => {
   const [page, setPage] = useState(0);
   const [prevId, setPrevId] = useState(null);
   const [lastChat, setLastChat] = useState('');
+  const scrollBarRef = useRef();
+  const [prevScrollTop, setPrevScrollTop] = useState(0);
 
   const { formattedTime, updateFormattedTime, formatDate } = useFormattedTime();
   const cardEndRef = useRef(null);
@@ -72,6 +74,7 @@ const ChatBox = (props) => {
   };
 
   useEffect(() => {
+    setPrevScrollTop(scrollBarRef.current.scrollTop);
     const fetchPage = async () => {
       try {
         const res = await axios.get('https://codevelop.store/api/v1/message', {
@@ -91,7 +94,7 @@ const ChatBox = (props) => {
         }
         setPrevId(props.chatinfo.chatroomId);
       } catch (error) {
-        console.error('HTTP 요청 중 오류 발생:', error);
+        console.error('에러', error);
       }
     };
     fetchPage();
@@ -119,6 +122,12 @@ const ChatBox = (props) => {
   };
 
   const pageUp = () => {
+    const currentScrollTop = scrollBarRef.current.scrollTop;
+    const scrollDiff = currentScrollTop - prevScrollTop;
+
+    setPrevScrollTop(currentScrollTop);
+
+    scrollBarRef.current.scrollTop = currentScrollTop - scrollDiff;
     setPage((prevPage) => prevPage + 1);
   };
 
@@ -127,7 +136,7 @@ const ChatBox = (props) => {
   }, [lastChat]);
 
   return (
-    <S.ChatBox>
+    <S.ChatBox ref={scrollBarRef}>
       <S.ChatContainer>
         <S.PageUpBtn onClick={pageUp}>이전 대화 불러오기</S.PageUpBtn>
         {data.map((log, index) => {
