@@ -4,8 +4,13 @@ import LeftNavbar from 'src/components/mypage/LeftNavbar';
 import MentiInformation from 'src/components/mypage/menti/MentiInformation';
 import * as S from 'src/pages/my/mentiMyLayout.style';
 
-const accesstoken =
-  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjYsImF1dGhvcml0aWVzIjpbIk1FTlRFRSJdLCJpYXQiOjE2OTUyNDEwODEsImV4cCI6MTY5NTI0NDY4MX0.EMQEeuVrFaCWe21N4xm_9QGblOxTbnuvS4mElbmmq6g';
+const accesstoken = getCookie('access_token');
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
 //포인트조회하기
 const userpoint = async () => {
   try {
