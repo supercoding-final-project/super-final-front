@@ -81,7 +81,7 @@ const MentoCardItem = (props) => {
         </S.MainCardButtonBox>
       </S.MainCardItem>
       {showModal && (
-        <Modal setShowModal={setShowModal}>
+        <Modal setShowModal={setShowModal} width="70rem" height="55rem">
           <MentoDetail mentorId={item.mentorId} />
         </Modal>
       )}

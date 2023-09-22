@@ -9,6 +9,7 @@ const PostReview = (props) => {
   const [reviews, setReviews] = useState([]);
   const [cursor, setCursor] = useState(0);
   const cursorRef = useRef(null);
+  const [noReview, setNoReview] = useState(false);
   // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,6 +24,7 @@ const PostReview = (props) => {
         const newReviews = res.data.data.content;
         if (newReviews.length > 0) {
           setCursor(newReviews[newReviews.length - 1].reviewId);
+          setNoReview(true);
         }
         if (res.data.data.last) setLast(true);
         else setLast(false);
@@ -55,9 +57,11 @@ const PostReview = (props) => {
       <S.ReviewList>
         <S.ReviewTitle>멘티의 한 줄 리뷰</S.ReviewTitle>
         <S.ReviewBox>
-          {reviews.map((d, i) => (
-            <ReviewCard key={i} data={d} />
-          ))}
+          {noReview ? (
+            reviews.map((d, i) => <ReviewCard key={i} data={d} />)
+          ) : (
+            <div>등록된 리뷰가 없습니다!</div>
+          )}
           <div ref={triggerRef}></div>
         </S.ReviewBox>
       </S.ReviewList>

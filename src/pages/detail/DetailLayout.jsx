@@ -15,9 +15,10 @@ const DetailLayout = () => {
   const { jwtToken } = useJwtToken();
 
   const getPostData = async () => {
+    const token = jwtToken;
     const res = await axios.get(`https://codevelop.store/api/v1/post/${postId}`, {
       headers: {
-        Authorization: jwtToken,
+        Authorization: token,
       },
     });
     setPostData(res.data.data);
