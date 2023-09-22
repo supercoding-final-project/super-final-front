@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 // const PageBtn = ({ mentorsPaging, setMentorsPaging }) => {
-const PageBtn = ({ totalPages, currentPage, onPageChange }) => {
+const PageMentorBtn = ({ totalPages, currentPage, onPageChange }) => {
   // const [page, setPage] = useState(1);
   // // const [totalPages, setTotalPages] = useState(6);
   // // const [totalPages, setTotalPages] = useState([]);
@@ -39,6 +39,7 @@ const PageBtn = ({ totalPages, currentPage, onPageChange }) => {
     <div>
       <ul>
         {/* {[...Array(totalPages)].map((_, i) => { */}
+
         {[...Array(Math.min(totalPages, limitedTotalPages))].map((_, i) => {
           const pageNum = i + 1;
           return (
@@ -62,12 +63,13 @@ const PageBtn = ({ totalPages, currentPage, onPageChange }) => {
         >
           다음
         </li>
+        {/* <li className="next">다음</li> */}
       </ul>
     </div>
   );
 };
 
-export default PageBtn;
+export default PageMentorBtn;
 
 // 카드 정보는 무조건
 // totalPages, hasNext => 다음 페이지 존재 여부

@@ -11,7 +11,7 @@ const PostCardItem = (props) => {
   const navigate = useNavigate();
 
   // 이 부분 일단 10으로 해놨습니다 ! 이거만 변경해주시면 저한테 알아서 넘어와요 !
-  // const [postListData, setPostListData] = useState(postData);
+  const [postListData, setPostListData] = useState(postData);
 
   const item = props.data;
 
@@ -41,7 +41,7 @@ const PostCardItem = (props) => {
         <S.StackBox>
           <div className="stack">
             <p className="title">직무</p>
-            <p className="desc">{item.stackCategory}</p>
+            <p className="desc limit">{item.stackCategory}</p>
           </div>
           <div className="stack">
             <p className="title">스택</p>

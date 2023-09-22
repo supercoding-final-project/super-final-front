@@ -6,13 +6,13 @@ import { Icon } from 'src/components/common/icon/Icon';
 import { dutyType } from './dutyType';
 import * as S from './List.style';
 import ListSearchFilterContainer from './ListSearchFilterContainer';
-import PageBtn from './PageBtn';
+import PageMentorBtn from './PageMentorBtn';
 import MentoCardItem from '../main/MentoCardItem';
 import { skillStackType } from './skillStackType';
 // import { useRecoilState } from 'recoil';
 // import { keywordAtom, mentorListAtom } from 'src/store/filter/recoilState';
 
-const MentoListLayout = () => {
+const ListMentoLayout = () => {
   // 필터링 더미데이터
   const [dutyTypeData, setDutyTypeData] = useState(dutyType);
   const [skillStackTypeData, setSkillStackTypeData] = useState(skillStackType);
@@ -209,7 +209,7 @@ const MentoListLayout = () => {
       </S.ListSearchContainer>
       <S.PaginationContainer>
         {/* <PageBtn mentorsPaging={mentorsPaging} setMentorsPaging={setMentorsPaging} /> */}
-        <PageBtn
+        <PageMentorBtn
           totalPages={totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
@@ -219,4 +219,4 @@ const MentoListLayout = () => {
   );
 };
 
-export default MentoListLayout;
+export default ListMentoLayout;
