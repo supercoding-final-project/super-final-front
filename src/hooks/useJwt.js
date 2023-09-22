@@ -39,12 +39,10 @@ function useJwtToken() {
     }
   }, [jwtToken]);
 
-  return new Promise((resolve) => {
-    if (jwtToken) {
-      resolve(jwtToken);
-      resolve(decodedToken);
-    }
-  });
+  return {
+    jwtToken,
+    decodedToken,
+  };
 }
 
 export default useJwtToken;
