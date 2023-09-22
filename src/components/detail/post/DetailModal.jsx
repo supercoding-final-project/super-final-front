@@ -45,14 +45,6 @@ const PostModal = (props) => {
     navigate('/');
   };
 
-  // const handlePatch = async () => {
-  //   await axios.patch(`https://codevelop.store/api/v1/post/${props.postId}`, requestData, {
-  //     headers: {
-  //       Authorization: jwtToken,
-  //     },
-  //   });
-  // };
-
   return (
     <S.PostModal>
       <S.PostModalWrap>
