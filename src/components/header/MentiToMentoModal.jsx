@@ -237,7 +237,7 @@ const MentiToMentoModal = ({ cookie }) => {
                 {
                     company: incumbentRef.current.value,
                     careers: careerObjects,
-                    skills: skillStackList,
+                    skillStackNames: skillStackList,
                     introduction: introductionRef.current.value,
                 },
                 {
