@@ -5,14 +5,12 @@ import { theme } from 'src/globalLayout/GlobalStyle';
 import useJwtToken from 'src/hooks/useJwt';
 
 import * as S from './MainCardItem.style';
-// import { useState } from 'react';
 
 const PostCardItem = (props) => {
   const { jwtToken } = useJwtToken();
   const navigate = useNavigate();
 
   // 이 부분 일단 10으로 해놨습니다 ! 이거만 변경해주시면 저한테 알아서 넘어와요 !
-  // const [postListData, setPostListData] = useState(postData);
 
   const item = props.data;
 
