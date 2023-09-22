@@ -15,12 +15,14 @@ const DetailLayout = () => {
   const { jwtToken } = useJwtToken();
 
   const getPostData = async () => {
-    const res = await axios.get(`https://codevelop.store/api/v1/post/${postId}`, {
-      headers: {
-        Authorization: jwtToken,
-      },
-    });
-    setPostData(res.data.data);
+    if (jwtToken) {
+      const res = await axios.get(`https://codevelop.store/api/v1/post/${postId}`, {
+        headers: {
+          Authorization: jwtToken,
+        },
+      });
+      setPostData(res.data.data);
+    }
   };
 
   useEffect(() => {
