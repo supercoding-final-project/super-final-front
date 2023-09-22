@@ -35,7 +35,8 @@ const PostCardItem = (props) => {
 
   return (
     <>
-      <S.MainCardItem key={item.postId}>
+      {/* <S.MainCardItem key={item.postId}> */}
+      <S.MainCardItem>
         <h4>{item.title}</h4>
         <S.StackBox>
           <div className="stack">
@@ -48,7 +49,8 @@ const PostCardItem = (props) => {
           </div>
           <div className="stack bold">
             <p className="title">가격</p>
-            <p className="desc">{item.price.toLocaleString()}P</p>
+            {/* <p className="desc">{item.price.toLocaleString()}P</p> */}
+            <p className="desc">{item.price && item.price.toLocaleString()}P</p>
           </div>
         </S.StackBox>
         <S.NickNameBox>
