@@ -25,7 +25,7 @@ const DetailLayout = () => {
 
   useEffect(() => {
     getPostData();
-  }, [jwtToken]);
+  }, []);
 
   return (
     <S.DetailWrap>
