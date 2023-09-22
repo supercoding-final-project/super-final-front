@@ -5,8 +5,13 @@ import MentoInformation from 'src/components/mypage/mento/MentoInformation';
 import * as S from 'src/pages/my/mentoMyLayout.style';
 
 
-const accesstoken =
-  'Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjEwMDQsImF1dGhvcml0aWVzIjpbIk1FTlRPUiJdLCJpYXQiOjE2OTUwNTExMjQsImV4cCI6MTcyNjU4NzEyNH0.sCThkhy4Xe8YGCa0jdho1TteZ-BtLMl_iQHQSAeLn_w';
+const accesstoken = getCookie('access_token');
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
 const MentoMyLayout = () => {
   const [type, setType] = useState('예약 시간 설정');
   const [user, setUser] = useState()
