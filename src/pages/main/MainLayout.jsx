@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { keywordAtom, mentorListAtom } from 'src/store/filter/recoilState.js';
 
 import * as S from './Main.style.jsx';
 import MainSearchContainer from './MainSearchContainer.jsx';
+import MainSearchLink from './MainSearchLink.jsx';
 import MentoCardItem from './MentoCardItem.jsx';
 import PostCardItem from './PostCardItem.jsx';
-import { useRecoilState } from 'recoil';
-import { keywordAtom, mentorListAtom } from 'src/store/filter/recoilState.js';
-import MainSearchLink from './MainSearchLink.jsx';
 
 const MainLayout = () => {
   const [accessToken, setAccessToken] = useState('');
@@ -137,7 +137,7 @@ const MainLayout = () => {
   // POST 카드 API
   const getPostCard = async () => {
     // const res = await axios.get(`https://codevelop.store/api/v1/post/search?word= &page=1&size=8`);
-    const res = await axios.get(`https://codevelop.store/api/v1/post/search?word= &page=1&size=4`);
+    const res = await axios.get(`https://codevelop.store/api/v1/post/search?word=&page=1&size=4`);
     setPosts(res.data.data.postList);
     console.log(posts);
   };
