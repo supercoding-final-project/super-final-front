@@ -1,3 +1,4 @@
+import { theme } from 'src/globalLayout/GlobalStyle';
 import { styled } from 'styled-components';
 
 export const ChatListWrap = styled.div`
@@ -8,6 +9,13 @@ export const ChatListWrap = styled.div`
   padding-left: 2rem;
   padding-right: 2rem;
   overflow: auto;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: ${theme.color.grey5};
+    border-radius: 25px;
+  }
 `;
 
 export const ChatListBox = styled.div`
