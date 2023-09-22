@@ -27,7 +27,7 @@ const DetailLayout = () => {
 
   useEffect(() => {
     getPostData();
-  }, []);
+  }, [jwtToken]);
 
   return (
     <S.DetailWrap>
@@ -39,7 +39,7 @@ const DetailLayout = () => {
         postId={postId}
       />
       <div style={{ width: '40%', marginRight: '15%' }}>
-        {postData.mentorId && <MentoProfile mentorId={postData.mentorId} />}
+        \ <MentoProfile mentorId={postData.mentorId} />
         <S.TitleBox>
           <span>{postData.level}</span>
           <h2>{postData.title}</h2>

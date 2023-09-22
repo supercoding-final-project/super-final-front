@@ -7,11 +7,15 @@ const MentoProfile = (props) => {
   const [mentoData, setMentoData] = useState({});
 
   const getMentoData = async () => {
-    const res = await axios.get(`https://codevelop.store/api/v1/mentors/detail/${props.mentorId}`);
-    setMentoData(res.data.data);
+    if (props.mentorId) {
+      const res = await axios.get(
+        `https://codevelop.store/api/v1/mentors/detail/${props.mentorId}`,
+      );
+      setMentoData(res.data.data);
 
-    if (props.stackLoader) {
-      props.stackLoader(res.data.data.mentorSkillStackList);
+      if (props.stackLoader) {
+        props.stackLoader(res.data.data.mentorSkillStackList);
+      }
     }
   };
 
