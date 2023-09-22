@@ -5,6 +5,7 @@ import { theme } from 'src/globalLayout/GlobalStyle';
 import useJwtToken from 'src/hooks/useJwt';
 
 import * as S from './MainCardItem.style';
+import { useState } from 'react';
 
 const PostCardItem = (props) => {
   const { jwtToken } = useJwtToken();
