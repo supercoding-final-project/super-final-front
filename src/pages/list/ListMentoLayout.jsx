@@ -6,7 +6,7 @@ import { Icon } from 'src/components/common/icon/Icon';
 import { dutyType } from './dutyType';
 import * as S from './List.style';
 import ListSearchFilterContainer from './ListSearchFilterContainer';
-import PageBtn from './PageBtn';
+import PageMentorBtn from './PageMentorBtn';
 import MentoCardItem from '../main/MentoCardItem';
 import { skillStackType } from './skillStackType';
 // import { useRecoilState } from 'recoil';
@@ -209,7 +209,7 @@ const ListMentoLayout = () => {
       </S.ListSearchContainer>
       <S.PaginationContainer>
         {/* <PageBtn mentorsPaging={mentorsPaging} setMentorsPaging={setMentorsPaging} /> */}
-        <PageBtn
+        <PageMentorBtn
           totalPages={totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
