@@ -10,6 +10,7 @@ import { skillStackCategoryType } from './skillStackCategoryType';
 import { skillStackType } from './skillStackType';
 import PostCardItem from '../main/PostCardItem';
 import axios from 'axios';
+import PagePostBtn from './PagePostBtn';
 
 const ListPostLayout = () => {
   // 필터링 더미데이터
@@ -209,11 +210,11 @@ const ListPostLayout = () => {
         </S.ListCardsContainer>
       </S.ListSearchContainer>
       <S.PaginationContainer>
-        {/* <PageBtn
+        <PagePostBtn
           totalPages={totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
-        /> */}
+        />
       </S.PaginationContainer>
     </S.ListWrapper>
   );
