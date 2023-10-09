@@ -50,7 +50,9 @@ const PostCardItem = (props) => {
           </div>
           <div className="stack bold">
             <p className="title">가격</p>
-            <p className="desc">{item.price.toLocaleString()}P</p>
+            {/* 10/6에 갑자기 Cannot read properties of undefined (reading 'toLocaleString') 발생해서 해당 메서드 지움 */}
+            {/* <p className="desc">{item.price.toLocaleString()}P</p> */}
+            <p className="desc">{item.price}P</p>
           </div>
         </S.StackBox>
         <S.NickNameBox>
