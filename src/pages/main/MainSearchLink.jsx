@@ -1,7 +1,6 @@
-import { styled } from 'styled-components';
-import { Link } from 'react-router-dom';
-import { theme } from 'src/globalLayout/GlobalStyle';
 import { Icon } from 'src/components/common/icon/Icon';
+import { theme } from 'src/globalLayout/GlobalStyle';
+import { styled } from 'styled-components';
 
 const MainSearchLink = ({ activeTab, handleSearch }) => {
   return (

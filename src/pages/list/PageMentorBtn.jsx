@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // const PageBtn = ({ mentorsPaging, setMentorsPaging }) => {
 const PageMentorBtn = ({ totalPages, currentPage, onPageChange }) => {

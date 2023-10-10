@@ -10,10 +10,9 @@ import AuthLayout from './pages/auth/AuthLayout';
 import ChatRoomLayout from './pages/chat/ChatRoomLayout';
 import DetailLayout from './pages/detail/DetailLayout';
 import NotFoundLayout from './pages/error/NotFoundLayout';
-import ListMentoLayout from './pages/list/ListMentoLayout';
+import ListMentorLayout from './pages/list/ListMentorLayout';
 import ListPostLayout from './pages/list/ListPostLayout';
 import MainLayout from './pages/main/MainLayout';
-import MentoMainLayout from './pages/main/MentoMainLayout';
 import MentiMyLayout from './pages/my/MentiMyLayout';
 import MentoMyLayout from './pages/my/MentoMyLayout';
 import ScreenLayout from './pages/screen/ScreenLayout';
@@ -32,10 +31,6 @@ function App() {
         {
           path: 'auth',
           element: <AuthLayout />,
-        },
-        {
-          path: 'mento',
-          element: <MentoMainLayout />,
         },
         {
           path: 'chatroom',
@@ -67,8 +62,8 @@ function App() {
           path: 'list',
           children: [
             {
-              path: 'mento',
-              element: <ListMentoLayout />,
+              path: 'mentor',
+              element: <ListMentorLayout />,
             },
             {
               path: 'post',

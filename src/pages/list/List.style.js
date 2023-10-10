@@ -226,6 +226,8 @@ export const ListCardsContainer = styled.div`
   }
 `;
 
+export const Pagenation = styled.div``;
+
 export const PaginationContainer = styled.div`
   width: 100%;
   margin: 172px auto 0;

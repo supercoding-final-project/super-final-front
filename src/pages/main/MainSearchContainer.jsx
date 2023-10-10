@@ -1,8 +1,9 @@
-import * as S from './Main.style.jsx';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 // import ListSearchFilterContainer from '../list/ListSearchFilterContainer.jsx';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
+import * as S from './Main.style.js';
 import MainSearchLink from './MainSearchLink.jsx';
 
 const MainSearchContainer = ({

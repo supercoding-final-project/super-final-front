@@ -7,8 +7,8 @@ import { dutyType } from './dutyType';
 import * as S from './List.style';
 import ListSearchFilterContainer from './ListSearchFilterContainer';
 import PageMentorBtn from './PageMentorBtn';
-import MentoCardItem from '../main/MentoCardItem';
 import { skillStackType } from './skillStackType';
+import MentoCardItem from '../main/MentorCardItem';
 // import { useRecoilState } from 'recoil';
 // import { keywordAtom, mentorListAtom } from 'src/store/filter/recoilState';
 
@@ -85,6 +85,8 @@ const ListMentoLayout = () => {
   };
 
   // mentorsKeyword 상태에 따라 멘토 카드를 필터링하여 출력
+  // const filteredMentors = mentorsKeyword.length > 0 ? mentorsKeyword : mentors;
+  // 10/6 도오오오ㅗ전
   const filteredMentors = mentorsKeyword.length > 0 ? mentorsKeyword : mentors;
 
   useEffect(() => {
@@ -182,22 +184,28 @@ const ListMentoLayout = () => {
             <div>
               <h3>멘토</h3>
             </div>
-            {/* 합체 */}
-            {/* <ul> */}
-
-            {/* </ul> */}
+            {/* 두 상태값 병합 테스트 으아악 */}
+            {/* {() => setMentors((prev) => prev + 1)} */}
+            {/* <S.Pagenation getMentoCard>
+              <ul>
+                {filteredMentors.map((data, index) => (
+                  <MentoCardItem key={index} data={data} />
+                ))}
+              </ul>
+            </S.Pagenation> */}
 
             {/* 이게 페이지네이션 */}
-            <ul>
+            {/* <ul>
               {mentors.map((mentor) => (
                 <MentoCardItem key={mentor.mentorId} data={mentor} />
               ))}
-            </ul>
+              {console.log('mentors', mentors)}
+            </ul> */}
             {/* 이게 검색 */}
             <ul>
-              {/* {filteredMentors.map((data, index) => (
+              {filteredMentors.map((data, index) => (
                 <MentoCardItem key={index} data={data} />
-              ))} */}
+              ))}
             </ul>
             {/* <ul>
               {mentors.map((data, index) => (

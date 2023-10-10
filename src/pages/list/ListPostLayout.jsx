@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from 'src/components/common/icon/Icon';
@@ -6,11 +7,10 @@ import { levelType } from './levelType';
 import * as S from './List.style';
 import ListSearchFilterContainer from './ListSearchFilterContainer';
 import PageMentorBtn from './PageMentorBtn';
+import PagePostBtn from './PagePostBtn';
 import { skillStackCategoryType } from './skillStackCategoryType';
 import { skillStackType } from './skillStackType';
 import PostCardItem from '../main/PostCardItem';
-import axios from 'axios';
-import PagePostBtn from './PagePostBtn';
 
 const ListPostLayout = () => {
   // 필터링 더미데이터
