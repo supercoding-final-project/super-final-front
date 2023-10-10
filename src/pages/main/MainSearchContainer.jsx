@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 // import ListSearchFilterContainer from '../list/ListSearchFilterContainer.jsx';
 import { Link } from 'react-router-dom';
 
@@ -35,9 +35,9 @@ const MainSearchContainer = ({
       <S.MainSearchList>
         <S.MainSearchItem
           // className="active"
-          className={activeTab === 'mento' ? 'active' : ''}
-          // style={{ color: activeTab === 'mento' ? 'red' : 'black' }}
-          onClick={() => handleTabClick('mento')}
+          className={activeTab === 'mentor' ? 'active' : ''}
+          // style={{ color: activeTab === 'mentor' ? 'red' : 'black' }}
+          onClick={() => handleTabClick('mentor')}
         >
           멘토
         </S.MainSearchItem>
