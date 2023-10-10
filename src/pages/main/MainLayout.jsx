@@ -7,7 +7,7 @@ import { keywordAtom, mentorListAtom } from 'src/store/filter/recoilState.js';
 import * as S from './Main.style.js';
 import MainSearchContainer from './MainSearchContainer.jsx';
 import MainSearchLink from './MainSearchLink.jsx';
-import MentoCardItem from './MentoCardItem.jsx';
+import MentorCardItem from './MentorCardItem.jsx';
 import PostCardItem from './PostCardItem.jsx';
 
 const MainLayout = () => {
@@ -21,7 +21,7 @@ const MainLayout = () => {
   // const [mentorsKeyword, setMentorsKeyword] = useState([]);
   const [mentorsKeyword, setMentorsKeyword] = useRecoilState(keywordAtom);
   const [keyword, setKeyword] = useState(''); // 입력 값을 관리하는 상태
-  const [activeTab, setActiveTab] = useState('mento'); // 초기값으로 'mento' 탭을 활성화
+  const [activeTab, setActiveTab] = useState('mentor'); // 초기값으로 'mentor' 탭을 활성화
   const navigate = useNavigate();
   // POST 키워드 조회 API
   const [posts, setPosts] = useState([]);
@@ -90,14 +90,14 @@ const MainLayout = () => {
     };
   }, []);
 
-  const getMentoCard = async () => {
+  const getMentorCard = async () => {
     const res = await axios.get('https://codevelop.store/api/v1/mentors?pageSize=4');
     setMentors(res.data.data.content);
     console.log(mentors);
   };
 
   useEffect(() => {
-    getMentoCard();
+    getMentorCard();
   }, []);
 
   const getMentorKeywordCard = async () => {
@@ -125,8 +125,8 @@ const MainLayout = () => {
   };
 
   const handleSearch = () => {
-    if (activeTab === 'mento') {
-      navigate('/list/mento'); // 멘토 탭이 active일 때 '/list/mento'로 이동
+    if (activeTab === 'mentor') {
+      navigate('/list/mentor'); // 멘토 탭이 active일 때 '/list/mentor'로 이동
     } else if (activeTab === 'post') {
       navigate('/list/post'); // POST 탭이 active일 때 '/list/post'로 이동
     }
@@ -139,7 +139,8 @@ const MainLayout = () => {
     // const res = await axios.get(`https://codevelop.store/api/v1/post/search?word= &page=1&size=8`);
     const res = await axios.get(`https://codevelop.store/api/v1/post/search?word= &page=1&size=4`);
     setPosts(res.data.data.postList);
-    console.log(posts);
+    console.log('posts', posts);
+    console.log('res.data.data.postList', res.data.data.postList);
   };
 
   useEffect(() => {
@@ -169,12 +170,12 @@ const MainLayout = () => {
                 <span>HOT</span> 멘토!
               </h3>
               <p className="more">
-                <Link to="/list/mento">모든 멘토 보러가기 &gt;</Link>
+                <Link to="/list/mentor">모든 멘토 보러가기 &gt;</Link>
               </p>
             </div>
             <ul>
               {mentors.map((data, index) => (
-                <MentoCardItem key={index} data={data} />
+                <MentorCardItem key={index} data={data} />
               ))}
             </ul>
           </article>

@@ -8,7 +8,7 @@ import * as S from './List.style';
 import ListSearchFilterContainer from './ListSearchFilterContainer';
 import PageMentorBtn from './PageMentorBtn';
 import { skillStackType } from './skillStackType';
-import MentoCardItem from '../main/MentoCardItem';
+import MentoCardItem from '../main/MentorCardItem';
 // import { useRecoilState } from 'recoil';
 // import { keywordAtom, mentorListAtom } from 'src/store/filter/recoilState';
 
