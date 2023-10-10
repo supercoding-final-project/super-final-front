@@ -131,7 +131,7 @@ const ListPostLayout = () => {
         </S.ListSearchList>
         <S.ListSearchBox>
           <ListSearchFilterContainer
-            activeTab={activeTab}
+            // activeTab={activeTab}
             // handleSearch={handleSearch}
             handleInputChange={handleInputChange}
             keyword={keyword}
@@ -210,11 +210,11 @@ const ListPostLayout = () => {
         </S.ListCardsContainer>
       </S.ListSearchContainer>
       <S.PaginationContainer>
-        <PagePostBtn
-          totalPages={totalPages}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
+        {/* <PagePostBtn
+        // totalPages={totalPages}
+        // currentPage={currentPage}
+        // onPageChange={handlePageChange}
+        /> */}
       </S.PaginationContainer>
     </S.ListWrapper>
   );
