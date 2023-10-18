@@ -250,13 +250,13 @@ const ListPostLayout = () => {
       <S.ListSearchContainer>
         <S.ListSearchList>
           <S.ListSearchItem>
-            <Link to="/list/mento">멘토</Link>
+            <Link to="/list/mentor">멘토</Link>
           </S.ListSearchItem>
           <S.ListSearchItem className="active">POST</S.ListSearchItem>
         </S.ListSearchList>
         <S.ListSearchBox>
           <ListSearchFilterContainer
-            // activeTab={activeTab}
+            activeTab={activeTab}
             // handleSearch={handleSearch}
             handleInputChange={handleInputChange}
             keyword={keyword}
