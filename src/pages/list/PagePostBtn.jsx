@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const PagePostBtn = () => {
   const [page, setPage] = useState(1);
-  //   const [totalPages, setTotalPages] = useState(6);
+  const [totalPages, setTotalPages] = useState(6);
   const pageHandler = (page) => {
     setPage(page);
     console.log(page);

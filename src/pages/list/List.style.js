@@ -132,6 +132,7 @@ export const SearchFilterBox = styled.div`
         font-weight: 200;
         line-height: 140%;
         letter-spacing: -0.5px;
+        user-select: none;
       }
     }
   }

@@ -1,6 +1,6 @@
 // import React, { useEffect } from 'react';
 // import { useRecoilState } from 'recoil';
-// import { mentorListState, keywordState, skillStackState, dutiesState } from './recoilState';
+// import { mentorListState, keywordState, skillStackState, dutiesState } from './MentorRecoilState';
 // import { fetchMentors } from './api';
 
 // function MentorList() {
