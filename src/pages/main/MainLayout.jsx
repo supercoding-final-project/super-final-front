@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { keywordAtom, mentorListAtom } from 'src/store/filter/recoilState.js';
+import { keywordAtom, mentorListAtom } from 'src/store/filter/MentorListAtom.js';
 
 import * as S from './Main.style.js';
 import MainSearchContainer from './MainSearchContainer.jsx';
@@ -150,9 +150,9 @@ const MainLayout = () => {
   return (
     <>
       <S.MainWrapper>
-        <S.StartCodeReviewBox>
+        {/* <S.StartCodeReviewBox>
           <Link to="/auth">코드 리뷰 시작하기!</Link>
-        </S.StartCodeReviewBox>
+        </S.StartCodeReviewBox> */}
         <MainSearchContainer
           activeTab={activeTab}
           handleTabClick={handleTabClick}
