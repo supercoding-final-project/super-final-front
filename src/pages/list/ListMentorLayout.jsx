@@ -124,10 +124,10 @@ const ListMentoLayout = () => {
     <S.ListWrapper>
       <S.ListSearchContainer>
         <S.ListSearchList>
-          <S.ListSearchItem className="active">멘토</S.ListSearchItem>
           <S.ListSearchItem>
             <Link to="/list/post">POST</Link>
           </S.ListSearchItem>
+          <S.ListSearchItem className="active">멘토</S.ListSearchItem>
         </S.ListSearchList>
         <S.ListSearchBox>
           <ListSearchFilterContainer
