@@ -165,10 +165,10 @@ const ListPostLayout = () => {
     <S.ListWrapper>
       <S.ListSearchContainer>
         <S.ListSearchList>
+          <S.ListSearchItem className="active">POST</S.ListSearchItem>
           <S.ListSearchItem>
             <Link to="/list/mentor">멘토</Link>
           </S.ListSearchItem>
-          <S.ListSearchItem className="active">POST</S.ListSearchItem>
         </S.ListSearchList>
         <S.ListSearchBox>
           <ListSearchFilterContainer

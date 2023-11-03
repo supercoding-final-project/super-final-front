@@ -21,7 +21,7 @@ const MainLayout = () => {
   // const [mentorsKeyword, setMentorsKeyword] = useState([]);
   const [mentorsKeyword, setMentorsKeyword] = useRecoilState(keywordAtom);
   const [keyword, setKeyword] = useState(''); // 입력 값을 관리하는 상태
-  const [activeTab, setActiveTab] = useState('mentor'); // 초기값으로 'mentor' 탭을 활성화
+  const [activeTab, setActiveTab] = useState('post'); // 초기값으로 'mentor' 탭을 활성화
   const navigate = useNavigate();
   // POST 키워드 조회 API
   const [posts, setPosts] = useState([]);
@@ -167,21 +167,6 @@ const MainLayout = () => {
           <article>
             <div>
               <h3>
-                <span>HOT</span> 멘토!
-              </h3>
-              <p className="more">
-                <Link to="/list/mentor">모든 멘토 보러가기 &gt;</Link>
-              </p>
-            </div>
-            <ul>
-              {mentors.map((data, index) => (
-                <MentorCardItem key={index} data={data} />
-              ))}
-            </ul>
-          </article>
-          <article>
-            <div>
-              <h3>
                 <span>HOT</span> POST!
               </h3>
               <p className="more">
@@ -191,6 +176,21 @@ const MainLayout = () => {
             <ul>
               {posts.map((data, index, postId) => (
                 <PostCardItem key={index} data={data} id={postId} />
+              ))}
+            </ul>
+          </article>
+          <article>
+            <div>
+              <h3>
+                <span>HOT</span> 멘토!
+              </h3>
+              <p className="more">
+                <Link to="/list/mentor">모든 멘토 보러가기 &gt;</Link>
+              </p>
+            </div>
+            <ul>
+              {mentors.map((data, index) => (
+                <MentorCardItem key={index} data={data} />
               ))}
             </ul>
           </article>

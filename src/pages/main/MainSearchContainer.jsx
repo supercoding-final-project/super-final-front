@@ -34,19 +34,19 @@ const MainSearchContainer = ({
     <S.MainSearchContainer>
       <S.MainSearchList>
         <S.MainSearchItem
+          className={activeTab === 'post' ? 'active' : ''}
+          // style={{ color: activeTab === 'post' ? 'red' : 'black' }}
+          onClick={() => handleTabClick('post')}
+        >
+          POST
+        </S.MainSearchItem>
+        <S.MainSearchItem
           // className="active"
           className={activeTab === 'mentor' ? 'active' : ''}
           // style={{ color: activeTab === 'mentor' ? 'red' : 'black' }}
           onClick={() => handleTabClick('mentor')}
         >
           멘토
-        </S.MainSearchItem>
-        <S.MainSearchItem
-          className={activeTab === 'post' ? 'active' : ''}
-          // style={{ color: activeTab === 'post' ? 'red' : 'black' }}
-          onClick={() => handleTabClick('post')}
-        >
-          POST
         </S.MainSearchItem>
       </S.MainSearchList>
       <S.MainSearchBox>
