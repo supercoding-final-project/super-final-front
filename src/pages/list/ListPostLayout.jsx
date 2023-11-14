@@ -33,7 +33,7 @@ const ListPostLayout = () => {
 
   // POST 필터링 조회 API
   // 다중 필터링에 사용할 상태 변수들
-  const [filteredCategories, setFilteredCategories] = useState([]);
+  // const [filteredCategories, setFilteredCategories] = useState([]);
   const [filteredStacks, setFilteredStacks] = useState([]);
   const [filteredLevels, setFilteredLevels] = useState([]);
 
@@ -59,11 +59,11 @@ const ListPostLayout = () => {
 
   const handleTechClick1 = (item) => {
     // 이미 선택된 아이템이라면 선택 해제
-    if (filteredCategories.includes(item)) {
-      setFilteredCategories(filteredCategories.filter((i) => i !== item));
+    if (skillStackCategoryTypeData.includes(item)) {
+      setSkillStackCategoryTypeData(skillStackCategoryTypeData.filter((i) => i !== item));
     } else {
       // 새로운 아이템 선택
-      setFilteredCategories([...filteredCategories, item]);
+      setSkillStackCategoryTypeData([...skillStackCategoryTypeData, item]);
     }
   };
 
@@ -155,7 +155,7 @@ const ListPostLayout = () => {
 
   useEffect(() => {
     fetchPosts(); // 필터 항목이 변경될 때마다 API를 호출합니다.
-  }, [filteredCategories, filteredStacks, filteredLevels]);
+  }, [skillStackCategoryTypeData, filteredStacks, filteredLevels]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -193,7 +193,7 @@ const ListPostLayout = () => {
                   <span>직무</span>
                 </h3>
                 <ul>
-                  {/* {skillStackCategoryTypeData.map((item) => (
+                  {skillStackCategoryTypeData.map((item) => (
                     <li
                       className={skillStackCategoryTypeData.includes(item.id) ? 'active' : ''}
                       key={item.id}
@@ -201,8 +201,8 @@ const ListPostLayout = () => {
                     >
                       {item.skillStackCategoryType}
                     </li>
-                  ))} */}
-                  {filteredCategories.map((item) => (
+                  ))}
+                  {/* {filteredCategories.map((item) => (
                     <li
                       className={filteredCategories.includes(item) ? 'active' : ''}
                       key={item}
@@ -210,7 +210,7 @@ const ListPostLayout = () => {
                     >
                       {item}
                     </li>
-                  ))}
+                  ))} */}
                 </ul>
               </S.CategoryFilterBox>
               <S.CategoryFilterBox>
